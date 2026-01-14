@@ -1,0 +1,41 @@
+# Client-specific files (do not commit)
+*_Discovery.md
+*_Ontology_v*.md
+*_TrackingPlan_v*.md
+*_QA_Checklist_v*.md
+
+# Environment and credentials
+.env
+.env.local
+credentials.json
+*.key
+*.pem
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temporary files
+*.tmp
+*.log
+*.bak
+tmpclaude-*
+
+# Node modules (if using any tooling)
+node_modules/
+
+# Python (if using any tooling)
+__pycache__/
+*.pyc
+.pytest_cache/
+
+# Keep templates (these should be committed)
+!templates/**/*.md
