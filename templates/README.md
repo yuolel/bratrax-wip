@@ -11,8 +11,10 @@ This directory contains foundational templates for executing repeatable Bratrax 
 | **01_Discovery_Questionnaire** | Client intake form | Send to new clients before discovery call |
 | **02_Ontology_Template** | Data model & event taxonomy (DTC E-commerce) | After discovery, before implementation |
 | **02b_Ontology_Template_SaaS** | Data model & event taxonomy (SaaS) | After discovery, for SaaS businesses |
+| **02c_Ontology_Template_B2B_LeadGen** | Data model & event taxonomy (B2B Lead Gen) | After discovery, for lead generation businesses |
 | **03_Tracking_Plan** | Developer implementation guide (DTC) | After ontology approval, for engineering team |
 | **03b_Tracking_Plan_SaaS** | Developer implementation guide (SaaS) | After ontology approval, for SaaS products |
+| **03c_Tracking_Plan_B2B_LeadGen** | Developer implementation guide (B2B Lead Gen) | After ontology approval, for lead gen businesses |
 | **04_QA_Validation_Checklist** | Quality assurance checklist | Throughout project, at phase gates |
 | **05_dbt_Model_Starter** | Data transformation SQL patterns | When building data pipelines |
 | **06_Event_Storming_Workshop** | Event discovery workshop guide | During ontology phase to identify events |
@@ -134,7 +136,25 @@ This directory contains foundational templates for executing repeatable Bratrax 
 
 ---
 
-## Business Model: SaaS vs DTC E-commerce
+## Business Model: Choosing the Right Template
+
+### **When to Use B2B Lead Gen Templates** 🆕
+
+Use `02c_Ontology_Template_B2B_LeadGen.md` and `03c_Tracking_Plan_B2B_LeadGen.md` when:
+- Client generates leads for sales pipeline (not direct transactions)
+- Revenue comes from sales team closing deals (not self-service checkout)
+- Key metrics are Cost per SQL, MQL-to-SQL rate, lead quality, pipeline value
+- Product requires demos, sales calls, or consultations before purchase
+- Examples: B2B software, professional services, high-ticket B2C (real estate, education), agencies
+
+**B2B Lead Gen Template Highlights:**
+- **Events:** lead_captured, form_submitted, mql_qualified, sql_qualified, demo_scheduled (15-18 events)
+- **Metrics:** Cost per SQL, Lead-to-MQL rate, MQL-to-SQL rate, days to SQL, win rate, pipeline value
+- **Entities:** Lead, Session, Form_Submission, Content_Engagement, Campaign, Opportunity
+- **Focus:** Lead Capture → Qualification (MQL → SQL) → Pipeline → Win/Loss
+- **Attribution:** First-touch (default for B2B lead gen)
+
+---
 
 ### **When to Use SaaS Templates**
 
@@ -172,12 +192,16 @@ Use `02_Ontology_Template_DTC_Ecommerce.md` and `03_Tracking_Plan_Template.md` w
 
 ### **Hybrid Businesses**
 
-If client has both (e.g., SaaS with physical products, or e-commerce with membership):
+If client has multiple revenue models (e.g., B2B SaaS with sales-assisted deals, or e-commerce with membership):
 1. **Start with primary revenue model** template
 2. **Add entities/events** from secondary template as needed
 3. **Merge metric definitions** carefully (don't double-count revenue)
 
-Example: Subscription box → Start with DTC template, add subscription events from SaaS template
+**Examples:**
+- **Subscription box** → Start with DTC template, add subscription events from SaaS template
+- **B2B SaaS with sales team** → Start with SaaS template, add lead_captured, sql_qualified from B2B Lead Gen template
+- **E-commerce with lead gen form** → Start with DTC template, add form_submitted and lead tracking from B2B Lead Gen
+- **High-touch SaaS sales** → Use B2B Lead Gen template for top-of-funnel, merge with SaaS template for post-sale
 
 ---
 
@@ -192,9 +216,11 @@ Example: Subscription box → Start with DTC template, add subscription events f
 - **Choose the right template:**
   - Use `02_Ontology_Template_DTC_Ecommerce.md` for e-commerce businesses
   - Use `02b_Ontology_Template_SaaS.md` for SaaS/software businesses
+  - Use `02c_Ontology_Template_B2B_LeadGen.md` for lead generation businesses
 - **Start with the provided structure** and customize
-- **Add entities specific to their business** (e.g., Swipe_Board for VidTao-style apps)
-- **Focus on Section 3.4-3.5 event reduction** - cut ruthlessly to 12-20 events
+- **Add entities specific to their business** (e.g., Swipe_Board for VidTao-style apps, or Lead_Score_History for sophisticated B2B)
+- **Focus on Section 3.2 event catalog** - organize events into Tier 1, Tier 2, Tier 3
+- **Event count target:** 15-18 total events (4-5 in Tier 1, 6-8 in Tier 2, 3-5 in Tier 3)
 - **Use VidTao as reference** - they reduced from 44 to 18 events
 
 ### Tracking Plan
