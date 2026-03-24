@@ -61,6 +61,10 @@
   --paper: #F5F2EB;
   --white: #0A0A0A;
 
+  /* Acid green becomes a readable dark green for text */
+  --acid-text: #4A6800;
+  --acid-highlight: #D4FF00;
+
   --acid-dim: rgba(140, 170, 0, 0.08);
   --acid-mid: rgba(140, 170, 0, 0.2);
   --red-dim: rgba(200, 45, 35, 0.1);
@@ -610,9 +614,10 @@ footer {
 }
 
 /* ═══════════════════════════════════════════
-   LIGHT THEME — SECTION OVERRIDES
+   LIGHT THEME — COMPREHENSIVE OVERRIDES
    ═══════════════════════════════════════════ */
 
+/* Borders: swap white-alpha for black-alpha */
 [data-theme="light"] .problem,
 [data-theme="light"] .stat-strip,
 [data-theme="light"] .method,
@@ -636,17 +641,75 @@ footer {
   border-color: var(--mid);
 }
 
-[data-theme="light"] .btn-acid {
+/* Buttons & CTAs — acid bg with dark text (already works) */
+[data-theme="light"] .btn-acid { color: #0A0A0A; }
+[data-theme="light"] .nav-cta { color: #0A0A0A !important; }
+
+/* Section labels: acid text → dark green */
+[data-theme="light"] .s-label,
+[data-theme="light"] .hero-eyebrow {
+  color: var(--acid-text);
+  background: transparent;
+  border-color: var(--acid-text);
+}
+
+/* Headline accent words: acid text → highlighted with acid bg */
+[data-theme="light"] .hero h1 .acid,
+[data-theme="light"] .hero h1 .serif-accent,
+[data-theme="light"] .method h2 .acid,
+[data-theme="light"] .contrast h2 .acid,
+[data-theme="light"] .protocol h2 .acid,
+[data-theme="light"] .newsletter h2 .acid,
+[data-theme="light"] .cta-final h2 .acid,
+[data-theme="light"] .cta-final h2 .serif-accent {
   color: #0A0A0A;
+  background: var(--acid-highlight);
+  padding: 0 6px;
+  margin: 0 -6px;
 }
 
-[data-theme="light"] .nav-cta {
-  color: #0A0A0A !important;
+/* Pull quote accent */
+[data-theme="light"] .pull-quote blockquote .acid {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  padding: 0 4px;
+  margin: 0 -4px;
 }
 
-[data-theme="light"] .cta-final {
-  background: var(--off-black);
-}
+/* Step numbers */
+[data-theme="light"] .step-num { color: var(--acid-text); }
+[data-theme="light"] .step-time { color: var(--acid-text); }
+
+/* Method card icons & hover */
+[data-theme="light"] .method-icon { color: var(--acid-text); }
+[data-theme="light"] .method-card:hover h3 { color: var(--acid-text); }
+
+/* Stat strip numbers */
+[data-theme="light"] .stat-num { color: var(--acid-text); }
+
+/* Flip card back label */
+[data-theme="light"] .flip-back-label { color: var(--acid-text); }
+
+/* Flip card hint arrow */
+[data-theme="light"] .flip-front-hint .arrow { color: var(--acid-text); }
+
+/* Bracket colors in definition cards */
+[data-theme="light"] .def-bracket.b-acid { color: var(--acid-text); }
+
+/* Article hover */
+[data-theme="light"] .article:hover .article-title { color: var(--acid-text); }
+
+/* Newsletter input focus */
+[data-theme="light"] .newsletter-signup input:focus { border-color: var(--acid-text); }
+
+/* CTA final section */
+[data-theme="light"] .cta-final { background: var(--off-black); }
+
+/* Dither elements: reduce opacity further on light */
+[data-theme="light"] .dither-block::before { opacity: 0.05; }
+[data-theme="light"] .dither-hero { opacity: 0.08; }
+
+/* "skips" red accent — stays red, good contrast on both */
 footer .wrap { display: flex; justify-content: space-between; align-items: center; }
 .footer-left { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
 .footer-right { display: flex; gap: 24px; }
