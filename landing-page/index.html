@@ -707,9 +707,16 @@ footer {
   padding: 2px 8px;
 }
 
-/* Method card icons & hover */
-[data-theme="light"] .method-icon { color: var(--acid-text); }
-[data-theme="light"] .method-card:hover h3 { color: var(--acid-text); }
+/* Method card icons: dark and visible */
+[data-theme="light"] .method-card-icon { color: var(--white); }
+/* Method card hover: highlight treatment on title */
+[data-theme="light"] .method-card:hover h3 {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  display: inline;
+  padding: 0 4px;
+  margin: 0 -4px;
+}
 
 /* Stat strip numbers: red for impact */
 [data-theme="light"] .stat-number {
@@ -725,13 +732,19 @@ footer {
 }
 
 /* Flip card hint arrow */
-[data-theme="light"] .flip-front-hint .arrow { color: var(--acid-text); }
+[data-theme="light"] .flip-front-hint .arrow { color: var(--white); }
 
 /* Bracket colors in definition cards */
-[data-theme="light"] .def-bracket.b-acid { color: var(--acid-text); }
+[data-theme="light"] .def-bracket.b-acid { color: var(--white); }
 
-/* Article hover */
-[data-theme="light"] .article:hover .article-title { color: var(--acid-text); }
+/* Article hover: highlight treatment */
+[data-theme="light"] .article:hover .article-title {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  display: inline;
+  padding: 0 4px;
+  margin: 0 -4px;
+}
 
 /* Newsletter input focus */
 [data-theme="light"] .newsletter-signup:focus-within { border-color: var(--acid-text); }
