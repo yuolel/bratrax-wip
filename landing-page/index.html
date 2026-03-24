@@ -645,12 +645,18 @@ footer {
 [data-theme="light"] .btn-acid { color: #0A0A0A; }
 [data-theme="light"] .nav-cta { color: #0A0A0A !important; }
 
-/* Section labels: acid text → dark green */
-[data-theme="light"] .s-label,
+/* Section labels: acid highlight bg with dark text */
+[data-theme="light"] .s-label {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  border-color: transparent;
+  padding: 4px 12px;
+  display: inline-block;
+}
 [data-theme="light"] .hero-eyebrow {
-  color: var(--acid-text);
-  background: transparent;
-  border-color: var(--acid-text);
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  border-color: transparent;
 }
 
 /* Headline accent words: acid text → highlighted with acid bg */
@@ -676,16 +682,28 @@ footer {
   margin: 0 -4px;
 }
 
-/* Step numbers */
-[data-theme="light"] .step-num { color: var(--acid-text); }
-[data-theme="light"] .step-time { color: var(--acid-text); }
+/* Step numbers: highlight treatment */
+[data-theme="light"] .step-num {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  display: inline-block;
+  padding: 2px 8px;
+}
+[data-theme="light"] .step-time {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  display: inline-block;
+  padding: 2px 8px;
+}
 
 /* Method card icons & hover */
 [data-theme="light"] .method-icon { color: var(--acid-text); }
 [data-theme="light"] .method-card:hover h3 { color: var(--acid-text); }
 
-/* Stat strip numbers */
-[data-theme="light"] .stat-num { color: var(--acid-text); }
+/* Stat strip numbers: red for impact */
+[data-theme="light"] .stat-number {
+  color: var(--red);
+}
 
 /* Flip card back label */
 [data-theme="light"] .flip-back-label { color: var(--acid-text); }
