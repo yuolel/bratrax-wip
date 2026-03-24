@@ -134,8 +134,9 @@ nav {
   border-bottom: 1px solid rgba(212,255,0,0.08);
 }
 nav .wrap { display: flex; justify-content: space-between; align-items: center; }
-.logo { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--off-white); letter-spacing: 4px; text-transform: uppercase; text-decoration: none; }
-.logo em { font-style: normal; color: var(--acid); }
+.logo { text-decoration: none; display: inline-block; }
+.logo svg { display: block; height: 40px; width: auto; }
+.logo-sm svg { height: 28px; }
 .nav-links { display: flex; gap: 28px; align-items: center; list-style: none; }
 .nav-links a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.25s; }
 .nav-links a:hover { color: var(--off-white); }
@@ -604,7 +605,7 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 <!-- ═══ NAV ═══ -->
 <nav>
   <div class="wrap">
-    <a href="#" class="logo">BRATRAX<em>.</em></a>
+    <a href="#" class="logo"><img src="logo-stacked.svg" alt="Bratrax" height="40"></a>
     <button class="menu-btn" aria-label="Menu">Menu</button>
     <ul class="nav-links">
       <li><a href="#method">Method</a></li>
@@ -927,10 +928,10 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="wrap">
-    <div class="footer-left">&copy; 2026 Bratrax</div>
+    <div class="footer-left"><a href="#" class="logo logo-sm"><img src="logo-stacked.svg" alt="Bratrax" height="28"></a></div>
     <div class="footer-right">
       <a href="https://blog.bratrax.com" target="_blank" rel="noopener">Newsletter &rarr;</a>
-      <a href="#">Twitter</a>
+      <a href="#" target="_blank" rel="noopener" aria-label="X (formerly Twitter)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
     </div>
   </div>
 </footer>
