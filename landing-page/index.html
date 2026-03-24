@@ -3,15 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bratrax — Above the data. Beyond attribution.</title>
+<title>Bratrax — Your numbers don't match. We know why.</title>
+<meta name="description" content="Bratrax builds custom analytics infrastructure for D2C and direct response brands — starting with shared definitions before a single dashboard gets built.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400&family=Outfit:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
 <style>
 /* ═══════════════════════════════════════════
-   BRATRAX V2 — DITHER PUNK
-   Inspired by: halftone print, graph paper,
-   acid yellow on black, screen-print energy
+   BRATRAX V3 — COMBINED BUILD
+   Dither-punk textures, editorial copy,
+   restructured narrative flow
    ═══════════════════════════════════════════ */
 
 :root {
@@ -30,13 +31,13 @@
   --acid-mid: rgba(212, 255, 0, 0.25);
   --red: #FF3B30;
   --red-dim: rgba(255, 59, 48, 0.12);
-
-  --entity-1: #D4FF00;
-  --entity-2: #FF3B30;
-  --entity-3: #00D4FF;
-  --entity-4: #FF8A00;
+  --blue: #00D4FF;
+  --blue-dim: rgba(0, 212, 255, 0.12);
+  --lavender: #B4A0FF;
+  --lavender-dim: rgba(180, 160, 255, 0.10);
 
   --font-display: 'Outfit', 'Helvetica Neue', sans-serif;
+  --font-serif: 'DM Serif Display', Georgia, serif;
   --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
   --font-body: 'Outfit', sans-serif;
 
@@ -45,10 +46,7 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-html {
-  scroll-behavior: smooth;
-  background: var(--black);
-}
+html { scroll-behavior: smooth; background: var(--black); }
 
 body {
   font-family: var(--font-body);
@@ -59,52 +57,27 @@ body {
   overflow-x: hidden;
 }
 
-::selection {
-  background: var(--acid);
-  color: var(--black);
-}
+::selection { background: var(--acid); color: var(--black); }
 
-/* Focus styles */
-a:focus-visible,
-button:focus-visible {
-  outline: 2px solid var(--acid);
-  outline-offset: 3px;
-}
+a:focus-visible, button:focus-visible { outline: 2px solid var(--acid); outline-offset: 3px; }
 
-.btn-acid:focus-visible {
-  outline-color: var(--white);
-}
-
-/* Skip to content */
 .skip-link {
-  position: absolute;
-  top: -100px;
-  left: 16px;
-  background: var(--acid);
-  color: var(--black);
-  padding: 12px 24px;
-  font-family: var(--font-mono);
-  font-size: 13px;
-  font-weight: 700;
-  z-index: 200;
-  text-decoration: none;
-  transition: top 0.2s;
+  position: absolute; top: -100px; left: 16px;
+  background: var(--acid); color: var(--black);
+  padding: 12px 24px; font-family: var(--font-mono);
+  font-size: 13px; font-weight: 700; z-index: 200;
+  text-decoration: none; transition: top 0.2s;
 }
-
-.skip-link:focus {
-  top: 16px;
-}
+.skip-link:focus { top: 16px; }
 
 /* ═══════════════════════════════════════════
-   GRAPH PAPER TEXTURE — everywhere
+   GRAPH PAPER TEXTURE
    ═══════════════════════════════════════════ */
 
 body::before {
   content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
   background-image:
     linear-gradient(rgba(212,255,0,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(212,255,0,0.04) 1px, transparent 1px);
@@ -112,54 +85,23 @@ body::before {
 }
 
 /* ═══════════════════════════════════════════
-   NOISE GRAIN
+   DITHER ELEMENTS
    ═══════════════════════════════════════════ */
 
-/* grain overlay removed — was causing preview rendering issues */
-
-/* ═══════════════════════════════════════════
-   HALFTONE GENERATOR — CSS dither circles
-   ═══════════════════════════════════════════ */
-
-.dither-block {
-  position: relative;
-  overflow: hidden;
-}
-
+.dither-block { position: relative; overflow: hidden; }
 .dither-block::before {
-  content: '';
-  position: absolute;
-  inset: 0;
+  content: ''; position: absolute; inset: 0;
   background-image: radial-gradient(circle, var(--acid) 1.5px, transparent 1.5px);
-  background-size: 6px 6px;
-  opacity: 0.12;
-  pointer-events: none;
+  background-size: 6px 6px; opacity: 0.12; pointer-events: none;
 }
 
 .dither-hero {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  right: -80px;
-  top: 50%;
-  transform: translateY(-50%);
+  position: absolute; width: 500px; height: 500px; border-radius: 50%;
+  right: -80px; top: 50%; transform: translateY(-50%);
   background-image: radial-gradient(circle, var(--acid) 2.5px, transparent 2.5px);
-  background-size: 8px 8px;
-  opacity: 0.2;
+  background-size: 8px 8px; opacity: 0.2;
   mask-image: radial-gradient(circle, black 30%, transparent 70%);
   -webkit-mask-image: radial-gradient(circle, black 30%, transparent 70%);
-  pointer-events: none;
-}
-
-.dither-square {
-  position: absolute;
-  width: 280px;
-  height: 280px;
-  background-image: radial-gradient(circle, var(--red) 2px, transparent 2px);
-  background-size: 7px 7px;
-  opacity: 0.15;
-  transform: rotate(12deg);
   pointer-events: none;
 }
 
@@ -167,176 +109,71 @@ body::before {
    SCROLL REVEAL
    ═══════════════════════════════════════════ */
 
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-}
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
 .reveal.visible { opacity: 1; transform: translateY(0); }
 .reveal-d1 { transition-delay: 0.1s; }
 .reveal-d2 { transition-delay: 0.2s; }
 .reveal-d3 { transition-delay: 0.3s; }
 .reveal-d4 { transition-delay: 0.4s; }
-.reveal-d5 { transition-delay: 0.5s; }
 
 /* ═══════════════════════════════════════════
    LAYOUT
    ═══════════════════════════════════════════ */
 
-.wrap {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 32px;
-  position: relative;
-  z-index: 2;
-}
-
-section {
-  position: relative;
-  z-index: 2;
-}
+.wrap { max-width: 1200px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+section { position: relative; z-index: 2; }
 
 /* ═══════════════════════════════════════════
    NAV
    ═══════════════════════════════════════════ */
 
 nav {
-  position: fixed;
-  top: 0; left: 0; width: 100%;
-  z-index: 100;
-  padding: 16px 0;
-  background: rgba(10,10,10,0.85);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+  padding: 16px 0; background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(212,255,0,0.08);
 }
-
-nav .wrap {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.logo {
-  font-family: var(--font-mono);
-  font-size: 16px;
-  font-weight: 700;
-  color: var(--off-white);
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  text-decoration: none;
-}
-
-.logo em {
-  font-style: normal;
-  color: var(--acid);
-}
-
-.nav-links {
-  display: flex;
-  gap: 28px;
-  align-items: center;
-  list-style: none;
-}
-
-.nav-links a {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  color: var(--muted);
-  text-decoration: none;
-  transition: color 0.25s;
-}
-
-.nav-links a:hover { color: var(--acid); }
-
-.btn-acid {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 10px 24px;
-  background: var(--acid);
-  color: var(--black) !important;
-  text-decoration: none;
-  transition: all 0.25s var(--ease);
-  border: none;
-  cursor: pointer;
-}
-
-.btn-acid:hover {
-  background: #E8FF4D;
-  transform: translateY(-1px);
-  box-shadow: 0 4px 24px rgba(212,255,0,0.25);
-}
-
-.btn-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  padding: 10px 24px;
-  background: transparent;
-  color: var(--off-white);
-  text-decoration: none;
-  border: 1px solid var(--mid);
-  transition: all 0.25s var(--ease);
-}
-
-.btn-outline:hover {
-  border-color: var(--acid);
-  color: var(--acid);
-}
-
-.mobile-toggle {
-  display: none;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 12px;
-  min-width: 44px;
-  min-height: 44px;
-}
-
-.mobile-toggle span {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: var(--off-white);
-  margin: 5px 0;
-}
+nav .wrap { display: flex; justify-content: space-between; align-items: center; }
+.logo { font-family: var(--font-mono); font-size: 16px; font-weight: 700; color: var(--off-white); letter-spacing: 4px; text-transform: uppercase; text-decoration: none; }
+.logo em { font-style: normal; color: var(--acid); }
+.nav-links { display: flex; gap: 28px; align-items: center; list-style: none; }
+.nav-links a { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.25s; }
+.nav-links a:hover { color: var(--off-white); }
+.nav-cta { background: var(--acid) !important; color: var(--black) !important; padding: 8px 18px; font-weight: 700 !important; letter-spacing: 0.04em; transition: opacity 0.2s; }
+.nav-cta:hover { opacity: 0.88; }
+.menu-btn { display: none; background: none; border: 1px solid var(--mid); color: var(--off-white); font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px; text-transform: uppercase; padding: 8px 16px; cursor: pointer; }
 
 /* ═══════════════════════════════════════════
-   SECTION LABEL
+   SECTION LABELS
    ═══════════════════════════════════════════ */
 
 .s-label {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: var(--acid);
-  margin-bottom: 40px;
-  display: flex;
-  align-items: center;
-  gap: 16px;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--acid);
+  margin-bottom: 24px; opacity: 0.7;
 }
 
-.s-label::after {
-  content: '';
-  flex: 1;
-  height: 1px;
-  background: rgba(212,255,0,0.15);
+/* ═══════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════ */
+
+.btn-acid {
+  display: inline-block; padding: 14px 32px;
+  background: var(--acid); color: var(--black);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  text-decoration: none; transition: opacity 0.2s, transform 0.15s;
 }
+.btn-acid:hover { opacity: 0.88; transform: translateY(-1px); }
+
+.btn-outline {
+  display: inline-block; padding: 14px 32px;
+  border: 1px solid var(--mid); color: var(--off-white);
+  font-family: var(--font-mono); font-size: 12px; font-weight: 400;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  text-decoration: none; transition: border-color 0.25s;
+}
+.btn-outline:hover { border-color: var(--off-white); }
 
 /* ═══════════════════════════════════════════
    HERO
@@ -344,736 +181,372 @@ nav .wrap {
 
 .hero {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
-  padding: 140px 0 100px;
-  position: relative;
-  overflow: hidden;
+  padding: 120px 0 80px; position: relative; overflow: hidden;
 }
-
-.hero .wrap {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
+.hero > .wrap {
+  display: grid; grid-template-columns: 1fr 1fr;
+  align-items: center; gap: 48px;
 }
-
-.hero-text { position: relative; z-index: 3; }
 
 .hero-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--acid);
-  margin-bottom: 28px;
-  padding: 6px 14px;
-  border: 1px solid var(--acid-mid);
-  display: inline-block;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--acid);
+  margin-bottom: 28px; padding: 6px 14px;
+  border: 1px solid var(--acid-mid); display: inline-block;
   background: var(--acid-dim);
 }
 
 .hero h1 {
-  font-family: var(--font-display);
-  font-size: clamp(44px, 5.5vw, 76px);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -2px;
-  color: var(--white);
-  margin-bottom: 28px;
+  font-family: var(--font-display); font-size: clamp(44px, 5.5vw, 76px);
+  font-weight: 900; line-height: 1.05; letter-spacing: -0.5px;
+  color: var(--white); margin-bottom: 28px;
 }
-
 .hero h1 .dim { color: var(--mid); }
 .hero h1 .acid { color: var(--acid); }
-.hero h1 .strike {
-  text-decoration: line-through;
-  text-decoration-color: var(--red);
-  text-decoration-thickness: 3px;
-  color: var(--muted);
-}
+.hero h1 .serif-accent { font-family: var(--font-serif); font-style: italic; color: var(--acid); }
+.hero h1 .red { color: var(--red); }
 
 .hero-sub {
-  font-size: 17px;
-  font-weight: 300;
-  color: var(--light);
-  max-width: 480px;
-  line-height: 1.7;
-  margin-bottom: 40px;
+  font-size: 17px; font-weight: 300; color: var(--light);
+  max-width: 480px; line-height: 1.7; margin-bottom: 40px;
 }
 
-.hero-ctas {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
+.hero-ctas { display: flex; gap: 16px; flex-wrap: wrap; }
 
-/* Hero right — the big dither graphic */
+/* Hero graphic — lens reveal canvas */
 .hero-graphic {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  position: relative; width: 100%;
+  display: flex; align-items: center; justify-content: center;
 }
-
-.hero-dither-circle {
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  position: relative;
-  background: var(--off-black);
-  border: 2px solid var(--acid-mid);
-  overflow: hidden;
+.hero-graphic canvas {
+  display: block; width: 500px; height: 420px;
 }
-
-.hero-dither-circle::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: radial-gradient(circle, var(--acid) 2px, transparent 2px);
-  background-size: 8px 8px;
-  mask-image: radial-gradient(ellipse 70% 70% at 40% 45%, black 0%, transparent 80%);
-  -webkit-mask-image: radial-gradient(ellipse 70% 70% at 40% 45%, black 0%, transparent 80%);
-  opacity: 0.5;
-}
-
-.hero-dither-circle::after {
-  content: '';
-  position: absolute;
-  inset: 20%;
-  border-radius: 50%;
-  border: 1px dashed var(--acid-mid);
-}
-
-.hero-crosshair {
-  position: absolute;
-  top: 50%; left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 5;
-}
-
-.hero-crosshair::before,
-.hero-crosshair::after {
-  content: '';
-  position: absolute;
-  background: var(--acid);
-}
-
-.hero-crosshair::before {
-  width: 1px;
-  height: 60px;
-  top: -30px;
-  left: 0;
-}
-
-.hero-crosshair::after {
-  height: 1px;
-  width: 60px;
-  left: -30px;
-  top: 0;
-}
-
-.hero-coord {
-  position: absolute;
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--acid);
-  opacity: 0.6;
-}
-
-.hero-coord-1 { top: 15%; left: 10%; }
-.hero-coord-2 { bottom: 20%; right: 12%; }
-.hero-coord-3 { top: 60%; left: 8%; }
-
-.hero-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(212,255,0,0.1);
-}
-
-.hero-ring-1 { width: 520px; height: 520px; top: 50%; left: 50%; transform: translate(-50%,-50%); }
-.hero-ring-2 { width: 350px; height: 350px; top: 50%; left: 50%; transform: translate(-50%,-50%); border-style: dashed; }
 
 /* ═══════════════════════════════════════════
-   PROBLEM
+   STAT STRIP
    ═══════════════════════════════════════════ */
 
-.problem {
-  padding: 140px 0;
+.stat-strip {
   border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
+  background: var(--off-black); position: relative; overflow: hidden;
 }
+.stat-strip::after {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, var(--acid) 0.6px, transparent 0.6px);
+  background-size: 8px 8px; opacity: 0.025; pointer-events: none;
+}
+.stat-strip .wrap {
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  padding-top: 56px; padding-bottom: 56px;
+}
+.stat-item { text-align: center; position: relative; z-index: 1; }
+.stat-item + .stat-item { border-left: 1px solid var(--mid); }
+.stat-number {
+  font-family: var(--font-mono); font-size: clamp(40px, 5vw, 64px);
+  font-weight: 700; color: var(--acid); margin-bottom: 8px; line-height: 1;
+}
+.stat-desc { font-size: 14px; color: var(--muted); line-height: 1.5; max-width: 240px; margin: 0 auto; }
+
+/* ═══════════════════════════════════════════
+   PROBLEM (narrative)
+   ═══════════════════════════════════════════ */
+
+.problem { padding: 140px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
 
 .problem h2 {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 4.5vw, 60px);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  margin-bottom: 64px;
-  max-width: 700px;
+  font-family: var(--font-display); font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 900; line-height: 1.1; letter-spacing: -0.3px;
+  margin-bottom: 48px; max-width: 700px;
 }
+.problem h2 .serif-accent { font-family: var(--font-serif); font-style: italic; }
 
-.problem h2 .red {
-  color: var(--red);
-  text-decoration: line-through;
-  text-decoration-thickness: 3px;
+.problem-story p {
+  font-size: 17px; color: var(--light); max-width: 640px;
+  line-height: 1.85; margin-bottom: 24px;
 }
+.problem-story p strong { color: var(--off-white); font-weight: 600; }
+.problem-story p .red { color: var(--red); }
 
+/* Definition cards */
 .def-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 0;
-  margin-bottom: 64px;
-  border: 1px solid var(--mid);
+  display: grid; grid-template-columns: repeat(3, 1fr); gap: 0;
+  margin: 64px 0; border: 1px solid var(--mid);
 }
-
 .def-card {
-  padding: 36px 28px;
-  border-right: 1px solid var(--mid);
-  position: relative;
-  background: var(--off-black);
-  transition: background 0.3s;
+  padding: 36px 28px; border-right: 1px solid var(--mid);
+  position: relative; background: var(--off-black); transition: background 0.3s;
 }
-
 .def-card:last-child { border-right: none; }
-
-.def-card:hover {
-  background: var(--dark);
-}
-
-.def-card::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 4px;
-}
-
-.def-card:nth-child(1)::before { background: var(--entity-1); }
-.def-card:nth-child(2)::before { background: var(--entity-2); }
-.def-card:nth-child(3)::before { background: var(--entity-4); }
-
+.def-card:hover { background: var(--dark); }
+.def-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; }
+.def-card:nth-child(1)::before { background: var(--acid); }
+.def-card:nth-child(2)::before { background: var(--red); }
+.def-card:nth-child(3)::before { background: var(--blue); }
 .def-role {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
   margin-bottom: 16px;
 }
-
-.def-card:nth-child(1) .def-role { color: var(--entity-1); }
-.def-card:nth-child(2) .def-role { color: var(--entity-2); }
-.def-card:nth-child(3) .def-role { color: var(--entity-4); }
-
 .def-word {
-  font-family: var(--font-display);
-  font-size: 32px;
-  font-weight: 800;
-  color: var(--white);
-  margin-bottom: 14px;
+  font-family: var(--font-display); font-size: 28px; font-weight: 800;
+  color: var(--off-white); margin-bottom: 12px;
 }
+.def-meaning { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.def-bracket { font-family: var(--font-mono); font-weight: 400; }
+.def-bracket.b-acid { color: var(--acid); }
+.def-bracket.b-red { color: var(--red); }
+.def-bracket.b-blue { color: var(--blue); }
 
-.def-meaning {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  color: var(--light);
-  line-height: 1.7;
+/* ═══════════════════════════════════════════
+   PULL QUOTE BREAK
+   ═══════════════════════════════════════════ */
+
+.pull-quote {
+  padding: 80px 0; position: relative; overflow: hidden;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  border-bottom: 1px solid rgba(255,255,255,0.04);
 }
-
-.problem-end {
-  font-size: 19px;
-  font-weight: 300;
-  color: var(--light);
-  max-width: 620px;
-  line-height: 1.7;
+.pull-quote::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, var(--acid) 1.5px, transparent 1.5px);
+  background-size: 8px 8px; opacity: 0.03; pointer-events: none;
 }
-
-.problem-end strong {
-  color: var(--white);
-  font-weight: 600;
+.pull-quote .wrap { text-align: center; }
+.pull-quote blockquote {
+  font-family: var(--font-serif); font-size: clamp(28px, 3.5vw, 44px);
+  line-height: 1.35; font-weight: 400; color: var(--off-white);
+  max-width: 800px; margin: 0 auto 20px;
+}
+.pull-quote blockquote .acid { color: var(--acid); }
+.pull-quote cite {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  color: var(--muted); font-style: normal; letter-spacing: 2px; text-transform: uppercase;
 }
 
 /* ═══════════════════════════════════════════
-   ONTOLOGY
+   METHOD (plain English, ontology introduced late)
    ═══════════════════════════════════════════ */
 
-.ontology {
-  padding: 140px 0;
-  border-top: 1px solid rgba(255,255,255,0.04);
+.method { padding: 140px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+
+.method h2 {
+  font-family: var(--font-display); font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 900; line-height: 1.1; letter-spacing: -0.3px;
+  margin-bottom: 24px; max-width: 700px;
+}
+.method h2 .serif-accent { font-family: var(--font-serif); font-style: italic; }
+.method h2 .acid { color: var(--acid); }
+
+.method-sub {
+  font-size: 17px; color: var(--light); max-width: 600px;
+  line-height: 1.85; margin-bottom: 64px;
 }
 
-.ontology h2 {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 4.5vw, 60px);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  margin-bottom: 20px;
-  max-width: 700px;
+.method-cards {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 0; border: 1px solid var(--mid); margin-bottom: 48px;
 }
+.method-card {
+  padding: 40px 28px; border-right: 1px solid var(--mid);
+  position: relative; background: var(--off-black); transition: background 0.3s;
+}
+.method-card:last-child { border-right: none; }
+.method-card:hover { background: var(--dark); }
+.method-card:hover h3 { color: var(--acid); }
+.method-card-icon {
+  font-family: var(--font-mono); font-size: 24px; color: var(--acid);
+  margin-bottom: 20px; opacity: 0.6;
+}
+.method-card-label {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--muted);
+  margin-bottom: 12px;
+}
+.method-card h3 {
+  font-family: var(--font-display); font-size: 22px; font-weight: 800;
+  color: var(--off-white); margin-bottom: 12px; line-height: 1.2;
+  transition: color 0.25s;
+}
+.method-card p { font-size: 14px; color: var(--muted); line-height: 1.7; }
 
-.ontology h2 .acid { color: var(--acid); }
-
-.ontology-sub {
-  font-size: 17px;
-  font-weight: 300;
-  color: var(--light);
-  max-width: 580px;
+.method-footnote {
+  display: grid; grid-template-columns: 3fr 2fr; gap: 40px; align-items: center;
+}
+.method-footnote p {
+  font-family: var(--font-mono); font-size: 12px; color: var(--muted);
   line-height: 1.7;
-  margin-bottom: 72px;
 }
-
-.ont-diagram {
-  background: var(--off-black);
-  border: 1px solid var(--mid);
-  padding: 48px 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Graph paper inside the diagram */
-.ont-diagram::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    linear-gradient(rgba(212,255,0,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(212,255,0,0.05) 1px, transparent 1px);
-  background-size: 32px 32px;
-  pointer-events: none;
-}
-
-.ont-header {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-bottom: 40px;
-  position: relative;
-}
-
-.ont-entities {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 12px;
-  position: relative;
-}
-
-.ont-card {
-  background: var(--black);
-  border: 1px solid var(--mid);
-  overflow: hidden;
-  transition: transform 0.3s var(--ease), border-color 0.3s;
-}
-
-.ont-card:hover {
-  transform: translateY(-4px);
-}
-
-.ont-card:nth-child(1) { border-top: 3px solid var(--entity-1); }
-.ont-card:nth-child(2) { border-top: 3px solid var(--entity-2); }
-.ont-card:nth-child(3) { border-top: 3px solid var(--entity-3); }
-.ont-card:nth-child(4) { border-top: 3px solid var(--entity-4); }
-
-.ont-card:nth-child(1):hover { border-color: var(--entity-1); }
-.ont-card:nth-child(2):hover { border-color: var(--entity-2); }
-.ont-card:nth-child(3):hover { border-color: var(--entity-3); }
-.ont-card:nth-child(4):hover { border-color: var(--entity-4); }
-
-.ont-name {
-  padding: 14px 16px 8px;
-  font-family: var(--font-mono);
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.ont-card:nth-child(1) .ont-name { color: var(--entity-1); }
-.ont-card:nth-child(2) .ont-name { color: var(--entity-2); }
-.ont-card:nth-child(3) .ont-name { color: var(--entity-3); }
-.ont-card:nth-child(4) .ont-name { color: var(--entity-4); }
-
-.ont-props {
-  padding: 0 16px 16px;
-}
-
-.ont-prop {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--light);
-  padding: 4px 0;
-  display: flex;
-  justify-content: space-between;
-}
-
-.ont-prop .t {
-  color: var(--muted);
-  font-size: 11px;
-}
-
-.ont-links {
-  margin-top: 28px;
-  display: flex;
-  gap: 40px;
-  position: relative;
-}
-
-.ont-link {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--muted);
-  font-style: italic;
-}
-
-.ont-link b {
-  color: var(--light);
-  font-weight: 400;
-  font-style: normal;
-}
-
-.ont-legend {
-  margin-top: 28px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  display: flex;
-  gap: 32px;
-}
-
-.ont-legend-item {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: 0.5px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.ont-legend-dot {
-  width: 8px; height: 8px;
-  border-radius: 50%;
-}
-
-.ont-legend-line {
-  width: 16px; height: 0;
-  border-top: 2px dashed var(--mid);
-}
+.method-footnote strong { color: var(--off-white); }
+.method-footnote .btn-outline { justify-self: stretch; text-align: center; }
 
 /* ═══════════════════════════════════════════
-   CONTRAST TABLE
+   CONTRAST — FLIPPABLE CARDS
    ═══════════════════════════════════════════ */
 
-.contrast {
-  padding: 140px 0;
-  border-top: 1px solid rgba(255,255,255,0.04);
-}
+.contrast { padding: 140px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
 
 .contrast h2 {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 4.5vw, 60px);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  margin-bottom: 64px;
-  max-width: 650px;
+  font-family: var(--font-display); font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 900; line-height: 1.1; letter-spacing: -0.3px;
+  margin-bottom: 48px; max-width: 700px;
 }
-
 .contrast h2 .acid { color: var(--acid); }
+.contrast h2 .serif-accent { font-family: var(--font-serif); font-style: italic; }
 
-.c-table {
-  width: 100%;
-  border-collapse: collapse;
+.flip-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+.flip-card { perspective: 800px; height: 240px; cursor: pointer; }
+
+.flip-card-inner {
+  position: relative; width: 100%; height: 100%;
+  transition: transform 0.6s var(--ease);
+  transform-style: preserve-3d;
+}
+.flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
+
+.flip-front, .flip-back {
+  position: absolute; inset: 0; backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  padding: 32px; display: flex; flex-direction: column; justify-content: center;
   border: 1px solid var(--mid);
 }
 
-.c-table thead th {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  text-align: left;
-  padding: 16px 24px;
+.flip-front {
   background: var(--off-black);
-  border-bottom: 1px solid var(--mid);
 }
-
-.c-table thead th:first-child {
-  color: var(--red);
-  border-right: 1px solid var(--mid);
+.flip-front-label {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--red);
+  margin-bottom: 16px;
 }
-
-.c-table thead th:last-child {
-  color: var(--acid);
+.flip-front p {
+  font-family: var(--font-display); font-size: 22px; font-weight: 700;
+  color: var(--off-white); line-height: 1.4; flex: 1;
 }
-
-.c-table td {
-  padding: 18px 24px;
-  font-size: 15px;
-  line-height: 1.55;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  vertical-align: top;
+.flip-front-bottom {
+  display: flex; justify-content: flex-end; margin-top: 16px;
 }
-
-.c-table td:first-child {
-  color: var(--muted);
-  font-family: var(--font-mono);
-  font-size: 13px;
-  text-decoration: line-through;
-  text-decoration-color: rgba(255,59,48,0.4);
-  border-right: 1px solid var(--mid);
-  width: 50%;
-  background: rgba(255,59,48,0.03);
+.flip-front-hint {
+  font-family: var(--font-mono); font-size: 10px; color: var(--muted);
+  letter-spacing: 1px; text-transform: uppercase;
 }
+.flip-front-hint .arrow { color: var(--acid); }
 
-.c-table td:last-child {
-  color: var(--white);
-  font-weight: 500;
-  background: rgba(212,255,0,0.02);
+.flip-card:hover .flip-front-hint { opacity: 0; }
+
+.flip-front { transition: border-color 0.3s; }
+.flip-card:hover .flip-front { border-color: var(--acid-mid); }
+
+.flip-back {
+  background: var(--dark); border-color: var(--acid-mid);
+  transform: rotateY(180deg);
 }
-
-.c-table tr:hover td {
-  background: rgba(212,255,0,0.04);
+.flip-back-label {
+  font-family: var(--font-mono); font-size: 10px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--acid);
+  margin-bottom: 16px;
 }
-
-.c-table tr:hover td:first-child {
-  background: rgba(255,59,48,0.06);
+.flip-back p {
+  font-family: var(--font-display); font-size: 20px; font-weight: 600;
+  color: var(--off-white); line-height: 1.5;
 }
 
 /* ═══════════════════════════════════════════
    PROTOCOL
    ═══════════════════════════════════════════ */
 
-.protocol {
-  padding: 140px 0;
-  border-top: 1px solid rgba(255,255,255,0.04);
-}
+.protocol { padding: 140px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
 
 .protocol h2 {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 4.5vw, 60px);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  margin-bottom: 20px;
+  font-family: var(--font-display); font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 900; line-height: 1.1; letter-spacing: -0.3px;
+  margin-bottom: 16px;
 }
-
-.protocol-sub {
-  font-size: 17px;
-  font-weight: 300;
-  color: var(--light);
-  max-width: 500px;
-  line-height: 1.7;
-  margin-bottom: 72px;
-}
+.protocol h2 .acid { color: var(--acid); }
+.protocol-sub { font-size: 17px; color: var(--light); max-width: 560px; line-height: 1.75; margin-bottom: 64px; }
 
 .steps {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 0;
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 0;
   border: 1px solid var(--mid);
 }
-
 .step {
-  padding: 36px 24px;
-  border-right: 1px solid var(--mid);
-  background: var(--off-black);
-  transition: background 0.3s;
-  position: relative;
+  padding: 36px 24px; border-right: 1px solid var(--mid);
+  background: var(--off-black); transition: background 0.3s;
 }
-
 .step:last-child { border-right: none; }
-
 .step:hover { background: var(--dark); }
-
-.step-num {
-  font-family: var(--font-mono);
-  font-size: 48px;
-  font-weight: 700;
-  color: var(--dark);
-  line-height: 1;
-  margin-bottom: 20px;
-  transition: color 0.3s;
-}
-
-.step:hover .step-num { color: var(--acid); }
-
-.step-phase {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 3px;
-  text-transform: uppercase;
-  color: var(--acid);
-  margin-bottom: 10px;
-}
-
-.step-title {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--white);
-  margin-bottom: 12px;
-}
-
-.step-desc {
-  font-size: 14px;
-  color: var(--light);
-  line-height: 1.7;
-}
-
-.step-time {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--muted);
-  margin-top: 20px;
-  padding-top: 14px;
-  border-top: 1px solid rgba(255,255,255,0.06);
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
+.step-num { font-family: var(--font-mono); font-size: 32px; font-weight: 700; color: var(--acid); margin-bottom: 16px; }
+.step-phase { font-family: var(--font-mono); font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+.step-title { font-family: var(--font-display); font-size: 20px; font-weight: 800; color: var(--off-white); margin-bottom: 12px; }
+.step-desc { font-size: 14px; color: var(--muted); line-height: 1.65; margin-bottom: 20px; }
+.step-time { font-family: var(--font-mono); font-size: 11px; color: var(--acid); opacity: 0.6; }
 
 /* ═══════════════════════════════════════════
    NEWSLETTER
    ═══════════════════════════════════════════ */
 
-.newsletter {
-  padding: 140px 0;
-  border-top: 1px solid rgba(255,255,255,0.04);
-}
+.newsletter { padding: 140px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
 
 .newsletter h2 {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 4.5vw, 60px);
-  font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -1.5px;
-  margin-bottom: 20px;
+  font-family: var(--font-display); font-size: clamp(36px, 4.5vw, 60px);
+  font-weight: 900; line-height: 1.1; letter-spacing: -0.3px; margin-bottom: 16px;
 }
+.newsletter h2 .acid { color: var(--acid); }
 
-.newsletter-sub {
-  font-size: 17px;
-  font-weight: 300;
-  color: var(--light);
-  max-width: 540px;
-  line-height: 1.7;
-  margin-bottom: 72px;
+.newsletter-sub { font-size: 17px; color: var(--light); max-width: 560px; line-height: 1.75; margin-bottom: 40px; }
+
+.newsletter-signup { display: flex; gap: 0; margin-bottom: 56px; max-width: 460px; }
+.newsletter-signup input {
+  flex: 1; background: var(--off-black); border: 1px solid var(--mid); border-right: none;
+  padding: 14px 18px; color: var(--off-white); font-family: var(--font-body);
+  font-size: 14px; outline: none; transition: border-color 0.2s;
 }
-
-.articles {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0;
-  border: 1px solid var(--mid);
+.newsletter-signup input::placeholder { color: var(--muted); }
+.newsletter-signup input:focus { border-color: var(--acid); }
+.newsletter-signup button {
+  background: var(--acid); color: var(--black); border: 1px solid var(--acid);
+  padding: 14px 24px; font-family: var(--font-mono); font-weight: 700;
+  font-size: 11px; cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase;
+  transition: opacity 0.2s;
 }
+.newsletter-signup button:hover { opacity: 0.88; }
 
+.articles { display: flex; flex-direction: column; }
 .article {
-  padding: 36px 28px;
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  min-height: 200px;
-  border-right: 1px solid var(--mid);
-  border-bottom: 1px solid var(--mid);
-  background: var(--off-black);
-  transition: background 0.3s;
-  position: relative;
+  display: grid; grid-template-columns: 90px 1fr; gap: 24px;
+  align-items: baseline; text-decoration: none; padding: 20px 0;
+  border-top: 1px solid var(--mid);
 }
-
-.article:nth-child(2n) { border-right: none; }
-.article:nth-child(n+3) { border-bottom: none; }
-
-.article:hover { background: var(--dark); }
-
-.article-arrow {
-  position: absolute;
-  top: 36px; right: 28px;
-  font-family: var(--font-mono);
-  font-size: 18px;
-  color: var(--mid);
-  transition: all 0.3s var(--ease);
-}
-
-.article:hover .article-arrow {
-  color: var(--acid);
-  transform: translateX(4px);
-}
-
-.article-title {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--white);
-  line-height: 1.3;
-  max-width: 85%;
-  transition: color 0.3s;
-}
-
+.article:last-child { border-bottom: 1px solid var(--mid); }
 .article:hover .article-title { color: var(--acid); }
-
-.article-meta {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 24px;
+.article-date { font-family: var(--font-mono); font-size: 11px; color: var(--muted); }
+.article-title {
+  font-family: var(--font-serif); font-size: 18px; color: var(--off-white);
+  transition: color 0.2s; line-height: 1.35; margin-bottom: 4px;
 }
-
-.article-author,
-.article-date {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-}
-
-.article-author { color: var(--muted); }
-.article-date { color: var(--mid); }
+.article-excerpt { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
 /* ═══════════════════════════════════════════
    FINAL CTA
    ═══════════════════════════════════════════ */
 
-.cta-final {
-  padding: 180px 0;
-  border-top: 1px solid rgba(255,255,255,0.04);
-  text-align: center;
-  position: relative;
-  overflow: hidden;
-}
-
-.cta-final::before {
-  content: '';
-  position: absolute;
-  bottom: -200px; left: 50%;
-  transform: translateX(-50%);
-  width: 600px; height: 600px;
-  border-radius: 50%;
-  background-image: radial-gradient(circle, var(--acid) 2px, transparent 2px);
-  background-size: 8px 8px;
-  opacity: 0.06;
-  mask-image: radial-gradient(circle, black 20%, transparent 65%);
-  -webkit-mask-image: radial-gradient(circle, black 20%, transparent 65%);
-  pointer-events: none;
-}
+.cta-final { padding: 140px 0; text-align: center; }
 
 .cta-final h2 {
-  font-family: var(--font-display);
-  font-size: clamp(44px, 6vw, 88px);
-  font-weight: 900;
-  line-height: 1.05;
-  letter-spacing: -2px;
-  margin-bottom: 20px;
-  position: relative;
+  font-family: var(--font-display); font-size: clamp(40px, 5vw, 72px);
+  font-weight: 900; line-height: 1.1; letter-spacing: -0.5px; margin-bottom: 24px;
 }
-
 .cta-final h2 .acid { color: var(--acid); }
+.cta-final h2 .serif-accent { font-family: var(--font-serif); font-style: italic; }
 
 .cta-final p {
-  font-size: 18px;
-  font-weight: 300;
-  color: var(--light);
-  margin-bottom: 48px;
-  position: relative;
+  font-size: 17px; color: var(--light); max-width: 560px;
+  margin: 0 auto 40px; line-height: 1.75;
+}
+.cta-qualifier {
+  font-family: var(--font-mono); font-size: 12px; color: var(--muted);
+  margin-top: 20px; letter-spacing: 0.5px;
 }
 
 /* ═══════════════════════════════════════════
@@ -1081,242 +554,269 @@ nav .wrap {
    ═══════════════════════════════════════════ */
 
 footer {
-  padding: 40px 0;
   border-top: 1px solid rgba(255,255,255,0.04);
+  padding: 40px 0;
 }
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.footer-left {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.footer-right a {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--muted);
-  letter-spacing: 1px;
-  text-decoration: none;
-  transition: color 0.25s;
-}
-
-.footer-right a:hover { color: var(--acid); }
+footer .wrap { display: flex; justify-content: space-between; align-items: center; }
+.footer-left { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
+.footer-right { display: flex; gap: 24px; }
+.footer-right a { font-family: var(--font-mono); font-size: 12px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+.footer-right a:hover { color: var(--off-white); }
 
 /* ═══════════════════════════════════════════
    RESPONSIVE
    ═══════════════════════════════════════════ */
 
-@media (max-width: 1024px) {
-  .hero .wrap { grid-template-columns: 1fr; }
+@media (max-width: 900px) {
+  .hero { padding: 120px 0 60px; }
+  .hero > .wrap { grid-template-columns: 1fr; }
   .hero-graphic { display: none; }
-  .ont-entities { grid-template-columns: repeat(2, 1fr); }
-  .steps { grid-template-columns: repeat(2, 1fr); }
-  .step:nth-child(2) { border-right: none; }
-  .step:nth-child(1), .step:nth-child(2) { border-bottom: 1px solid var(--mid); }
-}
-
-@media (max-width: 768px) {
-  .mobile-toggle { display: block; }
-  .nav-links { display: none; }
+  .stat-strip .wrap { grid-template-columns: 1fr; gap: 40px; }
+  .stat-item + .stat-item { border-left: none; border-top: 1px solid var(--mid); padding-top: 40px; }
   .def-grid { grid-template-columns: 1fr; }
   .def-card { border-right: none; border-bottom: 1px solid var(--mid); }
   .def-card:last-child { border-bottom: none; }
-  .ont-entities { grid-template-columns: 1fr; }
+  .method-cards { grid-template-columns: 1fr; }
+  .method-card { border-right: none; border-bottom: 1px solid var(--mid); }
+  .method-card:last-child { border-bottom: none; }
+  .flip-grid { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .step { border-bottom: 1px solid var(--mid); }
+}
+
+@media (max-width: 600px) {
+  .nav-links { display: none; }
+  .menu-btn { display: block; }
+  .wrap { padding: 0 20px; }
   .steps { grid-template-columns: 1fr; }
-  .step { border-right: none; border-bottom: 1px solid var(--mid); }
-  .step:last-child { border-bottom: none; }
-  .articles { grid-template-columns: 1fr; }
-  .article { border-right: none; border-bottom: 1px solid var(--mid); }
-  .article:last-child { border-bottom: none; }
-  .ont-links { flex-direction: column; gap: 8px; }
-  .ont-legend { flex-direction: column; gap: 8px; }
-  .footer-inner { flex-direction: column; gap: 16px; text-align: center; }
-  .c-table td, .c-table thead th { padding: 14px 16px; font-size: 12px; }
+  .step { border-right: none; }
+  .newsletter-signup { flex-direction: column; }
+  .newsletter-signup input { border-right: 1px solid var(--mid); }
+  .article { grid-template-columns: 1fr; gap: 4px; }
+  footer .wrap { flex-direction: column; gap: 20px; text-align: center; }
 }
 </style>
 </head>
 <body>
 
-<a href="#problem" class="skip-link">Skip to content</a>
+<a href="#main" class="skip-link">Skip to content</a>
 
 <!-- ═══ NAV ═══ -->
 <nav>
   <div class="wrap">
     <a href="#" class="logo">BRATRAX<em>.</em></a>
+    <button class="menu-btn" aria-label="Menu">Menu</button>
     <ul class="nav-links">
-      <li><a href="#problem">The Problem</a></li>
-      <li><a href="#ontology">Ontology</a></li>
+      <li><a href="#method">Method</a></li>
       <li><a href="#protocol">Protocol</a></li>
       <li><a href="#newsletter">The Dashboard</a></li>
-      <li><a href="#start" class="btn-acid">Start with meaning</a></li>
+      <li><a href="#start" class="nav-cta">Talk to Us</a></li>
     </ul>
-    <button class="mobile-toggle" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
   </div>
 </nav>
 
 <!-- ═══ HERO ═══ -->
-<section class="hero">
+<section class="hero" id="main">
   <div class="wrap">
     <div class="hero-text">
       <div class="hero-eyebrow reveal">Service-as-software analytics</div>
       <h1 class="reveal reveal-d1">
-        Five people.<br>
-        <span class="strike">Five numbers.</span><br>
-        One question nobody<br>thought to <span class="acid">ask.</span>
+        Your numbers<br>
+        <span class="red">don't match.</span><br>
+        We know <span class="serif-accent">why.</span>
       </h1>
       <p class="hero-sub reveal reveal-d2">
-        Your analytics aren't broken because of bad tools. They're broken because your team never agreed on what the words mean. Bratrax fixes that&hairsp;&mdash;&hairsp;before we build a single dashboard.
+        Marketing says revenue is up. Finance says it's flat. The dashboard everyone agreed on last quarter? Nobody trusts it anymore. The problem isn't your data&hairsp;&mdash;&hairsp;it's that your team never agreed on what the words mean.
       </p>
       <div class="hero-ctas reveal reveal-d3">
-        <a href="#start" class="btn-acid">Book an ontology session &rarr;</a>
+        <a href="#start" class="btn-acid">Let's fix that &rarr;</a>
         <a href="#newsletter" class="btn-outline">Read The Dashboard</a>
       </div>
     </div>
 
-    <div class="hero-graphic reveal reveal-d2">
-      <div class="hero-ring hero-ring-1"></div>
-      <div class="hero-ring hero-ring-2"></div>
-      <div class="hero-dither-circle">
-        <div class="hero-crosshair"></div>
-      </div>
-      <span class="hero-coord hero-coord-1">[12.5, 12.1]</span>
-      <span class="hero-coord hero-coord-2">[47.8, 03.6]</span>
-      <span class="hero-coord hero-coord-3">[08.2, 31.4]</span>
+    <div class="hero-graphic">
+      <canvas id="lens-canvas"></canvas>
     </div>
   </div>
 </section>
 
-<!-- ═══ THE PROBLEM ═══ -->
+<!-- ═══ STAT STRIP ═══ -->
+<div class="stat-strip">
+  <div class="wrap">
+    <div class="stat-item reveal">
+      <div class="stat-number">$20</div>
+      <div class="stat-desc">The actual infrastructure cost to handle your data each month</div>
+    </div>
+    <div class="stat-item reveal reveal-d1">
+      <div class="stat-number">$2K</div>
+      <div class="stat-desc">What Hyros, Triple Whale, and friends charge you for it</div>
+    </div>
+    <div class="stat-item reveal reveal-d2">
+      <div class="stat-number">0</div>
+      <div class="stat-desc">Teams at those companies who've sat in your Monday meeting</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ THE PROBLEM (narrative) ═══ -->
 <section class="problem" id="problem">
   <div class="wrap">
     <div class="s-label reveal">01 &mdash; The Problem</div>
     <h2 class="reveal">
-      Same word.<br>
-      Three <span class="red">meanings</span>.<br>
-      Zero alignment.
+      You bought the tool.<br>
+      Then you bought<br><span class="serif-accent">another one.</span>
     </h2>
 
-    <div class="def-grid reveal reveal-d1">
+    <div class="problem-story reveal">
+      <p>
+        Revenue tracked in Shopify. Ad spend pulled from Facebook. Creative performance in spreadsheets someone built two years ago. <strong>And somehow, it worked.</strong> You grew from zero to seven figures on that mess.
+      </p>
+      <p>
+        Then someone said the magic words: <strong>&ldquo;We need better analytics.&rdquo;</strong> So you bought a platform. It was expensive. It looked great. And six months later, your media buyer still checks the old spreadsheet because <span class="red">they don't trust the new numbers.</span>
+      </p>
+      <p>
+        That's not a technology failure. <strong>It's a language failure.</strong>
+      </p>
+    </div>
+
+    <div class="def-grid reveal">
       <div class="def-card">
         <div class="def-role">Marketing</div>
-        <div class="def-word">"Conversion"</div>
+        <div class="def-word"><span class="def-bracket b-acid">{</span> Conversion <span class="def-bracket b-acid">}</span></div>
         <div class="def-meaning">Someone submitted a form. Lead captured. Pipeline moving.</div>
       </div>
       <div class="def-card">
         <div class="def-role">Finance</div>
-        <div class="def-word">"Conversion"</div>
+        <div class="def-word"><span class="def-bracket b-red">{</span> Conversion <span class="def-bracket b-red">}</span></div>
         <div class="def-meaning">Payment cleared. Revenue recognized. Money in the account.</div>
       </div>
       <div class="def-card">
         <div class="def-role">CEO</div>
-        <div class="def-word">"Conversion"</div>
+        <div class="def-word"><span class="def-bracket b-blue">{</span> Conversion <span class="def-bracket b-blue">}</span></div>
         <div class="def-meaning">A new paying customer. Growth. Proof the business works.</div>
       </div>
     </div>
 
-    <p class="problem-end reveal">
-      Everyone's right. Everyone's using different definitions. <strong>Nobody noticed until the numbers stopped agreeing</strong>&hairsp;&mdash;&hairsp;and by then, you've spent six months making decisions based on a word that meant three different things to the people who voted on it.
+    <p class="problem-story reveal">
+      <p>
+        Everyone's right. Everyone's using different definitions. <strong>Nobody noticed until the numbers stopped agreeing</strong>&hairsp;&mdash;&hairsp;and by then, you've spent six months making decisions based on a word that meant three different things to the people who voted on it.
+      </p>
     </p>
   </div>
 </section>
 
-<!-- ═══ THE ONTOLOGY ═══ -->
-<section class="ontology" id="ontology">
+<!-- ═══ PULL QUOTE BREAK ═══ -->
+<div class="pull-quote">
   <div class="wrap">
-    <div class="s-label reveal">02 &mdash; The Ontology</div>
-    <h2 class="reveal">The step every analytics<br>vendor <span class="acid">skips.</span></h2>
-    <p class="ontology-sub reveal">
-      Before we build a single dashboard, we define the ontology&hairsp;&mdash;&hairsp;your team's written agreement about what things mean, how they relate, and what's worth tracking. If something isn't in the ontology, it doesn't exist in the system. That's not a limitation. That's the point.
+    <blockquote class="reveal">
+      &ldquo;You don't have a data problem. You have an <span class="acid">agreement</span> problem.&rdquo;
+    </blockquote>
+    <cite class="reveal reveal-d1">Brat Vukovich, Founder</cite>
+  </div>
+</div>
+
+<!-- ═══ THE METHOD (plain English, ontology introduced late) ═══ -->
+<section class="method" id="method">
+  <div class="wrap">
+    <div class="s-label reveal">02 &mdash; The Method</div>
+    <h2 class="reveal">
+      The step every analytics<br>vendor <span class="serif-accent" style="color: var(--red)">skips.</span>
+    </h2>
+    <p class="method-sub reveal">
+      Before we write a line of code, we get your team to agree on three things. This sounds simple. It never is. And it's the reason everything else breaks.
     </p>
 
-    <div class="ont-diagram reveal">
-      <div class="ont-header">Live ontology &mdash; entities, properties, links</div>
-
-      <div class="ont-entities">
-        <div class="ont-card">
-          <div class="ont-name">User</div>
-          <div class="ont-props">
-            <div class="ont-prop">email <span class="t">text</span></div>
-            <div class="ont-prop">plan <span class="t">free / pro / ent</span></div>
-            <div class="ont-prop">signup_date <span class="t">date</span></div>
-            <div class="ont-prop">status <span class="t">active / churned</span></div>
-          </div>
-        </div>
-        <div class="ont-card">
-          <div class="ont-name">Campaign</div>
-          <div class="ont-props">
-            <div class="ont-prop">platform <span class="t">YT / Meta</span></div>
-            <div class="ont-prop">spend <span class="t">currency</span></div>
-            <div class="ont-prop">start_date <span class="t">date</span></div>
-            <div class="ont-prop">type <span class="t">aware / conv</span></div>
-          </div>
-        </div>
-        <div class="ont-card">
-          <div class="ont-name">Subscription</div>
-          <div class="ont-props">
-            <div class="ont-prop">status <span class="t">active / cancel</span></div>
-            <div class="ont-prop">renewal <span class="t">date</span></div>
-            <div class="ont-prop">mrr <span class="t">currency</span></div>
-            <div class="ont-prop">tier <span class="t">starter / growth</span></div>
-          </div>
-        </div>
-        <div class="ont-card">
-          <div class="ont-name">Brand</div>
-          <div class="ont-props">
-            <div class="ont-prop">name <span class="t">text</span></div>
-            <div class="ont-prop">industry <span class="t">text</span></div>
-            <div class="ont-prop">owner <span class="t">text</span></div>
-            <div class="ont-prop">tier <span class="t">starter / scale</span></div>
-          </div>
-        </div>
+    <div class="method-cards reveal">
+      <div class="method-card">
+        <div class="method-card-icon">{ }</div>
+        <div class="method-card-label">Step 1</div>
+        <h3>Name the things</h3>
+        <p>What are the nouns in your business? Users, orders, campaigns, subscriptions. And more importantly&hairsp;&mdash;&hairsp;what do those words actually mean to each department?</p>
       </div>
-
-      <div class="ont-links">
-        <div class="ont-link"><b>User</b> &rarr; came from &rarr; <b>Campaign</b></div>
-        <div class="ont-link"><b>User</b> &rarr; has &rarr; <b>Subscription</b></div>
-        <div class="ont-link"><b>Campaign</b> &rarr; belongs to &rarr; <b>Brand</b></div>
+      <div class="method-card">
+        <div class="method-card-icon">[ ]</div>
+        <div class="method-card-label">Step 2</div>
+        <h3>Define the details</h3>
+        <p>What do you need to know about each thing? What properties matter? Who decides what "active" means, or when a "lead" becomes a "customer"?</p>
       </div>
-
-      <div class="ont-legend">
-        <div class="ont-legend-item"><div class="ont-legend-dot" style="background:var(--entity-1)"></div> Entities = nouns</div>
-        <div class="ont-legend-item"><div class="ont-legend-dot" style="background:var(--light)"></div> Properties = attributes</div>
-        <div class="ont-legend-item"><div class="ont-legend-line"></div> Links = relationships</div>
+      <div class="method-card">
+        <div class="method-card-icon">&lt;/&gt;</div>
+        <div class="method-card-label">Step 3</div>
+        <h3>Map the connections</h3>
+        <p>How do those things relate? A user has subscriptions. A campaign belongs to a brand. These connections are your business logic&hairsp;&mdash;&hairsp;made visible and agreed upon.</p>
       </div>
+    </div>
+
+    <div class="method-footnote reveal">
+      <p>The technical term for this is an <strong>ontology</strong>&hairsp;&mdash;&hairsp;a shared dictionary that every dashboard, report, and metric inherits from. If something isn't in the ontology, it doesn't exist in the system. That's not a limitation. That's the point.</p>
+      <a href="https://blog.bratrax.com" class="btn-outline" style="font-size: 11px; padding: 16px 32px; border-color: var(--muted); color: var(--white); text-align: center;" target="_blank" rel="noopener">What is an ontology<br>&amp; why does it matter? &rarr;</a>
     </div>
   </div>
 </section>
 
-<!-- ═══ CONTRAST ═══ -->
+<!-- ═══ CONTRAST — THEM vs US ═══ -->
 <section class="contrast" id="contrast">
   <div class="wrap">
     <div class="s-label reveal">03 &mdash; What We're Flipping</div>
-    <h2 class="reveal">You've been sold<br>a <span class="acid">$2,000/month lie.</span></h2>
+    <h2 class="reveal">
+      You've been sold a<br>
+      <span class="acid">$2,000/month</span> <span class="serif-accent">lie.</span>
+    </h2>
 
-    <table class="c-table reveal">
-      <thead>
-        <tr>
-          <th>What they told you</th>
-          <th>What actually works</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>"Tracking accuracy gives you control"</td><td>Control is an illusion. The edge is interpretation&hairsp;&mdash;&hairsp;knowing what to do when the numbers don't agree.</td></tr>
-        <tr><td>"Attribution makes growth predictable"</td><td>Marketing lives in Extremistan. One creative can outweigh a year of averages. Sensemaking beats prediction.</td></tr>
-        <tr><td>"Just plug in the tool, data flows"</td><td>Your $2,000/month analytics tool costs $20 in infrastructure. You're paying for a narrative, not for truth.</td></tr>
-        <tr><td>"Better tools = better decisions"</td><td>Better questions = better decisions. The tool doesn't matter if your team can't agree on what "conversion" means.</td></tr>
-        <tr><td>"Automate everything"</td><td>You can't automate judgment. You need a system that structures thinking, not one that replaces it.</td></tr>
-      </tbody>
-    </table>
+    <div class="flip-grid reveal">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-front-label">What they told you</div>
+            <p>&ldquo;Plug in your data sources, pick a template, get a dashboard.&rdquo;</p>
+            <div class="flip-front-bottom"><span class="flip-front-hint">Hover for the truth <span class="arrow">&rarr;</span></span></div>
+          </div>
+          <div class="flip-back">
+            <div class="flip-back-label">The truth</div>
+            <p>Figure out what your team needs to see first, then build the infrastructure to show it.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-front-label">What they told you</div>
+            <p>&ldquo;Tracking accuracy gives you control.&rdquo;</p>
+            <div class="flip-front-bottom"><span class="flip-front-hint">Hover for the truth <span class="arrow">&rarr;</span></span></div>
+          </div>
+          <div class="flip-back">
+            <div class="flip-back-label">The truth</div>
+            <p>Control is an illusion. The edge is interpretation&hairsp;&mdash;&hairsp;knowing what to do when the numbers don't agree.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-front-label">What they told you</div>
+            <p>&ldquo;Attribution makes growth predictable.&rdquo;</p>
+            <div class="flip-front-bottom"><span class="flip-front-hint">Hover for the truth <span class="arrow">&rarr;</span></span></div>
+          </div>
+          <div class="flip-back">
+            <div class="flip-back-label">The truth</div>
+            <p>One creative can outweigh a year of averages. Sensemaking beats prediction.</p>
+          </div>
+        </div>
+      </div>
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-front">
+            <div class="flip-front-label">What they told you</div>
+            <p>&ldquo;$2,000/month for enterprise-grade analytics infrastructure.&rdquo;</p>
+            <div class="flip-front-bottom"><span class="flip-front-hint">Hover for the truth <span class="arrow">&rarr;</span></span></div>
+          </div>
+          <div class="flip-back">
+            <div class="flip-back-label">The truth</div>
+            <p>$20 in compute and a Slack channel that goes quiet after onboarding. The rest is margin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -1324,7 +824,7 @@ footer {
 <section class="protocol" id="protocol">
   <div class="wrap">
     <div class="s-label reveal">04 &mdash; The Protocol</div>
-    <h2 class="reveal">From first call to<br>live dashboards in <span class="acid">5 weeks.</span></h2>
+    <h2 class="reveal">From first call to live<br>dashboards in <span class="acid">5 weeks.</span></h2>
     <p class="protocol-sub reveal">Not a sales process. A protocol. You'll have aligned definitions and working infrastructure before most vendors finish their demo.</p>
 
     <div class="steps reveal">
@@ -1332,7 +832,7 @@ footer {
         <div class="step-num">01</div>
         <div class="step-phase">Phase 1</div>
         <div class="step-title">Discovery</div>
-        <div class="step-desc">We learn how your business actually works&hairsp;&mdash;&hairsp;the real data flows, not the ones on the org chart. Questionnaire + internal review.</div>
+        <div class="step-desc">We learn how your business actually works&hairsp;&mdash;&hairsp;the real data flows, not the ones on the org chart.</div>
         <div class="step-time">Week 1</div>
       </div>
       <div class="step">
@@ -1345,15 +845,15 @@ footer {
       <div class="step">
         <div class="step-num">03</div>
         <div class="step-phase">Phase 3</div>
-        <div class="step-title">Ontology</div>
-        <div class="step-desc">Your team's shared dictionary, built from real conversations. Events documented in tiers. You approve every definition before we write a line of code.</div>
+        <div class="step-title">Shared Dictionary</div>
+        <div class="step-desc">Your team's agreed definitions, built from real conversations. You approve every definition before we write a line of code.</div>
         <div class="step-time">Week 2&ndash;3</div>
       </div>
       <div class="step">
         <div class="step-num">04</div>
         <div class="step-phase">Phase 4</div>
         <div class="step-title">Live Infrastructure</div>
-        <div class="step-desc">Tier 1 events first. Real dashboards with real data. Your team validates, we iterate. No six-month rollout. No black box.</div>
+        <div class="step-desc">Real dashboards with real data. Your team validates, we iterate. No six-month rollout. No black box.</div>
         <div class="step-time">Week 3&ndash;5</div>
       </div>
     </div>
@@ -1364,48 +864,48 @@ footer {
 <section class="newsletter" id="newsletter">
   <div class="wrap">
     <div class="s-label reveal">05 &mdash; The Dashboard</div>
-    <h2 class="reveal">The things your analytics<br>vendor <span class="acid">won't tell you.</span></h2>
-    <p class="newsletter-sub reveal">Weekly essays from the founder of Bratrax on attribution theater, organizational dysfunction, and what actually drives growth. No pitches. No filler. Just the thinking your $2K/month tool hopes you never do.</p>
+    <h2 class="reveal">Read this before you buy<br>another analytics <span class="acid">tool.</span></h2>
+    <p class="newsletter-sub reveal">A weekly newsletter for operators tired of being sold dashboards. Brat Vukovich writes about what actually goes wrong with data, attribution, and the expensive fiction most brands call &ldquo;analytics.&rdquo;</p>
+
+    <div class="newsletter-signup reveal">
+      <input type="email" placeholder="your@email.com" aria-label="Email address">
+      <button>Subscribe</button>
+    </div>
 
     <div class="articles reveal">
-      <a href="https://blog.bratrax.com/p/if-your-dashboard-looks-impressive-it-s-probably-useless" class="article" target="_blank" rel="noopener">
+      <a href="https://blog.bratrax.com/p/your-in-house-team-isn-t-allowed-to-tell-you-the-truth" class="article" target="_blank" rel="noopener">
+        <div class="article-date">Dec 16</div>
         <div>
-          <span class="article-arrow">&rarr;</span>
-          <div class="article-title">If Your Dashboard Looks Impressive, It's Probably Useless</div>
-        </div>
-        <div class="article-meta">
-          <span class="article-author">Brat Vukovich</span>
-          <span class="article-date">Nov 2025</span>
-        </div>
-      </a>
-      <a href="https://blog.bratrax.com/p/the-attribution-industrial-complex-and-its-expensive-fiction" class="article" target="_blank" rel="noopener">
-        <div>
-          <span class="article-arrow">&rarr;</span>
-          <div class="article-title">The Attribution Industrial Complex and Its Expensive Fiction</div>
-        </div>
-        <div class="article-meta">
-          <span class="article-author">Brat Vukovich</span>
-          <span class="article-date">Oct 2025</span>
+          <div class="article-title">Your In-House Team Isn't Allowed to Tell You the Truth</div>
+          <div class="article-excerpt">8 years of watching the same game play out.</div>
         </div>
       </a>
       <a href="https://blog.bratrax.com/p/how-to-be-wrong-9-900-times-without-going-broke" class="article" target="_blank" rel="noopener">
+        <div class="article-date">Dec 3</div>
         <div>
-          <span class="article-arrow">&rarr;</span>
           <div class="article-title">How to Be Wrong 9,900 Times Without Going Broke</div>
-        </div>
-        <div class="article-meta">
-          <span class="article-author">Brat Vukovich</span>
-          <span class="article-date">Dec 2025</span>
+          <div class="article-excerpt">What Norwegian triathlon taught me about creative testing.</div>
         </div>
       </a>
-      <a href="https://blog.bratrax.com/p/your-in-house-team-isn-t-allowed-to-tell-you-the-truth" class="article" target="_blank" rel="noopener">
+      <a href="https://blog.bratrax.com/p/if-your-dashboard-looks-impressive-it-s-probably-useless" class="article" target="_blank" rel="noopener">
+        <div class="article-date">Nov 23</div>
         <div>
-          <span class="article-arrow">&rarr;</span>
-          <div class="article-title">Your In-House Team Isn't Allowed to Tell You the Truth</div>
+          <div class="article-title">If Your Dashboard Looks Impressive, It's Probably Useless</div>
+          <div class="article-excerpt">The messy systems you already use have more information value than your new tech stack.</div>
         </div>
-        <div class="article-meta">
-          <span class="article-author">Brat Vukovich</span>
-          <span class="article-date">Dec 2025</span>
+      </a>
+      <a href="https://blog.bratrax.com/p/your-2-000-month-analytics-tool-costs-20-in-infrastructure-i-did-the-math" class="article" target="_blank" rel="noopener">
+        <div class="article-date">Nov 5</div>
+        <div>
+          <div class="article-title">Your $2,000/Month Analytics Tool Costs $20 in Infrastructure</div>
+          <div class="article-excerpt">I did the math. A step-by-step breakdown of what actually happens to your data.</div>
+        </div>
+      </a>
+      <a href="https://blog.bratrax.com/p/the-attribution-industrial-complex-and-its-expensive-fiction" class="article" target="_blank" rel="noopener">
+        <div class="article-date">Oct 16</div>
+        <div>
+          <div class="article-title">The Attribution Industrial Complex and Its Expensive Fiction</div>
+          <div class="article-excerpt">The Genius/Idiot Paradox.</div>
         </div>
       </a>
     </div>
@@ -1415,20 +915,22 @@ footer {
 <!-- ═══ FINAL CTA ═══ -->
 <section class="cta-final" id="start">
   <div class="wrap">
-    <h2 class="reveal">Stop reconciling.<br>Start <span class="acid">deciding.</span></h2>
-    <p class="reveal reveal-d1">One ontology session will surface misalignments your team has been quietly working around for months. Book yours and see what your data looks like when everyone agrees on what it means.</p>
-    <a href="mailto:brat@bratrax.com" class="btn-acid reveal reveal-d2">Book an ontology session &rarr;</a>
+    <h2 class="reveal">Stop reconciling.<br>Start <span class="serif-accent" style="color: var(--acid)">deciding.</span></h2>
+    <p class="reveal reveal-d1">
+      If your Monday meeting still starts with &ldquo;whose numbers are right?&rdquo; &mdash; it's time for a different conversation. One that starts with what the words mean before anyone opens a dashboard.
+    </p>
+    <a href="mailto:brat@bratrax.com" class="btn-acid reveal reveal-d2">Apply to Work With Us &rarr;</a>
+    <div class="cta-qualifier reveal reveal-d3">For D2C and direct response brands doing $5M+ annually</div>
   </div>
 </section>
 
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="wrap">
-    <div class="footer-inner">
-      <div class="footer-left">Bratrax &mdash; Above the data. Beyond attribution.</div>
-      <div class="footer-right">
-        <a href="https://blog.bratrax.com" target="_blank" rel="noopener">The Dashboard &rarr;</a>
-      </div>
+    <div class="footer-left">&copy; 2026 Bratrax</div>
+    <div class="footer-right">
+      <a href="https://blog.bratrax.com" target="_blank" rel="noopener">Newsletter &rarr;</a>
+      <a href="#">Twitter</a>
     </div>
   </div>
 </footer>
@@ -1447,6 +949,204 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 });
+</script>
+
+<!-- ═══ LENS REVEAL ANIMATION ═══ -->
+<script>
+(() => {
+  const C = document.getElementById('lens-canvas');
+  if (!C) return;
+  const ctx = C.getContext('2d');
+  const W = 500, H = 420, DPR = window.devicePixelRatio || 1;
+  C.width = W * DPR; C.height = H * DPR;
+  ctx.scale(DPR, DPR);
+
+  const COL = '#D4FF00';
+  const LENS_R = 90;
+  const TRIGGER = 95;
+  const CYCLE = 20000;
+  const DWELL = 4000;
+  const T_IN = 400;
+  const T_OUT = 600;
+  const TRAVEL = (CYCLE - DWELL * 3) / 3;
+
+  let _s = 7;
+  function sr() { _s = (_s * 16807) % 2147483647; return _s / 2147483647; }
+
+  const MN = 80, maskR = [];
+  for (let i = 0; i < MN; i++) maskR.push(0.76 + sr() * 0.24);
+  for (let p = 0; p < 4; p++) {
+    const t = [...maskR];
+    for (let i = 0; i < MN; i++)
+      t[i] = (maskR[(i-1+MN)%MN] + maskR[i] + maskR[(i+1)%MN]) / 3;
+    for (let i = 0; i < MN; i++) maskR[i] = t[i];
+  }
+  function fieldA(x, y) {
+    const dx = (x - W/2) / (W * 0.46), dy = (y - H/2) / (H * 0.46);
+    const d = Math.sqrt(dx*dx + dy*dy);
+    const a = ((Math.atan2(dy, dx) / (Math.PI*2)) + 1) % 1;
+    const idx = a * MN, i0 = Math.floor(idx) % MN, frac = idx - Math.floor(idx);
+    const bnd = maskR[i0] * (1 - frac) + maskR[(i0+1) % MN] * frac;
+    if (d >= bnd) return 0;
+    const fs = bnd * 0.6;
+    return d > fs ? 1 - (d - fs) / (bnd - fs) : 1;
+  }
+
+  const dots = [];
+  for (let i = 0; i < 150; i++) {
+    let x, y;
+    for (let t = 0; t < 60; t++) { x = sr() * W; y = sr() * H; if (fieldA(x, y) > 0.12) break; }
+    dots.push({ hx: x, hy: y, x, y, r: 1.2 + sr() * 1.6, a0: 0.06 + sr() * 0.08, phase: sr() * Math.PI * 2, speed: 0.3 + sr() * 0.5 });
+  }
+
+  const TXT = ['CPA','ROAS','LTV','CVR','MRR','AOV','$2.1K','312','0.8%','1,847','$94','3.2x','47','$4.7K','2.1%','CPA','ROAS','LTV','$312','0.4%','AOV','2.8x','$1.2K','CVR','MRR','514','1.3%','$67','4.1x','892'];
+  const frags = [];
+  for (let i = 0; i < TXT.length; i++) {
+    let x, y;
+    for (let t = 0; t < 60; t++) { x = sr() * W; y = sr() * H; if (fieldA(x, y) > 0.18) break; }
+    frags.push({ text: TXT[i], hx: x, hy: y, x, y, a0: 0.08 + sr() * 0.07, sz: sr() < 0.5 ? 9 : 10, phase: sr() * Math.PI * 2, speed: 0.15 + sr() * 0.3 });
+  }
+
+  const zones = [
+    { cx: 130, cy: 130, insight: 'MRR up 23% \u2014 new cohort performing', pts: [], iy: 164 },
+    { cx: 358, cy: 198, insight: '68% revenue from hero product', pts: [], iy: 232 },
+    { cx: 248, cy: 328, insight: 'ROAS stalling \u2014 creative fatigue?', pts: [], iy: 352 },
+  ];
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function ss(t) { return t * t * t * (t * (t * 6 - 15) + 10); }
+  function clamp01(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+
+  function lensXY(t) {
+    const ct = t % CYCLE, seg = DWELL + TRAVEL;
+    function dw(z, p) { return [zones[z].cx + Math.sin(p * 6.28 * 1.1 + 0.3) * 6, zones[z].cy + Math.cos(p * 6.28 * 0.8 + 1.1) * 5]; }
+    function tr(a, b, p) { const e = ss(p); return [lerp(zones[a].cx, zones[b].cx, e) + Math.sin(p * 9.42) * 18, lerp(zones[a].cy, zones[b].cy, e) + Math.cos(p * 7.22) * 14]; }
+    if (ct < DWELL) return dw(0, ct / DWELL);
+    if (ct < seg) return tr(0, 1, (ct - DWELL) / TRAVEL);
+    if (ct < seg + DWELL) return dw(1, (ct - seg) / DWELL);
+    if (ct < 2*seg) return tr(1, 2, (ct - seg - DWELL) / TRAVEL);
+    if (ct < 2*seg + DWELL) return dw(2, (ct - 2*seg) / DWELL);
+    return tr(2, 0, (ct - 2*seg - DWELL) / TRAVEL);
+  }
+
+  const rev = [0, 0, 0];
+  let prev = 0;
+
+  function brownX(phase, speed, t) { return Math.sin(t * 0.0006 * speed + phase) * 18 + Math.sin(t * 0.001 * speed + phase * 1.7) * 12 + Math.sin(t * 0.00025 * speed + phase * 3.1) * 8; }
+  function brownY(phase, speed, t) { return Math.cos(t * 0.00055 * speed + phase * 0.9) * 16 + Math.cos(t * 0.00095 * speed + phase * 2.1) * 10 + Math.cos(t * 0.0003 * speed + phase * 2.8) * 6; }
+
+  function frame(now) {
+    if (!prev) prev = now;
+    const dt = Math.min(now - prev, 50);
+    prev = now;
+    ctx.clearRect(0, 0, W, H);
+
+    const [lx, ly] = lensXY(now);
+    for (let z = 0; z < 3; z++) {
+      const d = Math.hypot(lx - zones[z].cx, ly - zones[z].cy);
+      rev[z] = clamp01(d < TRIGGER ? rev[z] + dt / T_IN : rev[z] - dt / T_OUT);
+    }
+
+    for (const dot of dots) { dot.x = dot.hx + brownX(dot.phase, dot.speed, now); dot.y = dot.hy + brownY(dot.phase, dot.speed, now); }
+    for (const f of frags) { f.x = f.hx + brownX(f.phase, f.speed, now); f.y = f.hy + brownY(f.phase, f.speed, now); }
+
+    let az = -1, mr = 0;
+    for (let z = 0; z < 3; z++) if (rev[z] > mr) { mr = rev[z]; az = z; }
+
+    ctx.fillStyle = COL;
+    for (let i = 0; i < dots.length; i++) {
+      const dot = dots[i];
+      let px = dot.x, py = dot.y, a = dot.a0, r = dot.r;
+      const dl = Math.hypot(px - lx, py - ly);
+      if (dl < LENS_R) { if (mr > 0.01) { a *= lerp(1, 0.3, ss(mr)); } else { a = lerp(a, 0.38, (1 - dl / LENS_R) * 0.7); } }
+      a *= fieldA(px, py);
+      if (a < 0.003) continue;
+      ctx.globalAlpha = a;
+      ctx.beginPath(); ctx.arc(px, py, r, 0, 6.283); ctx.fill();
+    }
+
+    for (const f of frags) {
+      let a = f.a0;
+      const dl = Math.hypot(f.x - lx, f.y - ly);
+      if (dl < LENS_R) { if (mr > 0.01) { a *= 1 - ss(mr); } else { a = lerp(a, 0.32, (1 - dl / LENS_R) * 0.5); } }
+      a *= fieldA(f.x, f.y);
+      if (a < 0.003) continue;
+      ctx.globalAlpha = a; ctx.fillStyle = COL;
+      ctx.font = f.sz + "px 'Space Mono',monospace"; ctx.textAlign = 'left'; ctx.textBaseline = 'middle';
+      ctx.fillText(f.text, f.x, f.y);
+    }
+
+    for (let z = 0; z < 3; z++) {
+      if (rev[z] < 0.04) continue;
+      const ease = ss(rev[z]);
+      const zcx = zones[z].cx, zcy = zones[z].cy;
+      ctx.save(); ctx.beginPath(); ctx.arc(lx, ly, LENS_R - 2, 0, 6.283); ctx.clip();
+
+      if (z === 0) {
+        const barW = 12, gap = 6, heights = [10, 18, 26, 34, 42];
+        const totalW = heights.length * barW + (heights.length - 1) * gap;
+        const sx = zcx - totalW / 2, baseY = zcy + 20;
+        for (let b = 0; b < heights.length; b++) {
+          const h = heights[b] * ease, bx = sx + b * (barW + gap);
+          ctx.globalAlpha = 0.8 * ease; ctx.fillStyle = COL;
+          ctx.fillRect(bx, baseY - h, barW, h);
+          ctx.globalAlpha = 0.15 * ease; ctx.fillRect(bx, baseY - h - 2, barW, 2);
+        }
+      } else if (z === 1) {
+        const donutR = 32, innerR = 18, dcx = zcx, dcy = zcy - 4;
+        const segments = [{ pct: 0.68, color: COL }, { pct: 0.19, color: '#00D4FF' }, { pct: 0.13, color: 'rgba(212,255,0,0.3)' }];
+        let startAngle = -Math.PI / 2;
+        for (const seg of segments) {
+          const sweep = seg.pct * Math.PI * 2 * ease;
+          ctx.globalAlpha = 0.85 * ease; ctx.fillStyle = seg.color;
+          ctx.beginPath(); ctx.moveTo(dcx, dcy); ctx.arc(dcx, dcy, donutR, startAngle, startAngle + sweep); ctx.closePath(); ctx.fill();
+          startAngle += sweep;
+        }
+        ctx.globalAlpha = 1; ctx.fillStyle = '#141414'; ctx.beginPath(); ctx.arc(dcx, dcy, innerR, 0, Math.PI * 2); ctx.fill();
+        ctx.globalAlpha = 0.9 * ease; ctx.fillStyle = COL; ctx.font = "bold 11px 'Space Mono',monospace"; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('68%', dcx, dcy);
+      } else if (z === 2) {
+        const vals = [0.62, 0.64, 0.63, 0.62, 0.61, 0.52, 0.38];
+        const lineW = 100, lineH = 45, sx = zcx - lineW / 2, baseY = zcy + 22, step = lineW / (vals.length - 1);
+        ctx.globalAlpha = 0.7 * ease; ctx.strokeStyle = COL; ctx.lineWidth = 1.5; ctx.lineJoin = 'round';
+        ctx.beginPath();
+        for (let i = 0; i < vals.length - 1; i++) { const px = sx + i * step, py = baseY - vals[i] * lineH * ease; if (i === 0) ctx.moveTo(px, py); else ctx.lineTo(px, py); }
+        ctx.stroke();
+        ctx.strokeStyle = '#FF3B30'; ctx.lineWidth = 2; ctx.beginPath();
+        for (let i = vals.length - 3; i < vals.length; i++) { const px = sx + i * step, py = baseY - vals[i] * lineH * ease; if (i === vals.length - 3) ctx.moveTo(px, py); else ctx.lineTo(px, py); }
+        ctx.stroke();
+        ctx.fillStyle = COL;
+        for (let i = 0; i < vals.length; i++) {
+          const px = sx + i * step, py = baseY - vals[i] * lineH * ease;
+          ctx.globalAlpha = 0.9 * ease; ctx.beginPath(); ctx.arc(px, py, 2, 0, 6.283); ctx.fill();
+          if (i >= vals.length - 2) {
+            ctx.globalAlpha = 0.95 * ease; ctx.fillStyle = '#FF3B30'; ctx.beginPath(); ctx.arc(px, py, 3.5, 0, 6.283); ctx.fill();
+            ctx.globalAlpha = 0.25 * ease; ctx.beginPath(); ctx.arc(px, py, 7, 0, 6.283); ctx.fill();
+            ctx.fillStyle = COL;
+          }
+        }
+      }
+      ctx.restore();
+    }
+
+    ctx.font = "9px 'Space Mono',monospace"; ctx.textAlign = 'center'; ctx.textBaseline = 'top'; ctx.fillStyle = COL;
+    for (let z = 0; z < 3; z++) { if (rev[z] < 0.04) continue; ctx.globalAlpha = 0.7 * ss(rev[z]); ctx.fillText(zones[z].insight, zones[z].cx, zones[z].iy); }
+
+    // lens ring + crosshairs
+    ctx.globalAlpha = 1; ctx.strokeStyle = 'rgba(212,255,0,0.3)'; ctx.lineWidth = 1; ctx.setLineDash([5, 5]);
+    ctx.beginPath(); ctx.arc(lx, ly, LENS_R, 0, 6.283); ctx.stroke(); ctx.setLineDash([]);
+    ctx.strokeStyle = 'rgba(212,255,0,0.45)'; ctx.lineWidth = 1;
+    function cb(cx, cy, ax, ay, bx, by) { ctx.beginPath(); ctx.moveTo(cx + ax, cy + ay); ctx.lineTo(cx, cy); ctx.lineTo(cx + bx, cy + by); ctx.stroke(); }
+    const s = 7, g = 2;
+    cb(lx, ly - LENS_R - g, -s, -s, s, -s);
+    cb(lx, ly + LENS_R + g, -s, s, s, s);
+    cb(lx + LENS_R + g, ly, s, -s, s, s);
+    cb(lx - LENS_R - g, ly, -s, -s, -s, s);
+
+    ctx.globalAlpha = 1;
+    requestAnimationFrame(frame);
+  }
+  requestAnimationFrame(frame);
+})();
 </script>
 </body>
 </html>
