@@ -1204,7 +1204,19 @@ document.addEventListener('DOMContentLoaded', () => {
   C.width = W * DPR; C.height = H * DPR;
   ctx.scale(DPR, DPR);
 
-  const COL = '#D4FF00';
+  function getCol() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? '#1A1A18' : '#D4FF00';
+  }
+  function getLensStroke() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? 'rgba(26,26,24,0.25)' : 'rgba(212,255,0,0.3)';
+  }
+  function getLensCorner() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? 'rgba(26,26,24,0.35)' : 'rgba(212,255,0,0.45)';
+  }
+  function getDonutBg() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? '#E8E4DC' : '#141414';
+  }
+  let COL = getCol();
   const LENS_R = 90;
   const TRIGGER = 95;
   const CYCLE = 20000;
@@ -1282,6 +1294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!prev) prev = now;
     const dt = Math.min(now - prev, 50);
     prev = now;
+    COL = getCol();
     ctx.clearRect(0, 0, W, H);
 
     const [lx, ly] = lensXY(now);
@@ -1345,7 +1358,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.beginPath(); ctx.moveTo(dcx, dcy); ctx.arc(dcx, dcy, donutR, startAngle, startAngle + sweep); ctx.closePath(); ctx.fill();
           startAngle += sweep;
         }
-        ctx.globalAlpha = 1; ctx.fillStyle = '#141414'; ctx.beginPath(); ctx.arc(dcx, dcy, innerR, 0, Math.PI * 2); ctx.fill();
+        ctx.globalAlpha = 1; ctx.fillStyle = getDonutBg(); ctx.beginPath(); ctx.arc(dcx, dcy, innerR, 0, Math.PI * 2); ctx.fill();
         ctx.globalAlpha = 0.9 * ease; ctx.fillStyle = COL; ctx.font = "bold 11px 'Space Mono',monospace"; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('68%', dcx, dcy);
       } else if (z === 2) {
         const vals = [0.62, 0.64, 0.63, 0.62, 0.61, 0.52, 0.38];
@@ -1375,9 +1388,9 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let z = 0; z < 3; z++) { if (rev[z] < 0.04) continue; ctx.globalAlpha = 0.7 * ss(rev[z]); ctx.fillText(zones[z].insight, zones[z].cx, zones[z].iy); }
 
     // lens ring + crosshairs
-    ctx.globalAlpha = 1; ctx.strokeStyle = 'rgba(212,255,0,0.3)'; ctx.lineWidth = 1; ctx.setLineDash([5, 5]);
+    ctx.globalAlpha = 1; ctx.strokeStyle = getLensStroke(); ctx.lineWidth = 1; ctx.setLineDash([5, 5]);
     ctx.beginPath(); ctx.arc(lx, ly, LENS_R, 0, 6.283); ctx.stroke(); ctx.setLineDash([]);
-    ctx.strokeStyle = 'rgba(212,255,0,0.45)'; ctx.lineWidth = 1;
+    ctx.strokeStyle = getLensCorner(); ctx.lineWidth = 1;
     function cb(cx, cy, ax, ay, bx, by) { ctx.beginPath(); ctx.moveTo(cx + ax, cy + ay); ctx.lineTo(cx, cy); ctx.lineTo(cx + bx, cy + by); ctx.stroke(); }
     const s = 7, g = 2;
     cb(lx, ly - LENS_R - g, -s, -s, s, -s);
