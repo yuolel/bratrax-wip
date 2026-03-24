@@ -551,16 +551,19 @@ nav .wrap { display: flex; justify-content: space-between; align-items: center; 
 
 .newsletter-sub { font-size: 17px; color: var(--light); max-width: 560px; line-height: 1.75; margin-bottom: 40px; }
 
-.newsletter-signup { display: flex; gap: 0; margin-bottom: 56px; max-width: 460px; }
+.newsletter-signup {
+  display: flex; gap: 0; margin-bottom: 56px; max-width: 460px;
+  border: 1px solid var(--mid); transition: border-color 0.2s;
+}
+.newsletter-signup:focus-within { border-color: var(--acid); }
 .newsletter-signup input {
-  flex: 1; background: var(--off-black); border: 1px solid var(--mid); border-right: none;
+  flex: 1; background: var(--off-black); border: none;
   padding: 14px 18px; color: var(--off-white); font-family: var(--font-body);
-  font-size: 14px; outline: none; transition: border-color 0.2s;
+  font-size: 14px; outline: none;
 }
 .newsletter-signup input::placeholder { color: var(--muted); }
-.newsletter-signup input:focus { border-color: var(--acid); }
 .newsletter-signup button {
-  background: var(--acid); color: var(--black); border: 1px solid var(--acid);
+  background: var(--acid); color: #0A0A0A; border: none;
   padding: 14px 24px; font-family: var(--font-mono); font-weight: 700;
   font-size: 11px; cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase;
   transition: opacity 0.2s;
@@ -594,6 +597,14 @@ nav .wrap { display: flex; justify-content: space-between; align-items: center; 
 }
 .cta-final h2 .acid { color: var(--acid); }
 .cta-final h2 .serif-accent { font-family: var(--font-serif); font-style: italic; }
+[data-theme="light"] .cta-final h2 .acid,
+[data-theme="light"] .cta-final h2 .serif-accent,
+[data-theme="light"] .cta-final h2 .acid.serif-accent {
+  color: #0A0A0A !important;
+  background: var(--acid-highlight);
+  padding: 0 6px;
+  margin: 0 -6px;
+}
 
 .cta-final p {
   font-size: 17px; color: var(--light); max-width: 560px;
@@ -705,8 +716,13 @@ footer {
   color: var(--red);
 }
 
-/* Flip card back label */
-[data-theme="light"] .flip-back-label { color: var(--acid-text); }
+/* Flip card back label: highlight treatment */
+[data-theme="light"] .flip-back-label {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  display: inline-block;
+  padding: 2px 8px;
+}
 
 /* Flip card hint arrow */
 [data-theme="light"] .flip-front-hint .arrow { color: var(--acid-text); }
@@ -718,7 +734,7 @@ footer {
 [data-theme="light"] .article:hover .article-title { color: var(--acid-text); }
 
 /* Newsletter input focus */
-[data-theme="light"] .newsletter-signup input:focus { border-color: var(--acid-text); }
+[data-theme="light"] .newsletter-signup:focus-within { border-color: var(--acid-text); }
 
 /* CTA final section */
 [data-theme="light"] .cta-final { background: var(--off-black); }
@@ -762,7 +778,6 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   .steps { grid-template-columns: 1fr; }
   .step { border-right: none; }
   .newsletter-signup { flex-direction: column; }
-  .newsletter-signup input { border-right: 1px solid var(--mid); }
   .article { grid-template-columns: 1fr; gap: 4px; }
   footer .wrap { flex-direction: column; gap: 20px; text-align: center; }
 }
