@@ -46,6 +46,32 @@
 
 *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
+/* ═══════════════════════════════════════════
+   LIGHT THEME OVERRIDES
+   ═══════════════════════════════════════════ */
+
+[data-theme="light"] {
+  --black: #F5F2EB;
+  --off-black: #EDE9E0;
+  --dark: #E5E0D6;
+  --mid: #C8C2B6;
+  --muted: #7A7568;
+  --light: #5C564A;
+  --off-white: #1A1A18;
+  --paper: #F5F2EB;
+  --white: #0A0A0A;
+
+  /* Acid green becomes a readable dark green for text */
+  --acid-text: #4A6800;
+  --acid-highlight: #D4FF00;
+
+  --acid-dim: rgba(140, 170, 0, 0.08);
+  --acid-mid: rgba(140, 170, 0, 0.2);
+  --red-dim: rgba(200, 45, 35, 0.1);
+  --blue-dim: rgba(0, 160, 200, 0.1);
+  --lavender-dim: rgba(120, 100, 200, 0.08);
+}
+
 html { scroll-behavior: smooth; background: var(--black); }
 
 body {
@@ -57,18 +83,24 @@ body {
   overflow-x: hidden;
 }
 
-::selection { background: var(--acid); color: var(--black); }
+::selection { background: var(--acid); color: #0A0A0A; }
 
 a:focus-visible, button:focus-visible { outline: 2px solid var(--acid); outline-offset: 3px; }
 
 .skip-link {
   position: absolute; top: -100px; left: 16px;
-  background: var(--acid); color: var(--black);
+  background: var(--acid); color: #0A0A0A;
   padding: 12px 24px; font-family: var(--font-mono);
   font-size: 13px; font-weight: 700; z-index: 200;
   text-decoration: none; transition: top 0.2s;
 }
 .skip-link:focus { top: 16px; }
+
+/* Logo swap for light/dark */
+.logo-light { display: block; }
+.logo-dark { display: none; }
+[data-theme="light"] .logo-light { display: none; }
+[data-theme="light"] .logo-dark { display: block; }
 
 /* ═══════════════════════════════════════════
    GRAPH PAPER TEXTURE
@@ -82,6 +114,12 @@ body::before {
     linear-gradient(rgba(212,255,0,0.04) 1px, transparent 1px),
     linear-gradient(90deg, rgba(212,255,0,0.04) 1px, transparent 1px);
   background-size: 40px 40px;
+}
+
+[data-theme="light"] body::before {
+  background-image:
+    linear-gradient(rgba(160,150,130,0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(160,150,130,0.15) 1px, transparent 1px);
 }
 
 /* ═══════════════════════════════════════════
@@ -133,6 +171,22 @@ nav {
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(212,255,0,0.08);
 }
+[data-theme="light"] nav {
+  background: rgba(245,242,235,0.85);
+  border-bottom-color: rgba(160,150,130,0.2);
+}
+
+/* Theme toggle */
+.theme-toggle {
+  background: none; border: 1px solid var(--mid);
+  color: var(--muted); font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 1px; text-transform: uppercase;
+  padding: 6px 12px; cursor: pointer;
+  transition: color 0.25s, border-color 0.25s;
+  display: flex; align-items: center; gap: 6px;
+}
+.theme-toggle:hover { color: var(--off-white); border-color: var(--off-white); }
+.theme-toggle svg { width: 14px; height: 14px; fill: currentColor; }
 nav .wrap { display: flex; justify-content: space-between; align-items: center; }
 .logo { text-decoration: none; display: inline-block; }
 .logo svg { display: block; height: 40px; width: auto; }
@@ -497,16 +551,19 @@ nav .wrap { display: flex; justify-content: space-between; align-items: center; 
 
 .newsletter-sub { font-size: 17px; color: var(--light); max-width: 560px; line-height: 1.75; margin-bottom: 40px; }
 
-.newsletter-signup { display: flex; gap: 0; margin-bottom: 56px; max-width: 460px; }
+.newsletter-signup {
+  display: flex; gap: 0; margin-bottom: 56px; max-width: 460px;
+  border: 1px solid var(--mid); transition: border-color 0.2s;
+}
+.newsletter-signup:focus-within { border-color: var(--acid); }
 .newsletter-signup input {
-  flex: 1; background: var(--off-black); border: 1px solid var(--mid); border-right: none;
+  flex: 1; background: var(--off-black); border: none;
   padding: 14px 18px; color: var(--off-white); font-family: var(--font-body);
-  font-size: 14px; outline: none; transition: border-color 0.2s;
+  font-size: 14px; outline: none;
 }
 .newsletter-signup input::placeholder { color: var(--muted); }
-.newsletter-signup input:focus { border-color: var(--acid); }
 .newsletter-signup button {
-  background: var(--acid); color: var(--black); border: 1px solid var(--acid);
+  background: var(--acid); color: #0A0A0A; border: none;
   padding: 14px 24px; font-family: var(--font-mono); font-weight: 700;
   font-size: 11px; cursor: pointer; letter-spacing: 1.5px; text-transform: uppercase;
   transition: opacity 0.2s;
@@ -540,6 +597,14 @@ nav .wrap { display: flex; justify-content: space-between; align-items: center; 
 }
 .cta-final h2 .acid { color: var(--acid); }
 .cta-final h2 .serif-accent { font-family: var(--font-serif); font-style: italic; }
+[data-theme="light"] .cta-final h2 .acid,
+[data-theme="light"] .cta-final h2 .serif-accent,
+[data-theme="light"] .cta-final h2 .acid.serif-accent {
+  color: #0A0A0A !important;
+  background: var(--acid-highlight);
+  padding: 0 6px;
+  margin: 0 -6px;
+}
 
 .cta-final p {
   font-size: 17px; color: var(--light); max-width: 560px;
@@ -558,6 +623,140 @@ footer {
   border-top: 1px solid rgba(255,255,255,0.04);
   padding: 40px 0;
 }
+
+/* ═══════════════════════════════════════════
+   LIGHT THEME — COMPREHENSIVE OVERRIDES
+   ═══════════════════════════════════════════ */
+
+/* Borders: swap white-alpha for black-alpha */
+[data-theme="light"] .problem,
+[data-theme="light"] .stat-strip,
+[data-theme="light"] .method,
+[data-theme="light"] .ont-footnote,
+[data-theme="light"] .contrast,
+[data-theme="light"] .protocol,
+[data-theme="light"] .newsletter,
+[data-theme="light"] footer {
+  border-color: rgba(0,0,0,0.08);
+}
+
+[data-theme="light"] .def-grid,
+[data-theme="light"] .def-card,
+[data-theme="light"] .method-card,
+[data-theme="light"] .step,
+[data-theme="light"] .flip-card,
+[data-theme="light"] .article,
+[data-theme="light"] .newsletter-signup,
+[data-theme="light"] .newsletter-signup input,
+[data-theme="light"] .ont-footnote-btn {
+  border-color: var(--mid);
+}
+
+/* Buttons & CTAs — acid bg with dark text (already works) */
+[data-theme="light"] .btn-acid { color: #0A0A0A; }
+[data-theme="light"] .nav-cta { color: #0A0A0A !important; }
+
+/* Section labels: acid highlight bg with dark text */
+[data-theme="light"] .s-label {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  border-color: transparent;
+  padding: 4px 12px;
+  display: inline-block;
+}
+[data-theme="light"] .hero-eyebrow {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  border-color: transparent;
+}
+
+/* Headline accent words: acid text → highlighted with acid bg */
+[data-theme="light"] .hero h1 .acid,
+[data-theme="light"] .hero h1 .serif-accent,
+[data-theme="light"] .method h2 .acid,
+[data-theme="light"] .contrast h2 .acid,
+[data-theme="light"] .protocol h2 .acid,
+[data-theme="light"] .newsletter h2 .acid,
+[data-theme="light"] .cta-final h2 .acid,
+[data-theme="light"] .cta-final h2 .serif-accent {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  padding: 0 6px;
+  margin: 0 -6px;
+}
+
+/* Pull quote accent */
+[data-theme="light"] .pull-quote blockquote .acid {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  padding: 0 4px;
+  margin: 0 -4px;
+}
+
+/* Step numbers: highlight treatment */
+[data-theme="light"] .step-num {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  display: inline-block;
+  padding: 2px 8px;
+}
+[data-theme="light"] .step-time {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  display: inline-block;
+  padding: 2px 8px;
+}
+
+/* Method card icons: dark and visible */
+[data-theme="light"] .method-card-icon { color: var(--white); }
+/* Method card hover: highlight treatment on title */
+[data-theme="light"] .method-card:hover h3 {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  display: inline;
+  padding: 0 4px;
+  margin: 0 -4px;
+}
+
+/* Stat strip numbers: red for impact */
+[data-theme="light"] .stat-number {
+  color: var(--red);
+}
+
+/* Flip card back label: highlight treatment */
+[data-theme="light"] .flip-back-label {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  display: inline-block;
+  padding: 2px 8px;
+}
+
+/* Flip card hint arrow */
+[data-theme="light"] .flip-front-hint .arrow { color: var(--white); }
+
+/* Bracket colors in definition cards */
+[data-theme="light"] .def-bracket.b-acid { color: var(--white); }
+
+/* Article hover: highlight treatment */
+[data-theme="light"] .article:hover .article-title {
+  color: #0A0A0A;
+  background: var(--acid-highlight);
+  display: inline;
+  padding: 0 4px;
+  margin: 0 -4px;
+}
+
+/* Newsletter input focus */
+[data-theme="light"] .newsletter-signup:focus-within { border-color: var(--acid-text); }
+
+/* CTA final section */
+[data-theme="light"] .cta-final { background: var(--off-black); }
+
+/* Dither elements: reduce opacity further on light */
+[data-theme="light"] .dither-block::before { opacity: 0.05; }
+[data-theme="light"] .dither-hero { opacity: 0.08; }
+
+/* "skips" red accent — stays red, good contrast on both */
 footer .wrap { display: flex; justify-content: space-between; align-items: center; }
 .footer-left { font-family: var(--font-mono); font-size: 12px; color: var(--muted); }
 .footer-right { display: flex; gap: 24px; }
@@ -592,7 +791,6 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
   .steps { grid-template-columns: 1fr; }
   .step { border-right: none; }
   .newsletter-signup { flex-direction: column; }
-  .newsletter-signup input { border-right: 1px solid var(--mid); }
   .article { grid-template-columns: 1fr; gap: 4px; }
   footer .wrap { flex-direction: column; gap: 20px; text-align: center; }
 }
@@ -605,12 +803,16 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 <!-- ═══ NAV ═══ -->
 <nav>
   <div class="wrap">
-    <a href="#" class="logo"><img src="logo-stacked.svg" alt="Bratrax" height="40"></a>
+    <a href="#" class="logo">
+      <img src="logo-stacked.svg" alt="Bratrax" height="40" class="logo-light">
+      <img src="logo-dark.svg" alt="Bratrax" height="40" class="logo-dark">
+    </a>
     <button class="menu-btn" aria-label="Menu">Menu</button>
     <ul class="nav-links">
       <li><a href="#method">Method</a></li>
       <li><a href="#protocol">Protocol</a></li>
       <li><a href="#newsletter">The Dashboard</a></li>
+      <li><button class="theme-toggle" aria-label="Toggle light mode"><svg viewBox="0 0 24 24"><path d="M12 18a6 6 0 1 1 0-12 6 6 0 0 1 0 12zm0-2a4 4 0 1 0 0-8 4 4 0 0 0 0 8zm0-12a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0V5a1 1 0 0 1 1-1zm0 15a1 1 0 0 1 1 1v2a1 1 0 0 1-2 0v-2a1 1 0 0 1 1-1zm7.071-12.071a1 1 0 0 1 0 1.414l-1.414 1.414a1 1 0 1 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 0zM7.757 16.243a1 1 0 0 1 0 1.414l-1.414 1.414a1 1 0 1 1-1.414-1.414l1.414-1.414a1 1 0 0 1 1.414 0zM20 12a1 1 0 0 1-1 1h-2a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1zM7 12a1 1 0 0 1-1 1H4a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1zm12.071 7.071a1 1 0 0 1-1.414 0l-1.414-1.414a1 1 0 0 1 1.414-1.414l1.414 1.414a1 1 0 0 1 0 1.414zM7.757 7.757a1 1 0 0 1-1.414 0L4.929 6.343A1 1 0 0 1 6.343 4.93l1.414 1.414a1 1 0 0 1 0 1.414z"/></svg><span class="toggle-label">Lights</span></button></li>
       <li><a href="#start" class="nav-cta">Talk to Us</a></li>
     </ul>
   </div>
@@ -928,13 +1130,53 @@ footer .wrap { display: flex; justify-content: space-between; align-items: cente
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="wrap">
-    <div class="footer-left"><a href="#" class="logo logo-sm"><img src="logo-stacked.svg" alt="Bratrax" height="28"></a></div>
+    <div class="footer-left"><a href="#" class="logo logo-sm">
+      <img src="logo-stacked.svg" alt="Bratrax" height="28" class="logo-light">
+      <img src="logo-dark.svg" alt="Bratrax" height="28" class="logo-dark">
+    </a></div>
     <div class="footer-right">
       <a href="https://blog.bratrax.com" target="_blank" rel="noopener">Newsletter &rarr;</a>
       <a href="#" target="_blank" rel="noopener" aria-label="X (formerly Twitter)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
     </div>
   </div>
 </footer>
+
+<!-- ═══ THEME TOGGLE ═══ -->
+<script>
+(() => {
+  // Check saved preference or system preference
+  const saved = localStorage.getItem('bratrax-theme');
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const theme = saved || (prefersDark ? 'dark' : 'dark'); // default dark
+
+  if (theme === 'light') document.documentElement.setAttribute('data-theme', 'light');
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const btn = document.querySelector('.theme-toggle');
+    const label = btn ? btn.querySelector('.toggle-label') : null;
+
+    function updateLabel() {
+      const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+      if (label) label.textContent = isLight ? 'Lights off' : 'Lights';
+    }
+    updateLabel();
+
+    if (btn) {
+      btn.addEventListener('click', () => {
+        const isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        if (isLight) {
+          document.documentElement.removeAttribute('data-theme');
+          localStorage.setItem('bratrax-theme', 'dark');
+        } else {
+          document.documentElement.setAttribute('data-theme', 'light');
+          localStorage.setItem('bratrax-theme', 'light');
+        }
+        updateLabel();
+      });
+    }
+  });
+})();
+</script>
 
 <!-- ═══ SCROLL REVEAL ═══ -->
 <script>
@@ -962,7 +1204,19 @@ document.addEventListener('DOMContentLoaded', () => {
   C.width = W * DPR; C.height = H * DPR;
   ctx.scale(DPR, DPR);
 
-  const COL = '#D4FF00';
+  function getCol() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? '#1A1A18' : '#D4FF00';
+  }
+  function getLensStroke() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? 'rgba(26,26,24,0.25)' : 'rgba(212,255,0,0.3)';
+  }
+  function getLensCorner() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? 'rgba(26,26,24,0.35)' : 'rgba(212,255,0,0.45)';
+  }
+  function getDonutBg() {
+    return document.documentElement.getAttribute('data-theme') === 'light' ? '#E8E4DC' : '#141414';
+  }
+  let COL = getCol();
   const LENS_R = 90;
   const TRIGGER = 95;
   const CYCLE = 20000;
@@ -1040,6 +1294,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!prev) prev = now;
     const dt = Math.min(now - prev, 50);
     prev = now;
+    COL = getCol();
     ctx.clearRect(0, 0, W, H);
 
     const [lx, ly] = lensXY(now);
@@ -1103,7 +1358,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ctx.beginPath(); ctx.moveTo(dcx, dcy); ctx.arc(dcx, dcy, donutR, startAngle, startAngle + sweep); ctx.closePath(); ctx.fill();
           startAngle += sweep;
         }
-        ctx.globalAlpha = 1; ctx.fillStyle = '#141414'; ctx.beginPath(); ctx.arc(dcx, dcy, innerR, 0, Math.PI * 2); ctx.fill();
+        ctx.globalAlpha = 1; ctx.fillStyle = getDonutBg(); ctx.beginPath(); ctx.arc(dcx, dcy, innerR, 0, Math.PI * 2); ctx.fill();
         ctx.globalAlpha = 0.9 * ease; ctx.fillStyle = COL; ctx.font = "bold 11px 'Space Mono',monospace"; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('68%', dcx, dcy);
       } else if (z === 2) {
         const vals = [0.62, 0.64, 0.63, 0.62, 0.61, 0.52, 0.38];
@@ -1133,9 +1388,9 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let z = 0; z < 3; z++) { if (rev[z] < 0.04) continue; ctx.globalAlpha = 0.7 * ss(rev[z]); ctx.fillText(zones[z].insight, zones[z].cx, zones[z].iy); }
 
     // lens ring + crosshairs
-    ctx.globalAlpha = 1; ctx.strokeStyle = 'rgba(212,255,0,0.3)'; ctx.lineWidth = 1; ctx.setLineDash([5, 5]);
+    ctx.globalAlpha = 1; ctx.strokeStyle = getLensStroke(); ctx.lineWidth = 1; ctx.setLineDash([5, 5]);
     ctx.beginPath(); ctx.arc(lx, ly, LENS_R, 0, 6.283); ctx.stroke(); ctx.setLineDash([]);
-    ctx.strokeStyle = 'rgba(212,255,0,0.45)'; ctx.lineWidth = 1;
+    ctx.strokeStyle = getLensCorner(); ctx.lineWidth = 1;
     function cb(cx, cy, ax, ay, bx, by) { ctx.beginPath(); ctx.moveTo(cx + ax, cy + ay); ctx.lineTo(cx, cy); ctx.lineTo(cx + bx, cy + by); ctx.stroke(); }
     const s = 7, g = 2;
     cb(lx, ly - LENS_R - g, -s, -s, s, -s);
