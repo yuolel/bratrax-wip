@@ -1,0 +1,1214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bratrax Lite — Attribution Analytics for D2C Brands | $79/month Founding Member</title>
+<meta name="description" content="Bratrax Lite gives D2C and direct response brands clear, trustworthy attribution data for $79/month. All features. No tiers, no contracts. Your data connects to Claude and ChatGPT. Join the waitlist.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Outfit:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ═══════════════════════════════════════════
+   BRATRAX LITE — WAITLIST PAGE
+   Design system: bratrax-design-system.md
+   ═══════════════════════════════════════════ */
+
+:root {
+  --black: #0A0A0A;
+  --off-black: #141414;
+  --dark: #1E1E1E;
+  --mid: #3A3A3A;
+  --muted: #858585;
+  --light: #B0B0B0;
+  --off-white: #E8E4DC;
+  --white: #FAFAF5;
+  --acid: #D4FF00;
+  --acid-dim: rgba(212, 255, 0, 0.08);
+  --acid-mid: rgba(212, 255, 0, 0.25);
+  --red: #FF3B30;
+  --blue: #00D4FF;
+  --font-display: 'Outfit', 'Helvetica Neue', sans-serif;
+  --font-serif: 'DM Serif Display', Georgia, serif;
+  --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+  --font-body: 'Outfit', sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html { scroll-behavior: smooth; background: var(--black); }
+
+body {
+  font-family: var(--font-body);
+  color: var(--off-white);
+  background: var(--black);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+::selection { background: var(--acid); color: #0A0A0A; }
+a { color: var(--acid); }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--acid); outline-offset: 3px; }
+
+/* Graph paper texture */
+body::before {
+  content: '';
+  position: fixed; inset: 0;
+  pointer-events: none; z-index: 0;
+  background-image:
+    linear-gradient(rgba(212,255,0,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212,255,0,0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Scroll reveal */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-d1 { transition-delay: 0.1s; }
+.reveal-d2 { transition-delay: 0.2s; }
+.reveal-d3 { transition-delay: 0.3s; }
+
+/* Layout */
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+.wrap-wide { max-width: 1080px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
+section { position: relative; z-index: 2; padding: 110px 0; }
+section.hero, section.final-cta { padding: 140px 0; }
+
+/* ═══════════════════════════════════════════
+   NAV (Sticky)
+   ═══════════════════════════════════════════ */
+
+nav {
+  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+  padding: 16px 0; background: rgba(10,10,10,0.85);
+  backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(212,255,0,0.08);
+}
+nav .wrap-wide { display: flex; justify-content: space-between; align-items: center; }
+.nav-ticker {
+  font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--light); opacity: 0.7;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  flex: 1; text-align: center; min-width: 0;
+}
+.logo { text-decoration: none; display: inline-flex; align-items: center; gap: 12px; }
+.logo img { height: 28px; width: auto; }
+.logo-text { font-family: var(--font-mono); font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--acid); }
+.nav-cta {
+  display: inline-block; padding: 12px 20px;
+  background: var(--acid); color: #000;
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase;
+  text-decoration: none; transition: opacity 0.2s;
+  min-height: 44px; display: inline-flex; align-items: center;
+}
+.nav-cta:hover { opacity: 0.88; color: #000; }
+
+/* ═══════════════════════════════════════════
+   TYPOGRAPHY
+   ═══════════════════════════════════════════ */
+
+.s-label {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; color: var(--acid);
+  margin-bottom: 24px; opacity: 0.7;
+}
+
+h2 {
+  font-family: var(--font-display); font-size: clamp(36px, 4.5vw, 56px);
+  font-weight: 900; line-height: 1.1; letter-spacing: -0.3px;
+  color: var(--white); margin-bottom: 32px;
+  text-wrap: balance;
+}
+h2 .serif-accent { font-family: var(--font-serif); font-style: italic; color: var(--acid); }
+
+h3 {
+  font-family: var(--font-display); font-size: 22px;
+  font-weight: 700; color: var(--white); margin-bottom: 12px;
+}
+
+.body-text {
+  font-size: 17px; font-weight: 300; color: var(--light);
+  line-height: 1.75; max-width: 680px;
+}
+.body-text p { margin-bottom: 24px; }
+.body-text strong { color: var(--off-white); font-weight: 600; }
+
+del { color: var(--red); text-decoration: line-through; opacity: 0.7; }
+
+.body-text.centered { text-align: center; max-width: 100%; margin-left: auto; margin-right: auto; }
+
+/* Pull quote */
+.pull-quote {
+  font-family: var(--font-serif); font-size: clamp(24px, 3vw, 38px);
+  font-style: italic; text-align: center; color: var(--off-white);
+  line-height: 1.35; padding: 80px 32px; position: relative; z-index: 2;
+  max-width: 760px; margin: 0 auto;
+  text-wrap: balance;
+}
+.pull-quote .highlight { color: var(--acid); }
+.pull-quote-section {
+  border-top: 1px solid var(--mid); border-bottom: 1px solid var(--mid);
+  background: var(--off-black); position: relative;
+}
+.pull-quote-section::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, var(--acid) 0.6px, transparent 0.6px);
+  background-size: 10px 10px; opacity: 0.02; pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   BUTTONS
+   ═══════════════════════════════════════════ */
+
+.btn-acid {
+  display: inline-block; padding: 14px 32px;
+  background: var(--acid); color: #000;
+  font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+  letter-spacing: 1.5px; text-transform: uppercase;
+  text-decoration: none; border: none; cursor: pointer;
+  transition: opacity 0.2s, transform 0.15s;
+}
+.btn-acid:hover { opacity: 0.88; transform: translateY(-1px); color: #000; }
+
+/* ═══════════════════════════════════════════
+   EMAIL CAPTURE FORM
+   ═══════════════════════════════════════════ */
+
+.email-form { display: flex; gap: 0; max-width: 520px; }
+.email-form input {
+  flex: 1; padding: 14px 16px;
+  background: var(--off-black); border: 1px solid var(--mid);
+  font-family: var(--font-body); font-size: 14px; color: var(--off-white);
+  border-right: none; min-width: 0;
+}
+.email-form input:focus { border-color: var(--acid); outline: none; }
+.email-form input::placeholder { color: var(--muted); }
+.email-form button { white-space: nowrap; flex-shrink: 0; }
+.email-form button:disabled { opacity: 0.6; cursor: wait; }
+
+/* Submission states */
+.form-success {
+  padding: 16px 20px; background: var(--acid-dim);
+  border: 1px solid var(--acid); color: var(--acid);
+  font-family: var(--font-mono); font-size: 13px; letter-spacing: 0.5px;
+  text-align: center; width: 100%; box-sizing: border-box;
+}
+.form-error {
+  margin-top: 10px; padding: 10px 14px;
+  background: rgba(255,59,48,0.08); border: 1px solid rgba(255,59,48,0.4);
+  color: var(--red); font-family: var(--font-mono);
+  font-size: 12px; letter-spacing: 0.3px; width: 100%; box-sizing: border-box;
+}
+
+/* ═══════════════════════════════════════════
+   HERO
+   ═══════════════════════════════════════════ */
+
+.hero {
+  padding: 110px 0 64px;
+  position: relative; overflow: hidden;
+}
+
+.hero-dither {
+  position: absolute; width: 600px; height: 600px; border-radius: 50%;
+  right: -150px; top: 40%; transform: translateY(-50%);
+  background-image: radial-gradient(circle, var(--acid) 2px, transparent 2px);
+  background-size: 8px 8px; opacity: 0.15;
+  mask-image: radial-gradient(circle, black 20%, transparent 65%);
+  -webkit-mask-image: radial-gradient(circle, black 20%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 400;
+  letter-spacing: 1px; color: var(--muted);
+  margin-bottom: 28px; line-height: 1.6;
+}
+.hero-eyebrow a { color: var(--acid); text-decoration: none; }
+.hero-eyebrow a:hover { text-decoration: underline; }
+
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(36px, 4.2vw, 58px);
+  font-weight: 900; line-height: 1.08; letter-spacing: -0.5px;
+  color: var(--white); margin-bottom: 20px; max-width: 760px;
+  text-wrap: balance;
+}
+.hero h1 .serif-accent { font-family: var(--font-serif); font-style: italic; color: var(--acid); }
+
+/* Price block */
+.price-block {
+  display: flex; align-items: baseline; gap: 12px;
+  margin-bottom: 6px;
+}
+.price-block .new-price {
+  font-family: var(--font-display); font-size: 36px;
+  font-weight: 900; color: var(--acid); line-height: 1;
+  letter-spacing: -0.5px;
+}
+.price-block .old-price {
+  font-family: var(--font-mono); font-size: 14px; font-weight: 700;
+  color: var(--red); text-decoration: line-through;
+  letter-spacing: 0.5px;
+}
+.price-period {
+  font-family: var(--font-mono); font-size: 12px; color: var(--light);
+  letter-spacing: 0.5px; margin-bottom: 20px;
+}
+
+.hero-sub {
+  font-size: 17px; font-weight: 300; color: var(--light);
+  max-width: 720px; line-height: 1.65; margin-bottom: 28px;
+}
+
+.hero-benefits {
+  list-style: none; margin: 16px 0 12px; padding: 0;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4px 24px;
+}
+.hero-benefits li {
+  font-family: var(--font-body); font-size: 13px; font-weight: 400;
+  color: var(--light); padding: 5px 0; padding-left: 16px; position: relative;
+}
+.hero-benefits li::before {
+  content: ''; position: absolute; left: 0; top: 12px;
+  width: 6px; height: 6px; background: var(--acid);
+}
+
+.hero-guarantee {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 400;
+  letter-spacing: 0.3px; color: var(--light); margin: 16px 0 0;
+  padding: 14px 18px; border-left: 3px solid var(--acid);
+  background: var(--acid-dim);
+}
+
+/* Credibility — now part of eyebrow, styles unused */
+
+/* Image placeholder */
+.img-placeholder {
+  background: var(--off-black); border: 1px dashed var(--mid);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--muted); font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 1px; text-transform: uppercase;
+  min-height: 300px; position: relative;
+}
+.img-placeholder::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, var(--acid) 0.8px, transparent 0.8px);
+  background-size: 12px 12px; opacity: 0.04; pointer-events: none;
+}
+
+/* ═══════════════════════════════════════════
+   CONTENT SECTIONS
+   ═══════════════════════════════════════════ */
+
+.section-dark { background: var(--black); }
+.section-surface { background: var(--off-black); border-top: 1px solid rgba(255,255,255,0.04); border-bottom: 1px solid rgba(255,255,255,0.04); }
+
+/* Point cards (invalidation + solution) */
+.point-card {
+  padding: 32px; background: var(--off-black);
+  border: 1px solid var(--mid); margin-bottom: 16px;
+  position: relative;
+}
+.point-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--acid); opacity: 0;
+  transition: opacity 0.3s;
+}
+.point-card:hover::before { opacity: 1; }
+.point-card h3 { font-size: 18px; margin-bottom: 10px; }
+.point-card p { font-size: 15px; font-weight: 300; color: var(--light); line-height: 1.7; }
+
+.point-card--red::before { background: var(--red); opacity: 0.5; }
+.point-card--red { border-color: rgba(255,59,48,0.2); }
+
+/* ═══════════════════════════════════════════
+   MID-PAGE CTA
+   ═══════════════════════════════════════════ */
+
+.mid-cta {
+  padding: 80px 0; text-align: center;
+  background: var(--off-black);
+  border-top: 1px solid var(--mid); border-bottom: 1px solid var(--mid);
+  position: relative; z-index: 2;
+}
+.mid-cta p {
+  font-family: var(--font-display); font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700; color: var(--white); margin-bottom: 28px;
+}
+.mid-cta .email-form { margin: 0 auto; }
+.mid-cta .guarantee-note {
+  font-family: var(--font-mono); font-size: 12px; color: var(--light);
+  letter-spacing: 0.3px; margin-top: 16px;
+}
+
+/* ═══════════════════════════════════════════
+   HOW IT WORKS
+   ═══════════════════════════════════════════ */
+
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+.step {
+  padding: 32px; background: var(--off-black); border: 1px solid var(--mid);
+  position: relative;
+}
+.step-number {
+  font-family: var(--font-mono); font-size: 48px; font-weight: 700;
+  color: var(--acid); opacity: 0.3; margin-bottom: 16px;
+  line-height: 1;
+}
+.step h3 { font-size: 17px; margin-bottom: 10px; }
+.step p { font-size: 15px; font-weight: 300; color: var(--light); line-height: 1.7; }
+.step .img-placeholder { min-height: 140px; margin-bottom: 20px; font-size: 10px; }
+
+/* ═══════════════════════════════════════════
+   FEATURE CARDS
+   ═══════════════════════════════════════════ */
+
+.features { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 48px; }
+.feature-card {
+  padding: 32px; background: var(--off-black); border: 1px solid var(--mid);
+  position: relative;
+}
+.feature-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--acid);
+}
+.feature-card h3 { font-size: 16px; margin-bottom: 10px; }
+.feature-card p { font-size: 15px; font-weight: 300; color: var(--light); line-height: 1.7; }
+
+/* ═══════════════════════════════════════════
+   COMPARISON TABLE
+   ═══════════════════════════════════════════ */
+
+.comparison-table { width: 100%; border-collapse: collapse; margin: 48px 0 32px; font-size: 14px; }
+.comparison-table th {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 1px; text-transform: uppercase; color: var(--muted);
+  text-align: left; padding: 16px 12px; border-bottom: 2px solid var(--mid);
+}
+.comparison-table th:first-child { color: var(--acid); }
+.comparison-table td {
+  padding: 12px; border-bottom: 1px solid rgba(255,255,255,0.04);
+  font-weight: 300; color: var(--light); vertical-align: top;
+}
+.comparison-table tbody tr:nth-child(odd) td {
+  background: rgba(255,255,255,0.02);
+}
+.comparison-table tbody tr:nth-child(even) td {
+  background: transparent;
+}
+.comparison-table td:first-child {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 0.5px; text-transform: uppercase; color: var(--muted);
+  white-space: nowrap;
+}
+.comparison-table .col-bratrax { color: var(--acid); font-weight: 600; }
+/* highlight-row kept for special emphasis if needed */
+.comparison-table .highlight-row td { background: rgba(212,255,0,0.04) !important; }
+
+.price-math {
+  padding: 32px; background: var(--off-black); border: 1px solid var(--acid-mid);
+  margin: 32px 0; font-size: 17px; font-weight: 300; color: var(--light); line-height: 1.7;
+}
+.price-math strong { color: var(--acid); font-weight: 700; }
+
+/* ═══════════════════════════════════════════
+   WHO IT'S FOR
+   ═══════════════════════════════════════════ */
+
+.fit-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
+.fit-list h3 { font-size: 14px; font-family: var(--font-mono); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 20px; }
+.fit-list.good h3 { color: var(--acid); }
+.fit-list.not-yet h3 { color: var(--muted); }
+.fit-list ul { list-style: none; padding: 0; }
+.fit-list li {
+  font-size: 15px; font-weight: 300; color: var(--light); line-height: 1.7;
+  padding: 8px 0 8px 24px; position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.fit-list.good li::before { content: ''; position: absolute; left: 0; top: 15px; width: 8px; height: 8px; background: var(--acid); }
+.fit-list.not-yet li::before { content: ''; position: absolute; left: 0; top: 15px; width: 8px; height: 2px; background: var(--mid); top: 18px; }
+
+/* ═══════════════════════════════════════════
+   FOUNDER NOTE
+   ═══════════════════════════════════════════ */
+
+.founder-note {
+  max-width: 680px; margin: 0 auto;
+}
+.founder-header { display: flex; align-items: center; gap: 20px; margin-bottom: 40px; }
+.founder-photo { width: 64px; height: 64px; border-radius: 0; background: var(--off-black); border: 1px dashed var(--mid); display: flex; align-items: center; justify-content: center; color: var(--muted); font-family: var(--font-mono); font-size: 9px; letter-spacing: 1px; text-transform: uppercase; flex-shrink: 0; }
+.founder-meta { font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 0.5px; }
+.founder-meta strong { color: var(--off-white); font-weight: 700; display: block; margin-bottom: 4px; }
+.founder-sig { font-family: var(--font-serif); font-style: italic; font-size: 28px; color: var(--acid); margin-top: 40px; }
+
+/* ═══════════════════════════════════════════
+   FAQ
+   ═══════════════════════════════════════════ */
+
+.faq-list { max-width: 720px; }
+.faq-item { border-bottom: 1px solid var(--mid); }
+.faq-q {
+  display: flex; justify-content: space-between; align-items: center;
+  width: 100%; padding: 24px 0; cursor: pointer; gap: 16px;
+  font-family: var(--font-display); font-size: 17px; font-weight: 600;
+  color: var(--off-white); transition: color 0.2s;
+  background: none; border: none; text-align: left;
+}
+.faq-q:hover { color: var(--white); }
+.faq-q .faq-icon {
+  font-family: var(--font-mono); font-size: 18px; color: var(--acid);
+  flex-shrink: 0; transition: transform 0.3s var(--ease);
+}
+.faq-item.open .faq-icon { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0; overflow: hidden; transition: max-height 0.4s var(--ease), padding 0.4s var(--ease);
+  font-size: 15px; font-weight: 300; color: var(--light); line-height: 1.7;
+}
+.faq-item.open .faq-a { max-height: 300px; padding-bottom: 24px; }
+
+/* ═══════════════════════════════════════════
+   FINAL CTA
+   ═══════════════════════════════════════════ */
+
+.final-cta {
+  padding: 120px 0; text-align: center;
+  background: var(--off-black); position: relative;
+  border-top: 1px solid var(--mid);
+}
+.final-cta::before {
+  content: ''; position: absolute; inset: 0;
+  background-image: radial-gradient(circle, var(--acid) 1px, transparent 1px);
+  background-size: 10px 10px; opacity: 0.03; pointer-events: none;
+}
+.final-cta h2 { margin-bottom: 20px; }
+.final-cta .benefits-row {
+  display: flex; justify-content: center; gap: 32px; flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+.final-cta .benefits-row span {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 1px;
+  text-transform: uppercase; color: var(--light);
+}
+.final-cta .email-form { margin: 0 auto; }
+.final-cta .below-cta {
+  font-family: var(--font-mono); font-size: 11px; color: var(--muted);
+  letter-spacing: 0.5px; margin-top: 20px;
+}
+
+/* ═══════════════════════════════════════════
+   CHAT EXAMPLES
+   ═══════════════════════════════════════════ */
+
+.chat-examples { display: flex; flex-direction: column; gap: 24px; margin-top: 48px; }
+.chat-example { padding: 32px; background: var(--off-black); border: 1px solid var(--mid); }
+.chat-q {
+  font-family: var(--font-mono); font-size: 13px; font-weight: 700;
+  color: var(--acid); letter-spacing: 0.5px; margin-bottom: 16px;
+  padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.chat-a { font-size: 15px; font-weight: 300; color: var(--light); line-height: 1.7; }
+.chat-a strong { color: var(--off-white); font-weight: 600; }
+
+/* ═══════════════════════════════════════════
+   PRODUCT COMPARISON CARDS
+   ═══════════════════════════════════════════ */
+
+.products-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
+.product-card {
+  padding: 40px; background: var(--off-black); border: 1px solid var(--mid); position: relative;
+}
+.product-card--featured { border-color: var(--acid); }
+.product-card--featured::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 3px; background: var(--acid);
+}
+.product-name {
+  font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 12px;
+}
+.product-card--featured .product-name { color: var(--acid); }
+.product-card:not(.product-card--featured) .product-name { color: var(--muted); }
+.product-price {
+  font-family: var(--font-display); font-size: 32px; font-weight: 900;
+  color: var(--white); margin-bottom: 8px;
+}
+.product-price-note {
+  font-family: var(--font-mono); font-size: 11px; color: var(--light);
+  letter-spacing: 0.3px; margin-bottom: 24px;
+}
+.product-features { list-style: none; padding: 0; }
+.product-features li {
+  font-size: 14px; font-weight: 300; color: var(--light); line-height: 1.7;
+  padding: 8px 0 8px 20px; position: relative;
+  border-bottom: 1px solid rgba(255,255,255,0.03);
+}
+.product-card--featured .product-features li::before {
+  content: ''; position: absolute; left: 0; top: 15px;
+  width: 6px; height: 6px; background: var(--acid);
+}
+.product-card:not(.product-card--featured) .product-features li::before {
+  content: ''; position: absolute; left: 0; top: 15px;
+  width: 6px; height: 6px; background: var(--muted);
+}
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE
+   ═══════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+  section { padding: 72px 0; }
+  section.hero { padding: 120px 0 60px; }
+  .wrap, .wrap-wide { padding: 0 20px; }
+  section.hero { padding: 100px 0 48px; }
+  .hero-benefits { grid-template-columns: 1fr; }
+  .hero h1 { font-size: clamp(32px, 8vw, 48px); }
+  .steps { grid-template-columns: 1fr; }
+  .features { grid-template-columns: 1fr; }
+  .fit-grid { grid-template-columns: 1fr; }
+  .products-grid { grid-template-columns: 1fr; }
+  .email-form { flex-direction: column; }
+  .email-form input { border-right: 1px solid var(--mid); border-bottom: none; }
+  .comparison-table { font-size: 12px; display: block; overflow-x: auto; }
+  .final-cta .benefits-row { flex-direction: column; gap: 12px; align-items: center; }
+  .hero-dither { display: none; }
+  nav { padding: 10px 0; }
+  .nav-ticker { display: none; }
+  .nav-cta { font-size: 10px; padding: 8px 12px; min-height: 36px; }
+  .logo svg { height: 18px !important; }
+  .logo-text { font-size: 9px; letter-spacing: 1px; }
+  .logo { gap: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════ NAV ═══════════════════ -->
+<nav>
+  <div class="wrap-wide">
+    <a href="#" class="logo">
+      <svg width="189" height="26" viewBox="0 0 189 26" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Bratrax" style="height: 28px; width: auto;">
+        <path d="M0 20.664H2.376V4.536H0V0H11.052C12.252 0 13.308 0.168 14.22 0.504C15.156 0.84 15.936 1.296 16.56 1.872C17.208 2.448 17.688 3.144 18 3.96C18.336 4.752 18.504 5.616 18.504 6.552V6.984C18.504 8.424 18.096 9.576 17.28 10.44C16.488 11.304 15.48 11.904 14.256 12.24V12.888C15.48 13.224 16.488 13.836 17.28 14.724C18.096 15.588 18.504 16.74 18.504 18.18V18.612C18.504 19.548 18.336 20.424 18 21.24C17.688 22.032 17.208 22.728 16.56 23.328C15.936 23.904 15.156 24.36 14.22 24.696C13.308 25.032 12.252 25.2 11.052 25.2H0V20.664ZM7.128 20.664H10.584C11.592 20.664 12.408 20.448 13.032 20.016C13.656 19.584 13.968 18.864 13.968 17.856V17.64C13.968 16.632 13.656 15.912 13.032 15.48C12.408 15.048 11.592 14.832 10.584 14.832H7.128V20.664ZM7.128 10.296H10.584C11.592 10.296 12.408 10.092 13.032 9.684C13.656 9.252 13.968 8.532 13.968 7.524V7.308C13.968 6.3 13.656 5.592 13.032 5.184C12.408 4.752 11.592 4.536 10.584 4.536H7.128V10.296Z" fill="#E8E4DC"/>
+        <path d="M43.935 25.2H39.183V17.64C39.183 17.064 39.027 16.596 38.715 16.236C38.427 15.876 37.935 15.696 37.239 15.696H31.767V25.2H27.015V0H36.663C37.959 0 39.099 0.18 40.083 0.539999C41.067 0.900001 41.883 1.404 42.531 2.052C43.203 2.676 43.707 3.408 44.043 4.248C44.403 5.088 44.583 5.988 44.583 6.948V7.812C44.583 8.844 44.307 9.816 43.755 10.728C43.203 11.616 42.351 12.3 41.199 12.78V13.428C42.039 13.524 42.699 13.848 43.179 14.4C43.683 14.952 43.935 15.648 43.935 16.488V25.2ZM31.767 11.16H36.303C37.455 11.16 38.331 10.896 38.931 10.368C39.531 9.816 39.831 9.048 39.831 8.064V7.632C39.831 6.792 39.531 6.072 38.931 5.472C38.331 4.848 37.455 4.536 36.303 4.536H31.767V11.16Z" fill="#E8E4DC"/>
+        <path d="M65.7299 19.8H57.1619L55.9379 25.2H50.9699L56.9819 0H65.9099L71.9219 25.2H66.9539L65.7299 19.8ZM58.1699 15.264H64.6859L61.7699 2.376H61.1219L58.1699 15.264Z" fill="#E8E4DC"/>
+        <path d="M80.0729 0H98.2169V4.536H91.5209L87.1289 25.2H82.3769L86.7689 4.536H80.0729V0Z" fill="#E8E4DC"/>
+        <path d="M119.22 25.2H114.396L116.016 17.64C116.064 17.4 116.088 17.208 116.088 17.064C116.088 16.656 115.956 16.332 115.692 16.092C115.428 15.828 115.02 15.696 114.468 15.696H109.248L107.232 25.2H102.516L107.844 0H116.7C117.876 0 118.908 0.168 119.796 0.504C120.708 0.816 121.464 1.248 122.064 1.8C122.688 2.328 123.144 2.964 123.432 3.708C123.744 4.452 123.9 5.232 123.9 6.048C123.9 7.8 123.492 9.228 122.676 10.332C121.884 11.412 120.66 12.228 119.004 12.78V13.428C119.7 13.5 120.228 13.752 120.588 14.184C120.972 14.592 121.164 15.12 121.164 15.768C121.164 16.008 121.14 16.248 121.092 16.488L119.22 25.2ZM110.22 11.16H114.54C115.812 11.16 116.856 10.824 117.672 10.152C118.488 9.48 118.896 8.568 118.896 7.416C118.896 6.504 118.644 5.796 118.14 5.292C117.66 4.788 116.916 4.536 115.908 4.536H111.624L110.22 11.16Z" fill="#E8E4DC"/>
+        <path d="M143.859 19.8H135.291L134.067 25.2H129.099L135.111 0H144.039L150.051 25.2H145.083L143.859 19.8ZM136.299 15.264H142.815L139.899 2.376H139.251L136.299 15.264Z" fill="#E8E4DC"/>
+        <path d="M160.938 0L165.186 10.296H166.05L170.298 0H175.446L170.262 12.24V12.888L175.446 25.2H170.298L166.05 14.832H165.186L160.938 25.2H155.79L160.974 12.888V12.24L155.79 0H160.938Z" fill="#E8E4DC"/>
+        <path d="M188.081 22.284C188.081 22.764 187.985 23.22 187.793 23.652C187.625 24.06 187.385 24.42 187.073 24.732C186.761 25.02 186.389 25.248 185.957 25.416C185.549 25.608 185.117 25.704 184.661 25.704C184.181 25.704 183.737 25.608 183.329 25.416C182.921 25.248 182.561 25.02 182.249 24.732C181.937 24.42 181.685 24.06 181.493 23.652C181.325 23.22 181.241 22.764 181.241 22.284C181.241 21.804 181.325 21.36 181.493 20.952C181.685 20.52 181.937 20.16 182.249 19.872C182.561 19.56 182.921 19.32 183.329 19.152C183.737 18.96 184.181 18.864 184.661 18.864C185.117 18.864 185.549 18.96 185.957 19.152C186.389 19.32 186.761 19.56 187.073 19.872C187.385 20.16 187.625 20.52 187.793 20.952C187.985 21.36 188.081 21.804 188.081 22.284Z" fill="#D4FF00"/>
+      </svg>
+      <span class="logo-text">Lite</span>
+    </a>
+    <span class="nav-ticker">No tiers. No contracts. Your data connects to Claude &amp;&nbsp;ChatGPT.</span>
+    <a href="#save-my-spot" class="nav-cta">Save my spot &rarr;</a>
+  </div>
+</nav>
+
+<!-- ═══════════════════ HERO ═══════════════════ -->
+<section class="hero">
+  <div class="hero-dither"></div>
+  <div class="wrap">
+    <p class="hero-eyebrow">
+      From the team behind <a href="https://inceptly.com">Inceptly</a> ($950M+ in D2C revenue driven) and <a href="https://vidtao.com">VidTao</a> (100K+&nbsp;marketers)
+    </p>
+
+    <h1>
+      D2C attribution that actually tells you what's&nbsp;<span class="serif-accent">profitable.</span>
+    </h1>
+
+    <p class="hero-sub">
+      Stop cross-referencing spreadsheets. Start trusting the&nbsp;numbers.
+    </p>
+
+    <div class="price-block">
+      <span class="new-price">$79/mo</span>
+      <span class="old-price">$99/mo</span>
+    </div>
+    <p class="price-period">No VCs. No sales team. Just a fair price, locked in for&nbsp;life.</p>
+
+    <form class="email-form" action="#" id="save-my-spot" data-source="yuliya-hero" aria-label="Join the waitlist">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit" class="btn-acid">Lock in $79/mo</button>
+    </form>
+
+    <ul class="hero-benefits">
+      <li><strong>$79/month locked in</strong> for&nbsp;life</li>
+      <li>Only 100 founding member&nbsp;spots</li>
+      <li>Priority onboarding before&nbsp;launch</li>
+      <li>First access on May&nbsp;12</li>
+    </ul>
+
+    <div class="hero-guarantee">
+      30-day money-back guarantee. If you don't trust the numbers within 30 days, full&nbsp;refund.
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PRODUCT PREVIEW ═══════════════════ -->
+<section class="section-surface" style="padding: 80px 0;">
+  <div class="wrap-wide">
+    <div class="img-placeholder reveal" style="min-height: 420px; max-width: 900px; margin: 0 auto;">
+      Product screenshot / dashboard mockup placeholder
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PROBLEM (AGITATION) ═══════════════════ -->
+<section class="section-dark">
+  <div class="wrap">
+    <div class="s-label reveal">01 &mdash; The Problem</div>
+    <h2 class="reveal reveal-d1">You already know this morning&nbsp;<span class="serif-accent">routine.</span></h2>
+
+    <div class="body-text reveal reveal-d2">
+      <p>
+        Open Meta Ads Manager. Check yesterday's ROAS. Open Google Ads. Check their version of yesterday's ROAS. Open Shopify. Count the actual orders. Open your attribution tool. See a fourth set of numbers that matches none of the other&nbsp;three.
+      </p>
+      <p>
+        Pull up a spreadsheet. Start cross-referencing. Try to figure out which number to trust. Give up. Go with gut.
+      </p>
+      <p>
+        That's the routine. Every morning. And you're paying between $300 and $1,500 a month for the privilege of doing it.
+      </p>
+
+      <hr style="border: none; border-top: 1px solid var(--mid); margin: 40px 0; opacity: 0.4;">
+
+      <p>
+        You signed up for an attribution tool because you wanted to stop guessing where your ad budget goes. Instead, you got more dashboards, more reports, more "AI-powered insights," and somehow the question you started with ("is this campaign actually making money?") is just as hard to answer as it was before you were paying for help.
+      </p>
+      <p>
+        The tool looks professional. The dashboards are polished. The feature list is impressive. But when it's time to make a real decision about where to put your next $10,000, you still don't trust the numbers enough to act on them without checking two other systems&nbsp;first.
+      </p>
+      <p>
+        <strong>That's not a data problem. You have plenty of data. That's a clarity problem.</strong> And more features won't fix it, because more features are how you got here.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ PULL QUOTE ═══════════════════ -->
+<div class="pull-quote-section">
+  <div class="wrap">
+    <p class="pull-quote reveal">
+      "Your attribution vendor's biggest expense isn't <span class="highlight">engineering.</span> <span style="text-decoration: underline; text-decoration-color: #ff3333; text-underline-offset: 6px; text-decoration-thickness: 3px;">It's convincing you to&nbsp;buy.</span>"
+    </p>
+  </div>
+</div>
+
+<!-- ═══════════════════ INVALIDATION ═══════════════════ -->
+<section class="section-surface">
+  <div class="wrap">
+    <div class="s-label reveal">02 &mdash; Why Other Tools Haven't Fixed This</div>
+    <h2 class="reveal reveal-d1">You've tried the tools.<br>Here's why they didn't&nbsp;<span class="serif-accent">work.</span></h2>
+
+    <div class="body-text reveal reveal-d2" style="margin-bottom: 40px;">
+      <p>
+        The attribution tools in this space aren't broken in an obvious way. They connect to your ad accounts. They show data. The dashboards look professional. Some of them cost $1,500 a month and have teams of engineers behind them. So why do you still have that spreadsheet open?
+      </p>
+      <p><strong>Because the tools were built to impress, not to clarify.</strong></p>
+    </div>
+
+    <div class="reveal reveal-d2">
+      <div class="point-card point-card--red">
+        <h3>They show you numbers without showing you where they come from.</h3>
+        <p>The dashboards are polished, but the attribution logic behind them is a black box. You don't know how much the output depends on settings you configured six months ago and forgot about. You end up trusting data you can't trace, or worse, not trusting it at&nbsp;all.</p>
+      </div>
+      <div class="point-card point-card--red">
+        <h3>They take weeks or months before you see anything useful.</h3>
+        <p>Pixel configuration. DNS changes. CAPI setup. Onboarding calls. Some brands spend thousands of dollars and half a year just getting tracking to work. By the time it's running, they're not even sure the data is&nbsp;accurate.</p>
+      </div>
+      <div class="point-card point-card--red">
+        <h3>Your price funds their sales machine, not better&nbsp;technology.</h3>
+        <p>Triple Whale has 200+ employees. Northbeam raised $25M. The infrastructure to run attribution analytics costs pennies per client per month. They charge 100&ndash;1,000x markup to fund sales teams, SDRs, conference booths, demo calls, and investor returns. Every dollar they spend acquiring you gets passed to&nbsp;you.</p>
+      </div>
+      <div class="point-card point-card--red">
+        <h3>They keep adding features instead of fixing the core experience.</h3>
+        <p>AI agents that crash. Media mix models you don't understand. Creative cockpits you never open. Incrementality testing you'd need a data scientist to interpret. The feature list gets longer. Your clarity doesn't improve. Your bill&nbsp;does.</p>
+      </div>
+    </div>
+
+    <p class="body-text reveal" style="margin-top: 40px;">
+      Every year, these tools get more complex and more expensive. And every year, D2C brand owners are still cross-referencing spreadsheets to figure out where their money&nbsp;went.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════ MID-PAGE CTA 1 ═══════════════════ -->
+<div class="mid-cta">
+  <div class="wrap">
+    <p>Done paying $1,500/month for a <span style="color: var(--acid);">gut check?</span><br>100 founding member spots at $79/month, locked in for&nbsp;life.</p>
+    <form class="email-form" action="#" data-source="yuliya-mid1" aria-label="Join the waitlist">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit" class="btn-acid">I'm done overpaying</button>
+    </form>
+    <div class="guarantee-note">30-day money-back guarantee. No questions asked.</div>
+  </div>
+</div>
+
+<!-- ═══════════════════ SOLUTION ═══════════════════ -->
+<section class="section-dark">
+  <div class="wrap">
+    <div class="s-label reveal">03 &mdash; Our Approach</div>
+    <h2 class="reveal reveal-d1">Fewer features.<br>Better&nbsp;<span class="serif-accent">answers.</span></h2>
+
+    <div class="body-text reveal reveal-d2" style="margin-bottom: 40px;">
+      <p>
+        Bratrax Lite starts from a different assumption: you don't need more dashboards. You need fewer, better numbers that you can actually trust.
+      </p>
+      <p>
+        We spent years building custom analytics for D2C and direct response brands, identified the things that actually drive decisions, and built a product that does exactly those things well, and nothing&nbsp;else.
+      </p>
+    </div>
+
+    <div class="reveal reveal-d2">
+      <div class="point-card">
+        <h3>Clear numbers instead of black boxes.</h3>
+        <p>Your data flows from your store and ad accounts into dashboards you can actually trace. You see what's connected, how it's processed, and why the numbers say what they say. No mystery attribution. No hidden&nbsp;logic.</p>
+      </div>
+      <div class="point-card">
+        <h3>Your data, your AI.</h3>
+        <p>Most tools lock you into their built-in AI chat. We don't. Bratrax Lite gives you a clean, structured dataset that connects directly to Claude, ChatGPT, or whatever AI tool you already use. Have conversations with your data wherever you work, not inside our&nbsp;app.</p>
+      </div>
+      <div class="point-card">
+        <h3>Minutes to value instead of months to onboard.</h3>
+        <p>Connect your store. Connect your ad accounts. Dashboards populate. That's the setup. No pixel debugging. No DNS configuration. No three-week onboarding call&nbsp;sequence.</p>
+      </div>
+      <div class="point-card">
+        <h3>$79/month because that's what it should cost.</h3>
+        <p>No sales team. No demo calls. No investors demanding returns. Just engineers solving problems. $79/month for founding members, $99 after that. Flat, regardless of how big your brand&nbsp;gets.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ HOW IT WORKS ═══════════════════ -->
+<section class="section-surface">
+  <div class="wrap">
+    <div class="s-label reveal">04 &mdash; How It Works</div>
+    <h2 class="reveal reveal-d1">Three steps. No onboarding&nbsp;<span class="serif-accent">calls.</span></h2>
+
+    <div class="steps">
+      <div class="step reveal">
+        <div class="img-placeholder" style="min-height: 140px;">Step 1 illustration</div>
+        <div class="step-number">01</div>
+        <h3>Connect your store.</h3>
+        <p>Shopify today, more platforms coming. Your products, orders, and customer data flow in&nbsp;automatically.</p>
+      </div>
+      <div class="step reveal reveal-d1">
+        <div class="img-placeholder" style="min-height: 140px;">Step 2 illustration</div>
+        <div class="step-number">02</div>
+        <h3>Link your ad accounts.</h3>
+        <p>Facebook, Google, or both. Bratrax Lite pulls your ad spend and conversion data without pixel configuration or DNS&nbsp;changes.</p>
+      </div>
+      <div class="step reveal reveal-d2">
+        <div class="img-placeholder" style="min-height: 140px;">Step 3 illustration</div>
+        <div class="step-number">03</div>
+        <h3>Ask your data anything.</h3>
+        <p>Pre-built dashboards show you what's profitable. And your data connects directly to Claude or ChatGPT, so you can dig deeper on your terms, not&nbsp;ours.</p>
+      </div>
+    </div>
+
+    <p class="body-text centered reveal" style="margin-top: 48px;">
+      That's it. Most brands are looking at real data within minutes of signing&nbsp;up.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════ YOUR DATA, YOUR AI ═══════════════════ -->
+<section class="section-dark">
+  <div class="wrap">
+    <div class="s-label reveal">05 &mdash; Your Data, Your&nbsp;AI</div>
+    <h2 class="reveal reveal-d1">We give you the data. You connect the&nbsp;<span class="serif-accent">intelligence.</span></h2>
+
+    <div class="body-text reveal reveal-d2" style="margin-bottom: 40px;">
+      <p>
+        Every Bratrax account comes with a ready-made data connection that works inside Claude, ChatGPT, or any AI tool you already use. Open a conversation, connect your Bratrax data, and start asking questions&nbsp;&mdash; no exports, no CSV files, no API&nbsp;setup.
+      </p>
+      <p>
+        No other attribution tool does this. Because they have no incentive to. Their business model depends on you staying inside their app. <strong>Ours depends on your data being useful&nbsp;everywhere.</strong>
+      </p>
+    </div>
+
+    <div class="chat-examples reveal reveal-d2">
+      <div class="chat-example">
+        <div class="chat-q">You: "Why did my ROAS drop last week?"</div>
+        <div class="chat-a">Your blended ROAS dropped from 3.2 to 2.4 between Mar 10&ndash;17. The primary driver is Facebook: <strong>CPM increased from $12.40 to $19.80</strong> on "Spring Sale Lookalike" &mdash; audience fatigue at frequency 4.2. Google was stable. Recommendation: pause that campaign, shift budget to "UGC Testimonials" at frequency 1.8 with 3.6&nbsp;ROAS.</div>
+      </div>
+      <div class="chat-example">
+        <div class="chat-q">You: "Which acquisition channel has the best LTV?"</div>
+        <div class="chat-a">Based on 90-day cohort data: <strong>TikTok has the best LTV:CAC ratio (5.4x)</strong> despite lowest absolute LTV ($61). For efficient growth, TikTok. For absolute revenue per customer, Google Search ($127 LTV, 3.7x&nbsp;ratio).</div>
+      </div>
+      <div class="chat-example">
+        <div class="chat-q">You: "Compare this week to same week last year"</div>
+        <div class="chat-a">Revenue up 21% YoY but ad spend up 32%. <strong>AOV increase is masking the ROAS drop</strong> &mdash; fewer customers buying, but buying more. Efficiency is&nbsp;declining.</div>
+      </div>
+    </div>
+
+    <div class="body-text reveal" style="margin-top: 40px;">
+      <p>
+        This is what your conversations look like when your AI can actually see your business data. Built on the same analytics infrastructure we use for our $5K/month enterprise&nbsp;clients.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ MID-PAGE CTA 2 ═══════════════════ -->
+<div class="mid-cta">
+  <div class="wrap">
+    <p>Three steps. No onboarding calls. No six-month setup.<br><span style="color: var(--acid);">$79/month for founding members.</span></p>
+    <form class="email-form" action="#" data-source="yuliya-mid2" aria-label="Join the waitlist">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit" class="btn-acid">I want the founding member deal</button>
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════════ WHAT'S INCLUDED ═══════════════════ -->
+<section class="section-dark">
+  <div class="wrap">
+    <div class="s-label reveal">06 &mdash; What's Included</div>
+    <h2 class="reveal reveal-d1"><del>$99</del> $79/month. <span class="serif-accent">Everything</span>&nbsp;included.</h2>
+
+    <div class="features">
+      <div class="feature-card reveal">
+        <h3>All attribution models. No upgrade wall.</h3>
+        <p>First-touch, last-touch, multi-touch. Not locked behind a $279/month "Pro" tier. Not gated by your GMV. The full product from day&nbsp;one.</p>
+      </div>
+      <div class="feature-card reveal reveal-d1">
+        <h3>Pre-built dashboards for D2C and direct response.</h3>
+        <p>Opinionated dashboards designed from real experience with hundreds of D2C brands. Not a blank canvas you spend three weeks configuring. Connect your store, see your&nbsp;data.</p>
+      </div>
+      <div class="feature-card reveal reveal-d2">
+        <h3>Direct connection to your AI tools.</h3>
+        <p>Your Bratrax dataset plugs straight into Claude, ChatGPT, or any AI you use. Ask your data anything, wherever you already work. No proprietary chatbot&nbsp;required.</p>
+      </div>
+      <div class="feature-card reveal reveal-d3">
+        <h3>Flat pricing that doesn't change.</h3>
+        <p>$79/month at $500K revenue. $79/month at $5M revenue. No pricing calculator. No surprise invoice when your store has a good quarter. Founding member rate, locked in for&nbsp;life.</p>
+      </div>
+      <div class="feature-card reveal reveal-d3" style="grid-column: 1 / -1;">
+        <h3>No contract. 30-day money-back guarantee.</h3>
+        <p>Monthly. Cancel anytime. If you don't trust the numbers more than your current tool within 30 days, we'll refund you. No questions&nbsp;asked.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ COMPARISON TABLE ═══════════════════ -->
+<section class="section-surface">
+  <div class="wrap-wide">
+    <div class="s-label reveal">07 &mdash; The Comparison</div>
+    <h2 class="reveal reveal-d1">Here's what $79/month looks like next to what you might be <span class="serif-accent">paying</span>&nbsp;now.</h2>
+
+    <div class="reveal reveal-d2" style="overflow-x: auto;">
+      <table class="comparison-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th style="color: var(--acid);">Bratrax Lite</th>
+            <th>Triple Whale</th>
+            <th>Northbeam</th>
+            <th>Hyros</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="highlight-row">
+            <td>Starting price</td>
+            <td class="col-bratrax">$79/mo</td>
+            <td>$129/mo</td>
+            <td>$1,500/mo</td>
+            <td>$69&ndash;$999/mo</td>
+          </tr>
+          <tr class="highlight-row">
+            <td>Price at $5M GMV</td>
+            <td class="col-bratrax">$79/mo</td>
+            <td>$1,129/mo</td>
+            <td>Custom (higher)</td>
+            <td>$999+/mo</td>
+          </tr>
+          <tr>
+            <td>Setup time</td>
+            <td class="col-bratrax">Minutes</td>
+            <td>Hours to days</td>
+            <td>Weeks</td>
+            <td>Weeks to months</td>
+          </tr>
+          <tr>
+            <td>AI data access</td>
+            <td class="col-bratrax">Your Claude/ChatGPT</td>
+            <td>Proprietary (Moby)</td>
+            <td>None</td>
+            <td>None</td>
+          </tr>
+          <tr>
+            <td>Money-back guarantee</td>
+            <td class="col-bratrax">30 days</td>
+            <td>No</td>
+            <td>No</td>
+            <td>No</td>
+          </tr>
+          <tr>
+            <td>Contract</td>
+            <td class="col-bratrax">No</td>
+            <td>No</td>
+            <td>Annual</td>
+            <td>Annual</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="price-math reveal">
+      <strong>Let's do the math.</strong> At $5M GMV, Triple Whale charges $1,129/month. Bratrax Lite founding members pay $79. That's <strong>$12,600 per year back in your pocket</strong>, for a tool built on the same caliber of analytics methodology. If Bratrax Lite helps you reallocate even 5% of your ad budget more effectively, it pays for itself in the first&nbsp;week.
+    </div>
+
+    <p class="body-text centered reveal">
+      You shouldn't need a pricing calculator to figure out what your analytics tool&nbsp;costs.
+    </p>
+  </div>
+</section>
+
+<!-- ═══════════════════ WHO IT'S FOR ═══════════════════ -->
+<section class="section-dark">
+  <div class="wrap">
+    <div class="s-label reveal">08 &mdash; Who It's For</div>
+    <h2 class="reveal reveal-d1">Built for D2C and direct response brands who want <span class="serif-accent">decisions,</span> not&nbsp;dashboards.</h2>
+
+    <div class="fit-grid reveal reveal-d2">
+      <div class="fit-list good">
+        <h3>You're a good fit if:</h3>
+        <ul>
+          <li>You run a D2C or direct response brand doing $1M&ndash;$20M in&nbsp;revenue</li>
+          <li>You spend on Facebook, Google, or both and want a clear answer on what's driving real&nbsp;sales</li>
+          <li>You've used other attribution tools and felt like you got more dashboards, not more&nbsp;clarity</li>
+          <li>You want to ask your data a question and get a real answer, not spend an hour configuring&nbsp;reports</li>
+        </ul>
+      </div>
+      <div class="fit-list not-yet">
+        <h3>Not a fit right now:</h3>
+        <ul>
+          <li>Brands needing fully custom analytics infrastructure (that's <a href="#">Bratrax Clear Vision</a>)</li>
+          <li>Agencies managing multiple client&nbsp;accounts</li>
+          <li>Non-Shopify stores (Shopify at launch, more platforms&nbsp;coming)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOUNDER NOTE ═══════════════════ -->
+<section class="section-surface">
+  <div class="wrap">
+    <div class="s-label reveal">09 &mdash; From The Founder</div>
+    <h2 class="reveal reveal-d1">Why we&nbsp;<span class="serif-accent">built</span>&nbsp;this.</h2>
+
+    <div class="founder-note reveal reveal-d2">
+      <div class="founder-header">
+        <div class="founder-photo">Photo</div>
+        <div class="founder-meta">
+          <strong>Brat Vukovich</strong>
+          Founder, Bratrax
+        </div>
+      </div>
+
+      <div class="body-text">
+        <p>
+          I've been building custom analytics for D2C brands for years. Every engagement starts the same way: the team has an attribution tool, they have dashboards, they have data. And they still don't trust the numbers enough to make a real budget decision without pulling up a spreadsheet and cross-referencing&nbsp;manually.
+        </p>
+        <p>
+          They're paying $300, $500, sometimes $1,500 a month. And their process is still: check the tool, check the ad platform, compare, go with&nbsp;gut.
+        </p>
+        <p>
+          That's the problem we're solving. Not "more data." Not "AI-powered insights." Just honest, consistent numbers from a tool that was designed to give you clarity instead of trying to impress you with&nbsp;complexity.
+        </p>
+        <p>
+          No attribution tool gives you perfect data. Anyone who promises that is selling you something. What we can give you is numbers that are consistent, transparent, and trustworthy enough to actually make decisions with. That's what this&nbsp;is.
+        </p>
+      </div>
+
+      <div class="founder-sig">&mdash; Brat</div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FAQ ═══════════════════ -->
+<section class="section-dark">
+  <div class="wrap">
+    <div class="s-label reveal">10 &mdash; FAQ</div>
+    <h2 class="reveal reveal-d1">Still <span class="serif-accent">thinking</span> it&nbsp;over?</h2>
+
+    <div class="faq-list reveal reveal-d2">
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="var item=this.parentElement;item.classList.toggle('open');this.setAttribute('aria-expanded',item.classList.contains('open'))">
+          <span>How is Bratrax Lite different from Triple Whale / Northbeam / Hyros?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">Those tools have grown into complex platforms with dozens of features, pricing that scales with your revenue, and proprietary AI chatbots that lock you into their ecosystem. Bratrax Lite is deliberately simpler: fewer features done well, a flat price with no growth penalty, and a clean dataset that connects to your own AI tools (Claude, ChatGPT) instead of forcing you into ours.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="var item=this.parentElement;item.classList.toggle('open');this.setAttribute('aria-expanded',item.classList.contains('open'))">
+          <span>What does "founding member" mean?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">The first 100 users who sign up through the waitlist get $79/month locked in for life. That price never changes, regardless of how the product grows or what we charge later. After 100 founding members, the regular price is $99/month.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="var item=this.parentElement;item.classList.toggle('open');this.setAttribute('aria-expanded',item.classList.contains('open'))">
+          <span>Will this give me "perfect" attribution?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">No. And no tool can. Any tool that promises 100% attribution accuracy is misleading you. What Bratrax Lite gives you is consistent, transparent numbers you can trace back to source and trust enough to make real budget decisions.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="var item=this.parentElement;item.classList.toggle('open');this.setAttribute('aria-expanded',item.classList.contains('open'))">
+          <span>What if it doesn't work for me?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">We offer a 30-day money-back guarantee. If you don't trust Bratrax Lite's numbers more than your current tool within 30 days, we'll refund you. No questions asked. At $79/month with a full guarantee, the risk is close to zero.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="var item=this.parentElement;item.classList.toggle('open');this.setAttribute('aria-expanded',item.classList.contains('open'))">
+          <span>How long does setup take?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">Most brands are looking at real data within minutes. Connect your store, link your ad accounts, and your dashboards populate automatically. No pixel debugging, no DNS changes, no onboarding calls.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="var item=this.parentElement;item.classList.toggle('open');this.setAttribute('aria-expanded',item.classList.contains('open'))">
+          <span>What if I'm already using another attribution tool?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">You can run them side by side. A lot of brands keep their existing tool for the first month and compare. We're confident in what you'll see.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="var item=this.parentElement;item.classList.toggle('open');this.setAttribute('aria-expanded',item.classList.contains('open'))">
+          <span>Do I need to use AI to get value from Bratrax?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">No. The dashboards work on their own and are worth the price for most brands. The AI connection is there for brands who want to go deeper &mdash; ask questions, get analysis, explore patterns. But the dashboards alone give you clear attribution data out of the box.</div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false" onclick="var item=this.parentElement;item.classList.toggle('open');this.setAttribute('aria-expanded',item.classList.contains('open'))">
+          <span>What happens after I join the waitlist?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-a" role="region">You'll get an email confirming your founding member spot at $79/month. Before May 12, we'll send setup instructions so you can be among the first to connect your store and start seeing real data.</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════ FINAL CTA ═══════════════════ -->
+<section class="final-cta">
+  <div class="wrap">
+    <h2 class="reveal">100 founding member spots.<br><del>$99</del> $79/month, locked in for&nbsp;<span class="serif-accent">life.</span></h2>
+
+    <div class="benefits-row reveal reveal-d1">
+      <span>$79/mo forever</span>
+      <span>&bull;</span>
+      <span>Priority onboarding</span>
+      <span>&bull;</span>
+      <span>First access May 12</span>
+      <span>&bull;</span>
+      <span>30-day guarantee</span>
+    </div>
+
+    <form class="email-form reveal reveal-d2" action="#" data-source="yuliya-final" aria-label="Join the waitlist">
+      <input type="email" name="email" placeholder="your@email.com" required>
+      <button type="submit" class="btn-acid">Join 100 founding members</button>
+    </form>
+
+    <p class="below-cta reveal reveal-d3">One plan. Every feature. No contract. No risk. No credit card required to join the&nbsp;waitlist.</p>
+  </div>
+</section>
+
+<!-- ═══════════════════ FOOTER ═══════════════════ -->
+<footer style="padding: 48px 0; border-top: 1px solid var(--mid); text-align: center;">
+  <div class="wrap">
+    <p style="font-family: var(--font-mono); font-size: 11px; color: var(--muted); letter-spacing: 1px;">
+      &copy; 2026 Bratrax. All rights reserved.
+    </p>
+  </div>
+</footer>
+
+<!-- ═══════════════════ SCROLL REVEAL JS ═══════════════════ -->
+<script>
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+<!-- ═══════════════════ WAITLIST FORM HANDLER ═══════════════════ -->
+<script>
+(function() {
+  const WEBHOOK_URL = 'https://hook.eu1.make.com/ytu7p3ysg1idjpd6ubmer5b91qjx2mud';
+  const PAGE = 'yuliya';
+
+  document.querySelectorAll('form.email-form').forEach(function(form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      const emailInput = form.querySelector('input[type="email"]');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const email = (emailInput.value || '').trim();
+      const source = form.dataset.source || 'unknown';
+      if (!email) return;
+
+      // Remove any prior error
+      const prevError = form.querySelector('.form-error');
+      if (prevError) prevError.remove();
+
+      const originalText = submitBtn.textContent;
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Saving...';
+
+      try {
+        const res = await fetch(WEBHOOK_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            email: email,
+            source: source,
+            page: PAGE,
+            submitted_at: new Date().toISOString(),
+            referrer: document.referrer || '',
+            user_agent: navigator.userAgent
+          })
+        });
+        if (!res.ok) throw new Error('Request failed: ' + res.status);
+
+        // Replace form with success message
+        const success = document.createElement('div');
+        success.className = 'form-success';
+        success.textContent = "✓ You're on the list. We'll email you before May 12.";
+        form.parentNode.replaceChild(success, form);
+      } catch (err) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = originalText;
+        const errBox = document.createElement('div');
+        errBox.className = 'form-error';
+        errBox.textContent = "Something went wrong. Please try again or email hello@bratrax.com.";
+        form.appendChild(errBox);
+      }
+    });
+  });
+})();
+</script>
+
+</body>
+</html>

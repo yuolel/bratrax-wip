@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bratrax Lite &mdash; Attribution Analytics for D2C Brands</title>
+<meta name="description" content="D2C attribution that connects to the AI you already use. $79/month founding member pricing. Join the waitlist.">
+<meta name="robots" content="noindex">
+<style>
+  html, body { margin: 0; padding: 0; height: 100%; background: #0A0A0A; }
+  .loader {
+    position: fixed; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #858585;
+    font-family: 'Space Mono', ui-monospace, Menlo, monospace;
+    font-size: 11px; letter-spacing: 2px; text-transform: uppercase;
+  }
+</style>
+</head>
+<body>
+  <div class="loader">Loading&hellip;</div>
+  <script>
+    (function() {
+      var COOKIE_NAME = 'bratrax_variant';
+      var COOKIE_DAYS = 30;
+
+      function getCookie(name) {
+        var m = document.cookie.match(new RegExp('(?:^|; )' + name + '=([^;]*)'));
+        return m ? decodeURIComponent(m[1]) : null;
+      }
+      function setCookie(name, value, days) {
+        var d = new Date();
+        d.setTime(d.getTime() + (days * 864e5));
+        document.cookie = name + '=' + encodeURIComponent(value) +
+          ';expires=' + d.toUTCString() + ';path=/;SameSite=Lax';
+      }
+
+      // Re-use existing bucket; otherwise 50/50 coin flip
+      var variant = getCookie(COOKIE_NAME);
+      if (variant !== 'a' && variant !== 'b') {
+        variant = Math.random() < 0.5 ? 'a' : 'b';
+        setCookie(COOKIE_NAME, variant, COOKIE_DAYS);
+      }
+
+      // Preserve query string + hash across the redirect
+      var target = '/' + variant + '/' + window.location.search + window.location.hash;
+      window.location.replace(target);
+    })();
+  </script>
+  <noscript>
+    <p style="color:#858585;font-family:sans-serif;text-align:center;margin-top:40vh;padding:0 20px;">
+      This page requires JavaScript. View the site directly at
+      <a href="/a/" style="color:#D4FF00;">bratrax.com/a/</a> or
+      <a href="/b/" style="color:#D4FF00;">bratrax.com/b/</a>.
+    </p>
+  </noscript>
+</body>
+</html>
