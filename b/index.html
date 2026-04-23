@@ -98,13 +98,13 @@ section.hero, section.final-cta { padding: 140px 0; }
    NAV (Sticky)
    ═══════════════════════════════════════════ */
 
-nav {
+body > nav {
   position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
   padding: 16px 0; background: rgba(10,10,10,0.85);
   backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);
   border-bottom: 1px solid rgba(212,255,0,0.08);
 }
-nav .wrap-wide { display: flex; justify-content: space-between; align-items: center; }
+body > nav .wrap-wide { display: flex; justify-content: space-between; align-items: center; }
 .nav-ticker {
   font-family: var(--font-mono); font-size: 10px; letter-spacing: 1px;
   text-transform: uppercase; color: var(--light); opacity: 0.7;
@@ -1169,7 +1169,7 @@ del { color: var(--red); text-decoration: line-through; opacity: 0.7; }
 <!-- ═══════════════════ SHARED FOOTER (fetched from bratrax.com/partials/footer.html) ═══════════════════ -->
 <div id="brx-footer"></div>
 <script>
-  fetch('https://bratrax.com/partials/footer.html')
+  fetch('https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/partials/footer.html')
     .then(function(r){ return r.text(); })
     .then(function(html){ document.getElementById('brx-footer').innerHTML = html; })
     .catch(function(){});
@@ -1253,24 +1253,6 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
   });
 })();
 </script>
-
-<div id="brx-footer"></div>
-<script>
-  fetch('https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/partials/footer.html')
-    .then(function(r){ return r.text(); })
-    .then(function(html){ document.getElementById('brx-footer').innerHTML = html; })
-    .catch(function(){});
-</script>
-<noscript>
-  <footer style="background:#0A0A0A;color:#E8E4DC;padding:32px;text-align:center;font-family:sans-serif">
-    <a href="https://bratrax.com/" style="color:#E8E4DC;margin:0 12px">Home</a>
-    <a href="https://lite.bratrax.com/" style="color:#E8E4DC;margin:0 12px">Lite</a>
-    <a href="https://bratrax.com/login" style="color:#D4FF00;margin:0 12px">Login</a>
-    <a href="https://blog.bratrax.com/" style="color:#E8E4DC;margin:0 12px">Newsletter</a>
-    <a href="https://bratrax.com/privacy" style="color:#858585;margin:0 12px">Privacy Policy</a>
-    <a href="https://bratrax.com/terms" style="color:#858585;margin:0 12px">Terms of Service</a>
-  </footer>
-</noscript>
 
 </body>
 </html>
