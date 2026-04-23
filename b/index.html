@@ -1254,5 +1254,23 @@ document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 })();
 </script>
 
+<div id="brx-footer"></div>
+<script>
+  fetch('https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/partials/footer.html')
+    .then(function(r){ return r.text(); })
+    .then(function(html){ document.getElementById('brx-footer').innerHTML = html; })
+    .catch(function(){});
+</script>
+<noscript>
+  <footer style="background:#0A0A0A;color:#E8E4DC;padding:32px;text-align:center;font-family:sans-serif">
+    <a href="https://bratrax.com/" style="color:#E8E4DC;margin:0 12px">Home</a>
+    <a href="https://lite.bratrax.com/" style="color:#E8E4DC;margin:0 12px">Lite</a>
+    <a href="https://bratrax.com/login" style="color:#D4FF00;margin:0 12px">Login</a>
+    <a href="https://blog.bratrax.com/" style="color:#E8E4DC;margin:0 12px">Newsletter</a>
+    <a href="https://bratrax.com/privacy" style="color:#858585;margin:0 12px">Privacy Policy</a>
+    <a href="https://bratrax.com/terms" style="color:#858585;margin:0 12px">Terms of Service</a>
+  </footer>
+</noscript>
+
 </body>
 </html>
