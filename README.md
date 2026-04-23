@@ -13,16 +13,16 @@ This branch holds the content for the apex `bratrax.com` domain. It's separate f
 | URL | Behavior |
 |---|---|
 | `https://bratrax.com/` | 302 redirect → `https://lite.bratrax.com/` (temporary, until a real landing page replaces it) |
-| `https://bratrax.com/privacy` | Serve `privacy/index.html` |
-| `https://bratrax.com/terms` | Serve `terms/index.html` |
+| `https://bratrax.com/privacy-policy` | Serve `privacy/index.html` |
+| `https://bratrax.com/terms-of-service` | Serve `terms/index.html` |
 | `https://bratrax.com/partials/footer.html` | Serve with `Access-Control-Allow-Origin: *` — fetched cross-origin by `lite.bratrax.com` and any future subdomains |
 | `https://bratrax.com/login` | **Must keep working** — continues to serve the app login wherever it currently routes to |
 
 ## File structure in this branch
 
 ```
-privacy/index.html     → https://bratrax.com/privacy
-terms/index.html       → https://bratrax.com/terms
+privacy/index.html     → https://bratrax.com/privacy-policy
+terms/index.html       → https://bratrax.com/terms-of-service
 partials/footer.html   → https://bratrax.com/partials/footer.html
 ```
 
@@ -59,8 +59,8 @@ location /partials/ {
 ## Verification after DNS switch
 
 - [ ] `https://bratrax.com/` → 302 → `https://lite.bratrax.com/`
-- [ ] `https://bratrax.com/privacy` → HTML loads
-- [ ] `https://bratrax.com/terms` → HTML loads
+- [ ] `https://bratrax.com/privacy-policy` → HTML loads
+- [ ] `https://bratrax.com/terms-of-service` → HTML loads
 - [ ] `https://bratrax.com/partials/footer.html` → raw HTML, response header `Access-Control-Allow-Origin: *`
 - [ ] `https://bratrax.com/login` → app login still works
 - [ ] Cross-origin fetch from `https://lite.bratrax.com/a/` succeeds (DevTools → Network → the `footer.html` request should be 200 and the footer should render at the bottom of the page)
