@@ -439,6 +439,28 @@ del { color: var(--red); text-decoration: line-through; opacity: 0.7; }
 .founder-social:hover { color: var(--off-white); border-color: var(--off-white); }
 .founder-sig { font-family: var(--font-serif); font-style: italic; font-size: 28px; color: var(--acid); margin-top: 40px; }
 
+/* SECTION FIGURE — treated stock image */
+.section-figure { margin: 56px 0; }
+.section-figure .figure-frame {
+  position: relative; border: 1px solid var(--mid); background: var(--off-black); overflow: hidden;
+}
+.section-figure img {
+  display: block; width: 100%; height: auto;
+  max-height: 440px; object-fit: cover;
+  filter: grayscale(1) contrast(1.05) brightness(0.82);
+}
+.section-figure .figure-frame::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 55%, rgba(10,10,10,0.55) 100%),
+    radial-gradient(circle at 25% 20%, rgba(212,255,0,0.08), transparent 55%);
+}
+.section-figure figcaption {
+  margin-top: 14px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted);
+}
+
 /* FAQ */
 .faq-list { max-width: 720px; }
 .faq-item { border-bottom: 1px solid var(--mid); }
@@ -595,9 +617,16 @@ del { color: var(--red); text-decoration: line-through; opacity: 0.7; }
       <p>
         The infrastructure to run attribution analytics costs pennies per client per month. They charge 100&ndash;1000x markup &mdash; not for better technology, but to fund sales teams, SDRs, conference booths, demo calls, and investor returns.
       </p>
+    </div>
 
-      <hr style="border: none; border-top: 1px solid var(--mid); margin: 40px 0; opacity: 0.4;">
+    <figure class="section-figure reveal">
+      <div class="figure-frame">
+        <img src="/assets/sales-machine.jpg" alt="Corporate sales floor with rows of headsets and monitors" loading="lazy">
+      </div>
+      <figcaption>Where your $300/month actually goes.</figcaption>
+    </figure>
 
+    <div class="body-text reveal">
       <p>
         Every dollar they spend acquiring you gets passed to you. That's why a tool that shows you the same data as your Shopify admin costs $1,500/month at&nbsp;scale.
       </p>
