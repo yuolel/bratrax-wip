@@ -467,6 +467,31 @@ del { color: var(--red); text-decoration: line-through; opacity: 0.7; }
 .founder-sig { font-family: var(--font-serif); font-style: italic; font-size: 28px; color: var(--acid); margin-top: 40px; }
 
 /* ═══════════════════════════════════════════
+   SECTION FIGURE — treated stock image
+   ═══════════════════════════════════════════ */
+
+.section-figure { margin: 56px 0; }
+.section-figure .figure-frame {
+  position: relative; border: 1px solid var(--mid); background: var(--off-black); overflow: hidden;
+}
+.section-figure img {
+  display: block; width: 100%; height: auto;
+  max-height: 440px; object-fit: cover;
+  filter: grayscale(1) contrast(1.05) brightness(0.82);
+}
+.section-figure .figure-frame::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(180deg, transparent 55%, rgba(10,10,10,0.55) 100%),
+    radial-gradient(circle at 25% 20%, rgba(212,255,0,0.08), transparent 55%);
+}
+.section-figure figcaption {
+  margin-top: 14px;
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted);
+}
+
+/* ═══════════════════════════════════════════
    FAQ
    ═══════════════════════════════════════════ */
 
@@ -686,9 +711,16 @@ del { color: var(--red); text-decoration: line-through; opacity: 0.7; }
       <p>
         That's the routine. Every morning. And you're paying between $300 and $1,500 a month for the privilege of doing it.
       </p>
+    </div>
 
-      <hr style="border: none; border-top: 1px solid var(--mid); margin: 40px 0; opacity: 0.4;">
+    <figure class="section-figure reveal">
+      <div class="figure-frame">
+        <img src="/assets/team-argument.jpg" alt="Marketing team in a tense meeting disagreeing over conflicting attribution numbers" loading="lazy">
+      </div>
+      <figcaption>Three sources. Four numbers. Nobody&nbsp;agrees.</figcaption>
+    </figure>
 
+    <div class="body-text reveal">
       <p>
         You signed up for an attribution tool because you wanted to stop guessing where your ad budget goes. Instead, you got more dashboards, more reports, more "AI-powered insights," and somehow the question you started with ("is this campaign actually making money?") is just as hard to answer as it was before you were paying for help.
       </p>
@@ -862,6 +894,13 @@ del { color: var(--red); text-decoration: line-through; opacity: 0.7; }
         No other attribution tool does this. Because they have no incentive to. Their business model depends on you staying inside their app. <strong>Ours depends on your data being useful&nbsp;everywhere.</strong>
       </p>
     </div>
+
+    <figure class="section-figure reveal">
+      <div class="figure-frame">
+        <img src="/assets/ai-user.jpg" alt="Person at a laptop using an AI chat assistant to ask questions about marketing data" loading="lazy">
+      </div>
+      <figcaption>Open the chat. Ask the question. Get the&nbsp;answer.</figcaption>
+    </figure>
 
     <div class="chat-examples reveal reveal-d2">
       <div class="chat-example">
