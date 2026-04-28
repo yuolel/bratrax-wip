@@ -166,13 +166,11 @@
       background: var(--color-surface);
       border: 1px solid var(--color-border);
       padding: var(--space-lg);
-      transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+      transition: background-color 180ms ease;
     }
 
     .card:hover {
       background: var(--color-surface-hover);
-      border-color: rgba(212,255,0,0.35);
-      transform: translateY(-1px);
     }
 
     .card::before {
@@ -211,14 +209,13 @@
       font-size: 12px;
       font-weight: 700;
       padding: 14px 32px;
-      border: 1px solid var(--color-acid);
-      transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+      border: none;
+      transition: transform 150ms ease, opacity 150ms ease;
     }
 
     .btn-primary:hover {
+      opacity: 0.88;
       transform: translateY(-1px);
-      box-shadow: 0 0 0 1px rgba(212,255,0,0.3), 0 10px 30px rgba(212,255,0,0.12);
-      background: #dfff3c;
     }
 
     .btn-outline {
@@ -287,14 +284,16 @@
     }
 
     th {
-      color: var(--color-text-bright);
-      background: rgba(255,255,255,0.015);
-      font-size: 13px;
+      color: rgba(212,255,0,0.7);
+      background: rgba(212,255,0,0.04);
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 1.6px;
+      letter-spacing: 1.5px;
       font-family: 'Space Mono', monospace;
       font-weight: 700;
     }
+
+    tr:last-child td { border-bottom: none; }
 
     tbody tr:hover td {
       background: rgba(255,255,255,0.02);
@@ -379,6 +378,7 @@
     }
 
     .faq-item p { margin: 0; }
+    .card > p + p { margin-top: 12px; }
 
     .cta-card {
       display: grid;
@@ -645,20 +645,24 @@
       <section class="section">
         <span class="section-label">04 — When Triple Whale is the right choice</span>
         <h2>There are cases where <span class="serif-accent">Triple Whale</span> is the better fit.</h2>
-        <ul class="bullet-list">
-          <li><strong>You want a feature-complete ecommerce intelligence platform.</strong> Triple Whale publicly positions as replacing 10+ tools — attribution, creative analytics, forecasting, activation, MMM, and more under one roof. If you want breadth and consolidation, Bratrax Lite is deliberately narrower.</li>
-          <li><strong>You need MMM, incrementality testing, or forecasting.</strong> Bratrax Lite does not have these. Triple Whale’s platform includes them. For brands at a scale where those measurement methods add meaningful signal, Triple Whale’s investment is easier to justify.</li>
-          <li><strong>You want a built-in AI agent ecosystem, not BYO AI.</strong> Moby Chat and Moby Agents are purpose-built for ecommerce workflows. If you want AI that is pre-trained for your use case rather than a general-purpose model you bring yourself, Triple Whale’s approach makes more sense.</li>
-          <li><strong>You are spending $200K+/month on ads and need the full platform depth.</strong> The GMV-scaled pricing is harder to justify at $1M–$5M revenue. At $10M–$30M GMV, the analytics complexity, team size, and measurement needs are more likely to match what Triple Whale has built.</li>
-          <li><strong>You want a dedicated Customer Success Manager and implementation support.</strong> Higher Triple Whale tiers include structured onboarding and account management. Bratrax Lite is self-serve — there is no CSM included.</li>
-        </ul>
+        <div class="card red-top">
+          <ul class="bullet-list">
+            <li><strong>You want a feature-complete ecommerce intelligence platform.</strong> Triple Whale publicly positions as replacing 10+ tools — attribution, creative analytics, forecasting, activation, MMM, and more under one roof. If you want breadth and consolidation, Bratrax Lite is deliberately narrower.</li>
+            <li><strong>You need MMM, incrementality testing, or forecasting.</strong> Bratrax Lite does not have these. Triple Whale’s platform includes them. For brands at a scale where those measurement methods add meaningful signal, Triple Whale’s investment is easier to justify.</li>
+            <li><strong>You want a built-in AI agent ecosystem, not BYO AI.</strong> Moby Chat and Moby Agents are purpose-built for ecommerce workflows. If you want AI that is pre-trained for your use case rather than a general-purpose model you bring yourself, Triple Whale’s approach makes more sense.</li>
+            <li><strong>You are spending $200K+/month on ads and need the full platform depth.</strong> The GMV-scaled pricing is harder to justify at $1M–$5M revenue. At $10M–$30M GMV, the analytics complexity, team size, and measurement needs are more likely to match what Triple Whale has built.</li>
+            <li><strong>You want a dedicated Customer Success Manager and implementation support.</strong> Higher Triple Whale tiers include structured onboarding and account management. Bratrax Lite is self-serve — there is no CSM included.</li>
+          </ul>
+        </div>
       </section>
 
       <section class="section">
         <span class="section-label">05 — Migration notes</span>
         <h2>Switching tools means a <span class="serif-accent">parallel-run</span> period.</h2>
-        <p>Bratrax Lite is self-serve — no migration call, no implementation specialist. Connect Shopify, Meta, and Google Ads at launch. Historical data from Triple Whale is not auto-imported; attribution history in Bratrax Lite starts from the day you connect.</p>
-        <p>If you have built reporting, custom dashboards, or workflows on top of Triple Whale’s data — particularly if you are on a managed warehouse tier — factor in what stays with the platform and what you take with you before cutting over.</p>
+        <div class="card blue-top">
+          <p>Bratrax Lite is self-serve — no migration call, no implementation specialist. Connect Shopify, Meta, and Google Ads at launch. Historical data from Triple Whale is not auto-imported; attribution history in Bratrax Lite starts from the day you connect.</p>
+          <p>If you have built reporting, custom dashboards, or workflows on top of Triple Whale’s data — particularly if you are on a managed warehouse tier — factor in what stays with the platform and what you take with you before cutting over.</p>
+        </div>
       </section>
 
       <section class="section">
