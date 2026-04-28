@@ -10,26 +10,26 @@
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Outfit:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
-      --bg: #0a0a0a;
-      --surface: #141414;
-      --surface-hover: #1e1e1e;
-      --border: #3a3a3a;
-      --muted: #858585;
-      --text-secondary: #b8b4ad;
-      --text: #e8e4dc;
-      --text-bright: #fafaf5;
-      --acid: #d4ff00;
-      --acid-dim: rgba(212,255,0,0.08);
-      --acid-mid: rgba(212,255,0,0.22);
-      --red: #ff3b30;
-      --blue: #00d4ff;
+      --color-bg: #0a0a0a;
+      --color-surface: #141414;
+      --color-surface-hover: #1e1e1e;
+      --color-border: #3a3a3a;
+      --color-text-muted: #858585;
+      --color-text-secondary: #B0B0B0;
+      --color-text: #e8e4dc;
+      --color-text-bright: #fafaf5;
+      --color-acid: #d4ff00;
+      --color-acid-dim: rgba(212,255,0,0.08);
+      --color-acid-mid: rgba(212,255,0,0.25);
+      --color-red: #ff3b30;
+      --color-blue: #00d4ff;
       --space-xs: 8px;
       --space-sm: 16px;
       --space-md: 24px;
       --space-lg: 32px;
       --space-xl: 48px;
       --space-2xl: 64px;
-      --space-3xl: 120px;
+      --space-3xl: 140px;
     }
 
     * { box-sizing: border-box; }
@@ -37,8 +37,8 @@
 
     body {
       margin: 0;
-      background: var(--bg);
-      color: var(--text-secondary);
+      background: var(--color-bg);
+      color: var(--color-text-secondary);
       font-family: 'Outfit', system-ui, sans-serif;
       font-weight: 300;
       font-size: 17px;
@@ -107,7 +107,7 @@
 
     h1, h2, h3, h4 {
       margin: 0;
-      color: var(--text-bright);
+      color: var(--color-text-bright);
       font-weight: 900;
       line-height: 1.05;
       text-wrap: balance;
@@ -115,36 +115,36 @@
 
     h1 {
       font-size: clamp(44px, 5.5vw, 76px);
-      letter-spacing: -1.1px;
+      letter-spacing: -0.5px;
     }
 
     h2 {
       font-size: clamp(36px, 4.5vw, 60px);
-      letter-spacing: -0.9px;
+      letter-spacing: -0.3px;
       margin-bottom: var(--space-md);
     }
 
     h3 {
       font-size: clamp(26px, 2.6vw, 34px);
-      letter-spacing: -0.6px;
+      letter-spacing: -0.3px;
       margin-bottom: var(--space-sm);
     }
 
     h4 {
       font-size: 22px;
-      letter-spacing: -0.35px;
+      letter-spacing: -0.3px;
       margin-bottom: 10px;
     }
 
     .serif-accent {
-      color: var(--acid);
+      color: var(--color-acid);
       font-family: 'DM Serif Display', serif;
       font-style: italic;
       font-weight: 400;
     }
 
     .subhead {
-      color: var(--text);
+      color: var(--color-text);
       font-size: 22px;
       line-height: 1.45;
       max-width: 860px;
@@ -161,16 +161,14 @@
 
     .card {
       position: relative;
-      background: var(--surface);
-      border: 1px solid var(--border);
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
       padding: var(--space-lg);
-      transition: background-color 180ms ease, border-color 180ms ease, transform 180ms ease;
+      transition: background-color 180ms ease;
     }
 
     .card:hover {
-      background: var(--surface-hover);
-      border-color: rgba(212,255,0,0.35);
-      transform: translateY(-1px);
+      background: var(--color-surface-hover);
     }
 
     .card::before {
@@ -180,11 +178,11 @@
       left: 0;
       right: 0;
       height: 4px;
-      background: var(--acid);
+      background: var(--color-acid);
     }
 
-    .card.red-top::before { background: var(--red); }
-    .card.blue-top::before { background: var(--blue); }
+    .card.red-top::before { background: var(--color-red); }
+    .card.blue-top::before { background: var(--color-blue); }
 
     .tldr-list {
       margin: 0;
@@ -193,10 +191,10 @@
       gap: 14px;
     }
 
-    .tldr-list strong { color: var(--text-bright); font-weight: 700; }
+    .tldr-list strong { color: var(--color-text-bright); font-weight: 700; }
 
     .btn-primary,
-    .btn-secondary {
+    .btn-outline {
       display: inline-flex;
       align-items: center;
       justify-content: center;
@@ -211,27 +209,26 @@
     }
 
     .btn-primary {
-      background: var(--acid);
+      background: var(--color-acid);
       color: #0b0b0a;
-      border: 1px solid var(--acid);
-      transition: transform 150ms ease, box-shadow 150ms ease, background-color 150ms ease;
+      border: 1px solid var(--color-acid);
+      transition: transform 150ms ease, opacity 150ms ease;
     }
 
     .btn-primary:hover {
+      opacity: 0.88;
       transform: translateY(-1px);
-      box-shadow: 0 0 0 1px rgba(212,255,0,0.3), 0 10px 30px rgba(212,255,0,0.12);
-      background: #dfff3c;
     }
 
-    .btn-secondary {
-      border: 1px solid var(--border);
-      color: var(--text);
+    .btn-outline {
+      border: 1px solid var(--color-border);
+      color: var(--color-text);
       transition: border-color 150ms ease, color 150ms ease;
     }
 
-    .btn-secondary:hover {
-      border-color: rgba(212,255,0,0.45);
-      color: var(--text-bright);
+    .btn-outline:hover {
+      border-color: var(--color-acid);
+      color: var(--color-text-bright);
     }
 
     .hero-actions,
@@ -248,13 +245,13 @@
 
     .lede {
       max-width: 760px;
-      color: var(--text);
+      color: var(--color-text);
     }
 
     .comparison-table-wrap {
       overflow-x: auto;
-      border: 1px solid var(--border);
-      background: var(--surface);
+      border: 1px solid var(--color-border);
+      background: var(--color-surface);
     }
 
     table {
@@ -265,24 +262,25 @@
 
     th, td {
       padding: 18px 20px;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--color-border);
       vertical-align: top;
       text-align: left;
     }
 
     th {
-      color: var(--text-bright);
-      background: rgba(255,255,255,0.015);
-      font-size: 13px;
+      color: rgba(212,255,0,0.7);
+      background: rgba(212,255,0,0.04);
+      font-size: 11px;
       text-transform: uppercase;
-      letter-spacing: 1.6px;
+      letter-spacing: 1.5px;
       font-family: 'Space Mono', monospace;
       font-weight: 700;
     }
 
+    tr:last-child td { border-bottom: none; }
     tbody tr:hover td { background: rgba(255,255,255,0.02); }
-    td strong { color: var(--text-bright); }
-    a { color: var(--acid); }
+    td strong { color: var(--color-text-bright); }
+    a { color: var(--color-acid); }
     a:hover { color: #e5ff58; }
 
     .dimension {
@@ -302,30 +300,32 @@
     .stack p { margin: 0; }
 
     .note-box {
-      border-left: 3px solid var(--acid);
-      background: var(--acid-dim);
+      border-left: 3px solid var(--color-acid);
+      background: var(--color-acid-dim);
       padding: 18px 20px;
-      color: var(--text);
-      font-family: 'Outfit', system-ui, sans-serif;
-      font-weight: 300;
+      color: var(--color-text-secondary);
+      font-family: 'Space Mono', monospace;
+      font-size: 12px;
+      line-height: 1.7;
+      letter-spacing: 0.5px;
     }
 
-    .note-box strong { color: var(--text-bright); }
+    .note-box strong { color: var(--color-text-bright); }
 
     .pull-quote {
       margin: 0;
       text-align: center;
-      color: var(--acid);
+      color: var(--color-text);
       font-family: 'DM Serif Display', serif;
       font-style: italic;
-      font-size: clamp(28px, 3.2vw, 40px);
-      line-height: 1.2;
+      font-size: clamp(28px, 3.5vw, 44px);
+      line-height: 1.3;
       text-wrap: balance;
     }
 
     .quote-context {
       margin-top: 14px;
-      color: var(--text-secondary);
+      color: var(--color-text-secondary);
       max-width: 720px;
       margin-left: auto;
       margin-right: auto;
@@ -335,7 +335,7 @@
     .quote-source {
       display: inline-block;
       margin-top: 16px;
-      color: var(--text-bright);
+      color: var(--color-text-bright);
       font-family: 'Space Mono', monospace;
       font-size: 11px;
       text-transform: uppercase;
@@ -349,7 +349,7 @@
       margin: 0;
     }
 
-    .bullet-list strong { color: var(--text-bright); }
+    .bullet-list strong { color: var(--color-text-bright); }
 
     .faq-grid { display: grid; gap: var(--space-md); }
     .faq-item p { margin: 0; }
@@ -363,8 +363,8 @@
     .site-footer {
       margin-top: var(--space-3xl);
       padding-top: var(--space-lg);
-      border-top: 1px solid var(--border);
-      color: var(--muted);
+      border-top: 1px solid var(--color-border);
+      color: var(--color-text-muted);
       flex-wrap: wrap;
     }
 
@@ -387,9 +387,8 @@
     <header class="page-header">
       <div class="logo-mark">
         <img src="../assets/Bratrax Logo Light Inline.svg" alt="Bratrax" onerror="this.style.display='none'">
-        <span class="mono-label">Competitor Comparison</span>
       </div>
-      <a class="btn-secondary" href="#comparison-table">See the table</a>
+      <a class="btn-outline" href="#comparison-table">See the table</a>
     </header>
 
     <main>
@@ -412,7 +411,7 @@
 
         <aside class="card red-top">
           <span class="section-label">Fast read</span>
-          <p class="pull-quote">“HYROS isn’t for everyone — it’s built for <span class="serif-accent">serious ad buyers.</span>”</p>
+          <blockquote class="pull-quote">“HYROS isn’t for everyone — it’s built for <span class="serif-accent">serious ad buyers.</span>”</blockquote>
           <p class="quote-context">That is Hyros’s own framing. The question is whether your Shopify store actually needs that kind of analyst-supported, complex-operations platform — or a narrower attribution layer built for D2C.</p>
           <span class="quote-source">Hyros Shopify page · April 2026</span>
           <div class="hero-actions">
@@ -424,7 +423,7 @@
       <section class="section" id="comparison-table">
         <span class="section-label">01 — At-a-glance comparison</span>
         <h2>Most buyers can decide from <span class="serif-accent">this</span> table alone.</h2>
-        <div class="comparison-table-wrap card">
+        <div class="comparison-table-wrap">
           <table>
             <thead>
               <tr>
@@ -577,19 +576,19 @@
         <h2>What Hyros says, in their own <span class="serif-accent">words</span>.</h2>
 
         <article class="dimension card blue-top">
-          <p class="pull-quote">“Proven to increase AD ROI by at least 15%” and “Track every sale to its true source.”</p>
+          <blockquote class="pull-quote">“Proven to increase AD ROI by at least 15%” and “Track every sale to its true source.”</blockquote>
           <span class="quote-source">Homepage claim · hyros.com · April 2026</span>
           <p class="quote-context">This is the primary promise Hyros leads with on their homepage. Worth noting what the baseline and measurement methodology are before accepting it as given.</p>
         </article>
 
         <article class="dimension card">
-          <p class="pull-quote">“We require a quick call to set you up.”</p>
+          <blockquote class="pull-quote">“We require a quick call to set you up.”</blockquote>
           <span class="quote-source">Pricing page · hyros.com/pricing-ai-tracking · April 2026</span>
           <p class="quote-context">This is from Hyros’s own pricing page, where they also describe each account as customized and assigned a 1-to-1 analyst. The same company’s homepage says “Set up in seconds with our 1 click AI.” The pricing page is what describes how new accounts actually onboard.</p>
         </article>
 
         <article class="dimension card red-top">
-          <p class="pull-quote">“Nothing, it was extremely overhyped and they wouldn’t let us cancel. This is a scam and there is no fancy AI, it’s just basic UTMs that you can get somewhere else.”</p>
+          <blockquote class="pull-quote">“Nothing, it was extremely overhyped and they wouldn’t let us cancel. This is a scam and there is no fancy AI, it’s just basic UTMs that you can get somewhere else.”</blockquote>
           <span class="quote-source">Trevor C. · G2 review · April 2026</span>
           <p class="quote-context">Important context: G2 notes there are not enough Hyros reviews to provide aggregate buying insight — this is one user’s view, not a representative aggregate. Hyros’s Trustpilot aggregate was 4.8/5 from 661 reviews at research time. On the other end, Paul Corral writes on Trustpilot that “if you run high volume traffic from paid platforms and don’t use Hyros you are leaving money on the table.” That high-volume, multi-platform profile is the buyer Hyros is built for.</p>
         </article>
@@ -656,7 +655,7 @@
           <p>Flat $79/mo. No demo call. No annual lock-in. 30-day money-back guarantee.</p>
           <div class="cta-actions">
             <a class="btn-primary" href="../index.html#waitlist">Join the waitlist →</a>
-            <a class="btn-secondary" href="#comparison-table">See the table</a>
+            <a class="btn-outline" href="#comparison-table">See the table</a>
           </div>
           <ul class="bullet-list">
             <li>Built by the team behind Inceptly ($950M+ in D2C revenue driven) and VidTao (100K+ marketers).</li>
