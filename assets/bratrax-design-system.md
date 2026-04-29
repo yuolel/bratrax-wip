@@ -1,7 +1,7 @@
 # Bratrax Design System
 
-**Version:** 1.0
-**Last Updated:** 2026-03-24
+**Version:** 1.2
+**Last Updated:** 2026-04-29
 **Brand:** Bratrax — Service-as-Software Analytics
 **Aesthetic:** Contrarian, editorial, anti-BI-tool. Halftone print meets graph paper meets screen-print energy. Dark, technical, strategic color pops.
 
@@ -94,7 +94,9 @@
 | Token | Font | Size | Weight | Line Height | Letter Spacing | Usage |
 |---|---|---|---|---|---|---|
 | `type-hero` | Outfit | `clamp(44px, 5.5vw, 76px)` | 900 | 1.05 | -0.5px | Hero headline |
-| `type-h2` | Outfit | `clamp(36px, 4.5vw, 60px)` | 900 | 1.1 | -0.3px | Section headlines |
+| `type-h2` | Outfit | `clamp(36px, 4.5vw, 60px)` | 900 | 1.15 | -0.1px | Section headlines |
+| `type-h3` | Outfit | `clamp(24px, 2.6vw, 34px)` | 900 | 1.2 | 0 | Subsection headlines |
+| `type-h4` | Outfit | 22px | 900 | 1.3 | +0.3px | Card titles, FAQ questions |
 | `type-serif-accent` | DM Serif Display | inherits from parent | 400 italic | inherits | inherits | Single emphasized word in a headline |
 | `type-body` | Outfit | 17px | 300 | 1.7-1.85 | 0 | Body paragraphs |
 | `type-mono-label` | Space Mono | 11px | 700 | — | 2px | Section labels ("01 — THE PROBLEM"), nav links |
@@ -103,13 +105,18 @@
 
 ### Typography Rules
 
-1. **Headlines** use Outfit at weight 900. Letter-spacing is -0.3px to -0.5px (not tighter).
-2. **One word per headline** may be wrapped in DM Serif Display italic for emphasis. It inherits the size of the parent headline but the font change creates the accent.
-3. The **serif accent word** should carry the insight — "skips", "why", "deciding", "another one" — not filler words.
-4. **Body text** is Outfit weight 300 at 17px. Color is `color-text-secondary` (#B0B0B0).
-5. All **technical/UI text** (nav, buttons, labels, section numbers) is Space Mono.
-6. The **serif accent word** in headlines always gets acid green color (`#D4FF00`).
-7. **No orphan words.** Headlines, pull quotes, and short text blocks must not leave a single word alone on the last line. Use `text-wrap: balance` in CSS for headlines/pull quotes. For specific cases, use `&nbsp;` between the last two words to prevent the break. Check at both desktop and mobile widths.
+1. **Headlines** use Outfit at weight 900 across all levels (H1–H4). Weight stays constant; size, line-height, and letter-spacing are what change as the hierarchy descends.
+2. **Letter-spacing — per-token defaults with a global envelope.** Outfit 900 has dense glyph forms; tracking is the single most common readability failure. Each heading token carries a fixed default value (see Type Scale table) — that's the canonical setting for that level. Deviation from a token default requires explicit reason and must stay within the global envelope. Limits per surface:
+   - **Headlines (Outfit 900):** envelope `-0.5px` to `+0.5px`. Token defaults: H1 `-0.5px` · H2 `-0.1px` · H3 `0` · H4 `+0.3px`. Going tighter than `-0.5px` causes adjacent letters to smush (common pairs like `Th`, `Wh`, `Sa`). Going looser than `+0.5px` makes headlines read as labels rather than headings. If a headline looks loose at these limits, **reduce font size before tightening spacing.**
+   - **Body text (Outfit 300):** always `0`. Never negative-track body copy.
+   - **Space Mono labels:** `0` to `+2px`. Positive spacing only.
+   - **DM Serif Display italic accents:** `0` to `-0.5px` maximum. Italics need air, especially next to Outfit 900.
+3. **One word per headline** may be wrapped in DM Serif Display italic for emphasis. It inherits the size of the parent headline but the font change creates the accent.
+4. The **serif accent word** should carry the insight — "skips", "why", "deciding", "another one" — not filler words.
+5. **Body text** is Outfit weight 300 at 17px. Color is `color-text-secondary` (#B0B0B0).
+6. All **technical/UI text** (nav, buttons, labels, section numbers) is Space Mono.
+7. The **serif accent word** in headlines always gets acid green color (`#D4FF00`).
+8. **No orphan words.** Headlines, pull quotes, and short text blocks must not leave a single word alone on the last line. Use `text-wrap: balance` in CSS for headlines/pull quotes. For specific cases, use `&nbsp;` between the last two words to prevent the break. Check at both desktop and mobile widths.
 
 ### CSS Type Tokens
 
@@ -129,8 +136,28 @@
   font-family: 'Outfit', 'Helvetica Neue', sans-serif;
   font-size: clamp(36px, 4.5vw, 60px);
   font-weight: 900;
-  line-height: 1.1;
-  letter-spacing: -0.3px;
+  line-height: 1.15;
+  letter-spacing: -0.1px;
+  color: var(--color-text-bright);
+}
+
+/* Subsection headline */
+.type-h3 {
+  font-family: 'Outfit', 'Helvetica Neue', sans-serif;
+  font-size: clamp(24px, 2.6vw, 34px);
+  font-weight: 900;
+  line-height: 1.2;
+  letter-spacing: 0;
+  color: var(--color-text-bright);
+}
+
+/* Card title / FAQ question */
+.type-h4 {
+  font-family: 'Outfit', 'Helvetica Neue', sans-serif;
+  font-size: 22px;
+  font-weight: 900;
+  line-height: 1.3;
+  letter-spacing: 0.3px;
   color: var(--color-text-bright);
 }
 
@@ -537,3 +564,43 @@ Logo vectors and exploration file: [Bratrax — Logo Exploration](https://www.fi
 - Anti-dashboard-porn. Anti-attribution-theater. Pro-shared-meaning.
 - Visual identity draws from halftone print, graph paper, and screen-print energy.
 - Dark and technical with strategic pops of acid green for emphasis and red for falsification/tension.
+
+---
+
+## Changelog
+
+### v1.2 — 2026-04-29 — Letter-spacing rule formalized; H4 tracking opened
+
+Built directly on top of the v1.1 typography refinement (same day) after testing the new tokens against real comparison-page content.
+
+**Approach: per-token defaults with a global envelope.** Each heading level now has a single fixed letter-spacing value baked into its token — that's the canonical setting. The system also defines a global envelope (`-0.5px` to `+0.5px`) for headlines, but deviation from token defaults requires explicit reason. This gives both predictability (every H4 across the system tracks the same) and flexibility (the envelope handles edge cases) without leaving the call to designer judgment.
+
+**Changes:**
+
+- `type-h4` letter-spacing updated: `0` → `+0.3px`. At 22px, weight-900 Outfit reads slightly compressed even at neutral tracking; positive territory opens the FAQ-question / card-title surface so it breathes properly without feeling like a label.
+- Letter-spacing rule reformulated as **per-token defaults + global envelope** rather than per-surface ranges. Token defaults: H1 `-0.5px` · H2 `-0.1px` · H3 `0` · H4 `+0.3px`. Envelope: `-0.5px` to `+0.5px`.
+- Rule explicitly allows positive letter-spacing on headlines (previously v1.1's wording defaulted to negative-only, which was a holdover assumption).
+
+**No breaking changes** from v1.1 → v1.2. H1, H2, H3 token values are unchanged. Only H4 gained `+0.3px`.
+
+### v1.1 — 2026-04-29 — Typography refinement
+
+Triggered by readability issues at H2–H3 sizes on the comparison pages (Outfit 900 + tight tracking causing visible smush at non-hero sizes).
+
+**Approach: looser spacing, keep weight 900.** Headline weight stays at Outfit 900 across all levels — that's the brand's signature. Solve the smoosh by relaxing letter-spacing toward 0 and giving headlines more line-height breathing room as size descends.
+
+**Changes:**
+
+- `type-h2` updated: line-height `1.1 → 1.15`, letter-spacing `-0.3px → -0.1px`. Weight stays 900.
+- `type-h3` added (NEW token): `clamp(24px, 2.6vw, 34px)` · weight 900 · line-height 1.2 · letter-spacing 0. The system previously had no explicit H3 token; pages were extending the H2 spec down by default.
+- `type-h4` added (NEW token): 22px · weight 900 · line-height 1.3 · letter-spacing 0.
+- Letter-spacing rule expanded into per-surface limits: headlines `0` to `-0.5px` max, body always `0`, Space Mono labels positive-only (`0` to `+2px`), DM Serif italics `0` to `-0.5px` max.
+- New design principle codified: *"If a headline looks loose at these limits, reduce font size before tightening spacing."*
+
+**Surface principle deferred.** A formal "no graph paper texture on elevated elements" rule was considered but deferred to keep card and surface specs flexible. Existing cards default to solid `#141414` fills; that pattern stays as-is.
+
+**No breaking changes.** Existing pages on v1.0 typography still render correctly; the new tokens only refine what was already implicit.
+
+### v1.0 — 2026-03-24 — Initial system
+
+Color, typography, spacing, texture, components, logo, and brand personality.
