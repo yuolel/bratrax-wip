@@ -1,56 +1,92 @@
 # Bratrax Lite vs Hyros: The Honest Comparison
 
-**Subhead:** Flat $79/mo vs tracked-revenue tiers. Self-serve setup vs demo-gated onboarding. A lean Shopify D2C tool vs a platform built for complex ad operations.
+*Last updated: May 1, 2026*
+
+**Bratrax Lite is a flat-priced ($99/mo) attribution tool built for Shopify D2C brands that want portable data and the ability to bring their own Claude or ChatGPT.**
+
+**Hyros is a tracked-revenue-priced attribution platform with a proprietary AI agent (AIR) and 1-to-1 analyst onboarding, targeting large multi-channel ad operations.**
+
+Built by the team that's run paid attribution for D2C brands at Inceptly for eight years.
+
+**Subhead:** Flat $99/mo vs tracked-revenue tiers. Self-serve setup vs demo-gated onboarding. A lean Shopify D2C tool vs a platform built for complex ad operations.
 
 ---
 
 ## TL;DR
 
-- **Bratrax Lite** is for Shopify D2C brands ($500K–$50M) that want flat $79–$99/mo pricing, self-serve setup with no demo call, portable data, and the ability to use their own Claude or ChatGPT with their own API key.
+- **Bratrax Lite** is for Shopify D2C brands ($500K–$50M) that want flat $99/mo pricing, self-serve setup with no demo call, portable data, and the ability to use their own Claude or ChatGPT with their own API key.
 - **Hyros** is for larger, more complex ad operations — "serious ad buyers who need deep, accurate reporting across large, complex traffic operations," per their own Shopify page ([hyros.com/shopify](https://hyros.com/shopify), April 2026). That includes multi-step funnels, call-tracking, and dedicated analyst support.
-- **Price gap:** Bratrax Lite is $79/mo flat. Hyros's pricing page shows $230/mo with an annual plan as the entry-level tier, for 20K tracked monthly revenue ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026).
+- **Price gap:** Bratrax Lite is $99/mo flat. Hyros's pricing page shows $230/mo with an annual plan as the entry-level tier, for $20K tracked monthly revenue ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026).
 - **Key decision question:** Do you need a lean, flat-priced attribution layer for a Shopify store — or a full-service, analyst-supported platform for a complex multi-channel operation?
 
 ---
 
-## At-a-Glance Comparison
+## Table of Contents
 
-| | **Bratrax Lite** | **Hyros** |
-|---|---|---|
-| **Starting price** | $79/mo (founding), $99/mo regular | $230/mo with annual plan — entry tier ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) |
-| **Pricing model** | Flat — no GMV or revenue scaling | Tracked monthly revenue-based tiers ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) |
-| **Contract terms** | Month-to-month, cancel anytime | Annual plan is the pricing default ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) |
-| **Free trial** | 30-day money-back guarantee | No public free trial ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) |
-| **Onboarding** | Self-serve, minutes to live dashboard, no call | "We require a quick call to set you up" ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) |
-| **Attribution models** | All 5 included: first-touch, last-touch, linear, time-decay, position-based | 6 named modes: Last Click, First Click, Scientific, Depreciation, U-Shaped, Linear ([docs.hyros.com/using-hyros-attribution-modes/](https://docs.hyros.com/using-hyros-attribution-modes/), April 2026) |
-| **AI integration** | MCP endpoint — use your own Claude or ChatGPT with your own API key | Proprietary AIR agent — "AIR delivers 1-to-1 marketing to every visitor" ([hyros.com](https://hyros.com/), April 2026) |
-| **Data portability** | Portable, exportable data | Some access exists: public REST API, Webhooks, CSV export for Lead Journey — broader portability is not a prominent part of their positioning (April 2026) |
-| **Shopify D2C fit** | Purpose-built for Shopify D2C brands | Broad scope: e-commerce, call-based, info/education, SaaS ([hyros.com](https://hyros.com/), April 2026) |
-| **Target buyer** | Founders, media buyers, Heads of Growth on Shopify | "Serious ad buyers" running "large, complex traffic operations" ([hyros.com/shopify](https://hyros.com/shopify), April 2026) |
+- [At-a-Glance Comparison](#at-a-glance-comparison)
+- [Head-to-Head](#head-to-head-bratrax-lite-vs-hyros)
+- [Receipts](#receipts)
+- [Who Bratrax Lite Is For](#who-bratrax-lite-is-for)
+- [When Hyros Is the Right Choice](#when-hyros-is-the-right-choice)
+- [Migration Notes](#migration-notes)
+- [FAQ](#faq)
 
 ---
 
-## Head-to-Head: The Dimensions That Actually Matter
+## Bratrax Lite vs Hyros At-a-Glance Comparison
+
+### Pricing & Contracts
+
+| | **Bratrax Lite** | **Hyros** |
+|---|---|---|
+| **Starting price** | $99/mo flat | $230/mo with annual plan — entry tier ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) |
+| **Pricing model** | Flat — no GMV or revenue scaling | Tracked monthly revenue-based tiers ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) |
+| **Contract terms** | Month-to-month, cancel anytime | Annual plan is the pricing default ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) |
+| **Free trial** | 30-day money-back guarantee | No public free trial ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) |
+
+### Product Scope
+
+| | **Bratrax Lite** | **Hyros** |
+|---|---|---|
+| **Attribution models** | All 5: first-touch, last-touch, linear, time-decay, position-based | 6 modes: Last Click, First Click, Scientific, Depreciation, U-Shaped, Linear ([docs.hyros.com/using-hyros-attribution-modes/](https://docs.hyros.com/using-hyros-attribution-modes/), April 2026) |
+| **Platform scope** | Attribution analytics: Shopify, Meta, Google Ads | E-commerce, call-based, info/education, SaaS ([hyros.com](https://hyros.com/), April 2026) |
+| **Target buyer** | Founders, media buyers, Heads of Growth on Shopify | "Serious ad buyers" running "large, complex traffic operations" ([hyros.com/shopify](https://hyros.com/shopify), April 2026) |
+
+### AI & Integrations
+
+| | **Bratrax Lite** | **Hyros** |
+|---|---|---|
+| **AI integration** | MCP endpoint — use your own Claude or ChatGPT with your own API key | Proprietary AIR agent — "AIR delivers 1-to-1 marketing to every visitor" ([hyros.com](https://hyros.com/), April 2026) |
+| **Data portability** | Portable, exportable data | Public REST API, Webhooks, CSV export for Lead Journey; broader portability not prominently positioned ([docs.hyros.com](https://docs.hyros.com), April 2026) |
+
+### Service & Support
+
+| | **Bratrax Lite** | **Hyros** |
+|---|---|---|
+| **Onboarding** | Self-serve, no call required | Demo call required ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) |
+| **Analyst support** | None — self-serve | 1-to-1 analyst per account ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) |
+
+---
+
+## Head-to-Head: Bratrax Lite vs Hyros on the Dimensions That Actually Matter
 
 ---
 
 ### 1. Pricing: Flat Rate vs. Scales With Revenue
 
-**Bratrax Lite** charges $79/mo for founding members (locked for life, first 100 seats) and $99/mo after that. Flat. No GMV multiplier. No annual contract. The number on the page is the number on the invoice, regardless of whether you're doing $1M or $20M in Shopify revenue.
+**Bratrax Lite** charges $99/mo flat. No GMV multiplier. No annual contract. The same number whether you're doing $1M or $20M in Shopify revenue.
 
-**Hyros** prices by tracked monthly revenue. Their pricing page ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) shows $230/mo with an annual plan as the entry-level tier, at 20K tracked monthly revenue. Tiers scale upward through 40K, 83K, 250K, 750K, and $1M+ tracked revenue bands. The annual plan is the pricing default shown publicly.
+**Hyros** prices by tracked monthly revenue. Their pricing page ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026) shows $230/mo with an annual plan as the entry-level tier, at $20K tracked monthly revenue. Tiers scale through $40K, $83K, $250K, $750K, and $1M+ bands.
 
-**Why it matters:** A tracked-revenue pricing model means your attribution bill grows as your business grows — even when the underlying cost to serve you doesn't scale proportionally. Bratrax's flat model reflects a product built without a sales team or enterprise cost structure. That's why the price can stay flat.
+**Why it matters:** A tracked-revenue model means your attribution bill grows as your business grows — even when the cost to serve you doesn't scale proportionally. Bratrax's flat model reflects a product built without a sales team or enterprise cost structure. That's why the price can stay flat.
 
 ---
 
 ### 2. Onboarding: Self-Serve vs. Demo-Gated
 
-**Bratrax Lite** is self-serve end-to-end. No demo call. No onboarding call. No pixel debugging sessions. Minutes to a live dashboard from signup, with pre-built Shopify D2C templates.
+**Bratrax Lite** is self-serve end-to-end. No demo call. No onboarding call. Minutes to a live dashboard from signup, with pre-built Shopify D2C templates.
 
-**Hyros** requires a call before setup. Their pricing page says each account is customized, assigned a 1-to-1 analyst, and "we require a quick call to set you up" ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026). The Shopify page repeats the same prompt: "Book a 5-minute setup call below" ([hyros.com/shopify](https://hyros.com/shopify), April 2026).
-
-Hyros's homepage also says "Set up in seconds with our 1 click AI" ([hyros.com](https://hyros.com/), April 2026). Both versions are live on the same domain. The CTA Hyros actually pushes is the call — not instant access.
+**Hyros** requires a call before setup. Each account is customized and assigned a 1-to-1 analyst: "we require a quick call to set you up" ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026). Their homepage also says "Set up in seconds with our 1 click AI" ([hyros.com](https://hyros.com/), April 2026) — both versions live on the same domain. The CTA Hyros actually pushes is the call, not instant access.
 
 **Why it matters:** A demo gate is a sales-motion decision, not a product-complexity one. If you want to self-evaluate a Shopify attribution tool in an afternoon, that friction is built in by design.
 
@@ -58,23 +94,21 @@ Hyros's homepage also says "Set up in seconds with our 1 click AI" ([hyros.com](
 
 ### 3. AI Integration: Your Model vs. Their Agent
 
-**Bratrax Lite** lets you connect your own Claude or ChatGPT using your own API key. You use the AI you already pay for — no proprietary chatbot, no token markup, no vendor AI layer to trust or work around.
+**Bratrax Lite** lets you connect your own Claude or ChatGPT using your own API key. No proprietary chatbot, no token markup, no vendor AI layer to work around. Bratrax provides the data layer. You bring the intelligence layer.
 
-Core positioning: Bratrax provides the data layer. You bring the intelligence layer.
+**Hyros** has built a proprietary AI layer called AIR. Their site: "AIR delivers 1-to-1 marketing to every visitor" ([hyros.com](https://hyros.com/), April 2026). BYO-AI access is not part of their offering.
 
-**Hyros** has built a proprietary AI layer called AIR. Their site describes it as: "AIR delivers 1-to-1 marketing to every visitor" ([hyros.com](https://hyros.com/), April 2026). Hyros's public positioning centers entirely on AIR — BYO-AI access is not part of what they offer (April 2026).
-
-**Why it matters:** A proprietary AI layer means your data and your AI workflow are tied to the same vendor. If you already use Claude or ChatGPT, you cannot bring it to Hyros's data. With Bratrax, your model is yours.
+**Why it matters:** A proprietary AI layer means your data and AI workflow are tied to the same vendor. If you already use Claude or ChatGPT, you cannot bring it to Hyros's data. With Bratrax, your model is yours.
 
 ---
 
 ### 4. Fit: Shopify D2C vs. Complex Traffic Operations
 
-**Bratrax Lite** is purpose-built for Shopify D2C brands in the $500K–$50M revenue range, with the strongest fit in the $1M–$20M band. All five attribution models are included from day one. Launch connectors: Shopify, Meta/Facebook Ads, Google Ads. TikTok and Klaviyo are roadmap items.
+**Bratrax Lite** is purpose-built for Shopify D2C brands in the $500K–$50M range, with strongest fit at $1M–$20M. All five attribution models included from day one. Launch connectors: Shopify, Meta/Facebook Ads, Google Ads. TikTok and Klaviyo are roadmap items.
 
-**Hyros** positions across a broader set of verticals — e-commerce, call-based businesses, info/education, and SaaS ([hyros.com](https://hyros.com/), April 2026). Their Shopify page describes the target as "serious ad buyers" running "large, complex traffic operations," with each account receiving a dedicated analyst ([hyros.com/shopify](https://hyros.com/shopify), April 2026).
+**Hyros** positions across e-commerce, call-based businesses, info/education, and SaaS ([hyros.com](https://hyros.com/), April 2026). Their Shopify page targets "serious ad buyers" running "large, complex traffic operations," each receiving a dedicated analyst ([hyros.com/shopify](https://hyros.com/shopify), April 2026).
 
-**Why it matters:** "Serious ad buyers" with "large, complex traffic operations" is Hyros's own product framing, not a critique. That infrastructure — analysts, custom onboarding, multi-vertical support — costs money and requires commitment. If you are running a Shopify store and want a lean attribution tool you can set up yourself, that is not the buyer Hyros built for.
+**Why it matters:** "Serious ad buyers" with "large, complex traffic operations" is Hyros's own framing. That infrastructure — analysts, custom onboarding, multi-vertical support — costs money. If you run a Shopify store and want a self-serve attribution layer, that is not the buyer Hyros built for.
 
 ---
 
@@ -82,9 +116,19 @@ Core positioning: Bratrax provides the data layer. You bring the intelligence la
 
 **Bratrax Lite** is built around portable, exportable data. The dataset is the deliverable, not just the dashboard.
 
-**Hyros** does have some public-facing access and export capabilities — a REST API, Webhooks, and a changelog entry for CSV export of Lead Journey data are publicly documented. That said, broader data portability is not a prominent part of how Hyros positions the product. Their public marketing focuses on the AIR agent and analyst workflow, not on open data access or portability as a value proposition.
+**Hyros** offers some data access — a REST API, Webhooks, and CSV export for Lead Journey data are publicly documented. Broader data portability is not a prominent part of their positioning; their marketing focuses on the AIR agent and analyst workflow.
 
-**Why it matters:** There is a difference between a product that technically allows some data access and one that is designed around data portability as a core promise. Bratrax's position is the latter. If the ability to move your attribution data freely is important to how you evaluate tools, it is worth asking Hyros specifically what their export options cover before committing.
+**Why it matters:** There is a difference between technically allowing some data access and designing around portability as a core promise. If moving your attribution data freely matters to your evaluation, ask Hyros specifically what their export options cover before committing.
+
+---
+
+### 6. Service & Support: Self-Serve vs. Analyst-Supported
+
+**Bratrax Lite** is self-serve — no analyst, no CSM, no dedicated support tier. Documentation and self-serve onboarding. This is a real tradeoff, not a hidden weakness.
+
+**Hyros** assigns a 1-to-1 analyst per account ([hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking), April 2026). That analyst customizes your setup, interprets your data alongside you, and is the ongoing contact for your account. The "Book a 5-minute setup call below" prompt ([hyros.com/shopify](https://hyros.com/shopify), April 2026) leads directly into this relationship.
+
+**Why it matters:** Dedicated analyst support is one of Hyros's real differentiators. For brands with complex multi-channel operations who want expert guidance embedded in the tool relationship, that analyst model adds genuine value. Bratrax Lite trades it for self-serve speed and a flat price — but the tradeoff is real.
 
 ---
 
@@ -98,7 +142,7 @@ Three direct quotes from Hyros's own pages and public reviews, each with a live 
 
 > "Proven to increase AD ROI by at least 15%" and "Track every sale to its true source."
 
-This is the primary promise Hyros leads with on their homepage. Worth noting what the baseline and measurement methodology are before accepting it as given.
+This is the primary promise Hyros leads with. Worth noting what the baseline and measurement methodology are before accepting it as given.
 
 ---
 
@@ -106,7 +150,7 @@ This is the primary promise Hyros leads with on their homepage. Worth noting wha
 
 > "We require a quick call to set you up."
 
-This is from Hyros's own pricing page, where they also describe each account as customized and assigned a 1-to-1 analyst. The same company's homepage says "Set up in seconds with our 1 click AI" ([hyros.com](https://hyros.com/), April 2026). The pricing page is what describes how new accounts actually onboard.
+From Hyros's own pricing page, where they describe each account as customized and assigned a 1-to-1 analyst. The same company's homepage says "Set up in seconds with our 1 click AI" ([hyros.com](https://hyros.com/), April 2026). The pricing page is what describes how new accounts actually onboard.
 
 ---
 
@@ -114,7 +158,16 @@ This is from Hyros's own pricing page, where they also describe each account as 
 
 > "Nothing, it was extremely overhyped and they wouldn't let us cancel. This is a scam and there is no fancy AI, it's just basic UTMs that you can get somewhere else."
 
-Important context: G2 notes "there are not enough reviews of Hyros for G2 to provide buying insight" — this is one user's view, not a representative aggregate. Hyros's Trustpilot aggregate is 4.8/5 from 661 reviews ([trustpilot.com/review/www.hyros.com](https://www.trustpilot.com/review/www.hyros.com), April 2026). On the other end: Paul Corral writes on Trustpilot, "if you run high volume traffic from paid platforms and don't use Hyros you are leaving money on the table." That profile — high volume, multi-platform — is the buyer Hyros is built for.
+Context: G2 notes "there are not enough reviews of Hyros for G2 to provide buying insight" — this is one user's view, not a representative aggregate. Hyros's Trustpilot aggregate is 4.8/5 from 661 reviews ([trustpilot.com/review/www.hyros.com](https://www.trustpilot.com/review/www.hyros.com), April 2026). Paul Corral on Trustpilot: "if you run high volume traffic from paid platforms and don't use Hyros you are leaving money on the table." That high-volume, multi-platform profile is the buyer Hyros is built for.
+
+---
+
+## Who Bratrax Lite Is For
+
+- **Shopify D2C brands at $500K–$50M revenue.** Strongest fit at $1M–$20M. If your primary sales channel is Shopify and you're running paid ads on Facebook and Google, Bratrax Lite is built for your stack.
+- **Founders and media buyers who want self-serve.** No demo call, no analyst handholding. If you want to evaluate and set up an attribution tool in an afternoon, the self-serve model is the point.
+- **Teams that want portable data and BYO-AI.** If you already pay for Claude or ChatGPT and want to query your attribution data with your own model — rather than a vendor's proprietary AI — Bratrax Lite is built for that workflow.
+- **Brands that want flat, predictable pricing.** $99/mo regardless of your GMV or revenue growth. If your attribution bill growing alongside your business is a friction point, flat pricing removes it.
 
 ---
 
@@ -155,19 +208,17 @@ Not a proprietary AI agent. Bratrax Lite lets you connect your own Claude or Cha
 All five: first-touch, last-touch, linear, time-decay, and position-based. All included, no tier unlock required.
 
 **Can I try Bratrax Lite before committing?**
-Yes — 30-day money-back guarantee, no annual contract, cancel anytime. No credit card required to join the waitlist.
+Yes — 30-day money-back guarantee, no annual contract, cancel anytime.
 
 ---
 
 ## CTA
 
-**Join the Bratrax Lite waitlist →**
+**[Get Bratrax Lite →](https://lite.bratrax.com)**
 
-Flat $79/mo. No demo call. No annual lock-in. 30-day money-back guarantee.
+Flat $99/mo. No demo call. No annual lock-in. 30-day money-back guarantee.
 
 Built by the team behind Inceptly ($950M+ in D2C revenue driven) and VidTao (100K+ marketers). Same attribution engine we use for custom analytics clients — productized for Shopify D2C.
-
-*Founding member pricing ($79/mo, locked for life) is available for the first 100 seats.*
 
 ---
 
@@ -177,26 +228,26 @@ Built by the team behind Inceptly ($950M+ in D2C revenue driven) and VidTao (100
 
 | Claim | Source URL | Date |
 |---|---|---|
-| Entry-level $230/mo with annual plan, 20K tracked revenue | [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) | April 2026 |
-| Pricing model: tracked monthly revenue tiers | [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) | April 2026 |
-| Annual plan is the pricing default | [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) | April 2026 |
-| No free-trial language; flow pushes a demo call | [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) | April 2026 |
-| "We require a quick call to set you up" | [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) | April 2026 |
-| "Book a 5-minute setup call below" | [hyros.com/shopify](https://hyros.com/shopify) | April 2026 |
-| "Set up in seconds with our 1 click AI" | [hyros.com](https://hyros.com/) | April 2026 |
-| Homepage: "Proven to increase AD ROI by at least 15%" | [hyros.com](https://hyros.com/) | April 2026 |
-| Homepage: "Track every sale to its true source" | [hyros.com](https://hyros.com/) | April 2026 |
-| AIR agent: "AIR delivers 1-to-1 marketing to every visitor" | [hyros.com](https://hyros.com/) | April 2026 |
-| No BYO-AI or open data access in public marketing | [hyros.com](https://hyros.com/) | April 2026 |
-| Target: "serious ad buyers," "large, complex traffic operations" | [hyros.com/shopify](https://hyros.com/shopify) | April 2026 |
-| Industry scope: e-commerce, call-based, info/education, SaaS | [hyros.com](https://hyros.com/) | April 2026 |
-| 1-to-1 analyst per account | [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) | April 2026 |
-| "HYROS isn't for everyone…serious ad buyers" | [hyros.com/shopify](https://hyros.com/shopify) | April 2026 |
-| Attribution modes: Last Click, First Click, Scientific, Depreciation, U-Shaped, Linear | [docs.hyros.com/using-hyros-attribution-modes/](https://docs.hyros.com/using-hyros-attribution-modes/) | April 2026 |
-| Hyros public API + Webhooks exist; CSV export for Lead Journey documented in changelog | docs.hyros.com (API/Webhooks), Hyros changelog | April 2026 |
-| Trustpilot aggregate: 4.8/5 from 661 reviews | [trustpilot.com/review/www.hyros.com](https://www.trustpilot.com/review/www.hyros.com) | April 2026 |
-| G2 review, Trevor C.: "extremely overhyped…wouldn't let us cancel" | [g2.com/products/hyros/reviews](https://www.g2.com/products/hyros/reviews) — used with G2's own caveat: insufficient reviews for aggregate insight | April 2026 |
-| Trustpilot review, Paul Corral: "indispensable platform…leaving money on the table" | [trustpilot.com/review/www.hyros.com](https://www.trustpilot.com/review/www.hyros.com) | April 2026 |
+| Entry-level $230/mo with annual plan, $20K tracked revenue | [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) | May 2026 |
+| Pricing model: tracked monthly revenue tiers | [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) | May 2026 |
+| Annual plan is the pricing default | [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) | May 2026 |
+| No free-trial language; flow pushes a demo call | [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) | May 2026 |
+| "We require a quick call to set you up" | [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) | May 2026 |
+| "Book a 5-minute setup call below" | [hyros.com/shopify](https://hyros.com/shopify) | May 2026 |
+| "Set up in seconds with our 1 click AI" | [hyros.com](https://hyros.com/) | May 2026 |
+| Homepage: "Proven to increase AD ROI by at least 15%" | [hyros.com](https://hyros.com/) | May 2026 |
+| Homepage: "Track every sale to its true source" | [hyros.com](https://hyros.com/) | May 2026 |
+| AIR agent: "AIR delivers 1-to-1 marketing to every visitor" | [hyros.com](https://hyros.com/) | May 2026 |
+| No BYO-AI or open data access in public marketing | [hyros.com](https://hyros.com/) | May 2026 |
+| Target: "serious ad buyers," "large, complex traffic operations" | [hyros.com/shopify](https://hyros.com/shopify) | May 2026 |
+| Industry scope: e-commerce, call-based, info/education, SaaS | [hyros.com](https://hyros.com/) | May 2026 |
+| 1-to-1 analyst per account | [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) | May 2026 |
+| "HYROS isn't for everyone…serious ad buyers" | [hyros.com/shopify](https://hyros.com/shopify) | May 2026 |
+| Attribution modes: Last Click, First Click, Scientific, Depreciation, U-Shaped, Linear | [docs.hyros.com/using-hyros-attribution-modes/](https://docs.hyros.com/using-hyros-attribution-modes/) | May 2026 |
+| Hyros public API + Webhooks exist; CSV export for Lead Journey documented in changelog | docs.hyros.com (API/Webhooks), Hyros changelog | May 2026 |
+| Trustpilot aggregate: 4.8/5 from 661 reviews | [trustpilot.com/review/www.hyros.com](https://www.trustpilot.com/review/www.hyros.com) | May 2026 |
+| G2 review, Trevor C.: "extremely overhyped…wouldn't let us cancel" | [g2.com/products/hyros/reviews](https://www.g2.com/products/hyros/reviews) — used with G2's own caveat: insufficient reviews for aggregate insight | May 2026 |
+| Trustpilot review, Paul Corral: "indispensable platform…leaving money on the table" | [trustpilot.com/review/www.hyros.com](https://www.trustpilot.com/review/www.hyros.com) | May 2026 |
 
 *Re-verify pricing figures at [hyros.com/pricing-ai-tracking](https://hyros.com/pricing-ai-tracking) within 24 hours of publish.*
 
