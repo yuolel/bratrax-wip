@@ -1,6 +1,6 @@
 # Bratrax Lite vs Triple Whale: The Honest Comparison
 
-**Subhead:** Flat $79/mo vs $1,290/mo at $5M GMV. A Shopify attribution tool vs a platform built to replace 10 others. What that gap means for your decision.
+**Subhead:** Flat $79/mo vs $1,129/mo at $5M GMV. A Shopify attribution tool vs a platform built to replace 10 others. What that gap means for your decision.
 
 ---
 
@@ -8,7 +8,7 @@
 
 - **Bratrax Lite** is for Shopify D2C brands ($500K–$50M) that want flat $79–$99/mo pricing, self-serve setup, portable data, and the ability to use their own Claude or ChatGPT with their own API key.
 - **Triple Whale** is a full ecommerce intelligence platform — "Measurement. Analytics. AI. Creative. Automation. Everything you need to scale, in one easy-to-use platform" ([triplewhale.com](https://www.triplewhale.com), April 2026). It is built for brands that want a broad feature set under one roof and are comfortable with GMV-scaled pricing.
-- **Price gap at $5M GMV:** Bratrax Lite $79/mo flat. Triple Whale $1,290/mo on their public pricing page at that GMV level ([triplewhale.com/pricing](https://www.triplewhale.com/pricing), April 2026).
+- **Price gap at $5M GMV:** Bratrax Lite $79/mo flat. Triple Whale $1,129/mo on their public pricing page at that GMV level ([triplewhale.com/pricing](https://www.triplewhale.com/pricing), April 2026).
 - **Key decision question:** Do you need a focused attribution layer for a Shopify store — or a multi-product ecommerce intelligence platform with AI agents, activation tools, and optional consulting support?
 
 ---
@@ -18,7 +18,7 @@
 | | **Bratrax Lite** | **Triple Whale** |
 |---|---|---|
 | **Starting price** | $79/mo (founding), $99/mo regular | Free plan ($0/mo) for basic tracking; paid plans are GMV-based and scale with revenue ([triplewhale.com/pricing](https://www.triplewhale.com/pricing), April 2026) |
-| **Price at $5M GMV** | $79/mo flat | $1,290/mo on the public pricing page ([triplewhale.com/pricing](https://www.triplewhale.com/pricing), April 2026) |
+| **Price at $5M GMV** | $79/mo flat | $1,129/mo on the public pricing page ([triplewhale.com/pricing](https://www.triplewhale.com/pricing), April 2026) |
 | **Pricing model** | Flat — no GMV or revenue scaling | GMV-based tiers + package selection — "All prices are based on a combination of your brand's annual revenue and the package you choose" ([triplewhale.com/pricing](https://www.triplewhale.com/pricing), April 2026) |
 | **Contract terms** | Month-to-month, cancel anytime | Annual contract default; month-to-month also offered ([triplewhale.com/pricing](https://www.triplewhale.com/pricing), April 2026) |
 | **Free trial** | 30-day money-back guarantee | Free plan available at $0/mo ([triplewhale.com/pricing](https://www.triplewhale.com/pricing), April 2026) |
@@ -39,9 +39,9 @@
 
 **Bratrax Lite** charges $79/mo for founding members (locked for life, first 100 seats) and $99/mo after that. Flat. No GMV multiplier. No annual contract required. A brand doing $1M and a brand doing $20M in Shopify revenue pay the same number.
 
-**Triple Whale** prices by a combination of your GMV and the package you choose. Their pricing page ([triplewhale.com/pricing](https://www.triplewhale.com/pricing), April 2026) shows $1,290/mo at the $5M GMV tier on the recommended paid plan. They do have a free plan at $0/mo, and month-to-month pricing is available alongside the annual default. For a brand actively running paid ads across Facebook and Google, the paid tier is where attribution features live.
+**Triple Whale** prices by a combination of your GMV and the package you choose. Their pricing page ([triplewhale.com/pricing](https://www.triplewhale.com/pricing), April 2026) shows $1,129/mo at the $5M GMV tier on the recommended paid plan. They do have a free plan at $0/mo, and month-to-month pricing is available alongside the annual default. For a brand actively running paid ads across Facebook and Google, the paid tier is where attribution features live.
 
-**Why it matters:** At $5M GMV, the gap is $79/mo vs $1,290/mo — a 16x difference. Triple Whale's pricing model is built on the same logic as most enterprise SaaS: as you grow, you pay more. Bratrax's flat model reflects a different product structure — no sales team, no CS org scaled to your GMV, no reason to bill like one. Whether the feature breadth Triple Whale offers at that price is worth it depends on how much of the platform you'll actually use.
+**Why it matters:** At $5M GMV, the gap is $79/mo vs $1,129/mo — a 16x difference. Triple Whale's pricing model is built on the same logic as most enterprise SaaS: as you grow, you pay more. Bratrax's flat model reflects a different product structure — no sales team, no CS org scaled to your GMV, no reason to bill like one. Whether the feature breadth Triple Whale offers at that price is worth it depends on how much of the platform you'll actually use.
 
 ---
 
@@ -103,7 +103,7 @@ This is Triple Whale's primary competitive framing — that attribution data alo
 
 > "All prices are based on a combination of your brand's annual revenue and the package you choose."
 
-Triple Whale's own pricing page states the model plainly. Your bill grows as your revenue grows. At $5M GMV, the public pricing page shows $1,290/mo on the recommended plan. That is not a promotional number or a high-tier add-on — it is the standard paid tier for a brand at that scale.
+Triple Whale's own pricing page states the model plainly. Your bill grows as your revenue grows. At $5M GMV, the public pricing page shows $1,129/mo on the recommended plan. That is not a promotional number or a high-tier add-on — it is the standard paid tier for a brand at that scale.
 
 ---
 
@@ -180,7 +180,7 @@ Built by the team behind Inceptly ($950M+ in D2C revenue driven) and VidTao (100
 | "Other tools tell you what happened. Triple Whale tells you what to do next…" | [triplewhale.com](https://www.triplewhale.com) | April 2026 |
 | "AI that actually works for ecommerce — this isn't ChatGPT with your data bolted on" | [triplewhale.com](https://www.triplewhale.com) | April 2026 |
 | Free plan at $0/mo | [triplewhale.com/pricing](https://www.triplewhale.com/pricing) | April 2026 |
-| $1,290/mo at $5M GMV on recommended paid plan | [triplewhale.com/pricing](https://www.triplewhale.com/pricing) | April 2026 |
+| $1,129/mo at $5M GMV on recommended paid plan | [triplewhale.com/pricing](https://www.triplewhale.com/pricing) | April 2026 |
 | "All prices are based on a combination of your brand's annual revenue and the package you choose" | [triplewhale.com/pricing](https://www.triplewhale.com/pricing) | April 2026 |
 | Annual contract default; month-to-month also offered | [triplewhale.com/pricing](https://www.triplewhale.com/pricing) | April 2026 |
 | "Most brands are up and running with Triple Whale in 15 minutes, with no engineer required" | [triplewhale.com](https://www.triplewhale.com) | April 2026 |
@@ -198,7 +198,7 @@ Built by the team behind Inceptly ($950M+ in D2C revenue driven) and VidTao (100
 | Trustpilot positive review (Lindsey Sullivan): "It's pricey but worth it" | [trustpilot.com/review/triplewhale.com](https://www.trustpilot.com/review/triplewhale.com) | April 2026 |
 | Shopify App Store review: "gearing it toward larger enterprises…for a small operation it's just way overload" | [apps.shopify.com/triplewhale-1/reviews](https://apps.shopify.com/triplewhale-1/reviews) | April 2026 |
 
-*Re-verify the $1,290/mo figure at [triplewhale.com/pricing](https://www.triplewhale.com/pricing) within 24 hours of publish — GMV-based pricing pages can update without notice.*
+*Re-verify the $1,129/mo figure at [triplewhale.com/pricing](https://www.triplewhale.com/pricing) within 24 hours of publish — GMV-based pricing pages can update without notice.*
 
 ---
 
