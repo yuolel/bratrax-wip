@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bratrax Lite vs Triple Whale: The Honest Comparison</title>
-  <meta name="description" content="Bratrax Lite vs Triple Whale — flat $79/mo vs $1,129/mo at $5M GMV, focused Shopify attribution vs a broad ecommerce intelligence platform." />
+  <meta name="description" content="Bratrax Lite vs Triple Whale — flat $99/mo vs $1,129/mo at $5M GMV (as of April 2026), focused Shopify attribution vs a broad ecommerce intelligence platform." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Outfit:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -295,8 +295,39 @@
 
     tr:last-child td { border-bottom: none; }
 
-    tbody tr:hover td {
+    tbody tr:not(.table-category):hover td {
       background: rgba(255,255,255,0.02);
+    }
+
+    tr.table-category td {
+      background: rgba(212,255,0,0.06);
+      color: rgba(212,255,0,0.88);
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      border-bottom-color: rgba(212,255,0,0.15);
+      padding-top: 16px;
+      padding-bottom: 14px;
+    }
+    tr.table-category:hover td {
+      background: rgba(212,255,0,0.06);
+    }
+    .toc-nav .toc-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .toc-nav .toc-list a {
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(212,255,0,0.28);
+      padding-bottom: 2px;
+    }
+    .toc-nav .toc-list a:hover {
+      border-bottom-color: var(--color-acid);
     }
 
     td strong { color: var(--color-text-bright); }
@@ -435,18 +466,21 @@
 
     <main>
       <section class="page-intro">
-        <span class="meta-line">Bratrax Lite vs Triple Whale</span>
-        <h1>The <span class="serif-accent">honest</span> comparison</h1>
-        <p class="subhead">Flat $79/mo vs $1,129/mo at $5M GMV. A Shopify attribution tool vs a platform built to replace 10 others. What that gap means for your decision.</p>
+        <h1>Bratrax Lite vs Triple Whale: The <span class="serif-accent">honest</span> comparison</h1>
+        <p class="subhead">Flat <a href="https://lite.bratrax.com">$99/mo</a> vs <a href="https://www.triplewhale.com/pricing">$1,129/mo</a> at $5M GMV (as of April 2026 · <a href="https://lite.bratrax.com">lite.bratrax.com</a>, <a href="https://www.triplewhale.com/pricing">triplewhale.com/pricing</a>). Shopify-centered attribution versus a consolidated intelligence suite — honestly framed scope, onboarding, and support tradeoffs.</p>
+        <span class="meta-line">Last updated: May 1, 2026</span>
+        <p class="lede">Bratrax Lite is a flat-priced (<a href="https://lite.bratrax.com">$99/mo · lite.bratrax.com</a>) attribution tool · April 2026 — built for Shopify D2C brands that want portable data and the ability to bring their own Claude or ChatGPT.</p>
+        <p class="lede">Built by the team that has run paid attribution for D2C brands at Inceptly since 2018.</p>
       </section>
 
       <section class="hero-grid">
         <article class="card">
           <span class="section-label">TL;DR</span>
           <ul class="tldr-list">
-            <li><strong>Bratrax Lite</strong> is for Shopify D2C brands ($500K–$50M) that want flat $79–$99/mo pricing, self-serve setup, portable data, and the ability to use their own Claude or ChatGPT with their own API key.</li>
+            <li><strong>What is Triple Whale?</strong> Triple Whale is a GMV-priced ecommerce intelligence platform combining attribution, AI agents, creative analytics, MMM, and forecasting under one roof.</li>
+            <li><strong>Bratrax Lite</strong> is for Shopify D2C brands ($500K–$50M) that want <a href="https://lite.bratrax.com">flat $99/mo · lite.bratrax.com</a> pricing (as of April 2026), self-serve setup, portable data, and the ability to use their own Claude or ChatGPT with their own API key.</li>
             <li><strong>Triple Whale</strong> is a full ecommerce intelligence platform — “Measurement. Analytics. AI. Creative. Automation. Everything you need to scale, in one easy-to-use platform.” It is built for brands that want a broad feature set under one roof and are comfortable with GMV-scaled pricing.</li>
-            <li><strong>Price gap at $5M GMV:</strong> Bratrax Lite is $79/mo flat. Triple Whale is $1,129/mo on its public pricing page at that GMV level.</li>
+            <li><strong>Price gap at $5M GMV:</strong> Bratrax Lite is <a href="https://lite.bratrax.com">$99/mo flat</a> (as of April 2026). Triple Whale is <a href="https://www.triplewhale.com/pricing">$1,129/mo</a> on its public pricing page at that GMV level (as of April 2026).</li>
             <li><strong>Key decision question:</strong> Do you need a focused attribution layer for a Shopify store — or a multi-product ecommerce intelligence platform with AI agents, activation tools, and optional consulting support?</li>
           </ul>
         </article>
@@ -455,16 +489,29 @@
           <span class="section-label">Fast read</span>
           <blockquote class="pull-quote">“Other tools tell you what happened. <span class="serif-accent">Triple Whale tells you what to do next.</span>”</blockquote>
           <p class="quote-context">That is Triple Whale’s own framing. The real question is whether you need a broad intelligence layer built into the vendor — or whether you would rather keep attribution narrower and bring your own AI on top.</p>
-          <span class="quote-source">Triple Whale homepage · April 2026</span>
+          <span class="quote-source"><a href="https://www.triplewhale.com" target="_blank" rel="noopener noreferrer">Triple Whale homepage</a> · April 2026</span>
           <div class="hero-actions">
-            <a class="btn-primary" href="../index.html#waitlist">Join the waitlist</a>
+            <a class="btn-primary" href="https://lite.bratrax.com">Get Bratrax Lite →</a>
           </div>
         </aside>
       </section>
 
+      <nav class="section card toc-nav" aria-label="On this page" id="on-this-page">
+        <span class="section-label">On this page</span>
+        <ul class="toc-list">
+          <li><a href="#comparison-table">At-a-glance comparison</a></li>
+          <li><a href="#head-to-head">Bratrax Lite vs Triple Whale head-to-head</a></li>
+          <li><a href="#receipts">Receipts</a></li>
+          <li><a href="#who-bratrax">Who Bratrax Lite is for</a></li>
+          <li><a href="#when-competitor">When Triple Whale is the right choice</a></li>
+          <li><a href="#migration">Migration notes</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
       <section class="section" id="comparison-table">
         <span class="section-label">01 — At-a-glance comparison</span>
-        <h2>Most buyers can decide from <span class="serif-accent">this</span> table alone.</h2>
+        <h2><span class="serif-accent">This Bratrax Lite vs Triple Whale</span> table answers most Shopify teams.</h2>
         <div class="comparison-table-wrap">
           <table>
             <thead>
@@ -475,84 +522,93 @@
               </tr>
             </thead>
             <tbody>
+              <tr class="table-category"><td colspan="3">Pricing &amp; contracts</td></tr>
               <tr>
                 <td><strong>Starting price</strong></td>
-                <td>$79/mo (founding), $99/mo regular</td>
-                <td>Free plan ($0/mo) for basic tracking; paid plans are GMV-based and scale with revenue</td>
+                <td>$99/mo flat <a href="https://lite.bratrax.com">(lite.bratrax.com)</a> · April 2026</td>
+                <td>$0 free tier + GMV-paid plans (<a href="https://www.triplewhale.com/pricing">triplewhale.com/pricing</a>) · April 2026</td>
               </tr>
               <tr>
                 <td><strong>Price at $5M GMV</strong></td>
-                <td>$79/mo flat</td>
-                <td>$1,129/mo on the public pricing page</td>
+                <td>$99/mo flat <a href="https://lite.bratrax.com">(lite.bratrax.com)</a> · April 2026</td>
+                <td>$1,129/mo <a href="https://www.triplewhale.com/pricing">public pricing anchor</a> · April 2026</td>
               </tr>
               <tr>
                 <td><strong>Pricing model</strong></td>
-                <td>Flat — no GMV or revenue scaling</td>
-                <td>GMV-based tiers + package selection</td>
+                <td>Flat — no GMV scaling</td>
+                <td>GMV + bundle selection</td>
               </tr>
               <tr>
                 <td><strong>Contract terms</strong></td>
                 <td>Month-to-month, cancel anytime</td>
-                <td>Annual contract default; month-to-month also offered</td>
+                <td>Annual default + optional month-to-month</td>
               </tr>
               <tr>
                 <td><strong>Free trial</strong></td>
                 <td>30-day money-back guarantee</td>
-                <td>Free plan available at $0/mo</td>
+                <td>$0 SKU with attribution limits (<a href="https://www.triplewhale.com/pricing">triplewhale.com/pricing</a>) · April 2026</td>
               </tr>
-              <tr>
-                <td><strong>Onboarding</strong></td>
-                <td>Self-serve, minutes to live dashboard, no call</td>
-                <td>“Most brands are up and running in 15 minutes, with no engineer required” — pixel installation required</td>
-              </tr>
+              <tr class="table-category"><td colspan="3">Product scope</td></tr>
               <tr>
                 <td><strong>Attribution models</strong></td>
-                <td>5 models: first-touch, last-touch, linear, time-decay, position-based</td>
-                <td>7+ models: First Click, Last Click, Linear (All), Linear (Paid), Triple Attribution, Total Impact, Clicks &amp; Deterministic Views</td>
-              </tr>
-              <tr>
-                <td><strong>AI integration</strong></td>
-                <td>MCP endpoint — use your own Claude or ChatGPT with your own API key</td>
-                <td>Proprietary Moby Chat + Moby Agents</td>
-              </tr>
-              <tr>
-                <td><strong>Data portability</strong></td>
-                <td>Portable, exportable data</td>
-                <td>Managed warehouse at higher tiers; standard-plan export terms not publicly specified</td>
+                <td>Yes — all 5 core models</td>
+                <td>Yes — 7+ models (+ AI-enhanced mixes)</td>
               </tr>
               <tr>
                 <td><strong>Platform scope</strong></td>
-                <td>Attribution analytics: Shopify, Meta, Google Ads</td>
-                <td>Measurement, analytics, AI, creative, automation — positioned as replacing 10+ tools</td>
+                <td>Shopify + Meta + Google ads stack</td>
+                <td>Full commerce OS (AI, activation, creatives, forecasting)</td>
               </tr>
               <tr>
                 <td><strong>Target buyer</strong></td>
-                <td>Founders, media buyers, Heads of Growth on Shopify</td>
-                <td>Founder, Marketing Leader, Performance Marketer, Data Analyst, Agency</td>
+                <td>Lean Shopify growth teams</td>
+                <td>Multi-disciplinary revenue orgs needing consolidation</td>
+              </tr>
+              <tr class="table-category"><td colspan="3">AI &amp; integrations</td></tr>
+              <tr>
+                <td><strong>AI integration</strong></td>
+                <td>Bring your own Claude/ChatGPT (API)</td>
+                <td>Moby Chat / Moby Agents (vendor-owned)</td>
+              </tr>
+              <tr>
+                <td><strong>Data portability</strong></td>
+                <td>Built for portability + export</td>
+                <td>Managed warehouse option; vague standard exports</td>
+              </tr>
+              <tr class="table-category"><td colspan="3">Service &amp; support</td></tr>
+              <tr>
+                <td><strong>Onboarding</strong></td>
+                <td>Self-serve — Shopify/Meta/Google</td>
+                <td>No demo gate — Triple Pixel · ~15 min story (quotes in depth section)</td>
+              </tr>
+              <tr>
+                <td><strong>Ongoing service</strong></td>
+                <td>No analyst or CSM</td>
+                <td>Implementation + dedicated CSM on higher tiers</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <section class="section">
-        <span class="section-label">02 — The dimensions that actually matter</span>
-        <h2>Not just <span class="serif-accent">features</span>. Decision criteria.</h2>
-        <p class="lede">These are the dimensions that matter most if you are actually deciding between a lean Shopify attribution layer and a broader ecommerce intelligence platform.</p>
+      <section class="section" id="head-to-head">
+        <span class="section-label">02 — Head-to-head</span>
+        <h2><span class="serif-accent">Comparison guide:</span> Bratrax Lite vs Triple Whale minus the fluff.</h2>
+        <p class="lede">These dimensions matter once you admit whether you truly need Whale’s sprawling OS—or just decisive Shopify attribution.</p>
 
         <div class="dimension">
           <h3>Pricing: Flat vs. scales with your revenue</h3>
           <div class="split">
             <div class="card">
               <div class="section-label">Bratrax Lite</div>
-              <p>Bratrax Lite charges $79/mo for founding members (locked for life, first 100 seats) and $99/mo after that. Flat. No GMV multiplier. No annual contract required. A brand doing $1M and a brand doing $20M in Shopify revenue pay the same number.</p>
+              <p><a href="https://lite.bratrax.com">$99/mo flat · lite.bratrax.com</a> · April 2026 — Shopify GMV shocks never touch Bratrax’s subscription line item.</p>
             </div>
             <div class="card red-top">
               <div class="section-label">Triple Whale</div>
-              <p>Triple Whale prices by a combination of your GMV and the package you choose. Their pricing page shows $1,129/mo at the $5M GMV tier on the recommended paid plan. They do have a free plan at $0/mo, and month-to-month pricing is available alongside the annual default. For a brand actively running paid ads across Facebook and Google, the paid tier is where attribution features live.</p>
+              <p>Hybrid GMV-plus-plan math produces ~<a href="https://www.triplewhale.com/pricing">$1,129/mo · triplewhale.com/pricing</a> on the cited $5M GMV tier (April 2026) atop free entry SKUs suited for exploratory brands.</p>
             </div>
           </div>
-          <div class="note-box"><strong>Why it matters:</strong> At $5M GMV, the gap is $79/mo vs $1,129/mo — a 15x difference. Triple Whale’s pricing model is built on the same logic as most enterprise SaaS: as you grow, you pay more. Bratrax’s flat model reflects a different product structure — no sales team, no CS org scaled to your GMV, no reason to bill like one.</div>
+          <div class="note-box"><strong>Why it matters:</strong> At $5M GMV, the gap is <a href="https://lite.bratrax.com">$99/mo</a> vs <a href="https://www.triplewhale.com/pricing">$1,129/mo</a> (as of April 2026 · <a href="https://lite.bratrax.com">lite.bratrax.com</a>, <a href="https://www.triplewhale.com/pricing">triplewhale.com/pricing</a>) — an ~11x difference. Triple Whale’s pricing model is built on the same logic as most enterprise SaaS: as you grow, you pay more. Bratrax’s flat model reflects a different product structure — no sales team, no CS org scaled to your GMV, no reason to bill like one.</div>
         </div>
 
         <div class="dimension">
@@ -560,11 +616,11 @@
           <div class="split">
             <div class="card">
               <div class="section-label">Bratrax Lite</div>
-              <p>Bratrax Lite is purpose-built for one job: Shopify D2C attribution. Five attribution models, pre-built dashboards for the $500K–$50M brand, connectors for Shopify, Meta, and Google Ads at launch. No creative tools, no forecasting, no activation layer. Opinionated and focused.</p>
+              <p>Laser Shopify D2C attribution with five models baked in plus dashboards tuned for roughly $500K–$50M brands — TikTok/Klaviyo next.</p>
             </div>
             <div class="card red-top">
               <div class="section-label">Triple Whale</div>
-              <p>Triple Whale positions as “the complete intelligence platform for ecommerce” and explicitly markets itself as replacing 10+ tools with one platform. Beyond attribution, the public product includes Moby Chat, Moby Agents, Media Mix Modeling (MMM), incrementality testing, forecasting, Sonar, creative analytics, and optional managed data warehouse and consulting layers at higher tiers.</p>
+              <p>Stacks Moby AI, creatives, forecasting, activation, warehouses, consultancy — Whale markets itself as the “everything” OS for ecommerce.</p>
             </div>
           </div>
           <div class="note-box"><strong>Why it matters:</strong> A broader platform is only valuable if you use the breadth. For a $3M Shopify brand with one or two people running ads, most of that surface goes unused — and the pricing reflects the full platform whether you use it or not. For a $15M brand with a marketing team that needs creative analytics, forecasting, and activation in the same workflow, Triple Whale’s consolidation argument is real.</div>
@@ -575,11 +631,11 @@
           <div class="split">
             <div class="card">
               <div class="section-label">Bratrax Lite</div>
-              <p>Bratrax Lite lets you connect your own Claude or ChatGPT using your own API key. You use the AI you already pay for to interrogate your attribution data. No proprietary chatbot, no token markup, no AI layer tied to the vendor relationship.</p>
+              <p>You wire Claude or ChatGPT with your API key — interrogations stay portable and vendor-neutral atop Bratrax’s dataset.</p>
             </div>
             <div class="card blue-top">
               <div class="section-label">Triple Whale</div>
-              <p>Triple Whale has built Moby Chat and Moby Agents as proprietary AI products layered on top of their data. Their positioning is explicit: “AI that actually works for ecommerce — this isn't ChatGPT with your data bolted on.” Moby Agents are marketed as doing complex analyses and automations across the Triple Whale data set.</p>
+              <p>Moby Chat + Agents run inside Whale’s walled garden—“not bolted ChatGPT” per their storyline—pushing judgments through their modeled stack.</p>
             </div>
           </div>
           <div class="note-box"><strong>Why it matters:</strong> Triple Whale is not just giving you AI access to your data — it is giving you Triple Whale’s AI interpreting Triple Whale’s data model inside Triple Whale’s system. That can be useful if you want a built-in ecommerce agent, but it also means the assumptions, context, and recommendations stay inside their platform. Bratrax takes the opposite approach: we provide the attribution data layer, and you bring the AI you already trust to question it on your own terms.</div>
@@ -590,11 +646,11 @@
           <div class="split">
             <div class="card">
               <div class="section-label">Bratrax Lite</div>
-              <p>Bratrax Lite is self-serve end-to-end. No pixel installation, no demo call, no onboarding call. Connect Shopify, Meta, and Google Ads and you have a live dashboard. Narrow scope means the setup is correspondingly simple.</p>
+              <p>Zero pixel drama: connect Shopify, Meta, Google, and Bratrax opens dashboards instantly—narrow scope kills busywork.</p>
             </div>
             <div class="card red-top">
               <div class="section-label">Triple Whale</div>
-              <p>Triple Whale does not require a demo call — you can start with the free plan without talking to anyone. Their public site says “Most brands are up and running with Triple Whale in 15 minutes, with no engineer required.” That said, setup includes installing the Triple Pixel, and higher paid tiers unlock Implementation Specialist onboarding and a Dedicated Customer Success Manager. The broader the platform you are activating, the more configuration is involved.</p>
+              <p>Self-service friendly with Triple Pixel installs and “~15 minutes” lore, then unlocks onboarding specialists plus CSMs as plans scale breadth.</p>
             </div>
           </div>
           <div class="note-box"><strong>Why it matters:</strong> The relevant contrast here is not really fast vs. slow — it is narrow tool vs. broad platform. A focused attribution product has fewer pieces to set up by design. Triple Whale’s setup is lighter than most enterprise platforms, but it is still configuring a multi-product suite.</div>
@@ -605,45 +661,73 @@
           <div class="split">
             <div class="card">
               <div class="section-label">Bratrax Lite</div>
-              <p>Bratrax Lite is built around portable, exportable data. The dataset is the deliverable, not just the dashboard.</p>
+              <p>Exports are first-class—you own the stitched dataset versus renting another UI shell.</p>
             </div>
             <div class="card blue-top">
               <div class="section-label">Triple Whale</div>
-              <p>Triple Whale offers a managed data warehouse as a product feature at higher tiers. What that includes in terms of data export and portability for standard plans is not clear.</p>
+              <p>Managed warehousing exists for elites, yet garden-variety plans bury export certainty—assume you clarify before contracts.</p>
             </div>
           </div>
           <div class="note-box"><strong>Why it matters:</strong> The dashboard is not the real product — the dataset behind it is. Every report, filter, and breakdown you use is constrained by how the vendor modeled your data before you opened the tool. If your attribution history, customer logic, and reporting workflows live inside a vendor’s platform, switching later means rebuilding more than dashboards; it means rebuilding the data layer those dashboards depend on. Bratrax takes the opposite position: the dataset should be portable and usable outside the UI, so your analytics does not depend on renting one vendor’s view of your business.</div>
         </div>
+
+        <div class="dimension">
+          <h3>Service &amp; support: self-serve vs. analyst-supported</h3>
+          <div class="split">
+            <div class="card">
+              <div class="section-label">Bratrax Lite</div>
+              <p>Operators run workflows solo—documentation-focused setup, no analyst or CSM layer.</p>
+            </div>
+            <div class="card red-top">
+              <div class="section-label">Triple Whale</div>
+              <p>Implementation partners and dedicated CSMs unlock as tiers climb—modeled for hands-on fleets (<a href="https://www.triplewhale.com/pricing">pricing page</a> · April 2026).</p>
+            </div>
+          </div>
+          <div class="note-box"><strong>Why it matters:</strong> If your team wants a partner-supported workflow with structured account guidance, Triple Whale has that path. If you want to stay self-serve and avoid service layers in the operating model, Bratrax Lite is the cleaner fit.</div>
+        </div>
       </section>
 
-      <section class="section">
+      <section class="section" id="receipts">
         <span class="section-label">03 — Receipts</span>
-        <h2>Three quotes that tell you what <span class="serif-accent">Triple Whale</span> actually sells.</h2>
+        <h2>Quotes that summarize the <span class="serif-accent">Triple Whale vs Bratrax Lite</span> worldview.</h2>
 
         <div class="receipt-grid">
           <article class="card">
             <blockquote class="pull-quote">“Other tools tell you what happened. Triple Whale tells you what to do next — with unified data, proven measurement, instant activation, and AI that knows your business as well as you do.”</blockquote>
             <p class="quote-context">This is the claim worth questioning. “Tells you what to do next” sounds stronger than reporting — it implies judgment. But the right next move is not determined by attribution data alone. It depends on margin, inventory, cash flow, creative fatigue, offer strategy, team capacity, and what risk the business is willing to take. Triple Whale may give useful recommendations inside its model, but that is not the same as knowing your business as well as you do. The cleaner question is: do you want a vendor’s AI layer interpreting your business for you, or do you want portable data you can interrogate with the AI and context you already trust?</p>
-            <span class="quote-source">Triple Whale homepage · April 2026</span>
+            <span class="quote-source"><a href="https://www.triplewhale.com" target="_blank" rel="noopener noreferrer">Triple Whale homepage</a> · April 2026</span>
           </article>
   
           <article class="card">
             <blockquote class="pull-quote">“All prices are based on a combination of your brand’s annual revenue and the package you choose.”</blockquote>
-            <p class="quote-context">Triple Whale’s own pricing page states the model plainly. Your bill grows as your revenue grows. At $5M GMV, the public pricing page shows $1,129/mo on the recommended plan. That is not a promotional number or a high-tier add-on — it is the standard paid tier for a brand at that scale.</p>
-            <span class="quote-source">Triple Whale pricing page · April 2026</span>
+            <p class="quote-context">Triple Whale’s own pricing page states the model plainly. Your bill grows as your revenue grows. At $5M GMV, the public pricing page shows <a href="https://www.triplewhale.com/pricing">$1,129/mo · triplewhale.com/pricing</a> on the recommended plan (as of April 2026). That is not a promotional number or a high-tier add-on — it is the standard paid tier for a brand at that scale.</p>
+            <span class="quote-source"><a href="https://www.triplewhale.com/pricing" target="_blank" rel="noopener noreferrer">Triple Whale pricing page</a> · April 2026</span>
           </article>
   
           <article class="card">
             <blockquote class="pull-quote">“The app is okay, but it's full of bugs and the UI is terrible… They're clearly gearing it toward larger enterprises… for a small operation it's just way overload.”</blockquote>
             <p class="quote-context">That review is useful because it speaks directly to fit, not just frustration. G2’s aggregate for Triple Whale is strong at 4.5/5 from 479 reviews, while Trustpilot is lower at 3.0/5 from 38 reviews. The point is not that Triple Whale is a bad product; it is that smaller operations can feel the platform is overbuilt for what they need. Lindsey Sullivan’s Trustpilot review says the other side clearly: “It’s pricey but worth it.” That is the profile Triple Whale is built for.</p>
-            <span class="quote-source">Shopify App Store review · April 2026</span>
+            <span class="quote-source"><a href="https://apps.shopify.com/triplewhale-1/reviews" target="_blank" rel="noopener noreferrer">Shopify App Store review</a> · April 2026</span>
           </article>
   
         </div>
       </section>
 
-      <section class="section">
-        <span class="section-label">04 — When Triple Whale is the right choice</span>
+      <section class="section" id="who-bratrax">
+        <span class="section-label">04 — Who Bratrax Lite is for</span>
+        <h2>Who should choose <span class="serif-accent">Bratrax Lite</span>.</h2>
+        <div class="card blue-top">
+          <ul class="bullet-list">
+            <li><strong>You run a Shopify D2C brand in roughly the $500K-$50M range.</strong> The strongest fit is often $1M-$20M revenue with a lean team that needs clear attribution without enterprise overhead.</li>
+            <li><strong>You want predictable analytics cost structure.</strong> <a href="https://lite.bratrax.com">Flat $99/mo · lite.bratrax.com</a> pricing works best when you do not want analytics cost to rise with GMV tiers as the business scales · April 2026.</li>
+            <li><strong>You prefer focused attribution over all-in-one platform breadth.</strong> If you do not need MMM, forecasting, activation, and broader intelligence modules, Bratrax Lite keeps scope narrow and usable.</li>
+            <li><strong>You want portable data plus BYO AI workflows.</strong> If your team already uses Claude or ChatGPT and wants direct access to attribution data for custom analysis, Bratrax Lite is built for that workflow.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="when-competitor">
+        <span class="section-label">05 — When Triple Whale is the right choice</span>
         <h2>There are cases where <span class="serif-accent">Triple Whale</span> is the better fit.</h2>
         <div class="card red-top">
           <ul class="bullet-list">
@@ -656,8 +740,8 @@
         </div>
       </section>
 
-      <section class="section">
-        <span class="section-label">05 — Migration notes</span>
+      <section class="section" id="migration">
+        <span class="section-label">06 — Migration notes</span>
         <h2>Switching tools means a <span class="serif-accent">parallel-run</span> period.</h2>
         <div class="card blue-top">
           <p>Bratrax Lite is self-serve — no migration call, no implementation specialist. Connect Shopify, Meta, and Google Ads at launch. Historical data from Triple Whale is not auto-imported; attribution history in Bratrax Lite starts from the day you connect.</p>
@@ -665,9 +749,9 @@
         </div>
       </section>
 
-      <section class="section">
-        <span class="section-label">06 — FAQ</span>
-        <h2>Short answers to the questions buyers <span class="serif-accent">actually</span> ask.</h2>
+      <section class="section" id="faq">
+        <span class="section-label">07 — FAQ</span>
+        <h2>Frequently asked <span class="serif-accent">alternative</span> questions on Triple Whale versus Bratrax Lite.</h2>
         <div class="faq-grid">
           <article class="card faq-item">
             <h4>How is Bratrax Lite different from Triple Whale?</h4>
@@ -679,7 +763,7 @@
           </article>
           <article class="card faq-item">
             <h4>Does Bratrax Lite have a free plan like Triple Whale?</h4>
-            <p>No free plan. Bratrax Lite starts at $79/mo for founding members. Triple Whale’s free plan exists but is limited — for a brand running paid ads across multiple channels, the paid tier is where attribution features live.</p>
+            <p>No free plan. Bratrax Lite starts at <a href="https://lite.bratrax.com">$99/mo flat · lite.bratrax.com</a> (as of April 2026). Triple Whale’s <a href="https://www.triplewhale.com/pricing">free plan · triplewhale.com/pricing</a> exists but is limited — for a brand running paid ads across multiple channels, the paid tier is where attribution features live · April 2026.</p>
           </article>
           <article class="card faq-item">
             <h4>Does Bratrax Lite have something like Triple Whale’s Moby?</h4>
@@ -691,20 +775,19 @@
           </article>
           <article class="card faq-item">
             <h4>Can I try Bratrax Lite before committing?</h4>
-            <p>Yes — 30-day money-back guarantee, no annual contract, cancel anytime. No credit card required to join the waitlist.</p>
+            <p>Yes — 30-day money-back guarantee, no annual contract, cancel anytime.</p>
           </article>
         </div>
       </section>
 
       <section class="section" id="cta">
-        <span class="section-label">07 — Get started</span>
+        <span class="section-label">08 — Get started</span>
         <article class="card cta-card">
-          <h2>Join the <span class="serif-accent">Bratrax Lite</span> waitlist.</h2>
-          <p class="lede">Flat $79/mo. No demo call. No annual lock-in. 30-day money-back guarantee.</p>
+          <h2>Get <span class="serif-accent">Bratrax Lite</span>.</h2>
+          <p class="lede">Flat <a href="https://lite.bratrax.com">$99/mo · lite.bratrax.com</a> (as of April 2026). No demo call. No annual lock-in. 30-day money-back guarantee.</p>
           <p>Built by the team behind Inceptly ($950M+ in D2C revenue driven) and VidTao (100K+ marketers). Same attribution engine we use for custom analytics clients — productized for Shopify D2C.</p>
-          <p><strong>Founding member pricing ($79/mo, locked for life) is available for the first 100 seats.</strong></p>
           <div class="hero-actions">
-            <a class="btn-primary" href="../index.html#waitlist">Join the waitlist</a>
+            <a class="btn-primary" href="https://lite.bratrax.com">Get Bratrax Lite →</a>
             <a class="btn-outline" href="#comparison-table">Back to comparison table</a>
           </div>
         </article>

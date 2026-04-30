@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Bratrax Lite vs Hyros: The Honest Comparison</title>
-  <meta name="description" content="Bratrax Lite vs Hyros — flat $79/mo vs tracked-revenue pricing, self-serve setup vs demo-gated onboarding, and who each tool is actually built for." />
+  <meta name="description" content="Bratrax Lite vs Hyros — flat $99/mo vs tracked-revenue pricing (as of April 2026), self-serve setup vs demo-gated onboarding, and who each tool is actually built for." />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Outfit:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -278,7 +278,39 @@
     }
 
     tr:last-child td { border-bottom: none; }
-    tbody tr:hover td { background: rgba(255,255,255,0.02); }
+    tbody tr:not(.table-category):hover td {
+      background: rgba(255,255,255,0.02);
+    }
+    tr.table-category td {
+      background: rgba(212,255,0,0.06);
+      color: rgba(212,255,0,0.88);
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      border-bottom-color: rgba(212,255,0,0.15);
+      padding-top: 16px;
+      padding-bottom: 14px;
+    }
+    tr.table-category:hover td {
+      background: rgba(212,255,0,0.06);
+    }
+    .toc-nav .toc-list {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 10px;
+    }
+    .toc-nav .toc-list a {
+      text-decoration: none;
+      border-bottom: 1px dashed rgba(212,255,0,0.28);
+      padding-bottom: 2px;
+    }
+    .toc-nav .toc-list a:hover {
+      border-bottom-color: var(--color-acid);
+    }
     td strong { color: var(--color-text-bright); }
     a { color: var(--color-acid); }
     a:hover { color: #e5ff58; }
@@ -393,18 +425,21 @@
 
     <main>
       <section class="page-intro">
-        <span class="meta-line">Bratrax Lite vs Hyros</span>
-        <h1>The <span class="serif-accent">honest</span> comparison</h1>
-        <p class="subhead">Flat $79/mo vs tracked-revenue tiers. Self-serve setup vs demo-gated onboarding. A lean Shopify D2C tool vs a platform built for complex ad operations.</p>
+        <h1>Bratrax Lite vs Hyros: The <span class="serif-accent">honest</span> comparison</h1>
+        <p class="subhead">Flat <a href="https://lite.bratrax.com">$99/mo · lite.bratrax.com</a> vs Hyros tracked-revenue tiers (<a href="https://hyros.com/pricing-ai-tracking">hyros.com/pricing-ai-tracking</a>) · April 2026. Self-serve setup vs demo-gated onboarding. Honest framing of Shopify D2C fit vs analyst-led onboarding — and where each tool shines.</p>
+        <span class="meta-line">Last updated: May 1, 2026</span>
+        <p class="lede">Bratrax Lite is a flat-priced (<a href="https://lite.bratrax.com">$99/mo · lite.bratrax.com</a>) attribution tool · April 2026 — built for Shopify D2C brands that want portable data and the ability to bring their own Claude or ChatGPT.</p>
+        <p class="lede">Built by the team that has run paid attribution for D2C brands at Inceptly since 2018.</p>
       </section>
 
       <section class="hero-grid">
         <article class="card">
           <span class="section-label">TL;DR</span>
           <ul class="tldr-list">
-            <li><strong>Bratrax Lite</strong> is for Shopify D2C brands ($500k–$50M) that want flat $79–$99/mo pricing, self-serve setup with no demo call, portable data, and the ability to use their own Claude or ChatGPT with their own API key.</li>
+            <li><strong>What is Hyros?</strong> Hyros is a tracked-revenue-priced attribution platform with a proprietary AI agent (AIR) and analyst-led onboarding, targeting larger multi-channel ad operations.</li>
+            <li><strong>Bratrax Lite</strong> is for Shopify D2C brands ($500k–$50M) that want <a href="https://lite.bratrax.com">flat $99/mo · lite.bratrax.com</a> pricing (as of April 2026), self-serve setup with no demo call, portable data, and the ability to use their own Claude or ChatGPT with their own API key.</li>
             <li><strong>Hyros</strong> is for larger, more complex ad operations — “serious ad buyers who need deep, accurate reporting across large, complex traffic operations,” per their own Shopify page. That includes multi-step funnels, call-tracking, and dedicated analyst support.</li>
-            <li><strong>Price gap:</strong> Bratrax Lite is $79/mo flat. Hyros’s pricing page shows $230/mo with an annual plan as the entry-level tier, for $20k tracked monthly revenue.</li>
+            <li><strong>Price gap:</strong> Bratrax Lite is <a href="https://lite.bratrax.com">$99/mo flat · lite.bratrax.com</a> (as of April 2026). Hyros’s pricing page shows <a href="https://hyros.com/pricing-ai-tracking">$230/mo entry tier · hyros.com/pricing-ai-tracking</a> with an annual plan, at <a href="https://hyros.com/pricing-ai-tracking">$20K tracked monthly revenue</a> (as of April 2026).</li>
             <li><strong>Key decision question:</strong> Do you need a lean, flat-priced attribution layer for a Shopify store — or a full-service, analyst-supported platform for a complex multi-channel operation?</li>
           </ul>
         </article>
@@ -413,16 +448,29 @@
           <span class="section-label">Fast read</span>
           <blockquote class="pull-quote">“HYROS isn’t for everyone — it’s built for <span class="serif-accent">serious ad buyers.</span>”</blockquote>
           <p class="quote-context">That is Hyros’s own framing. The question is whether your Shopify store actually needs that kind of analyst-supported, complex-operations platform — or a narrower attribution layer built for D2C.</p>
-          <span class="quote-source">Hyros Shopify page · April 2026</span>
+          <span class="quote-source"><a href="https://hyros.com/shopify" target="_blank" rel="noopener noreferrer">Hyros Shopify page</a> · April 2026</span>
           <div class="hero-actions">
-            <a class="btn-primary" href="../index.html#waitlist">Join the waitlist</a>
+            <a class="btn-primary" href="https://lite.bratrax.com">Get Bratrax Lite →</a>
           </div>
         </aside>
       </section>
 
+      <nav class="section card toc-nav" aria-label="On this page" id="on-this-page">
+        <span class="section-label">On this page</span>
+        <ul class="toc-list">
+          <li><a href="#comparison-table">At-a-glance comparison</a></li>
+          <li><a href="#head-to-head">Bratrax Lite vs Hyros head-to-head</a></li>
+          <li><a href="#receipts">Receipts</a></li>
+          <li><a href="#who-bratrax">Who Bratrax Lite is for</a></li>
+          <li><a href="#when-competitor">When Hyros is the right choice</a></li>
+          <li><a href="#migration">Migration notes</a></li>
+          <li><a href="#faq">FAQ</a></li>
+        </ul>
+      </nav>
+
       <section class="section" id="comparison-table">
         <span class="section-label">01 — At-a-glance comparison</span>
-        <h2>Most buyers can decide from <span class="serif-accent">this</span> table alone.</h2>
+        <h2><span class="serif-accent">Most buyers</span> decide from this Bratrax Lite vs Hyros comparison table alone.</h2>
         <div class="comparison-table-wrap">
           <table>
             <thead>
@@ -433,15 +481,16 @@
               </tr>
             </thead>
             <tbody>
+              <tr class="table-category"><td colspan="3">Pricing &amp; contracts</td></tr>
               <tr>
                 <td><strong>Starting price</strong></td>
-                <td>$79/mo (founding), $99/mo regular</td>
-                <td>$230/mo with annual plan — entry tier</td>
+                <td>$99/mo flat <a href="https://lite.bratrax.com">(lite.bratrax.com)</a> · April 2026</td>
+                <td>$230/mo annually entry <a href="https://hyros.com/pricing-ai-tracking">(hyros.com/pricing-ai-tracking)</a> · April 2026</td>
               </tr>
               <tr>
                 <td><strong>Pricing model</strong></td>
-                <td>Flat — no GMV or revenue scaling</td>
-                <td>Tracked monthly revenue-based tiers</td>
+                <td>Flat — no tracked-revenue tiers</td>
+                <td>Tracked monthly revenue tiers</td>
               </tr>
               <tr>
                 <td><strong>Contract terms</strong></td>
@@ -453,55 +502,63 @@
                 <td>30-day money-back guarantee</td>
                 <td>No public free trial</td>
               </tr>
-              <tr>
-                <td><strong>Onboarding</strong></td>
-                <td>Self-serve, minutes to live dashboard, no call</td>
-                <td>“We require a quick call to set you up”</td>
-              </tr>
+              <tr class="table-category"><td colspan="3">Product scope</td></tr>
               <tr>
                 <td><strong>Attribution models</strong></td>
-                <td>5 models included: first-touch, last-touch, linear, time-decay, position-based</td>
-                <td>6 models included: Last Click, First Click, Scientific, Depreciation, U-Shaped, Linear</td>
+                <td>Yes — all 5 core models</td>
+                <td>Yes — 6 named modes</td>
               </tr>
               <tr>
+                <td><strong>Shopify D2C fit</strong></td>
+                <td>Shopify-centric D2C</td>
+                <td>Multi-vertical (commerce, calls, info, SaaS)</td>
+              </tr>
+              <tr>
+                <td><strong>Target buyer</strong></td>
+                <td>Growth/marketing leads on Shopify</td>
+                <td>Enterprise-style complex operations buyers</td>
+              </tr>
+              <tr class="table-category"><td colspan="3">AI &amp; integrations</td></tr>
+              <tr>
                 <td><strong>AI integration</strong></td>
-                <td>MCP endpoint — use your own Claude or ChatGPT with your own API key</td>
+                <td>Bring your own AI (BYO Claude/ChatGPT + API)</td>
                 <td>Proprietary AIR agent</td>
               </tr>
               <tr>
                 <td><strong>Data portability</strong></td>
-                <td>Portable, exportable data</td>
-                <td>Some limited access exists: public REST API, Webhooks, CSV export for Lead Journey — broader portability is not a prominent part of their positioning</td>
+                <td>Built for portability + export</td>
+                <td>API + webhooks; exports limited vs positioning</td>
+              </tr>
+              <tr class="table-category"><td colspan="3">Service &amp; support</td></tr>
+              <tr>
+                <td><strong>Onboarding</strong></td>
+                <td>Self-serve — fast path to dashboards</td>
+                <td>Setup call workflow (see head-to-head for quotes)</td>
               </tr>
               <tr>
-                <td><strong>Shopify D2C fit</strong></td>
-                <td>Purpose-built for Shopify D2C brands</td>
-                <td>Broad scope: e-commerce, call-based, info/education, SaaS</td>
-              </tr>
-              <tr>
-                <td><strong>Target buyer</strong></td>
-                <td>Founders, media buyers, Heads of Growth on Shopify</td>
-                <td>“Serious ad buyers” running “large, complex traffic operations”</td>
+                <td><strong>Ongoing service</strong></td>
+                <td>No analyst or CSM included</td>
+                <td>Analyst-led account model emphasized</td>
               </tr>
             </tbody>
           </table>
         </div>
       </section>
 
-      <section class="section">
-        <span class="section-label">02 — The dimensions that matter</span>
-        <h2>Head-to-head, without the <span class="serif-accent">theater</span>.</h2>
+      <section class="section" id="head-to-head">
+        <span class="section-label">02 — Head-to-head</span>
+        <h2><span class="serif-accent">Bratrax Lite vs Hyros,</span> without the theater.</h2>
 
         <article class="dimension">
           <h3>1. Pricing: flat rate vs. scales with revenue</h3>
           <div class="split">
             <div class="card">
               <span class="section-label">Bratrax Lite</span>
-              <p>Bratrax Lite charges $79/mo for founding members (locked for life, first 100 seats) and $99/mo after that. Flat. No GMV multiplier. No annual contract. The number on the page is the number on the invoice, regardless of whether you're doing $1M or $20M in Shopify revenue.</p>
+              <p><a href="https://lite.bratrax.com">$99/mo flat · lite.bratrax.com</a> · April 2026 — Shopify scale does not rescale analytics cost. Invoice matches the marketed price.</p>
             </div>
             <div class="card red-top">
               <span class="section-label">Hyros</span>
-              <p>Hyros prices by tracked monthly revenue. Their pricing page shows $230/mo with an annual plan as the entry-level tier, at $20k tracked monthly revenue. Tiers scale upward through $40k, $83k, $250k, $750k, and $1M+ tracked revenue bands.</p>
+              <p>Tracked-revenue tiers. Public anchor: <a href="https://hyros.com/pricing-ai-tracking">$230/mo annually · hyros.com/pricing-ai-tracking</a> at <a href="https://hyros.com/pricing-ai-tracking">$20K tracked monthly revenue</a> — April 2026 — stepping up via published bands beyond that tier.</p>
             </div>
           </div>
           <div class="note-box"><strong>Why it matters:</strong> A tracked-revenue pricing model means your attribution bill grows as your business grows — even when the underlying cost to serve you doesn't scale proportionally. Bratrax's flat model reflects a product built without a sales team or enterprise cost structure. That's why the price can stay flat.</div>
@@ -512,12 +569,11 @@
           <div class="split">
             <div class="card blue-top">
               <span class="section-label">Bratrax Lite</span>
-              <p>Bratrax Lite is self-serve end-to-end. No demo call. No onboarding call. No pixel debugging sessions. Minutes to a live dashboard from signup, with pre-built Shopify D2C templates.</p>
+              <p>Fully self-serve: connect Shopify/Meta/Google, skip calls, iterate fast with template dashboards baked for D2C.</p>
             </div>
             <div class="card red-top stack">
               <span class="section-label">Hyros</span>
-              <p>Hyros requires a call before setup. Their pricing page says each account is customized, assigned a 1-to-1 analyst, and “we require a quick call to set you up.” The Shopify page repeats the same prompt: “Book a 5-minute setup call below.”</p>
-              <p>Their homepage also says “Set up in seconds with our 1 click AI.” Both versions are live on the same domain. The CTA Hyros actually pushes is the call — not instant access.</p>
+              <p>Hyros anchors onboarding on booked calls (“we require a quick call to set you up”; “Book a 5-minute setup call below”). Faster marketing copy elsewhere on the domain coexists — the flow Hyros reinforces is scheduling time with the team.</p>
             </div>
           </div>
           <div class="note-box"><strong>Why it matters:</strong> A demo gate is a sales-motion decision, not a product-complexity one. If you want to self-evaluate a Shopify attribution tool in an afternoon, that friction is built in by design.</div>
@@ -528,15 +584,14 @@
           <div class="split">
             <div class="card blue-top stack">
               <span class="section-label">Bratrax Lite</span>
-              <p>Bratrax Lite lets you connect your own Claude or ChatGPT using your own API key. You use the AI you already pay for — no proprietary chatbot, no token markup, no vendor AI layer to trust or work around.</p>
-              <p><strong>Core positioning:</strong> Bratrax provides the data layer. You bring the intelligence layer.</p>
+              <p>Plug in Claude or ChatGPT with your own API key — use the tooling you already pay for sans vendor-hosted AI overhead.</p>
             </div>
             <div class="card red-top">
               <span class="section-label">Hyros</span>
-              <p>Hyros has built a proprietary AI layer called AIR. Their site describes it as: “AIR delivers 1-to-1 marketing to every visitor.” Hyros’s public positioning centers entirely on AIR — BYO-AI access is not part of what they offer.</p>
+              <p>AIR rides inside Hyros’s stack (“AIR delivers 1-to-1 marketing to every visitor”). BYO tooling is absent from positioning — you stay inside AIR’s walled workflow.</p>
             </div>
           </div>
-          <div class="note-box"><strong>Why it matters:</strong> Hyros AIR is not just “AI access” to your data. It is Hyros’s AI interpreting Hyros’s attribution layer inside Hyros’s system. That can be useful, but it also means the assumptions and recommendations stay inside their black box. Bratrax takes the opposite approach: we provide the data layer, and you bring your own Claude or ChatGPT to question it on your terms.</div>
+          <div class="note-box"><strong>Why it matters:</strong> Core Bratrax positioning: we steward the attribution layer — you steward the reasoning layer atop it. Hyros AIR is not just AI access — it interprets attribution inside Hyros’s black box assumptions. Bratrax keeps interpretability tied to Claude/ChatGPT you already trust.</div>
         </article>
 
         <article class="dimension">
@@ -544,11 +599,11 @@
           <div class="split">
             <div class="card blue-top">
               <span class="section-label">Bratrax Lite</span>
-              <p>Bratrax Lite is purpose-built for Shopify D2C brands in the $500k–$50M revenue range, with the strongest fit in the $1M–$20M band. All five attribution models are included from day one. Launch connectors: Shopify, Meta/Facebook Ads, Google Ads. TikTok and Klaviyo are roadmap items.</p>
+              <p>Laser-focused Shopify D2C ($500k–$50M, sweet spot ~$1M–$20M) with Shopify, Meta, Google live now and TikTok/Klaviyo on roadmap.</p>
             </div>
             <div class="card red-top">
               <span class="section-label">Hyros</span>
-              <p>Hyros positions across a broader set of verticals — e-commerce, call-based businesses, info/education, and SaaS. Their Shopify page describes the target as “serious ad buyers” running “large, complex traffic operations,” with each account receiving a dedicated analyst.</p>
+              <p>Coverage sprawls ecommerce, heavy call-tracking, SaaS, and edu funnels paired with bespoke analyst onboarding for “large, complex traffic operations.”</p>
             </div>
           </div>
           <div class="note-box"><strong>Why it matters:</strong> “Serious ad buyers” with “large, complex traffic operations” is Hyros’s own product framing, not a critique. That infrastructure — analysts, custom onboarding, multi-vertical support — costs money and requires commitment. If you are running a Shopify store and mainly need a self-serve attribution layer, you may end up paying for a platform built around a more complex buyer than you are.</div>
@@ -559,43 +614,71 @@
           <div class="split">
             <div class="card blue-top">
               <span class="section-label">Bratrax Lite</span>
-              <p>Bratrax Lite is built around portable, exportable data. The dataset is the deliverable, not just the dashboard.</p>
+              <p>Portable exports by default — dashboards are shorthand; the modeled dataset travels with your team.</p>
             </div>
             <div class="card red-top">
               <span class="section-label">Hyros</span>
-              <p>Hyros does have some public-facing access and export capabilities — a REST API, Webhooks, and a changelog entry for CSV export of Lead Journey data are publicly documented. That said, broader data portability is not a prominent part of how Hyros positions the product.</p>
+              <p>Hyros publishes API hooks, automation webhooks, and changelog-tracked CSV export for journeys — portability exists but never headlines their story.</p>
             </div>
           </div>
           <div class="note-box"><strong>Why it matters:</strong> You are not just buying charts — you are buying access to a dataset someone else defined. If your reporting lives inside a vendor’s platform, your questions are limited by their data model, their UI, and their export options. Bratrax treats the dataset as the product: portable, exportable, and usable outside the dashboard.</div>
         </article>
+
+        <article class="dimension">
+          <h3>6. Service &amp; support: self-serve vs. analyst-supported</h3>
+          <div class="split">
+            <div class="card blue-top">
+              <span class="section-label">Bratrax Lite</span>
+              <p>Operators run workflows solo—documentation-focused setup, no analyst or CSM layer.</p>
+            </div>
+            <div class="card red-top">
+              <span class="section-label">Hyros</span>
+              <p>Analyst-led onboarding and ongoing account support baked into collateral—partner-style engagement, not pure self-serve product-only (<a href="https://hyros.com/pricing-ai-tracking">pricing</a>, <a href="https://hyros.com/shopify">Shopify</a> · April 2026).</p>
+            </div>
+          </div>
+          <div class="note-box"><strong>Why it matters:</strong> If your team wants a partner-led workflow with regular analyst guidance, Hyros is built for that. If you want a tool your team can run independently without service layers added to the relationship, Bratrax Lite matches that preference better.</div>
+        </article>
       </section>
 
-      <section class="section">
+      <section class="section" id="receipts">
         <span class="section-label">03 — Receipts</span>
-        <h2>Receipts worth checking before you <span class="serif-accent">choose</span>.</h2>
+        <h2>Receipts worth checking before you pick <span class="serif-accent">Hyros</span>.</h2>
 
         <article class="dimension card blue-top">
           <blockquote class="pull-quote">“Proven to increase AD ROI by at least 15%” and “Track every sale to its true source.”</blockquote>
-          <span class="quote-source">Homepage claim · hyros.com · April 2026</span>
+          <span class="quote-source"><a href="https://hyros.com/" target="_blank" rel="noopener noreferrer">Homepage claim · hyros.com</a> · April 2026</span>
           <p class="quote-context">This is the leap to question. Better tracking can recover missed signals, but “track every sale to its true source” is too absolute for attribution. And even if the tracking layer improves visibility, that does not automatically translate into a universal ROI lift. Creative, offer, auction conditions, media buying decisions, and platform optimization still decide performance. Tracking helps you see better; it does not guarantee better results.</p>
         </article>
 
         <article class="dimension card">
           <blockquote class="pull-quote">“We require a quick call to set you up.”</blockquote>
-          <span class="quote-source">Pricing page · hyros.com/pricing-ai-tracking · April 2026</span>
+          <span class="quote-source"><a href="https://hyros.com/pricing-ai-tracking" target="_blank" rel="noopener noreferrer">Pricing page · hyros.com/pricing-ai-tracking</a> · April 2026</span>
           <p class="quote-context">This is from Hyros’s own pricing page, where they also describe each account as customized and assigned a 1-to-1 analyst. The same company’s homepage says “Set up in seconds with our 1 click AI.” The pricing page is what describes how new accounts actually onboard.</p>
         </article>
 
         <article class="dimension card red-top">
           <blockquote class="pull-quote">“Nothing, it was extremely overhyped and they wouldn’t let us cancel. This is a scam and there is no fancy AI, it’s just basic UTMs that you can get somewhere else.”</blockquote>
-          <span class="quote-source">Trevor C. · G2 review · April 2026</span>
+          <span class="quote-source"><a href="https://www.g2.com/products/hyros/reviews" target="_blank" rel="noopener noreferrer">Trevor C. · G2 review</a> · April 2026</span>
           <p class="quote-context">Important context: G2 notes there are not enough Hyros reviews to provide aggregate buying insight — this is one user’s view, not a representative aggregate. Hyros’s Trustpilot aggregate was 4.8/5 from 661 reviews at research time. On the other end, Paul Corral writes on Trustpilot that “if you run high volume traffic from paid platforms and don’t use Hyros you are leaving money on the table.” That high-volume, multi-platform profile is the buyer Hyros is built for.</p>
         </article>
       </section>
 
-      <section class="section">
-        <span class="section-label">04 — When Hyros is the right choice</span>
-        <h2>Cases where you probably should <span class="serif-accent">not</span> switch.</h2>
+      <section class="section" id="who-bratrax">
+        <span class="section-label">04 — Who Bratrax Lite is for</span>
+        <h2>Who should choose <span class="serif-accent">Bratrax Lite</span>.</h2>
+        <div class="card blue-top">
+          <ul class="bullet-list">
+            <li><strong>You run a Shopify D2C brand in roughly the $500k-$50M range.</strong> The strongest fit is often $1M-$20M revenue with a lean team that needs clear attribution without enterprise overhead.</li>
+            <li><strong>You want predictable software cost structure.</strong> <a href="https://lite.bratrax.com">Flat $99/mo · lite.bratrax.com</a> pricing works best when you do not want analytics cost to rise simply because revenue rises · April 2026.</li>
+            <li><strong>You prefer self-serve tools over service-led workflows.</strong> If your team wants to connect channels and use dashboards immediately without setup calls, Bratrax Lite is built for that motion.</li>
+            <li><strong>You want portable data plus BYO AI workflows.</strong> If your team already uses Claude or ChatGPT and wants direct access to attribution data for custom analysis, Bratrax Lite is designed for that operating style.</li>
+          </ul>
+        </div>
+      </section>
+
+      <section class="section" id="when-competitor">
+        <span class="section-label">05 — When Hyros is the right choice</span>
+        <h2><span class="serif-accent">Hyros beats</span> Bratrax Lite when this list sounds like your team.</h2>
         <div class="card red-top">
           <ul class="bullet-list">
             <li><strong>You run large, complex multi-channel traffic.</strong> Hyros positions for businesses with multi-step funnels, call tracking, and cross-platform attribution. If your funnel includes lead flows, application steps, or call-heavy operations, Hyros’s feature surface and analyst support are built for that.</li>
@@ -606,8 +689,8 @@
         </div>
       </section>
 
-      <section class="section">
-        <span class="section-label">05 — Migration notes</span>
+      <section class="section" id="migration">
+        <span class="section-label">06 — Migration notes</span>
         <h2>What switching actually <span class="serif-accent">means</span>.</h2>
         <div class="card blue-top stack">
           <p>Switching attribution tools means running two tracking setups in parallel through a transition window before cutting over fully.</p>
@@ -616,9 +699,9 @@
         </div>
       </section>
 
-      <section class="section">
-        <span class="section-label">06 — FAQ</span>
-        <h2>The practical questions buyers actually <span class="serif-accent">ask</span>.</h2>
+      <section class="section" id="faq">
+        <span class="section-label">07 — FAQ</span>
+        <h2>Frequently asked <span class="serif-accent">comparison</span> questions on Bratrax Lite vs Hyros.</h2>
         <div class="faq-grid">
           <article class="faq-item card">
             <h4>How is Bratrax Lite different from Hyros?</h4>
@@ -642,7 +725,7 @@
           </article>
           <article class="faq-item card">
             <h4>Can I try Bratrax Lite before committing?</h4>
-            <p>Yes — 30-day money-back guarantee, no annual contract, cancel anytime. No credit card required to join the waitlist.</p>
+            <p>Yes — 30-day money-back guarantee, no annual contract, cancel anytime.</p>
           </article>
         </div>
       </section>
@@ -650,16 +733,15 @@
       <section class="section">
         <div class="cta-card card">
           <span class="section-label">Bratrax Lite</span>
-          <h2>Join the Bratrax Lite <span class="serif-accent">waitlist</span>.</h2>
-          <p>Flat $79/mo. No demo call. No annual lock-in. 30-day money-back guarantee.</p>
+          <h2>Get <span class="serif-accent">Bratrax Lite</span>.</h2>
+          <p>Flat <a href="https://lite.bratrax.com">$99/mo · lite.bratrax.com</a> (as of April 2026). No demo call. No annual lock-in. 30-day money-back guarantee.</p>
           <div class="cta-actions">
-            <a class="btn-primary" href="../index.html#waitlist">Join the waitlist →</a>
+            <a class="btn-primary" href="https://lite.bratrax.com">Get Bratrax Lite →</a>
             <a class="btn-outline" href="#comparison-table">See the table</a>
           </div>
           <ul class="bullet-list">
             <li>Built by the team behind Inceptly ($950M+ in D2C revenue driven) and VidTao (100K+ marketers).</li>
             <li>Same attribution engine we use for custom analytics clients — productized for Shopify D2C.</li>
-            <li>Founding member pricing ($79/mo, locked for life) is available for the first 100 seats.</li>
           </ul>
         </div>
       </section>
