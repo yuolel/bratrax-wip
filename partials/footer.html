@@ -29,7 +29,7 @@
   .brx-footer {
     background: #0A0A0A;
     color: #E8E4DC;
-    padding: 56px 32px;
+    padding: 40px 32px;
     border-top: 1px solid rgba(212, 255, 0, 0.12);
     font-family: 'Outfit', 'Helvetica Neue', system-ui, sans-serif;
   }
@@ -81,15 +81,17 @@
     color: #0A0A0A;
     border-color: #D4FF00;
   }
+  .brx-footer-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
   .brx-footer-compare {
-    width: 100%;
-    margin-top: 20px;
-    padding-top: 24px;
-    border-top: 1px solid rgba(232, 228, 220, 0.08);
     display: flex;
     flex-wrap: wrap;
     align-items: center;
-    gap: 22px;
+    gap: 14px;
   }
   .brx-footer-compare-label {
     font-family: 'Space Mono', ui-monospace, monospace;
@@ -102,7 +104,7 @@
   .brx-footer-compare-links {
     display: flex;
     flex-wrap: wrap;
-    gap: 22px;
+    gap: 16px;
     align-items: center;
   }
   .brx-footer-compare-links a {
@@ -166,6 +168,7 @@
 </style>
 <footer class="brx-footer">
   <div class="brx-footer-wrap">
+    <div class="brx-footer-left">
     <a class="brx-footer-brand" href="https://bratrax.com/" aria-label="Bratrax home">
       <svg width="189" height="26" viewBox="0 0 189 26" fill="none" xmlns="http://www.w3.org/2000/svg">
         <path d="M0 20.664H2.376V4.536H0V0H11.052C12.252 0 13.308 0.168 14.22 0.504C15.156 0.84 15.936 1.296 16.56 1.872C17.208 2.448 17.688 3.144 18 3.96C18.336 4.752 18.504 5.616 18.504 6.552V6.984C18.504 8.424 18.096 9.576 17.28 10.44C16.488 11.304 15.48 11.904 14.256 12.24V12.888C15.48 13.224 16.488 13.836 17.28 14.724C18.096 15.588 18.504 16.74 18.504 18.18V18.612C18.504 19.548 18.336 20.424 18 21.24C17.688 22.032 17.208 22.728 16.56 23.328C15.936 23.904 15.156 24.36 14.22 24.696C13.308 25.032 12.252 25.2 11.052 25.2H0V20.664ZM7.128 20.664H10.584C11.592 20.664 12.408 20.448 13.032 20.016C13.656 19.584 13.968 18.864 13.968 17.856V17.64C13.968 16.632 13.656 15.912 13.032 15.48C12.408 15.048 11.592 14.832 10.584 14.832H7.128V20.664ZM7.128 10.296H10.584C11.592 10.296 12.408 10.092 13.032 9.684C13.656 9.252 13.968 8.532 13.968 7.524V7.308C13.968 6.3 13.656 5.592 13.032 5.184C12.408 4.752 11.592 4.536 10.584 4.536H7.128V10.296Z" fill="#E8E4DC"/>
@@ -178,19 +181,20 @@
         <path d="M188.081 22.284C188.081 22.764 187.985 23.22 187.793 23.652C187.625 24.06 187.385 24.42 187.073 24.732C186.761 25.02 186.389 25.248 185.957 25.416C185.549 25.608 185.117 25.704 184.661 25.704C184.181 25.704 183.737 25.608 183.329 25.416C182.921 25.248 182.561 25.02 182.249 24.732C181.937 24.42 181.685 24.06 181.493 23.652C181.325 23.22 181.241 22.764 181.241 22.284C181.241 21.804 181.325 21.36 181.493 20.952C181.685 20.52 181.937 20.16 182.249 19.872C182.561 19.56 182.921 19.32 183.329 19.152C183.737 18.96 184.181 18.864 184.661 18.864C185.117 18.864 185.549 18.96 185.957 19.152C186.389 19.32 186.761 19.56 187.073 19.872C187.385 20.16 187.625 20.52 187.793 20.952C187.985 21.36 188.081 21.804 188.081 22.284Z" fill="#D4FF00"/>
       </svg>
     </a>
+      <div class="brx-footer-compare">
+        <span class="brx-footer-compare-label">Compare:</span>
+        <nav class="brx-footer-compare-links" aria-label="Comparisons">
+          <a href="https://bratrax.com/vs/hyros">vs Hyros</a>
+          <a href="https://bratrax.com/vs/triple-whale">vs Triple Whale</a>
+        </nav>
+      </div>
+    </div>
     <nav class="brx-footer-links" aria-label="Primary footer">
       <a href="https://bratrax.com/">Home</a>
       <a href="https://lite.bratrax.com/">Lite</a>
       <a class="brx-footer-login" href="https://bratrax.com/login">Login</a>
       <a href="https://blog.bratrax.com/">Newsletter</a>
     </nav>
-    <div class="brx-footer-compare">
-      <span class="brx-footer-compare-label">Compare:</span>
-      <nav class="brx-footer-compare-links" aria-label="Comparisons">
-        <a href="https://bratrax.com/vs/hyros">vs Hyros</a>
-        <a href="https://bratrax.com/vs/triple-whale">vs Triple Whale</a>
-      </nav>
-    </div>
     <div class="brx-footer-legal">
       <div class="brx-footer-copy">&copy; 2026 Bratrax</div>
       <nav class="brx-footer-legal-links" aria-label="Legal">
