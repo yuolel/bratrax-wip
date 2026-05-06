@@ -18,6 +18,8 @@
         <a href="https://lite.bratrax.com/" style="color:#E8E4DC;margin:0 12px">Lite</a>
         <a href="https://bratrax.com/login" style="color:#D4FF00;margin:0 12px">Login</a>
         <a href="https://blog.bratrax.com/" style="color:#E8E4DC;margin:0 12px">Newsletter</a>
+        <a href="https://bratrax.com/vs/hyros" style="color:#E8E4DC;margin:0 12px">vs Hyros</a>
+        <a href="https://bratrax.com/vs/triple-whale" style="color:#E8E4DC;margin:0 12px">vs Triple Whale</a>
         <a href="https://bratrax.com/privacy-policy" style="color:#858585;margin:0 12px">Privacy Policy</a>
         <a href="https://bratrax.com/terms-of-service" style="color:#858585;margin:0 12px">Terms of Service</a>
       </footer>
@@ -78,6 +80,43 @@
     background: #D4FF00;
     color: #0A0A0A;
     border-color: #D4FF00;
+  }
+  .brx-footer-compare {
+    width: 100%;
+    margin-top: 20px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(232, 228, 220, 0.08);
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 22px;
+  }
+  .brx-footer-compare-label {
+    font-family: 'Space Mono', ui-monospace, monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #858585;
+  }
+  .brx-footer-compare-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 22px;
+    align-items: center;
+  }
+  .brx-footer-compare-links a {
+    font-family: 'Space Mono', ui-monospace, monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #E8E4DC;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .brx-footer-compare-links a:hover {
+    color: #D4FF00;
   }
   .brx-footer-legal {
     width: 100%;
@@ -145,6 +184,13 @@
       <a class="brx-footer-login" href="https://bratrax.com/login">Login</a>
       <a href="https://blog.bratrax.com/">Newsletter</a>
     </nav>
+    <div class="brx-footer-compare">
+      <span class="brx-footer-compare-label">Compare:</span>
+      <nav class="brx-footer-compare-links" aria-label="Comparisons">
+        <a href="https://bratrax.com/vs/hyros">vs Hyros</a>
+        <a href="https://bratrax.com/vs/triple-whale">vs Triple Whale</a>
+      </nav>
+    </div>
     <div class="brx-footer-legal">
       <div class="brx-footer-copy">&copy; 2026 Bratrax</div>
       <nav class="brx-footer-legal-links" aria-label="Legal">
