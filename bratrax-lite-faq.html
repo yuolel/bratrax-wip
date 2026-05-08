@@ -1,0 +1,1393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bratrax Lite FAQ — Shopify Attribution Analytics, $79/mo</title>
+<meta name="description" content="FAQ for Bratrax Lite — DTC attribution for Shopify at $79/mo flat. Pricing, MCP/Claude integration, comparisons to Triple Whale &amp; Northbeam.">
+<link rel="canonical" href="https://bratrax.com/faq">
+
+<!-- Open Graph -->
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://bratrax.com/faq">
+<meta property="og:title" content="Bratrax Lite FAQ — Shopify Attribution Analytics, $79/mo">
+<meta property="og:description" content="FAQ for Bratrax Lite — DTC attribution for Shopify at $79/mo flat. Pricing, MCP/Claude integration, comparisons to Triple Whale &amp; Northbeam.">
+<meta property="og:image" content="https://bratrax.com/faq.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Bratrax">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:url" content="https://bratrax.com/faq">
+<meta name="twitter:title" content="Bratrax Lite FAQ — Shopify Attribution Analytics, $79/mo">
+<meta name="twitter:description" content="FAQ for Bratrax Lite — DTC attribution for Shopify at $79/mo flat. Pricing, MCP/Claude integration, comparisons to Triple Whale &amp; Northbeam.">
+<meta name="twitter:image" content="https://bratrax.com/faq.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Outfit:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --color-bg: #0A0A0A;
+    --color-surface: #141414;
+    --color-surface-hover: #1E1E1E;
+    --color-border: #3A3A3A;
+    --color-text-muted: #858585;
+    --color-text-secondary: #B0B0B0;
+    --color-text: #E8E4DC;
+    --color-text-bright: #FAFAF5;
+    --color-acid: #D4FF00;
+    --color-acid-dim: rgba(212,255,0,0.08);
+    --color-acid-mid: rgba(212,255,0,0.25);
+    --color-red: #FF3B30;
+
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-2xl: 64px;
+    --space-3xl: 140px;
+
+    --maxw: 1200px;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Outfit', 'Helvetica Neue', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
+  }
+
+  /* Graph paper canvas */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+    background-image:
+      linear-gradient(rgba(212,255,0,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212,255,0,0.04) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  a { color: inherit; text-decoration: none; }
+
+  /* ───────── Sticky header ───────── */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .site-header-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand-mark {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+  }
+  .brand-mark img { height: 22px; width: auto; display: block; }
+  .brand-mark .b-sub {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    padding-left: 12px;
+    border-left: 1px solid var(--color-border);
+    line-height: 1;
+  }
+  .ticker {
+    flex: 1;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+  }
+  .ticker strong { color: var(--color-acid); font-weight: 700; }
+  .header-actions {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    flex-shrink: 0;
+  }
+  .nav-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    padding: 10px 14px;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--color-acid); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: opacity 0.2s, transform 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--color-acid); color: #000; }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-arrow::after {
+    content: '→';
+    font-family: 'Outfit', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+  }
+
+  /* ───────── Hero ───────── */
+  .faq-hero {
+    position: relative;
+    z-index: 1;
+    padding: 80px 32px 64px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .faq-hero-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+  }
+  .faq-eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(212,255,0,0.7);
+    margin-bottom: 24px;
+  }
+  .faq-h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(40px, 5.2vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: var(--color-text-bright);
+    margin-bottom: 20px;
+    text-wrap: balance;
+  }
+  .faq-h1 .serif-accent {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-acid);
+  }
+  .faq-hero-sub {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    max-width: 60ch;
+  }
+
+  /* ───────── Layout ───────── */
+  .faq-body {
+    position: relative;
+    z-index: 1;
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: 64px 32px 120px;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    gap: 80px;
+    align-items: start;
+  }
+
+  /* ───────── Sticky TOC ───────── */
+  .toc {
+    position: sticky;
+    top: 80px;
+    align-self: start;
+  }
+  .faq-search {
+    margin-bottom: 24px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .faq-search input {
+    width: 100%;
+    padding: 10px 12px;
+    font-family: 'Outfit', sans-serif;
+    font-size: 13px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    border-radius: 0;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+  .faq-search input:focus {
+    border-color: var(--color-acid);
+    background: var(--color-surface-hover);
+  }
+  .faq-search input::placeholder {
+    color: var(--color-text-muted);
+  }
+  .faq-search input::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 14px;
+    width: 14px;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23D4FF00'><path d='M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z'/></svg>");
+    background-size: contain;
+    background-repeat: no-repeat;
+    cursor: pointer;
+  }
+  .faq-search-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-top: 10px;
+  }
+  .faq-search-meta.is-empty {
+    color: var(--color-acid);
+  }
+  .qa-block.is-hidden { display: none; }
+  .faq-section.is-hidden { display: none; }
+  mark.faq-highlight {
+    background: rgba(212,255,0,0.28);
+    color: var(--color-text-bright);
+    padding: 0 2px;
+    border-radius: 1px;
+    font-weight: 600;
+  }
+  .toc-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin-bottom: 16px;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .toc ol {
+    list-style: none;
+    counter-reset: toc;
+  }
+  .toc ol li {
+    counter-increment: toc;
+    border-bottom: 1px dashed var(--color-border);
+  }
+  .toc ol li:last-child { border-bottom: none; }
+  .toc ol li a {
+    display: block;
+    padding: 12px 0 12px 32px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    line-height: 1.4;
+    position: relative;
+    transition: color 0.2s, padding-left 0.2s;
+  }
+  .toc ol li a::before {
+    content: counter(toc, decimal-leading-zero);
+    position: absolute;
+    left: 0;
+    top: 12px;
+    color: rgba(212,255,0,0.5);
+    font-weight: 700;
+  }
+  .toc ol li a:hover {
+    color: var(--color-acid);
+    padding-left: 36px;
+  }
+  .toc ol li a.active {
+    color: var(--color-acid);
+  }
+  .toc ol li a.active::before {
+    color: var(--color-acid);
+  }
+
+  /* ───────── FAQ sections ───────── */
+  .faq-section {
+    margin-bottom: 80px;
+    scroll-margin-top: 80px;
+  }
+  .faq-section:last-child { margin-bottom: 0; }
+  .faq-section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(212,255,0,0.7);
+    margin-bottom: 12px;
+    display: inline-block;
+  }
+  .faq-section h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(28px, 3.4vw, 42px);
+    font-weight: 900;
+    line-height: 1.15;
+    letter-spacing: -0.1px;
+    color: var(--color-text-bright);
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+    border-bottom: 2px solid var(--color-border);
+    text-wrap: balance;
+  }
+  .faq-section h2 .serif-accent {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-acid);
+  }
+
+  .qa-block {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .qa-block:last-child { border-bottom: none; }
+  .qa-block .q {
+    font-family: 'Outfit', sans-serif;
+    font-size: 21px;
+    font-weight: 700;
+    line-height: 1.4;
+    color: var(--color-text-bright);
+    margin: 0 0 16px;
+    text-wrap: balance;
+  }
+  .qa-block .a {
+    font-family: 'Outfit', sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+  }
+  .qa-block .a + .a { margin-top: 16px; }
+  .qa-block .a strong {
+    color: var(--color-text-bright);
+    font-weight: 700;
+  }
+  .qa-block .a em {
+    font-style: italic;
+    color: var(--color-text);
+  }
+  .qa-block .a a {
+    color: var(--color-acid);
+    border-bottom: 1px dashed rgba(212,255,0,0.3);
+    padding-bottom: 1px;
+    transition: border-color 0.2s;
+  }
+  .qa-block .a a:hover { border-bottom-color: var(--color-acid); }
+  .qa-block .a-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .qa-block .a-list li {
+    padding-left: 20px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .qa-block .a-list li:last-child { margin-bottom: 0; }
+  .qa-block .a-list li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--color-acid);
+    font-weight: 700;
+  }
+  .qa-block .a-list-numbered {
+    list-style: none;
+    padding: 0;
+    margin: 12px 0 0;
+    counter-reset: dashlist;
+  }
+  .qa-block .a-list-numbered li {
+    padding-left: 36px;
+    position: relative;
+    margin-bottom: 14px;
+    counter-increment: dashlist;
+  }
+  .qa-block .a-list-numbered li:last-child { margin-bottom: 0; }
+  .qa-block .a-list-numbered li::before {
+    content: counter(dashlist) '.';
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--color-acid);
+    font-family: 'Space Mono', monospace;
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  /* ───────── Bottom CTA strip ───────── */
+  .faq-bottom {
+    position: relative;
+    z-index: 1;
+    border-top: 1px solid var(--color-border);
+    padding: 80px 32px;
+    text-align: center;
+    background: rgba(20,20,20,0.4);
+  }
+  .faq-bottom::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(rgba(212,255,0,0.06) 1.5px, transparent 1.5px);
+    background-size: 12px 12px;
+    pointer-events: none;
+    opacity: 0.4;
+  }
+  .faq-bottom-inner {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+  .faq-bottom-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(212,255,0,0.7);
+    margin-bottom: 16px;
+    display: inline-block;
+  }
+  .faq-bottom h3 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(28px, 3.4vw, 42px);
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -0.1px;
+    color: var(--color-text-bright);
+    margin-bottom: 16px;
+    text-wrap: balance;
+  }
+  .faq-bottom h3 .serif-accent {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-acid);
+  }
+  .faq-bottom p {
+    font-family: 'Outfit', sans-serif;
+    font-size: 17px;
+    font-weight: 300;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: 32px;
+  }
+  .faq-bottom-actions {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+  }
+  .btn-large {
+    padding: 14px 28px;
+    font-size: 12px;
+  }
+  .btn-outline {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+  .btn-outline:hover {
+    border-color: var(--color-acid);
+    color: var(--color-text-bright);
+  }
+  .faq-bottom-mail {
+    font-family: 'Space Mono', monospace;
+    font-size: 13px;
+    color: var(--color-acid);
+    border-bottom: 1px dashed var(--color-acid-mid);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+    margin-top: 24px;
+    display: inline-block;
+  }
+  .faq-bottom-mail:hover { border-bottom-color: var(--color-acid); }
+  .faq-hero-updated {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--color-text-muted);
+    letter-spacing: 0.5px;
+    margin-top: 32px;
+    text-transform: uppercase;
+  }
+
+  /* ───────── Footer ───────── */
+  .site-footer {
+    border-top: 1px solid var(--color-border);
+    padding: 48px 32px 32px;
+    background: var(--color-bg);
+    position: relative;
+    z-index: 1;
+  }
+  .footer-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 24px;
+  }
+  .footer-meta {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    color: var(--color-text-muted);
+    letter-spacing: 0.5px;
+  }
+  .footer-links {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--color-acid); }
+
+  /* ───────── Responsive ───────── */
+  @media (max-width: 980px) {
+    .ticker { display: none; }
+    .faq-body {
+      grid-template-columns: 1fr;
+      gap: 48px;
+      padding: 48px 32px 96px;
+    }
+    .toc {
+      position: static;
+      padding: 24px 28px;
+      background: var(--color-surface);
+      border: 1px solid var(--color-border);
+    }
+    .toc ol li a { padding: 10px 0 10px 32px; }
+    .faq-hero { padding: 56px 24px 48px; }
+  }
+
+  @media (max-width: 540px) {
+    .site-header-inner { padding: 12px 20px; gap: 12px; }
+    .brand-mark .b-sub { display: none; }
+    .nav-link-back { display: none; }
+    .btn { padding: 10px 14px; font-size: 11px; }
+    .nav-link { padding: 10px 8px; }
+    .faq-h1 { font-size: 36px; }
+    .faq-section h2 { font-size: 26px; }
+    .qa-block .q { font-size: 19px; }
+    .faq-body { padding: 40px 20px 80px; }
+    .faq-hero { padding: 48px 20px 40px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
+</style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "url": "https://bratrax.com/faq",
+  "inLanguage": "en",
+  "dateModified": "2026-05-07",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How is Bratrax different from Triple Whale, Northbeam, or Hyros?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Flat $79/mo regardless of GMV. No contract, no demo. Same caliber of attribution methodology — none of the sales-team overhead. We give you an MCP endpoint so your data connects to the AI you already pay for. The incumbents don't. Full breakdowns: Bratrax vs. Triple Whale (https://bratrax.com/vs/triple-whale), Bratrax vs. Hyros (https://bratrax.com/vs/hyros)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much can you actually shrink the unattributed bucket?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Significantly. On our best Bratrax client we got it to 3%; another landed at 5%. For context, most attribution tools surface a \"direct traffic\" or \"unattributed\" bucket in the 15–30% range — a black hole where you can't tell what drove the order. The mechanism: a first-party tracking pixel served from your own domain (to prevent most adblockers); the full Shopify order record acts as ground truth, so when the pixel misses something we can usually recover the source from the order itself. We won't promise a number because the result depends on conditions we don't fully control. We will promise the mechanism and the transparency."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Will this give me \"perfect\" attribution?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. No tool can. Anyone telling you they've solved attribution is selling you confusion. What Bratrax gives you: consistent, transparent numbers you can trace back to source — and a data layer that lets you query deeper with your own AI when you need to understand why."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why do you recommend first-touch and last-touch over multi-touch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Because the math actually adds up. Single-touch models are additive — one order, one channel, one credit, revenue sums correctly. Multi-touch splits credit across channels, which makes order counts non-additive and opens the door to math errors that compound silently. We give you the five standard models, but we're upfront: use single-touch for decisions, multi-touch for exploration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What about cross-device tracking? My customers see ads on phone and buy on desktop.",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We use email, customer ID, and first-party identifiers to stitch where we can. We can't stitch a view-only Meta touch on phone to a Google search and purchase on desktop — no tool can; that's a structural limit of click-stream attribution. What we do that's different: we show you the exact stitching logic in the config file, so you can see when a number is high-confidence vs. inferred."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which dashboards come pre-built?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Five default dashboards: 1. Store Performance — revenue, spend, returns, MER (Marketing Efficiency Ratio = revenue ÷ total ad spend), blended ROAS, new vs. returning customer mix, subscription health (active subs, MRR, churn, LTV). 2. Attribution — channel-to-ad drill-down with MER, blended ROAS, blended CPA, NC ROAS, NC CPA, contribution margin, CPM, CTR. 3. Customers — cohort retention, customer & subscriber LTV, subscriber acquisition by channel, MRR & growth trends over time. 4. Email & SMS — Klaviyo campaigns and flows (sends, open/click rates, unsubs), list health, lifetime email/SMS revenue + subscriber LTV. 5. Products — net revenue, units sold, total discount, top products and SKUs by revenue, per-SKU detail with variants."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I customize the dashboards?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Templates are opinionated, but you can adjust them by chatting with the AI — describe what you want differently and it edits the underlying data model for you. The more you chat, the better the dashboards get: each conversation becomes context for the next one, so the AI learns how you think about your business."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I'm already using another attribution tool?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Run them side by side. A lot of brands keep their existing tool for the first month and compare numbers daily. Most stop comparing after week two."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's an MCP endpoint?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "MCP (Model Context Protocol) is an open standard that lets AI assistants connect to external data sources. Your Bratrax MCP endpoint connects to Claude at launch. OpenAI MCP support is on our roadmap. Because MCP is an open protocol, any MCP-compatible client will work via the same endpoint, no migration. You provide your own API key. We provide the data connection. No additional cost from us, no token markup."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to use AI to get value from Bratrax?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The dashboards stand alone and answer the most common questions out of the box. The MCP endpoint is there for when you want to go deeper than the dashboard — cohort cuts, custom calculations, anything you'd otherwise export to a spreadsheet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which AI assistants does Bratrax connect to?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Claude at launch — install the endpoint with your own Anthropic API key. OpenAI MCP support is on our roadmap. MCP is an open protocol, so the same endpoint will work with any MCP-compatible client as those clients mature — you won't have to migrate anything."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why Anthropic-only at launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The DTC operators we talk to are mostly on Claude. We're shipping with the integration we know our buyers will actually use, then expanding to OpenAI and any other MCP-compatible client as those mature. Same endpoint, no migration."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I don't use Claude?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The dashboards stand alone — you get all the attribution and analytics value with or without AI. The AI integration is Claude-only at launch; OpenAI is on our roadmap."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my data sent to my AI provider when I query?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only the data your assistant explicitly pulls in response to your prompt. You control what's queried. We don't pipe your data to any LLM provider in the background."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How fresh is the data AI can query?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Active accounts refresh every hour. Idle accounts refresh every two hours. Whatever's in your dashboards is what AI sees — so the number you eyeball in the morning is the same one AI reasons about when you ask it why."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What does the founding member rate actually mean?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The first 100 brands to start an account pay $79/mo for the lifetime of their account. That price never changes — even if we add features, add tiers, raise prices, or get acquired. After the first 100, pricing moves to $99/mo. If you sign up today, you pay $79/mo forever."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why is the price $79 and not $5?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Per-client infrastructure runs us about $2–4/month. We could charge $9 and still be profitable. We don't, because that's race-to-the-bottom logic and it eventually compromises the product. $79 funds a small team and the refusal to take outside money. When founders complain about $1,500/mo attribution tools, the real complaint isn't \"analytics should be free.\" It's \"$1,500 is paying for sales teams, conferences, and investor returns — not better tech.\""
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are there hidden costs?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. $79/mo flat. Your Anthropic API bill goes directly to Anthropic — we don't mark up tokens or take a cut. No per-event fees. No GMV-based scaling."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do I need to pay annually?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Month-to-month. One click to cancel — we don't make you call anybody."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the difference between Lite and Clear Vision?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lite is self-serve at $79/mo. Opinionated dashboards, an MCP endpoint into your warehouse, five attribution models, live in minutes. Clear Vision is a service at $5K/mo: a dedicated human analyst, a custom data model built around your business, weekly strategic reviews, Slack access to the data team. Most brands start with Lite. You'll feel the ceiling when you hit it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I upgrade from Lite to Clear Vision later?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Your data and dashboard setup travel with you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How long does setup take?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most brands go from signup to live dashboard in under 10 minutes. Connect Shopify, link your ad accounts (Meta, Google, Klaviyo), dashboards populate. No onboarding call. For Shopify-only stores, the Shopify app handles tracking automatically — no manual install."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens after I sign up?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "After signup, your dashboards populate within minutes. The optional next step is the AI integration: grab your MCP endpoint from settings and install it with your Anthropic API key."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if I run pages outside Shopify?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If you have lead pages, custom pre-sale pages, or a non-Shopify checkout, the onboarding asks \"Pages outside Shopify?\" and walks you through copying and pasting the tracking snippet to those pages. Shopify-only stores skip this step entirely."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you offer onboarding calls?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not for Lite. The product is designed to be self-serve in under an hour. If you need a dedicated human, that's Clear Vision."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What platforms do you support at launch?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Shopify (store, including Shopify-native subscriptions), Meta (ads), Google (ads), Klaviyo (email/SMS)."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's on the roadmap?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "TikTok Ads, Pinterest Ads, Amazon Ads, and dedicated subscription tools (Recharge, Bold, Skio) — already surfaced in the onboarding \"Build your stack\" screen, not yet wired. Other commerce platforms (BigCommerce, WooCommerce, custom) are not committed yet. If a platform you need is missing, email support@bratrax.com — that's how we prioritize."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I use Bratrax if I'm not on Shopify?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not yet. Lite is Shopify-first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do you support agency call funnels or affiliate marketing setups?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Lite is D2C-specific. If your stack is built around high-ticket call funnels or affiliate VSLs, we're not the tool for you yet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I run multi-domain attribution across separately-owned stores?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Single-store at launch. Multi-store is a Clear Vision conversation."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if it doesn't work for me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "30-day money-back guarantee. If you're not getting more reconciled, traceable numbers than your current tool by day 30, full refund. No support ticket required — one email to support@bratrax.com."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is my store data safe?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Your data lives in its own ClickHouse instance — not pooled with anyone else's. We don't share it between clients. We don't sell it. We don't use it for anything other than powering your dashboards and your MCP queries. Same architecture we use for $5K/mo Clear Vision clients — you're getting their data security on a $79/mo plan."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I export my data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Your data lives in its own ClickHouse instance — query it with SQL, export to BigQuery, S3, CSV, wherever you want it."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if I cancel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "One click from settings. Your data is yours — you can export it to your destination of choice on the way out. No hostage situations."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens if Bratrax gets acquired or shuts down?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "If we get acquired, your founding member pricing is locked in writing — that's what \"even if we get acquired\" in our pricing answer means in practice. If we shut down, your data is already in your ClickHouse instance — you don't need us to keep using it. We built it that way on purpose."
+      }
+    }
+  ]
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Bratrax",
+  "url": "https://bratrax.com",
+  "logo": "https://bratrax.com/assets/Bratrax%20Logo%20Light%20Inline.svg",
+  "description": "Attribution analytics for Shopify DTC brands. Per-client warehouse, MCP/Claude integration, $79/mo flat.",
+  "email": "support@bratrax.com"
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Bratrax Lite",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Marketing Attribution",
+  "operatingSystem": "Web",
+  "url": "https://bratrax.com/lite",
+  "description": "DTC attribution analytics for Shopify. Per-client ClickHouse warehouse, MCP endpoint for AI queries (Claude at launch), five attribution models, set up in under 10 minutes. $79/mo flat for the first 100 founding members; $99/mo after.",
+  "offers": {
+    "@type": "Offer",
+    "price": "99",
+    "priceCurrency": "USD",
+    "priceSpecification": {
+      "@type": "UnitPriceSpecification",
+      "price": "99",
+      "priceCurrency": "USD",
+      "billingDuration": "P1M",
+      "billingIncrement": 1
+    }
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Bratrax"
+  }
+}
+</script>
+</head>
+<body>
+
+<!-- ─────────── STICKY HEADER ─────────── -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="index.html" class="brand-mark" aria-label="Bratrax — Home">
+      <img src="../assets/Bratrax Logo Light Inline.svg" alt="Bratrax">
+    </a>
+    <div class="header-actions">
+      <a href="https://bratrax.com/" class="nav-link nav-link-back">&larr; Back to site</a>
+      <a href="https://bratrax.com/login" class="nav-link">Log in</a>
+      <a href="index.html#start" class="btn btn-primary btn-arrow">Start now</a>
+    </div>
+  </div>
+</header>
+
+<!-- ─────────── HERO ─────────── -->
+<section class="faq-hero">
+  <div class="faq-hero-inner">
+    <span class="faq-eyebrow">Bratrax Lite — Frequently asked questions</span>
+    <h1 class="faq-h1">Your <span class="serif-accent">Bratrax Lite</span> questions, answered.</h1>
+    <p class="faq-hero-sub">
+      Pricing, product, AI, setup, platforms, data — everything you need to know.
+    </p>
+    <div class="faq-hero-updated">Last updated May 7, 2026</div>
+  </div>
+</section>
+
+<!-- ─────────── BODY ─────────── -->
+<div class="faq-body">
+
+  <!-- TOC -->
+  <aside class="toc">
+    <div class="faq-search">
+      <input type="search" id="faq-search-input" placeholder="Search the FAQ…" aria-label="Search the FAQ" autocomplete="off">
+      <div class="faq-search-meta" id="faq-search-meta" hidden></div>
+    </div>
+    <div class="toc-label">On this page</div>
+    <ol>
+      <li><a href="#product">The product</a></li>
+      <li><a href="#ai-mcp">AI &amp; MCP</a></li>
+      <li><a href="#pricing">Pricing &amp; tiers</a></li>
+      <li><a href="#setup">Setup</a></li>
+      <li><a href="#platforms">Platforms &amp; fit</a></li>
+      <li><a href="#risk">Risk, data, cancellation</a></li>
+    </ol>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="faq-content">
+
+    <!-- ─── 01 Product ─── -->
+    <section class="faq-section" id="product">
+      <span class="faq-section-label">01 — The product</span>
+      <h2>The <span class="serif-accent">product.</span></h2>
+
+      <div class="qa-block">
+        <h3 class="q">How is Bratrax different from Triple Whale, Northbeam, or Hyros?</h3>
+        <p class="a">Flat $79/mo regardless of GMV. No contract, no demo. Same caliber of attribution methodology — none of the sales-team overhead. We give you an MCP endpoint so your data connects to the AI you already pay for. The incumbents don't. Full breakdowns: <a href="https://bratrax.com/vs/triple-whale">Bratrax vs. Triple Whale</a>, <a href="https://bratrax.com/vs/hyros">Bratrax vs. Hyros</a>.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">How much can you actually shrink the unattributed bucket?</h3>
+        <p class="a">Significantly. <strong>On our best Bratrax client we got it to 3%; another landed at 5%.</strong> For context, most attribution tools surface a "direct traffic" or "unattributed" bucket in the 15–30% range — a black hole where you can't tell what drove the order.</p>
+        <p class="a">The mechanism: a first-party tracking pixel served from your own domain (to prevent most adblockers); the full Shopify order record acts as ground truth, so when the pixel misses something we can usually recover the source from the order itself. We won't promise a number because the result depends on conditions we don't fully control. We will promise the mechanism and the transparency.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Will this give me "perfect" attribution?</h3>
+        <p class="a">No. No tool can. Anyone telling you they've solved attribution is selling you confusion.</p>
+        <p class="a">What Bratrax gives you: <strong>consistent, transparent numbers you can trace back to source</strong> — and a data layer that lets you query deeper with your own AI when you need to understand why.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Why do you recommend first-touch and last-touch over multi-touch?</h3>
+        <p class="a">Because the math actually adds up. Single-touch models are additive — one order, one channel, one credit, revenue sums correctly. Multi-touch splits credit across channels, which makes order counts non-additive and opens the door to math errors that compound silently.</p>
+        <p class="a">We give you the five standard models, but we're upfront: <strong>use single-touch for decisions, multi-touch for exploration.</strong></p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">What about cross-device tracking? My customers see ads on phone and buy on desktop.</h3>
+        <p class="a">We use email, customer ID, and first-party identifiers to stitch where we can. We can't stitch a view-only Meta touch on phone to a Google search and purchase on desktop — no tool can; that's a structural limit of click-stream attribution.</p>
+        <p class="a">What we do that's different: <strong>we show you the exact stitching logic in the config file</strong>, so you can see when a number is high-confidence vs. inferred.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Which dashboards come pre-built?</h3>
+        <p class="a">Five default dashboards:</p>
+        <ol class="a a-list-numbered">
+          <li><strong>Store Performance</strong> — revenue, spend, returns, MER (Marketing Efficiency Ratio = revenue ÷ total ad spend), blended ROAS, new vs. returning customer mix, subscription health (active subs, MRR, churn, LTV).</li>
+          <li><strong>Attribution</strong> — channel-to-ad drill-down with MER, blended ROAS, blended CPA, NC ROAS, NC CPA, contribution margin, CPM, CTR.</li>
+          <li><strong>Customers</strong> — cohort retention, customer &amp; subscriber LTV, subscriber acquisition by channel, MRR &amp; growth trends over time.</li>
+          <li><strong>Email &amp; SMS</strong> — Klaviyo campaigns and flows (sends, open/click rates, unsubs), list health, lifetime email/SMS revenue + subscriber LTV.</li>
+          <li><strong>Products</strong> — net revenue, units sold, total discount, top products and SKUs by revenue, per-SKU detail with variants.</li>
+        </ol>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Can I customize the dashboards?</h3>
+        <p class="a">Yes. Templates are opinionated, but you can adjust them by chatting with the AI — describe what you want differently and it edits the underlying data model for you. <strong>The more you chat, the better the dashboards get:</strong> each conversation becomes context for the next one, so the AI learns how you think about your business.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">What if I'm already using another attribution tool?</h3>
+        <p class="a">Run them side by side. A lot of brands keep their existing tool for the first month and compare numbers daily. <strong>Most stop comparing after week two.</strong></p>
+      </div>
+    </section>
+
+    <!-- ─── 02 AI & MCP ─── -->
+    <section class="faq-section" id="ai-mcp">
+      <span class="faq-section-label">02 — AI &amp; MCP</span>
+      <h2>The <span class="serif-accent">AI</span> layer.</h2>
+
+      <div class="qa-block">
+        <h3 class="q">What's an MCP endpoint?</h3>
+        <p class="a">MCP (Model Context Protocol) is an open standard that lets AI assistants connect to external data sources. Your Bratrax MCP endpoint connects to Claude at launch. OpenAI MCP support is on our roadmap.</p>
+        <p class="a">Because MCP is an open protocol, any MCP-compatible client will work via the same endpoint, no migration. <strong>You provide your own API key. We provide the data connection.</strong> No additional cost from us, no token markup.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Do I need to use AI to get value from Bratrax?</h3>
+        <p class="a">No. The dashboards stand alone and answer the most common questions out of the box. The MCP endpoint is there for when you want to go deeper than the dashboard — cohort cuts, custom calculations, anything you'd otherwise export to a spreadsheet.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Which AI assistants does Bratrax connect to?</h3>
+        <p class="a">Claude at launch — install the endpoint with your own Anthropic API key. OpenAI MCP support is on our roadmap. MCP is an open protocol, so the same endpoint will work with any MCP-compatible client as those clients mature — <strong>you won't have to migrate anything.</strong></p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Why Anthropic-only at launch?</h3>
+        <p class="a">The DTC operators we talk to are mostly on Claude. We're shipping with the integration we know our buyers will actually use, then expanding to OpenAI and any other MCP-compatible client as those mature. Same endpoint, no migration.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">What if I don't use Claude?</h3>
+        <p class="a">The dashboards stand alone — you get all the attribution and analytics value with or without AI. The AI integration is Claude-only at launch; OpenAI is on our roadmap.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Is my data sent to my AI provider when I query?</h3>
+        <p class="a">Only the data your assistant explicitly pulls in response to your prompt. <strong>You control what's queried.</strong> We don't pipe your data to any LLM provider in the background.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">How fresh is the data AI can query?</h3>
+        <p class="a">Active accounts refresh every hour. Idle accounts refresh every two hours. Whatever's in your dashboards is what AI sees — so the number you eyeball in the morning is the same one AI reasons about when you ask it why.</p>
+      </div>
+    </section>
+
+    <!-- ─── 03 Pricing & tiers ─── -->
+    <section class="faq-section" id="pricing">
+      <span class="faq-section-label">03 — Pricing &amp; tiers</span>
+      <h2>Pricing &amp; <span class="serif-accent">tiers.</span></h2>
+
+      <div class="qa-block">
+        <h3 class="q">What does the founding member rate actually mean?</h3>
+        <p class="a">The first 100 brands to start an account pay $79/mo for the lifetime of their account. That price never changes — even if we add features, add tiers, raise prices, or get acquired. After the first 100, pricing moves to $99/mo. <strong>If you sign up today, you pay $79/mo forever.</strong></p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Why is the price $79 and not $5?</h3>
+        <p class="a">Per-client infrastructure runs us about $2–4/month. We could charge $9 and still be profitable. We don't, because that's race-to-the-bottom logic and it eventually compromises the product.</p>
+        <p class="a">$79 funds a small team and the refusal to take outside money. When founders complain about $1,500/mo attribution tools, the real complaint isn't <em>"analytics should be free."</em> It's <em>"$1,500 is paying for sales teams, conferences, and investor returns — not better tech."</em></p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Are there hidden costs?</h3>
+        <p class="a"><strong>No.</strong> $79/mo flat. Your Anthropic API bill goes directly to Anthropic — we don't mark up tokens or take a cut. No per-event fees. No GMV-based scaling.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Do I need to pay annually?</h3>
+        <p class="a">No. Month-to-month. One click to cancel — we don't make you call anybody.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">What's the difference between Lite and Clear Vision?</h3>
+        <p class="a"><strong>Lite</strong> is self-serve at $79/mo. Opinionated dashboards, an MCP endpoint into your warehouse, five attribution models, live in minutes.</p>
+        <p class="a"><strong>Clear Vision</strong> is a service at $5K/mo: a dedicated human analyst, a custom data model built around your business, weekly strategic reviews, Slack access to the data team. Most brands start with Lite. You'll feel the ceiling when you hit it.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Can I upgrade from Lite to Clear Vision later?</h3>
+        <p class="a">Yes. <strong>Your data and dashboard setup travel with you.</strong></p>
+      </div>
+    </section>
+
+    <!-- ─── 04 Setup ─── -->
+    <section class="faq-section" id="setup">
+      <span class="faq-section-label">04 — Setup</span>
+      <h2>Getting <span class="serif-accent">started.</span></h2>
+
+      <div class="qa-block">
+        <h3 class="q">How long does setup take?</h3>
+        <p class="a">Most brands go from signup to live dashboard in <strong>under 10 minutes.</strong> Connect Shopify, link your ad accounts (Meta, Google, Klaviyo), dashboards populate. No onboarding call. For Shopify-only stores, the Shopify app handles tracking automatically — no manual install.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">What happens after I sign up?</h3>
+        <p class="a">After signup, your dashboards populate within minutes (see <a href="#setup">"How long does setup take?"</a>). The optional next step is the AI integration: grab your MCP endpoint from settings and install it with your Anthropic API key.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">What if I run pages outside Shopify?</h3>
+        <p class="a">If you have lead pages, custom pre-sale pages, or a non-Shopify checkout, the onboarding asks <em>"Pages outside Shopify?"</em> and walks you through copying and pasting the tracking snippet to those pages. Shopify-only stores skip this step entirely.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Do you offer onboarding calls?</h3>
+        <p class="a">Not for Lite. The product is designed to be self-serve in under an hour. If you need a dedicated human, that's Clear Vision.</p>
+      </div>
+    </section>
+
+    <!-- ─── 05 Platforms & fit ─── -->
+    <section class="faq-section" id="platforms">
+      <span class="faq-section-label">05 — Platforms &amp; fit</span>
+      <h2>Platforms &amp; <span class="serif-accent">fit.</span></h2>
+
+      <div class="qa-block">
+        <h3 class="q">What platforms do you support at launch?</h3>
+        <ul class="a a-list">
+          <li><strong>Shopify</strong> (store, including Shopify-native subscriptions)</li>
+          <li><strong>Meta</strong> (ads)</li>
+          <li><strong>Google</strong> (ads)</li>
+          <li><strong>Klaviyo</strong> (email/SMS)</li>
+        </ul>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">What's on the roadmap?</h3>
+        <p class="a"><strong>TikTok Ads, Pinterest Ads, Amazon Ads</strong>, and dedicated subscription tools (Recharge, Bold, Skio) — already surfaced in the onboarding "Build your stack" screen, not yet wired.</p>
+        <p class="a">Other commerce platforms (BigCommerce, WooCommerce, custom) are not committed yet. If a platform you need is missing, email <a href="mailto:support@bratrax.com">support@bratrax.com</a> — that's how we prioritize.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Can I use Bratrax if I'm not on Shopify?</h3>
+        <p class="a">Not yet. Lite is Shopify-first.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Do you support agency call funnels or affiliate marketing setups?</h3>
+        <p class="a">No. Lite is D2C-specific. If your stack is built around high-ticket call funnels or affiliate VSLs, <strong>we're not the tool for you yet.</strong></p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Can I run multi-domain attribution across separately-owned stores?</h3>
+        <p class="a">Single-store at launch. Multi-store is a Clear Vision conversation.</p>
+      </div>
+    </section>
+
+    <!-- ─── 06 Risk ─── -->
+    <section class="faq-section" id="risk">
+      <span class="faq-section-label">06 — Risk, data, and cancellation</span>
+      <h2>Risk &amp; <span class="serif-accent">data.</span></h2>
+
+      <div class="qa-block">
+        <h3 class="q">What if it doesn't work for me?</h3>
+        <p class="a"><strong>30-day money-back guarantee.</strong> If you're not getting more reconciled, traceable numbers than your current tool by day 30, full refund. No support ticket required — one email to <a href="mailto:support@bratrax.com">support@bratrax.com</a>.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Is my store data safe?</h3>
+        <p class="a">Yes. <strong>Your data lives in its own ClickHouse instance — not pooled with anyone else's.</strong> We don't share it between clients. We don't sell it. We don't use it for anything other than powering your dashboards and your MCP queries. Same architecture we use for $5K/mo Clear Vision clients — you're getting their data security on a $79/mo plan.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Can I export my data?</h3>
+        <p class="a">Yes. Your data lives in its own ClickHouse instance — query it with SQL, export to BigQuery, S3, CSV, wherever you want it.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">What happens if I cancel?</h3>
+        <p class="a">One click from settings. Your data is yours — you can export it to your destination of choice on the way out. <strong>No hostage situations.</strong></p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">What happens if Bratrax gets acquired or shuts down?</h3>
+        <p class="a">If we get acquired, your founding member pricing is locked in writing — that's what "even if we get acquired" in our pricing answer means in practice. If we shut down, your data is already in your ClickHouse instance — you don't need us to keep using it. <strong>We built it that way on purpose.</strong></p>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- ─────────── BOTTOM CTA ─────────── -->
+<section class="faq-bottom">
+  <div class="faq-bottom-inner">
+    <span class="faq-bottom-label">Contact</span>
+    <h3>Got a question we <span class="serif-accent">missed?</span></h3>
+    <p>Write in. A real person reads every email — no tickets, no bots.</p>
+    <div class="faq-bottom-actions">
+      <a href="mailto:support@bratrax.com" class="btn btn-outline btn-large btn-arrow">Contact us</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── DYNAMIC FOOTER (Bratrax shared partial) ─────────── -->
+<div id="brx-footer"></div>
+<script>
+  fetch('https://bratrax.com/partials/footer.html')
+    .then(function(r){ return r.text(); })
+    .then(function(html){ document.getElementById('brx-footer').innerHTML = html; })
+    .catch(function(){});
+</script>
+<noscript>
+  <footer style="background:#0A0A0A;color:#E8E4DC;padding:32px;text-align:center;font-family:sans-serif">
+    <a href="https://bratrax.com/" style="color:#E8E4DC;margin:0 12px">Home</a>
+    <a href="https://lite.bratrax.com/" style="color:#E8E4DC;margin:0 12px">Lite</a>
+    <a href="https://bratrax.com/login" style="color:#D4FF00;margin:0 12px">Login</a>
+    <a href="https://blog.bratrax.com/" style="color:#E8E4DC;margin:0 12px">Newsletter</a>
+    <a href="https://bratrax.com/privacy" style="color:#858585;margin:0 12px">Privacy Policy</a>
+    <a href="https://bratrax.com/terms" style="color:#858585;margin:0 12px">Terms of Service</a>
+  </footer>
+</noscript>
+
+<script>
+  // TOC active state on scroll
+  const sections = document.querySelectorAll('.faq-section');
+  const tocLinks = document.querySelectorAll('.toc ol li a');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tocLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+        });
+      }
+    });
+  }, {
+    rootMargin: '-20% 0px -70% 0px',
+    threshold: 0
+  });
+
+  sections.forEach(section => observer.observe(section));
+
+  // FAQ live search
+  const searchInput = document.getElementById('faq-search-input');
+  const searchMeta = document.getElementById('faq-search-meta');
+  const qaBlocks = document.querySelectorAll('.qa-block');
+
+  // Cache original HTML so we can restore between searches
+  qaBlocks.forEach(b => b.dataset.originalHtml = b.innerHTML);
+
+  function escapeRegex(s) {
+    return s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  function highlightMatches(block, query) {
+    block.innerHTML = block.dataset.originalHtml;
+    if (!query) return;
+    const re = new RegExp(escapeRegex(query), 'gi');
+    const walker = document.createTreeWalker(block, NodeFilter.SHOW_TEXT, null);
+    const textNodes = [];
+    let node;
+    while (node = walker.nextNode()) {
+      if (node.textContent.toLowerCase().includes(query.toLowerCase())) {
+        textNodes.push(node);
+      }
+    }
+    textNodes.forEach(textNode => {
+      const text = textNode.textContent;
+      const fragment = document.createDocumentFragment();
+      let lastIndex = 0;
+      let match;
+      re.lastIndex = 0;
+      while ((match = re.exec(text)) !== null) {
+        if (match.index > lastIndex) {
+          fragment.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+        }
+        const mark = document.createElement('mark');
+        mark.className = 'faq-highlight';
+        mark.textContent = match[0];
+        fragment.appendChild(mark);
+        lastIndex = match.index + match[0].length;
+      }
+      if (lastIndex < text.length) {
+        fragment.appendChild(document.createTextNode(text.slice(lastIndex)));
+      }
+      textNode.parentNode.replaceChild(fragment, textNode);
+    });
+  }
+
+  function filterFAQ() {
+    const query = searchInput.value.trim();
+    const lowerQuery = query.toLowerCase();
+    if (!query) {
+      qaBlocks.forEach(b => {
+        b.classList.remove('is-hidden');
+        b.innerHTML = b.dataset.originalHtml;
+      });
+      sections.forEach(s => s.classList.remove('is-hidden'));
+      searchMeta.hidden = true;
+      searchMeta.classList.remove('is-empty');
+      return;
+    }
+    let matchCount = 0;
+    qaBlocks.forEach(block => {
+      const text = (block.textContent || '').toLowerCase();
+      const matches = text.includes(lowerQuery);
+      block.classList.toggle('is-hidden', !matches);
+      if (matches) {
+        highlightMatches(block, query);
+        matchCount++;
+      } else {
+        block.innerHTML = block.dataset.originalHtml;
+      }
+    });
+    sections.forEach(section => {
+      const visible = section.querySelectorAll('.qa-block:not(.is-hidden)');
+      section.classList.toggle('is-hidden', visible.length === 0);
+    });
+    searchMeta.hidden = false;
+    if (matchCount === 0) {
+      searchMeta.textContent = 'No matches — try different terms';
+      searchMeta.classList.add('is-empty');
+    } else {
+      searchMeta.textContent = matchCount === 1 ? '1 match' : matchCount + ' matches';
+      searchMeta.classList.remove('is-empty');
+    }
+  }
+
+  searchInput.addEventListener('input', filterFAQ);
+</script>
+
+</body>
+</html>
