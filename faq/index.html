@@ -651,7 +651,7 @@
       "name": "How much can you actually shrink the unattributed bucket?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Significantly. On our best Bratrax client we got it to 3%; another landed at 5%. For context, most attribution tools surface a \"direct traffic\" or \"unattributed\" bucket in the 15–30% range — a black hole where you can't tell what drove the order. The mechanism: a first-party tracking pixel served from your own domain (to prevent most adblockers); the full Shopify order record acts as ground truth, so when the pixel misses something we can usually recover the source from the order itself. We won't promise a number because the result depends on conditions we don't fully control. We will promise the mechanism and the transparency."
+        "text": "Significantly — but the honest answer is \"it depends on your stack.\" On one Bratrax client we got it to 3%. Another landed at 5%. Some clients will always carry a higher \"direct\" bucket no matter what tool they use, because of how their traffic flows. We're not going to promise you a number. What we will promise: by the time we're done stitching, you'll see pretty much the entire journey your customer took on your site before buying — every session, every source, every touch we can recover. The mechanism is a first-party tracking pixel served from your own domain (so most adblockers don't kill it), plus the full Shopify order record as a ground-truth fallback when the pixel misses. You get the journey. What you do with it is up to you."
       }
     },
     {
@@ -659,7 +659,7 @@
       "name": "Will this give me \"perfect\" attribution?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "No. No tool can. Anyone telling you they've solved attribution is selling you confusion. What Bratrax gives you: consistent, transparent numbers you can trace back to source — and a data layer that lets you query deeper with your own AI when you need to understand why."
+        "text": "No. And I want to be clear about why — because most tools either dodge this question or quietly sell you the lie. Perfect attribution doesn't exist because attribution is not causation. We are not telling you why a customer bought. We can't. Nobody can. What we're showing you is what your customer actually did on your site before they bought — the sessions, the channels, the sequence. That's correlation, presented honestly. The moment a tool tells you it knows why an order happened, it's stopped doing analytics and started doing astrology. Bratrax gives you the picture. You bring the judgment."
       }
     },
     {
@@ -667,7 +667,7 @@
       "name": "Why do you recommend first-touch and last-touch over multi-touch?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Because the math actually adds up. Single-touch models are additive — one order, one channel, one credit, revenue sums correctly. Multi-touch splits credit across channels, which makes order counts non-additive and opens the door to math errors that compound silently. We give you the five standard models, but we're upfront: use single-touch for decisions, multi-touch for exploration."
+        "text": "Because they're the foundation. First touch is where the journey started. Last touch is what closed it. Everything else — linear, time-decay, position-based — is a derivative of those two anchors. If your first and last touch data isn't clean, no fancier model will save you. We built the data layer underneath so that once your basis is solid, any other model can be added on top in minutes — it's a config change, not a re-architecture. We give you the five standard models out of the box, but here's the honest framing: use single-touch for decisions (the math is additive — one order, one credit, revenue sums correctly), use multi-touch for exploration."
       }
     },
     {
@@ -975,7 +975,7 @@
     <div class="header-actions">
       <a href="https://bratrax.com/" class="nav-link nav-link-back">&larr; Back to site</a>
       <a href="https://bratrax.com/login" class="nav-link">Log in</a>
-      <a href="https://join.bratrax.com/checkout/buy/6fe640be-116e-4541-9ace-5143100fbe71" class="btn btn-primary btn-arrow">Start now</a>
+      <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow">Start now</a>
     </div>
   </div>
 </header>
@@ -1027,20 +1027,21 @@
 
       <div class="qa-block">
         <h3 class="q">How much can you actually shrink the unattributed bucket?</h3>
-        <p class="a">Significantly. <strong>On our best Bratrax client we got it to 3%; another landed at 5%.</strong> For context, most attribution tools surface a "direct traffic" or "unattributed" bucket in the 15–30% range — a black hole where you can't tell what drove the order.</p>
-        <p class="a">The mechanism: a first-party tracking pixel served from your own domain (to prevent most adblockers); the full Shopify order record acts as ground truth, so when the pixel misses something we can usually recover the source from the order itself. We won't promise a number because the result depends on conditions we don't fully control. We will promise the mechanism and the transparency.</p>
+        <p class="a">Significantly — but the honest answer is "it depends on your stack." <strong>On one Bratrax client we got it to 3%. Another landed at 5%.</strong> Some clients will always carry a higher "direct" bucket no matter what tool they use, because of how their traffic flows. We're not going to promise you a number.</p>
+        <p class="a">What we will promise: by the time we're done stitching, you'll see pretty much the entire journey your customer took on your site before buying — every session, every source, every touch we can recover. The mechanism is a first-party tracking pixel served from your own domain (so most adblockers don't kill it), plus the full Shopify order record as a ground-truth fallback when the pixel misses. You get the journey. What you do with it is up to you.</p>
       </div>
 
       <div class="qa-block">
         <h3 class="q">Will this give me "perfect" attribution?</h3>
-        <p class="a">No. No tool can. Anyone telling you they've solved attribution is selling you confusion.</p>
-        <p class="a">What Bratrax gives you: <strong>consistent, transparent numbers you can trace back to source</strong> — and a data layer that lets you query deeper with your own AI when you need to understand why.</p>
+        <p class="a">No. And I want to be clear about why — because most tools either dodge this question or quietly sell you the lie.</p>
+        <p class="a">Perfect attribution doesn't exist because attribution is not causation. We are not telling you why a customer bought. We can't. Nobody can. What we're showing you is what your customer actually did on your site before they bought — the sessions, the channels, the sequence. That's correlation, presented honestly. The moment a tool tells you it knows why an order happened, it's stopped doing analytics and started doing astrology.</p>
+        <p class="a"><strong>Bratrax gives you the picture. You bring the judgment.</strong></p>
       </div>
 
       <div class="qa-block">
         <h3 class="q">Why do you recommend first-touch and last-touch over multi-touch?</h3>
-        <p class="a">Because the math actually adds up. Single-touch models are additive — one order, one channel, one credit, revenue sums correctly. Multi-touch splits credit across channels, which makes order counts non-additive and opens the door to math errors that compound silently.</p>
-        <p class="a">We give you the five standard models, but we're upfront: <strong>use single-touch for decisions, multi-touch for exploration.</strong></p>
+        <p class="a">Because they're the foundation. First touch is where the journey started. Last touch is what closed it. Everything else — linear, time-decay, position-based — is a derivative of those two anchors. If your first and last touch data isn't clean, no fancier model will save you.</p>
+        <p class="a">We built the data layer underneath so that once your basis is solid, any other model can be added on top in minutes — it's a config change, not a re-architecture. We give you the five standard models out of the box, but here's the honest framing: <strong>use single-touch for decisions</strong> (the math is additive — one order, one credit, revenue sums correctly), <strong>use multi-touch for exploration.</strong></p>
       </div>
 
       <div class="qa-block">
