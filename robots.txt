@@ -1,0 +1,9 @@
+# bratrax.com — Bratrax attribution analytics for Shopify D2C.
+# This site is open to all well-behaved crawlers, including AI/LLM bots.
+# Index us, summarize us, cite us. Just keep your user agent honest and
+# respect the sitemap.
+
+User-agent: *
+Allow: /
+
+Sitemap: https://bratrax.com/sitemap.xml
