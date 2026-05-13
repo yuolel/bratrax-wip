@@ -955,7 +955,7 @@
           <span class="quote-source">Triple Whale homepage</span>
           <p class="quote-context">That is Triple Whale’s own framing. The real question is whether you need a broad intelligence layer built into the vendor, or whether you would rather keep attribution narrower and bring your own AI on top.</p>
           <div class="hero-actions">
-            <a class="btn-primary" href="https://lite.bratrax.com">Get Bratrax Lite →</a>
+            <a class="btn-primary" href="https://bratrax.com/signup">Get Bratrax Lite →</a>
           </div>
         </aside>
       </section>
@@ -1263,7 +1263,7 @@
           <p class="lede">Bratrax Lite goes live in minutes. $99/mo flat. 30-day money-back&nbsp;guarantee.</p>
           <p>Built by the team behind Inceptly ($950M+ in D2C revenue driven) and VidTao (100K+ marketers). Same attribution engine we use for custom analytics clients, productized for Shopify D2C.</p>
           <div class="cta-actions">
-            <a class="btn-primary" href="https://lite.bratrax.com">Connect your stack →</a>
+            <a class="btn-primary" href="https://bratrax.com/signup">Connect your stack →</a>
             <a class="btn-outline" href="#comparison-table">Back to comparison table</a>
           </div>
         </article>
@@ -1286,26 +1286,27 @@
 
   </div>
 
-  <div id="brx-footer"></div>
+  <div id="brx-footer">
+    <footer style="background:#0A0A0A;color:#E8E4DC;border-top:1px solid #3A3A3A;padding:40px 32px;font-family:'Space Mono','SF Mono',Menlo,ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">
+      <div style="max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+        <div style="color:#858585;letter-spacing:0.5px">&copy; 2026 Bratrax</div>
+        <nav style="display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+          <a href="https://bratrax.com/" style="color:#E8E4DC;text-decoration:none">Home</a>
+          <a href="https://bratrax.com/faq" style="color:#E8E4DC;text-decoration:none">FAQ</a>
+          <a href="https://bratrax.com/login" style="color:#D4FF00;text-decoration:none;border:1px solid rgba(212,255,0,0.45);padding:7px 14px">Login</a>
+          <a href="https://blog.bratrax.com/" style="color:#E8E4DC;text-decoration:none">Newsletter</a>
+          <a href="https://bratrax.com/privacy-policy" style="color:#858585;text-decoration:none">Privacy Policy</a>
+          <a href="https://bratrax.com/terms-of-service" style="color:#858585;text-decoration:none">Terms of Service</a>
+        </nav>
+      </div>
+    </footer>
+  </div>
   <script>
     fetch('https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/partials/footer.html')
-      .then(function(r){ return r.text(); })
+      .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.text(); })
       .then(function(html){ document.getElementById('brx-footer').innerHTML = html; })
       .catch(function(){});
   </script>
-  <noscript>
-    <footer style="background:#0A0A0A;color:#E8E4DC;padding:32px;text-align:center;font-family:sans-serif">
-      <a href="https://bratrax.com/" style="color:#E8E4DC;margin:0 12px">Home</a>
-      <a href="https://bratrax.com/faq" style="color:#E8E4DC;margin:0 12px">FAQ</a>
-      <a href="https://bratrax.com/login" style="color:#D4FF00;margin:0 12px">Login</a>
-      <a href="https://blog.bratrax.com/" style="color:#E8E4DC;margin:0 12px">Newsletter</a>
-      <a href="https://bratrax.com/vs/hyros" style="color:#E8E4DC;margin:0 12px">vs Hyros</a>
-      <a href="https://bratrax.com/vs/triple-whale" style="color:#E8E4DC;margin:0 12px">vs Triple Whale</a>
-      <a href="https://bratrax.com/privacy-policy" style="color:#858585;margin:0 12px">Privacy Policy</a>
-      <a href="https://bratrax.com/terms-of-service" style="color:#858585;margin:0 12px">Terms of Service</a>
-      <a href="mailto:support@bratrax.com" style="color:#858585;margin:0 12px">Contact</a>
-    </footer>
-  </noscript>
 
   <button class="scroll-to-top" aria-label="Scroll to top">↑</button>
 
