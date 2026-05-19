@@ -640,7 +640,7 @@
   "@type": "FAQPage",
   "url": "https://bratrax.com/faq",
   "inLanguage": "en",
-  "dateModified": "2026-05-07",
+  "dateModified": "2026-05-19",
   "mainEntity": [
     {
       "@type": "Question",
@@ -764,6 +764,14 @@
     },
     {
       "@type": "Question",
+      "name": "What if I don't have an Anthropic account yet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Create one at console.anthropic.com, add a payment method, generate an API key, then paste it into Bratrax under Settings → API Keys. The whole thing takes about three minutes. Your Anthropic bill goes directly to Anthropic at their published rates — we don't mark up tokens or take a cut. If you want a walkthrough, email support@bratrax.com and we'll send one."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What does the founding member rate actually mean?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -844,6 +852,30 @@
     },
     {
       "@type": "Question",
+      "name": "Is Bratrax's tracking server-side or client-side?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Both. We run a native Shopify integration that combines client-side and server-side tracking. The client side catches the browser-level signals; the server side picks up what ad blockers, ITP, and privacy browsers strip out before they get to a pixel. You get a more complete picture than a pure client-side tool, without having to wire up server-side yourself."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Bratrax send data back to Facebook and Google to enrich their platforms?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Not yet — Conversions API sending is on the roadmap and should be live within roughly a month of launch. Today, Bratrax reads from your stack and stitches the picture for you. We don't push events back to ad networks, which is intentional: it means we can't accidentally pollute your existing pixel or duplicate events. When CAPI sending goes live, it'll be opt-in per channel."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I run Bratrax alongside another tracking tool (LittleData, Elevar, etc.)?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Because we don't send events back to ad networks today, Bratrax can't fight with your existing server-side tool over the same pixel. Most tracking stacks \"pollute\" each other when two tools both try to enrich the same Facebook/Google pixel. We sit quietly in the background until you're ready to switch."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What platforms do you support at launch?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -884,10 +916,42 @@
     },
     {
       "@type": "Question",
+      "name": "Can I connect multiple Facebook ad accounts to one Bratrax workspace?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. One Bratrax workspace can pull spend and creative data from as many Facebook ad accounts as you have access to."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Bratrax support multiple Facebook Business Managers?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — and this is the one we get asked about most by people coming off Hyros. Multi-BM support is built and currently going through Facebook's app review process. If you're connecting today and not seeing ad accounts from all your BMs, the workaround is to add your Bratrax-connected email as a user on the missing ad account in Business Settings — once that's done, you can re-trigger the Facebook connection and the account will appear."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Does Bratrax work for agencies managing multiple brands?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Lite is single-store at launch — one Bratrax account = one Shopify store. If you run an agency and want multiple brands under one roof with consolidated reporting, that's a Clear Vision conversation. We'll get there with Lite eventually; we're not there yet."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I add my team to my Bratrax workspace?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — invite as many teammates as you want. There's no per-seat fee and no cap on the number of users in a workspace. Full instructions are in the Help section."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What if it doesn't work for me?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "30-day money-back guarantee. If you're not getting more reconciled, traceable numbers than your current tool by day 30, full refund. No support ticket required — one email to support@bratrax.com."
+        "text": "30-day money-back guarantee — no questions asked. The clock starts at signup (signup and your first charge happen at the same time). If anything inside 30 days isn't sitting right, email support@bratrax.com and we'll process a full refund manually. No support ticket, no exit interview, no checklist of what \"doesn't work\" means. Same policy for founding members."
       }
     },
     {
@@ -1001,7 +1065,7 @@
     <p class="faq-hero-sub">
       Pricing, product, AI, setup, platforms, data — everything you need to know.
     </p>
-    <div class="faq-hero-updated">Last updated May 7, 2026</div>
+    <div class="faq-hero-updated">Last updated May 19, 2026</div>
   </div>
 </section>
 
@@ -1020,6 +1084,7 @@
       <li><a href="#ai-mcp">AI &amp; MCP</a></li>
       <li><a href="#pricing">Pricing &amp; tiers</a></li>
       <li><a href="#setup">Setup</a></li>
+      <li><a href="#tracking">Tracking &amp; implementation</a></li>
       <li><a href="#platforms">Platforms &amp; fit</a></li>
       <li><a href="#risk">Risk, data, cancellation</a></li>
     </ol>
@@ -1126,6 +1191,12 @@
         <h3 class="q">How fresh is the data AI can query?</h3>
         <p class="a">Active accounts refresh every hour. Idle accounts refresh every two hours. Whatever's in your dashboards is what AI sees — so the number you eyeball in the morning is the same one AI reasons about when you ask it why.</p>
       </div>
+
+      <div class="qa-block">
+        <h3 class="q">What if I don't have an Anthropic account yet?</h3>
+        <p class="a">Create one at <a href="https://console.anthropic.com">console.anthropic.com</a>, add a payment method, generate an API key, then paste it into Bratrax under <strong>Settings → API Keys.</strong> The whole thing takes about three minutes.</p>
+        <p class="a">Your Anthropic bill goes directly to Anthropic at their published rates — <strong>we don't mark up tokens or take a cut.</strong> If you want a walkthrough, email <a href="mailto:support@bratrax.com">support@bratrax.com</a> and we'll send one.</p>
+      </div>
     </section>
 
     <!-- ─── 03 Pricing & tiers ─── -->
@@ -1192,9 +1263,30 @@
       </div>
     </section>
 
-    <!-- ─── 05 Platforms & fit ─── -->
+    <!-- ─── 05 Tracking & implementation ─── -->
+    <section class="faq-section" id="tracking">
+      <span class="faq-section-label">05 — Tracking &amp; implementation</span>
+      <h2>Tracking &amp; <span class="serif-accent">implementation.</span></h2>
+
+      <div class="qa-block">
+        <h3 class="q">Is Bratrax's tracking server-side or client-side?</h3>
+        <p class="a"><strong>Both.</strong> We run a native Shopify integration that combines client-side and server-side tracking. The client side catches the browser-level signals; the server side picks up what ad blockers, ITP, and privacy browsers strip out before they get to a pixel. You get a more complete picture than a pure client-side tool, without having to wire up server-side yourself.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Does Bratrax send data back to Facebook and Google to enrich their platforms?</h3>
+        <p class="a">Not yet — Conversions API sending is on the roadmap and should be live within roughly a month of launch. Today, Bratrax reads from your stack and stitches the picture for you. <strong>We don't push events back to ad networks</strong>, which is intentional: it means we can't accidentally pollute your existing pixel or duplicate events. When CAPI sending goes live, it'll be opt-in per channel.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Can I run Bratrax alongside another tracking tool (LittleData, Elevar, etc.)?</h3>
+        <p class="a">Yes. Because we don't send events back to ad networks today, <strong>Bratrax can't fight with your existing server-side tool over the same pixel.</strong> Most tracking stacks "pollute" each other when two tools both try to enrich the same Facebook/Google pixel. We sit quietly in the background until you're ready to switch.</p>
+      </div>
+    </section>
+
+    <!-- ─── 06 Platforms & fit ─── -->
     <section class="faq-section" id="platforms">
-      <span class="faq-section-label">05 — Platforms &amp; fit</span>
+      <span class="faq-section-label">06 — Platforms &amp; fit</span>
       <h2>Platforms &amp; <span class="serif-accent">fit.</span></h2>
 
       <div class="qa-block">
@@ -1227,16 +1319,37 @@
         <h3 class="q">Can I run multi-domain attribution across separately-owned stores?</h3>
         <p class="a">Single-store at launch. Multi-store is a Clear Vision conversation.</p>
       </div>
+
+      <div class="qa-block">
+        <h3 class="q">Can I connect multiple Facebook ad accounts to one Bratrax workspace?</h3>
+        <p class="a">Yes. One Bratrax workspace can pull spend and creative data from <strong>as many Facebook ad accounts as you have access to.</strong></p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Does Bratrax support multiple Facebook Business Managers?</h3>
+        <p class="a">Yes — and this is the one we get asked about most by people coming off Hyros. Multi-BM support is built and currently going through Facebook's app review process.</p>
+        <p class="a">If you're connecting today and not seeing ad accounts from all your BMs, the workaround is to add your Bratrax-connected email as a user on the missing ad account in Business Settings — once that's done, you can re-trigger the Facebook connection and the account will appear.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Does Bratrax work for agencies managing multiple brands?</h3>
+        <p class="a">Lite is single-store at launch — <strong>one Bratrax account = one Shopify store.</strong> If you run an agency and want multiple brands under one roof with consolidated reporting, that's a Clear Vision conversation. We'll get there with Lite eventually; we're not there yet.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Can I add my team to my Bratrax workspace?</h3>
+        <p class="a">Yes — invite as many teammates as you want. <strong>There's no per-seat fee and no cap on the number of users in a workspace.</strong> Full instructions are in the Help section.</p>
+      </div>
     </section>
 
-    <!-- ─── 06 Risk ─── -->
+    <!-- ─── 07 Risk ─── -->
     <section class="faq-section" id="risk">
-      <span class="faq-section-label">06 — Risk, data, and cancellation</span>
+      <span class="faq-section-label">07 — Risk, data, and cancellation</span>
       <h2>Risk &amp; <span class="serif-accent">data.</span></h2>
 
       <div class="qa-block">
         <h3 class="q">What if it doesn't work for me?</h3>
-        <p class="a"><strong>30-day money-back guarantee.</strong> If you're not getting more reconciled, traceable numbers than your current tool by day 30, full refund. No support ticket required — one email to <a href="mailto:support@bratrax.com">support@bratrax.com</a>.</p>
+        <p class="a"><strong>30-day money-back guarantee — no questions asked.</strong> The clock starts at signup (signup and your first charge happen at the same time). If anything inside 30 days isn't sitting right, email <a href="mailto:support@bratrax.com">support@bratrax.com</a> and we'll process a full refund manually. No support ticket, no exit interview, no checklist of what "doesn't work" means. Same policy for founding members.</p>
       </div>
 
       <div class="qa-block">
