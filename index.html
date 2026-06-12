@@ -3686,6 +3686,17 @@ Email/SMS:            $750,000   (15%)
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+  // Hero reveals on load, as one block. The hero's lower items (reassurance copy,
+  // bullets) sit below the fold, so the scroll observer would otherwise only fire
+  // them once the user scrolls. Reveal all hero items together on first paint so the
+  // headline, sub-headline, CTA, microcopy, and bullets all animate in at once.
+  // Deferred to the next frame so the opacity:0 baseline paints first and the fade plays.
+  const heroReveals = document.querySelectorAll('.hero .reveal');
+  heroReveals.forEach(el => revealObserver.unobserve(el));
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    heroReveals.forEach(el => el.classList.add('visible'));
+  }));
+
   // Header CTA: outline while hero is in view, solid acid once scrolled past
   (function() {
     const header = document.querySelector('.site-header');
