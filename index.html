@@ -1,20 +1,21 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bratrax — DTC attribution analytics that add up</title>
-<meta name="description" content="Pre-built dashboards. Five attribution models. Bring your own AI via MCP. Flat $79/mo, locked for life. No contract. No demo.">
-<link rel="canonical" href="https://bratrax.com/">
+<title>Bratrax Lite — Compare us beside the giants for $1.</title>
+<meta name="description" content="$1 your first month — run Bratrax beside your current attribution tool. Keep us at $79/mo, locked for life — first 100 founding members only. Closes Thu June 18.">
+<link rel="canonical" href="https://lite.bratrax.com/">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
 <link rel="apple-touch-icon" href="/favicon.png">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://bratrax.com/">
-<meta property="og:title" content="Bratrax — DTC attribution analytics that add up">
-<meta property="og:description" content="Pre-built dashboards. Five attribution models. Bring your own AI via MCP. Flat $79/mo, locked for life. No contract. No demo.">
+<meta property="og:url" content="https://lite.bratrax.com/">
+<meta property="og:title" content="Bratrax Lite — Compare us beside the giants for $1.">
+<meta property="og:description" content="$1 your first month — run Bratrax beside your current attribution tool. Keep us at $79/mo, locked for life — first 100 founding members only. Closes Thu June 18.">
 <meta property="og:image" content="https://bratrax.com/og/bratrax.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -22,9 +23,9 @@
 
 <!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://bratrax.com/">
-<meta name="twitter:title" content="Bratrax — DTC attribution analytics that add up">
-<meta name="twitter:description" content="Pre-built dashboards. Five attribution models. Bring your own AI via MCP. Flat $79/mo, locked for life. No contract. No demo.">
+<meta name="twitter:url" content="https://lite.bratrax.com/">
+<meta name="twitter:title" content="Bratrax Lite — Compare us beside the giants for $1.">
+<meta name="twitter:description" content="$1 your first month — run Bratrax beside your current attribution tool. Keep us at $79/mo, locked for life — first 100 founding members only. Closes Thu June 18.">
 <meta name="twitter:image" content="https://bratrax.com/og/bratrax.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +36,7 @@
     --color-surface: #141414;
     --color-surface-hover: #1E1E1E;
     --color-border: #3A3A3A;
-    --color-text-muted: #858585;
+    --color-text-muted: #9A9A9A;
     --color-text-secondary: #B0B0B0;
     --color-text: #E8E4DC;
     --color-text-bright: #FAFAF5;
@@ -80,8 +81,8 @@
     pointer-events: none;
     z-index: 0;
     background-image:
-      linear-gradient(rgba(212,255,0,0.04) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(212,255,0,0.04) 1px, transparent 1px);
+      linear-gradient(rgba(212,255,0,0.02) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(212,255,0,0.02) 1px, transparent 1px);
     background-size: 40px 40px;
   }
 
@@ -186,6 +187,49 @@
     font-weight: 700;
   }
 
+  /* Launch announcement bar — sticky above the header during the launch window */
+  .launch-bar {
+    position: relative;
+    z-index: 1;
+    background: var(--color-bg);
+    border-bottom: 1px solid var(--color-border);
+    padding: 10px 32px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-align: center;
+    color: var(--color-text);
+  }
+  .launch-bar-inner {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .launch-bar-status {
+    color: var(--color-acid);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .launch-bar-sep {
+    color: var(--color-text-muted);
+  }
+  .launch-bar-seats strong {
+    color: var(--color-acid);
+    font-weight: 700;
+  }
+  @media (max-width: 720px) {
+    .launch-bar { font-size: 10px; padding: 8px 16px; }
+    .launch-bar-inner { gap: 8px; }
+    .launch-bar-sep { display: none; }
+  }
+
   /* Buttons */
   .btn {
     display: inline-flex;
@@ -208,6 +252,23 @@
     color: #000;
   }
   .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+
+  /* Header CTA: outline while hero is in view, solid acid once scrolled past */
+  .site-header .btn-primary {
+    transition: background 0.35s ease, border-color 0.35s ease, color 0.35s ease, opacity 0.2s, transform 0.2s;
+    border: 1px solid transparent;
+  }
+  .site-header.over-hero .btn-primary {
+    background: transparent;
+    border-color: var(--color-border);
+    color: var(--color-text);
+  }
+  .site-header.over-hero .btn-primary:hover {
+    background: transparent;
+    border-color: var(--color-acid);
+    color: var(--color-text-bright);
+    opacity: 1;
+  }
   .btn-outline {
     background: transparent;
     border: 1px solid var(--color-border);
@@ -233,7 +294,7 @@
   .container-narrow { max-width: var(--maxw-narrow); margin: 0 auto; }
 
   /* Hero */
-  .hero { padding: 48px 32px 80px; position: relative; z-index: 1; }
+  .hero { padding: 32px 32px 80px; position: relative; z-index: 1; }
   .hero-grid {
     display: grid;
     grid-template-columns: 1fr 310px;
@@ -296,7 +357,7 @@
   }
   .receipt-stamp-in {
     color: var(--color-acid);
-    background: rgba(212, 255, 0, 0.06);
+    background: transparent;
     transform: rotate(2.5deg);
   }
 
@@ -427,12 +488,12 @@
 
   .hero h1 {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(44px, 5.6vw, 76px);
+    font-size: clamp(38px, 4.6vw, 60px);
     font-weight: 900;
     line-height: 1.05;
     letter-spacing: -0.5px;
     color: var(--color-text-bright);
-    margin-bottom: 24px;
+    margin-bottom: 16px;
     text-wrap: balance;
     max-width: 16ch;
   }
@@ -456,13 +517,13 @@
   }
   .hero-blurb {
     font-family: 'Outfit', sans-serif;
-    font-size: clamp(20px, 2.2vw, 26px);
+    font-size: clamp(18px, 1.9vw, 22px);
     font-weight: 400;
-    line-height: 1.35;
+    line-height: 1.4;
     letter-spacing: -0.1px;
     color: var(--color-text-bright);
     margin: -8px 0 32px;
-    max-width: 32ch;
+    max-width: 60ch;
     text-wrap: balance;
   }
   .hero-blurb strong { color: var(--color-text-bright); font-weight: 700; }
@@ -494,7 +555,7 @@
     position: absolute;
     left: 0;
     top: 0;
-    color: var(--color-acid);
+    color: var(--color-text-secondary);
     font-weight: 700;
   }
   .hero-bullets li strong { color: var(--color-text-bright); font-weight: 700; }
@@ -519,11 +580,11 @@
   }
   .hero-pedigree strong { color: var(--color-text-bright); font-weight: 700; }
   .hero-pedigree a {
-    color: var(--color-acid);
-    border-bottom: 1px dashed rgba(212,255,0,0.3);
+    color: var(--color-text-bright);
+    border-bottom: 1px dashed rgba(232, 228, 220, 0.4);
     padding-bottom: 1px;
   }
-  .hero-pedigree a:hover { border-bottom-color: var(--color-acid); }
+  .hero-pedigree a:hover { border-bottom-color: var(--color-text-bright); }
 
   /* Stat strip */
   .stat-strip {
@@ -607,7 +668,7 @@
     font-weight: 700;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: rgba(212,255,0,0.7);
+    color: var(--color-text-muted);
     margin-bottom: 24px;
     display: inline-block;
   }
@@ -1887,6 +1948,20 @@
     color: var(--color-text-bright);
     margin-bottom: 8px;
   }
+  .tier-price-trial {
+    font-family: 'Outfit', sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--color-text-secondary);
+    margin-bottom: 4px;
+    letter-spacing: -0.3px;
+  }
+  .tier-price-trial::after {
+    content: '→';
+    margin-left: 6px;
+    color: var(--color-acid);
+    font-weight: 700;
+  }
   .tier-price {
     font-family: 'Outfit', sans-serif;
     font-size: 44px;
@@ -2464,7 +2539,7 @@
     .btn { padding: 12px 18px; font-size: 11px; }
     .hero-ctas { flex-direction: column; align-items: stretch; }
     .hero-ctas .btn { justify-content: center; }
-    .nav-link { padding: 8px 10px; }
+    .nav-link { padding: 14px 14px; }
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -2476,9 +2551,9 @@
 {
   "@context": "https://schema.org",
   "@type": "FAQPage",
-  "url": "https://bratrax.com/",
+  "url": "https://lite.bratrax.com/",
   "inLanguage": "en",
-  "dateModified": "2026-05-07",
+  "dateModified": "2026-06-09",
   "mainEntity": [
     {
       "@type": "Question",
@@ -2486,6 +2561,38 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Same attribution methodology, none of the sales-team overhead. Flat $79/mo regardless of GMV. No contract, no demo. We give you an MCP endpoint so your data connects to the AI you already pay for. The incumbents don't."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How does the $1 trial work?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Pay $1 to start. For your first month, run Bratrax beside whatever attribution tool you're using today — you don't have to switch yet. If by your renewal date we explain at least as much of your revenue as your current tool does, you keep us at the rate shown on the pricing card. If we don't, cancel from settings before your renewal date and you pay nothing more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does my trial end?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Your first month is $1. After that, your subscription renews at $79/mo on your monthly anniversary — the same day of the next month you signed up. We'll send you a renewal reminder 7 days before, so you have a full week to decide. Cancel from settings in one click if you want out. No questions, no follow-up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What if Bratrax doesn't work for me?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You cancel from settings in one click before your renewal date and you pay nothing more. The $1 you paid to run us beside whatever you're using is non-refundable — that's the price of the comparison. No follow-up, no win-back email, no sales call. We'd rather you cancel cleanly than stay because canceling was friction."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "When does Bratrax open to new members?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bratrax opens to new members in waves. During an open cohort, you can sign up directly. Between cohorts, join the waitlist and we'll let you in when the next one opens. The $1 trial applies whenever you join."
       }
     },
     {
@@ -2518,14 +2625,6 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No. No tool can. Attribution is correlation, not causation — Bratrax won't tell you why a customer bought, but it will show you what they actually did on your site: every session, every source, every touch we can recover. The picture is honest. The judgment is yours."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What if it doesn't work for me?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "30-day money-back guarantee. Full refund, no questions, cancel from settings in one click."
       }
     },
     {
@@ -2565,9 +2664,8 @@
   "applicationCategory": "BusinessApplication",
   "applicationSubCategory": "Marketing Attribution",
   "operatingSystem": "Web",
-  "url": "https://bratrax.com/",
-  "image": "https://bratrax.com/assets/Bratrax%20Logo%20Light%20Inline.svg",
-  "description": "DTC attribution analytics for Shopify. Per-client ClickHouse warehouse, MCP endpoint for AI queries (Claude at launch), five attribution models, set up in under 10 minutes. $79/mo flat for the first 100 founding members; $99/mo after.",
+  "url": "https://lite.bratrax.com/",
+  "description": "D2C attribution analytics for Shopify. Connects to Meta, Google, TikTok, Bing, Taboola, Outbrain, Klaviyo, and Anthropic. Per-client ClickHouse warehouse, MCP endpoint for AI queries (Claude at launch), five attribution models, set up in under 10 minutes. Try for $1 the first month, then $79/mo for the first 100 founding members or $99/mo after.",
   "offers": [
     {
       "@type": "Offer",
@@ -2606,6 +2704,18 @@
 </head>
 <body>
 
+<!-- LAUNCH ANNOUNCEMENT BAR -->
+<div class="launch-bar" role="banner" aria-label="Founding launch announcement">
+  <div class="launch-bar-inner">
+    <span class="launch-bar-status">
+      <span class="live-dot" aria-hidden="true"></span>
+      Founding launch open
+    </span>
+    <span class="launch-bar-sep">&middot;</span>
+    <span class="launch-bar-deadline">Closes Thu June 18 or at 100 members</span>
+  </div>
+</div>
+
 <!-- HEADER -->
 <header class="site-header">
   <div class="site-header-inner">
@@ -2622,11 +2732,11 @@
       </svg>
     </a>
     <div class="ticker">
-      Numbers that reconcile to Shopify. Plug in your own AI. <strong>$79/mo flat.</strong>
+      Don't switch. Pay $1. Compare us beside the giants. Decide in a month.
     </div>
     <div class="header-actions">
       <a href="https://bratrax.com/login" class="nav-link">Log in</a>
-      <a href="https://bratrax.com/signup" class="btn btn-primary btn-sm btn-arrow">Start now</a>
+      <a href="https://bratrax.com/signup" class="btn btn-primary btn-sm btn-arrow">Compare us for $1</a>
     </div>
   </div>
 </header>
@@ -2637,38 +2747,34 @@
     <div class="hero-grid">
 
       <div class="hero-main">
-        <span class="hero-eyebrow reveal">
-          Now live
-          <span class="live-dot" aria-hidden="true"></span>
-          Shopify D2C only
-        </span>
-
-        <h1 class="reveal reveal-d1">Shopify attribution that <span class="serif-accent">adds&nbsp;up.</span></h1>
+        <h1 class="reveal reveal-d1">The attribution tool the giants <span class="serif-accent">don't want you to have.</span></h1>
 
         <p class="hero-blurb reveal reveal-d1">
-          Numbers that reconcile to your store and your ad platforms. Period.
+          Three engineers. No sales team. No investors.<br>
+          We show you the math instead of <strong>selling you the certainty</strong>.
         </p>
 
-        <p class="hero-price-line reveal reveal-d2">$79/mo &mdash; founding member rate.</p>
-        <p class="hero-sub reveal reveal-d2">First 100 members at $79/mo, locked for life. $99/mo permanent after.</p>
+        <p class="hero-sub reveal reveal-d2">
+          We don't ask you to switch. We ask you to compare. <strong style="color: var(--color-acid);">Pay $1. Run Bratrax beside your current tool for your first month.</strong> If our picture explains your revenue at least as well as theirs, cancel them &mdash; keep us at <strong>$79/mo, locked for life.</strong> Same math, $1,000+ less per month. First 100 founding members.
+        </p>
 
-        <div class="hero-ctas reveal reveal-d2">
-          <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow">Start now</a>
-          <a href="#dashboard" class="btn btn-outline btn-arrow">See the dashboard</a>
+        <div class="hero-ctas reveal reveal-d2" style="margin-bottom: 14px;">
+          <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow">Compare us for $1 &middot; Closes Jun 18</a>
+          <a href="#fix" class="btn btn-outline btn-arrow">See the proof</a>
         </div>
+        <p style="font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--color-text-muted); margin: 0 0 32px; line-height: 1.6;">
+          No contract &middot; Cancel in one click &middot; $1 is all you're committed to
+        </p>
 
         <ul class="hero-bullets reveal reveal-d3">
-          <li><strong>Open attribution math</strong> &mdash; read the config, audit any number</li>
-          <li><strong>Flat price at any GMV</strong> &mdash; no scaling, no contract</li>
-          <li><strong>Bring your own AI</strong> &mdash; MCP endpoint, your API key (Claude at launch)</li>
+          <li><strong>$1 for your first month</strong> &mdash; full access, run us beside your current tool</li>
+          <li><strong>After 30 days? $79/mo flat at any GMV</strong> &mdash; same bill at $500K or $20M, no contract</li>
+          <li><strong>Audit any number yourself</strong> &mdash; read the config, no proprietary math</li>
+          <li><strong>Bring your own Claude</strong> &mdash; your API key, no token markup</li>
         </ul>
 
-        <div class="hero-guarantee reveal reveal-d3">
-          30-day money-back guarantee. If the numbers aren't more trustworthy than your current tool within 30 days, full refund.
-        </div>
-
         <p class="hero-pedigree reveal reveal-d3">
-          From <strong>Brat Vukovich</strong> and the team behind
+          Built by <strong>Brat Vukovich</strong> and the team behind
           <a href="https://inceptly.com" target="_blank" rel="noopener">Inceptly</a> ($950M+ in D2C revenue driven) and
           <a href="https://vidtao.com" target="_blank" rel="noopener">VidTao</a> (YouTube ad research tool used by 100K+ marketers).
         </p>
@@ -2676,7 +2782,7 @@
 
       <aside class="hero-margin reveal reveal-d2" aria-label="What's included and not included">
         <div class="receipt">
-          <div class="receipt-meta">Bratrax Lite &middot; No.&nbsp;001 / 100</div>
+          <div class="receipt-meta">Bratrax Lite &middot; No.&nbsp;008 / 100</div>
 
           <div class="receipt-section">
             <div class="receipt-stamp receipt-stamp-out">Not&nbsp;included</div>
@@ -2694,7 +2800,7 @@
           <div class="receipt-section">
             <div class="receipt-stamp receipt-stamp-in">Included</div>
             <ul class="receipt-list receipt-list-in">
-              <li><span class="ri-text">5 DTC dashboards</span><span class="ri-mark">&check;</span></li>
+              <li><span class="ri-text">7 DTC dashboards</span><span class="ri-mark">&check;</span></li>
               <li><span class="ri-text">5 attribution models, switch any time</span><span class="ri-mark">&check;</span></li>
               <li><span class="ri-text">Data warehouse + easy export</span><span class="ri-mark">&check;</span></li>
               <li><span class="ri-text">MCP endpoint (bring your AI)</span><span class="ri-mark">&check;</span></li>
@@ -2702,9 +2808,9 @@
           </div>
 
           <div class="receipt-total">
-            <span class="rt-label">Total</span>
+            <span class="rt-label">First month</span>
             <span class="rt-dots"></span>
-            <span class="rt-amount">$79/mo, locked</span>
+            <span class="rt-amount">$1, then $79/mo</span>
           </div>
         </div>
       </aside>
@@ -2718,7 +2824,7 @@
   <div class="stat-strip-grid">
     <a class="stat-cell reveal" href="#pain">
       <div class="stat-num">~20%</div>
-      <p class="stat-copy">Of revenue your $1,500/mo tool can't explain &mdash; labeled "Direct" or "Organic and Social."</p>
+      <p class="stat-copy">Of revenue your attribution tool can't explain &mdash; labeled "Direct" or "Organic and Social."</p>
       <span class="stat-link">See the breakdown <span aria-hidden="true">&rarr;</span></span>
     </a>
     <a class="stat-cell reveal reveal-d1" href="#fix">
@@ -2745,7 +2851,7 @@
         <p class="sec-sub">
           Take any $5M D2C brand: 15&ndash;30% of daily revenue lands under "Direct" or "Organic and Social" &mdash; not because customers typed your URL, but because the tool gave up. UTM stripped. Referrer dropped. Session expired. Touchpoint lost to iOS.
         </p>
-        <p class="sec-sub">It's not a marketing channel. <strong>It's a confession.</strong></p>
+        <p class="sec-sub">It's not a marketing channel. <strong>It's a confession.</strong> And it's not one your attribution tool has any commercial reason to fix &mdash; the murkier the math, the easier it is to charge $300, $500, sometimes $1,500/mo to interpret it.</p>
 
         <p class="pain-callout"><span>$1,000,000 of revenue with no idea where it came from.</span> You can't scale it. You can't kill it. You can't defend the spend.</p>
       </div>
@@ -2819,7 +2925,7 @@ Email/SMS:            $750,000   (15%)
 
     <p class="sec-bridge reveal reveal-d2">When the math reconciles, the dashboards can do their job.</p>
 
-    <p class="sec-sub reveal reveal-d2">Five default dashboards, opinionated for Shopify D2C. Numbers reconcile to your store and your ad platforms &mdash; every model, every cut.</p>
+    <p class="sec-sub reveal reveal-d2"><strong>Seven dashboards. We considered 198 more &mdash; they didn't ship.</strong> Attribution is one decision: which campaigns to feed, which to cut. Every dashboard here maps to that decision &mdash; and reconciles to your store and your ad platforms.</p>
 
     <div class="zigzag">
 
@@ -2839,14 +2945,14 @@ Email/SMS:            $750,000   (15%)
         <div class="zigzag-image">
           <div class="frag-stack">
             <div class="frag frag-back" tabindex="0">
-              <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/01-store-performance-bottom.png" alt="Store Performance dashboard — bottom section with trend charts for revenue, orders, and MER." onerror="this.closest('.frag').classList.add('is-missing');">
+              <img src="dashboards/01-store-performance-bottom.png" alt="Store Performance dashboard — bottom section with trend charts for revenue, orders, and MER." onerror="this.closest('.frag').classList.add('is-missing');">
               <div class="frag-fallback">
                 <span class="frag-fallback-tag">01 &middot; bottom</span>
                 <span class="frag-fallback-name">Store Performance</span>
               </div>
             </div>
             <div class="frag frag-front" tabindex="0">
-              <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/01-store-performance-top.png" alt="Store Performance dashboard — top section with KPI tiles for revenue, total spend, and blended ROAS." onerror="this.closest('.frag').classList.add('is-missing');">
+              <img src="dashboards/01-store-performance-top.png" alt="Store Performance dashboard — top section with KPI tiles for revenue, total spend, and blended ROAS." onerror="this.closest('.frag').classList.add('is-missing');">
               <div class="frag-fallback">
                 <span class="frag-fallback-tag">01 &middot; top</span>
                 <span class="frag-fallback-name">Store Performance</span>
@@ -2873,14 +2979,14 @@ Email/SMS:            $750,000   (15%)
         <div class="zigzag-image">
           <div class="frag-stack">
             <div class="frag frag-back" tabindex="0">
-              <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/02-attribution-bottom.png" alt="Attribution dashboard — bottom section with channel drilldown table and channel-level performance charts." onerror="this.closest('.frag').classList.add('is-missing');">
+              <img src="dashboards/02-attribution-bottom.png" alt="Attribution dashboard — bottom section with channel drilldown table and channel-level performance charts." onerror="this.closest('.frag').classList.add('is-missing');">
               <div class="frag-fallback">
                 <span class="frag-fallback-tag">02 &middot; bottom</span>
                 <span class="frag-fallback-name">Attribution</span>
               </div>
             </div>
             <div class="frag frag-front" tabindex="0">
-              <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/02-attribution-top.png" alt="Attribution dashboard — top section with KPI cards (MER, total sales, NC ROAS, blended CPA, attributed revenue) and the attribution model dropdown." onerror="this.closest('.frag').classList.add('is-missing');">
+              <img src="dashboards/02-attribution-top.png" alt="Attribution dashboard — top section with KPI cards (MER, total sales, NC ROAS, blended CPA, attributed revenue) and the attribution model dropdown." onerror="this.closest('.frag').classList.add('is-missing');">
               <div class="frag-fallback">
                 <span class="frag-fallback-tag">02 &middot; top</span>
                 <span class="frag-fallback-name">Attribution</span>
@@ -2906,14 +3012,14 @@ Email/SMS:            $750,000   (15%)
         <div class="zigzag-image">
           <div class="frag-stack">
             <div class="frag frag-back" tabindex="0">
-              <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/03-customers-bottom.png" alt="Customers dashboard — bottom section with subscriber acquisition table and cohort retention chart." onerror="this.closest('.frag').classList.add('is-missing');">
+              <img src="dashboards/03-customers-bottom.png" alt="Customers dashboard — bottom section with subscriber acquisition table and cohort retention chart." onerror="this.closest('.frag').classList.add('is-missing');">
               <div class="frag-fallback">
                 <span class="frag-fallback-tag">03 &middot; bottom</span>
                 <span class="frag-fallback-name">Customers</span>
               </div>
             </div>
             <div class="frag frag-front" tabindex="0">
-              <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/03-customers-top.png" alt="Customers dashboard — top section with Right Now KPIs (total customers, active subscribers, MRR, LTV, churn rate)." onerror="this.closest('.frag').classList.add('is-missing');">
+              <img src="dashboards/03-customers-top.png" alt="Customers dashboard — top section with Right Now KPIs (total customers, active subscribers, MRR, LTV, churn rate)." onerror="this.closest('.frag').classList.add('is-missing');">
               <div class="frag-fallback">
                 <span class="frag-fallback-tag">03 &middot; top</span>
                 <span class="frag-fallback-name">Customers</span>
@@ -2939,7 +3045,7 @@ Email/SMS:            $750,000   (15%)
         <div class="zigzag-image">
           <div class="frag-stack frag-stack-solo">
             <div class="frag frag-solo" tabindex="0">
-              <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/04-email-sms.png" alt="Email & SMS dashboard — Klaviyo campaigns and flows table with open/click/unsub rates, list health charts, and lifetime program KPIs." onerror="this.closest('.frag').classList.add('is-missing');">
+              <img src="dashboards/04-email-sms.png" alt="Email & SMS dashboard — Klaviyo campaigns and flows table with open/click/unsub rates, list health charts, and lifetime program KPIs." onerror="this.closest('.frag').classList.add('is-missing');">
               <div class="frag-fallback">
                 <span class="frag-fallback-tag">04</span>
                 <span class="frag-fallback-name">Email &amp; SMS</span>
@@ -2965,14 +3071,14 @@ Email/SMS:            $750,000   (15%)
         <div class="zigzag-image">
           <div class="frag-stack">
             <div class="frag frag-back" tabindex="0">
-              <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/05-products-bottom.png" alt="Products dashboard — bottom section with top products and SKUs by revenue, per-SKU detail with variants." onerror="this.closest('.frag').classList.add('is-missing');">
+              <img src="dashboards/05-products-bottom.png" alt="Products dashboard — bottom section with top products and SKUs by revenue, per-SKU detail with variants." onerror="this.closest('.frag').classList.add('is-missing');">
               <div class="frag-fallback">
                 <span class="frag-fallback-tag">05 &middot; bottom</span>
                 <span class="frag-fallback-name">Products</span>
               </div>
             </div>
             <div class="frag frag-front" tabindex="0">
-              <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/05-products-top.png" alt="Products dashboard — top section with net revenue and units sold KPIs, plus product revenue trend chart." onerror="this.closest('.frag').classList.add('is-missing');">
+              <img src="dashboards/05-products-top.png" alt="Products dashboard — top section with net revenue and units sold KPIs, plus product revenue trend chart." onerror="this.closest('.frag').classList.add('is-missing');">
               <div class="frag-fallback">
                 <span class="frag-fallback-tag">05 &middot; top</span>
                 <span class="frag-fallback-name">Products</span>
@@ -3011,7 +3117,7 @@ Email/SMS:            $750,000   (15%)
             <p class="ai-flip-pain">"Every Monday I export Triple Whale to CSV and paste it into ChatGPT to do the same calculation."</p>
             <div class="ai-flip-q-label">Ask Claude</div>
             <p class="ai-flip-q">"NC ROAS by source for the last 30 days. Allocate spend by NC order share, not total."</p>
-            <div class="ai-flip-cue">Hover for Claude's answer &rarr;</div>
+            <div class="ai-flip-cue">Tap or hover for Claude's answer &rarr;</div>
           </div>
           <div class="ai-flip-face ai-flip-back">
             <div class="ai-flip-tag-back">Claude &middot; using your Bratrax data</div>
@@ -3038,7 +3144,7 @@ Email/SMS:            $750,000   (15%)
             <p class="ai-flip-pain">"My ROAS dropped 30% last week and the dashboard doesn't tell me why."</p>
             <div class="ai-flip-q-label">Ask Claude</div>
             <p class="ai-flip-q">"Why did my blended ROAS drop last week?"</p>
-            <div class="ai-flip-cue">Hover for Claude's answer &rarr;</div>
+            <div class="ai-flip-cue">Tap or hover for Claude's answer &rarr;</div>
           </div>
           <div class="ai-flip-face ai-flip-back">
             <div class="ai-flip-tag-back">Claude &middot; using your Bratrax data</div>
@@ -3056,7 +3162,7 @@ Email/SMS:            $750,000   (15%)
             <p class="ai-flip-pain">"My CMO asks 'where's the leak?' and I dig through five tabs to answer."</p>
             <div class="ai-flip-q-label">Ask Claude</div>
             <p class="ai-flip-q">"Funnel dropoff by step, last 7 days."</p>
-            <div class="ai-flip-cue">Hover for Claude's answer &rarr;</div>
+            <div class="ai-flip-cue">Tap or hover for Claude's answer &rarr;</div>
           </div>
           <div class="ai-flip-face ai-flip-back">
             <div class="ai-flip-tag-back">Claude &middot; using your Bratrax data</div>
@@ -3068,19 +3174,18 @@ Email/SMS:            $750,000   (15%)
 
     </div>
 
-    <p class="byo-hint reveal">These are calculations operators currently do manually &mdash; by stitching together CSV exports, dashboard screenshots, and running a series of carefully worded prompts.</p>
-    <p class="byo-hint reveal reveal-d1"><strong>With Bratrax, each is one question to your AI.</strong></p>
-    <p class="byo-hint reveal reveal-d2">You provide the API key. We provide the data. Your relationship with your AI provider is yours.</p>
+    <p class="byo-hint reveal">What operators currently do manually &mdash; exporting CSVs, screenshotting dashboards, carefully prompting &mdash; <strong>becomes one question to your AI when you connect Bratrax.</strong></p>
+    <p class="byo-hint reveal reveal-d1">Your key. Your data. Your relationship with your AI provider. <strong>No middleman.</strong></p>
   </div>
 </section>
 
 <!-- MID-CTA -->
 <section class="mid-cta">
   <div class="mid-cta-inner">
-    <h3 class="reveal">Done paying $1,500/mo for data you still don't <span class="serif-accent">trust?</span></h3>
-    <p class="reveal reveal-d1">First 100 founding members get $79/month, locked in for life.</p>
-    <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow reveal reveal-d2">Start now</a>
-    <p class="footnote reveal reveal-d3">30-day money-back guarantee. Cancel from settings in one click.</p>
+    <h3 class="reveal">Done paying $300&ndash;$1,500/mo for data you still don't <span class="serif-accent">trust?</span></h3>
+    <p class="reveal reveal-d1">Try us for $1 your first month. If we explain at least as much of your revenue as your current tool does, cancel theirs and keep us at $79/mo, locked for life.</p>
+    <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow reveal reveal-d2">Compare us for $1</a>
+    <p class="footnote reveal reveal-d3">Closes Thu June 18 &mdash; or at 100 founding members</p>
   </div>
 </section>
 
@@ -3151,11 +3256,11 @@ Email/SMS:            $750,000   (15%)
             <td>No</td>
           </tr>
           <tr>
-            <td>Money-back guarantee</td>
-            <td class="us">30 days</td>
-            <td>No</td>
-            <td>No</td>
-            <td>No</td>
+            <td>First month</td>
+            <td class="us">$1</td>
+            <td>$179</td>
+            <td>$230+</td>
+            <td>$1,000+</td>
           </tr>
           <tr>
             <td>Contract</td>
@@ -3171,6 +3276,19 @@ Email/SMS:            $750,000   (15%)
     <div class="savings-callout reveal reveal-d3">
       At $5M GMV, Triple Whale charges $1,129/month. Bratrax Lite is $79.
       <span class="savings-punch">That's <strong>$12,600 per year back in your pocket</strong> &mdash; same math, less ceremony.</span>
+    </div>
+
+    <div class="compare-nudge reveal" style="text-align: center; margin-top: 56px; padding: 48px 32px 0; border-top: 1px dashed var(--color-border);">
+      <p style="font-family: 'Outfit', sans-serif; font-size: clamp(24px, 2.8vw, 36px); font-weight: 900; line-height: 1.2; color: var(--color-text-bright); margin: 0 auto 20px; max-width: 26ch; text-wrap: balance; letter-spacing: -0.2px;">
+        You're not paying $1,500/mo for the <span class="serif-accent">math.</span>
+      </p>
+      <p style="font-family: 'Outfit', sans-serif; font-size: 17px; font-weight: 300; line-height: 1.7; color: var(--color-text-secondary); max-width: 60ch; margin: 0 auto 32px;">
+        You're paying for the sales team that sold it to you, the AE who closed it, and the annual contract that locked you in. Three engineers built Bratrax. There's no one to commission, no contract to lock, no GMV ceiling to hit.
+      </p>
+      <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow">Compare us for $1</a>
+      <p style="font-family: 'Space Mono', monospace; font-size: 12px; color: var(--color-text-muted); letter-spacing: 0.5px; margin-top: 18px; line-height: 1.6;">
+        If we explain at least as much of your revenue as they do by your renewal date, the rest was never about the math.
+      </p>
     </div>
 
   </div>
@@ -3206,7 +3324,7 @@ Email/SMS:            $750,000   (15%)
           </svg>
         </div>
         <div class="step-num">02</div>
-        <h3>Link Meta, Google, Klaviyo.</h3>
+        <h3>Link Meta, Google, TikTok, Klaviyo, and more.</h3>
         <p>OAuth across the board. Shopify handles tracking automatically; off-Shopify pages get a guided snippet.</p>
       </div>
       <div class="step reveal reveal-d2">
@@ -3220,7 +3338,7 @@ Email/SMS:            $750,000   (15%)
         </div>
         <div class="step-num">03</div>
         <h3>See what's working.</h3>
-        <p>Five pre-built dashboards &mdash; every cut a CFO would ask about. Five attribution models, switch between them any time.</p>
+        <p>Seven pre-built dashboards &mdash; every cut a CFO would ask about. Five attribution models, switch between them any time.</p>
       </div>
       <div class="step reveal reveal-d3">
         <div class="step-icon" aria-hidden="true">
@@ -3240,25 +3358,17 @@ Email/SMS:            $750,000   (15%)
     <aside class="integrations-ribbon" aria-label="Connected platforms">
       <div class="integrations-row">
         <div class="integrations-section is-available">
-          <div class="integrations-label">Available now</div>
+          <div class="integrations-label">Connects to</div>
           <ul class="integrations-list">
             <li class="brand">Shopify</li>
-            <li class="brand">Meta</li>
-            <li class="brand">Google</li>
+            <li class="brand">Facebook Ads</li>
+            <li class="brand">Google Ads</li>
+            <li class="brand">TikTok Ads</li>
+            <li class="brand">Bing Ads</li>
+            <li class="brand">Taboola</li>
+            <li class="brand">Outbrain</li>
             <li class="brand">Klaviyo</li>
             <li class="brand">Anthropic</li>
-          </ul>
-        </div>
-        <div class="integrations-section is-roadmap">
-          <div class="integrations-label">On roadmap</div>
-          <ul class="integrations-list">
-            <li class="brand">TikTok</li>
-            <li class="brand">Pinterest</li>
-            <li class="brand">Amazon Ads</li>
-            <li class="brand">Recharge</li>
-            <li class="brand">Bold</li>
-            <li class="brand">Skio</li>
-            <li class="brand">OpenAI</li>
           </ul>
         </div>
       </div>
@@ -3277,22 +3387,23 @@ Email/SMS:            $750,000   (15%)
     <div class="tiers">
       <div class="tier featured reveal reveal-d2">
         <div class="tier-header">
-          <div class="tier-scarcity">First 100 members only</div>
+          <div class="tier-scarcity">Closes Thu June 18 &mdash; or at 100 founding members</div>
           <div class="tier-name">Bratrax Lite</div>
+          <div class="tier-price-trial">$1 first month</div>
           <div class="tier-price">$79/mo</div>
-          <div class="tier-tagline">Founding member rate, locked in for life</div>
+          <div class="tier-tagline">Locked for life as a founding member</div>
         </div>
         <ul>
-          <li>Five pre-built dashboards</li>
+          <li>Seven pre-built dashboards</li>
           <li>Five attribution models, switch between them any time</li>
-          <li>Connects to Shopify, Meta, Google, Klaviyo at launch</li>
+          <li>Connects to Shopify and 7 ad/email platforms at launch</li>
           <li>MCP endpoint &mdash; Claude at launch, OpenAI on roadmap</li>
           <li>Queryable data warehouse + easy export anytime</li>
           <li>Numbers reconcile to Shopify and ad-platform reports</li>
           <li>Flat pricing, no contract</li>
         </ul>
-        <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow" style="width:100%; justify-content:center;">Start now &mdash; $79/mo</a>
-        <p class="tier-trust">30-day money-back guarantee &middot; Cancel from settings &middot; No contract</p>
+        <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow" style="width:100%; justify-content:center;">Compare us for $1</a>
+        <p class="tier-trust">Cancel anytime &middot; No contract &middot; 1-click cancel from settings</p>
       </div>
 
       <div class="tier muted reveal reveal-d3">
@@ -3346,7 +3457,7 @@ Email/SMS:            $750,000   (15%)
       </div>
     </div>
 
-    <p class="fit-footer reveal">Honest scoping protects everyone. Better you find out on this page than after the 30-day refund window.</p>
+    <p class="fit-footer reveal">If you're a fit, you've got nothing to lose. $1 your first month beside whatever you're using now. Decide for yourself.</p>
   </div>
 </section>
 
@@ -3357,7 +3468,7 @@ Email/SMS:            $750,000   (15%)
 
     <div class="founder-wrap">
       <div class="founder-photo reveal reveal-d1">
-        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/assets/brat-portrait-big.png" alt="Brat Vukovich, Founder of Bratrax" onerror="this.parentElement.classList.add('img-missing'); this.style.display='none';">
+        <img src="brat-portrait-big.png" alt="Brat Vukovich, Founder of Bratrax" onerror="this.parentElement.classList.add('img-missing'); this.style.display='none';">
         <span class="placeholder-tag">Photo</span>
         <div class="placeholder-desc">Brat Vukovich<br>Founder portrait</div>
       </div>
@@ -3366,13 +3477,13 @@ Email/SMS:            $750,000   (15%)
           <strong>Brat Vukovich</strong> &mdash; Founder, Bratrax &mdash; <a href="https://x.com/bratinceptly" target="_blank" rel="noopener">@bratinceptly</a>
         </p>
         <h3>Why I <span class="serif-accent">built</span> this.</h3>
-        <p>Every D2C engagement at Inceptly starts the same way. The team has an attribution tool. Dashboards. Data. They still don't trust the numbers enough to make a real budget decision without pulling up a spreadsheet first.</p>
-        <p>They're paying $300, $500, sometimes $1,500 a month. And the routine is still: check the tool, check Shopify, check the ad platform, compare, go with gut.</p>
-        <p>The biggest reason they don't trust the numbers: roughly a fifth of their revenue is sitting in a "Direct" or "Organic and Social" bucket the tool can't explain. So we engineered around it. <strong>We've gotten the bucket as low as 3% on a Bratrax client.</strong> The mechanism works. We'll show you the math regardless of where your number lands.</p>
-        <p>One thing I'll say upfront: Bratrax won't tell you <em>why</em> a customer bought. No tool can. What we show you is what they actually did on your site before they bought &mdash; every session, every source, every touch we can recover. That's correlation, presented honestly. <strong>Bratrax gives you the picture. You bring the judgment.</strong></p>
-        <p>I won't ship a tool whose numbers I can't defend to a CFO. Before launch, I tested Bratrax against live client data for weeks &mdash; numbers match Shopify, numbers match the ad platforms. That's the foundation. Everything else is built on top of that &mdash; the dashboards, the AI integration, the price.</p>
-        <p>We don't have a sales team. We don't have investors telling us to charge more. We have engineers, and we have opinions about how analytics should work.</p>
-        <p><strong>That's the whole pitch.</strong></p>
+        <p>Every attribution tool decides a fifth of your revenue is "Direct" and calls it a day. <strong>I couldn't.</strong></p>
+        <p>"Direct" isn't a channel &mdash; it's the tool giving up. A UTM it didn't recognize, a click ID it ignored, a touch it never tied to the order. They see that bucket and shrug. Edge case. <em>Good enough.</em> That shrug is what I built Bratrax against.</p>
+        <p>And the shrug isn't laziness &mdash; it's math. A tool chasing growth has to optimize for volume: onboard fast, ship "good enough," move on. Going to the end of the world for one store's weird leak doesn't scale, so they don't.</p>
+        <p>We're three engineers. No sales team to feed, no investors telling us to grow, no one to commission. We're profitable at 100 clients and we'd be profitable at 1,000 &mdash; so we don't need to scale, and that's the whole point. It frees us to obsess over your one weird leak instead of your wallet. And that obsession is the part I love. Figuring out that some brand's off-label UTM is actually TikTok spend hiding in "Direct" is the most fun I have all week. I'd do it whether it paid or not.</p>
+        <p>How it works: the order is the truth. We take everything we can get about it &mdash; our own pixel, Shopify's event stream, the referral data buried in the order &mdash; and stitch it back together to find where the sale came from. When we hit something new, we solve it and write it into one shared rules file, so the next store inherits it on day one. Every leak we crack for one client makes every client after them sharper. <strong>It's how we got a store's "Direct" from a fifth down to 3%.</strong></p>
+        <p>One thing straight: Bratrax won't tell you <em>why</em> someone bought. No tool can. We show you what they did before &mdash; every source, every touch we can recover &mdash; honestly. <strong>You bring the judgment.</strong></p>
+        <p>Try us for $1 beside whatever you're paying. <strong>If we explain more of your revenue than they do, keep us. If not, you're out a dollar.</strong></p>
         <p class="founder-sign">&mdash; Brat</p>
       </div>
     </div>
@@ -3391,6 +3502,22 @@ Email/SMS:            $750,000   (15%)
         <div class="faq-a"><p>Same attribution methodology, none of the sales-team overhead. Flat $79/mo regardless of GMV. No contract, no demo. We give you an MCP endpoint so your data connects to the AI you already pay for. The incumbents don't.</p></div>
       </div>
       <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">How does the $1 trial work?</button>
+        <div class="faq-a"><p>Pay $1 to start. For your first month, run Bratrax beside whatever attribution tool you're using today &mdash; you don't have to switch yet. If by your renewal date we explain at least as much of your revenue as your current tool does, you keep us at the rate shown on the pricing card. If we don't, cancel from settings before your renewal date and you pay nothing more.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">When does my trial end?</button>
+        <div class="faq-a"><p>Your first month is $1. After that, your subscription renews at $79/mo on your monthly anniversary &mdash; the same day of the next month you signed up. We'll send you a renewal reminder 7 days before, so you have a full week to decide. Cancel from settings in one click if you want out. No questions, no follow-up.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">What if Bratrax doesn't work for me?</button>
+        <div class="faq-a"><p>You cancel from settings in one click before your renewal date and you pay nothing more. The $1 you paid to run us beside whatever you're using is non-refundable &mdash; that's the price of the comparison. No follow-up, no win-back email, no sales call. We'd rather you cancel cleanly than stay because canceling was friction.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">When does Bratrax open to new members?</button>
+        <div class="faq-a"><p>Bratrax opens to new members in waves. During an open cohort, you can sign up directly. Between cohorts, join the waitlist and we'll let you in when the next one opens. The $1 trial applies whenever you join.</p></div>
+      </div>
+      <div class="faq-item">
         <button class="faq-q" aria-expanded="false">How much can you actually shrink the unattributed bucket?</button>
         <div class="faq-a"><p>Depends on your stack. The mechanism: a first-party tracking pixel served from your own domain, plus the Shopify order record as ground truth &mdash; when the pixel misses something, the order itself usually has enough context to recover the source. We've gotten it to 3% on a Bratrax client. Another landed at 5%. We won't promise a number because the result depends on conditions we don't control.</p></div>
       </div>
@@ -3404,11 +3531,7 @@ Email/SMS:            $750,000   (15%)
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Will this give me "perfect" attribution?</button>
-        <div class="faq-a"><p>No. No tool can. Attribution is correlation, not causation &mdash; Bratrax won't tell you <em>why</em> a customer bought, but it will show you what they actually did on your site: every session, every source, every touch we can recover. The picture is honest. The judgment is yours.</p>
-      </div>
-      <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">What if it doesn't work for me?</button>
-        <div class="faq-a"><p>30-day money-back guarantee. Full refund, no questions, cancel from settings in one click.</p></div>
+        <div class="faq-a"><p>No. No tool can. Attribution is correlation, not causation &mdash; Bratrax won't tell you <em>why</em> a customer bought, but it will show you what they actually did on your site: every session, every source, every touch we can recover. The picture is honest. The judgment is yours.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">What's the difference between Lite and Clear Vision?</button>
@@ -3423,17 +3546,17 @@ Email/SMS:            $750,000   (15%)
 <!-- FINAL CTA -->
 <section class="final-cta">
   <div class="final-cta-inner">
-    <h2 class="reveal">First 100 founding&nbsp;members. $79/month, locked in for&nbsp;<span class="serif-accent">life.</span></h2>
+    <h2 class="reveal">Compare us beside the giants for $1. Keep us for $79/mo, locked for&nbsp;<span class="serif-accent">life.</span></h2>
 
     <ul class="final-bullets reveal reveal-d1">
-      <li>$79/mo, forever</li>
-      <li>MCP endpoint included</li>
-      <li>Numbers reconcile to Shopify</li>
+      <li>$79/mo locked for life</li>
+      <li>Closes Thu June 18 or at 100</li>
+      <li>1-click cancel anytime</li>
     </ul>
 
-    <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow reveal reveal-d2">Start now &mdash; $79/mo</a>
+    <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow reveal reveal-d2">Compare us for $1</a>
 
-    <p class="closer reveal reveal-d3">No sales calls. No contracts. 30-day money-back guarantee.</p>
+    <p class="closer reveal reveal-d3">No sales calls. No contracts. Cancel anytime from settings.</p>
   </div>
 </section>
 
@@ -3562,6 +3685,19 @@ Email/SMS:            $750,000   (15%)
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
   document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+  // Header CTA: outline while hero is in view, solid acid once scrolled past
+  (function() {
+    const header = document.querySelector('.site-header');
+    const hero = document.querySelector('.hero');
+    if (!header || !hero) return;
+    const headerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        header.classList.toggle('over-hero', entry.isIntersecting);
+      });
+    }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
+    headerObserver.observe(hero);
+  })();
 </script>
 
 </body>
