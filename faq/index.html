@@ -96,7 +96,9 @@
     border-bottom: 1px solid var(--color-border);
   }
   .site-header-inner {
-    max-width: var(--maxw);
+    /* +64px = the 2x32px horizontal padding, so the nav's inner content spans the
+       full --maxw and aligns with the hero (which pads outside its max-width). */
+    max-width: calc(var(--maxw) + 64px);
     margin: 0 auto;
     padding: 14px 32px;
     display: flex;
@@ -225,7 +227,9 @@
   .faq-body {
     position: relative;
     z-index: 1;
-    max-width: var(--maxw);
+    /* +64px so the body content spans the full --maxw and left/right-aligns with
+       the hero (which pads outside its max-width), matching the nav above. */
+    max-width: calc(var(--maxw) + 64px);
     margin: 0 auto;
     padding: 64px 32px 120px;
     display: grid;
