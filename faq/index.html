@@ -713,14 +713,6 @@
     },
     {
       "@type": "Question",
-      "name": "Can you build me a custom report?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most of the time you can build exactly what you need yourself: open any dashboard, click Edit dashboard, and rearrange, add, or change charts. If you need something you can't put together yourself, email support@bratrax.com with what you're after — several of today's dashboards started as customer requests."
-      }
-    },
-    {
-      "@type": "Question",
       "name": "How often does Bratrax refresh my data?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -756,23 +748,7 @@
       "name": "Which AI assistants does Bratrax connect to?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Claude is the assistant Bratrax supports today — you connect it through the MCP endpoint with your own Anthropic account. ChatGPT isn't supported yet; OpenAI support is on our roadmap."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Why Anthropic-only at launch?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The DTC operators we work with are mostly on Claude, so we built for Claude first. OpenAI support is on our roadmap."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What if I don't use Claude?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The dashboards stand alone — you get all the attribution and analytics value with or without AI. The AI integration is Claude-only at launch; OpenAI is on our roadmap."
+        "text": "Claude is the assistant Bratrax supports today — you connect it through the MCP endpoint with your own Anthropic account. Why Claude first: most of the DTC operators we work with are on Claude. ChatGPT isn't supported yet; OpenAI support is on our roadmap."
       }
     },
     {
@@ -781,14 +757,6 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Only the data your assistant explicitly pulls in response to your prompt. You control what's queried. We don't pipe your data to any LLM provider in the background."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How fresh is the data AI can query?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Whatever's in your dashboards is what the AI sees — same data, same freshness. Store data syncs hourly; ad platform data every 4 hours. The number you check on your dashboard in the morning is the same one the AI reasons about when you ask it why."
       }
     },
     {
@@ -821,14 +789,6 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Per-client infrastructure runs us about $2–4/month. We could charge $9 and still be profitable. We don't, because that's race-to-the-bottom logic and it eventually compromises the product. $99 funds a small team and the refusal to take outside money. When founders complain about $300–$1,500/mo attribution tools, the real complaint isn't \"analytics should be free.\" It's \"that $300–$1,500/mo is paying for sales teams, conferences, and investor returns — not better tech.\""
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "I signed up at the $79 founding rate — does my price change?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. Founding members — customers from the launch cohort — pay $79/month for the life of their Bratrax subscription. That rate will not change, regardless of current or future pricing. The founding offer is closed: new signups are at the standard $99/month rate."
       }
     },
     {
@@ -877,14 +837,6 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Most brands go from signup to live dashboard in under 10 minutes: connect your store (Shopify or WooCommerce), link your ad accounts, and dashboards populate with your recent data within minutes. No onboarding call needed. For Shopify, tracking is set up automatically — no manual pixel install; for WooCommerce, onboarding walks you through installing our WordPress plugin. Two timelines to expect: recent data (last 14 days) — minutes; full history (roughly 60 days for ad platforms, a full year for your store) backfills in the background over hours to a few days."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What happens after I sign up?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "After signup, your dashboards populate within minutes. The optional next step is the AI integration: grab your MCP endpoint from settings and connect it to Claude."
       }
     },
     {
@@ -1156,11 +1108,6 @@
       </div>
 
       <div class="qa-block">
-        <h3 class="q">Can you build me a custom report?</h3>
-        <p class="a">Most of the time you can build exactly what you need yourself: open any dashboard, click <strong>Edit dashboard</strong>, and rearrange, add, or change charts. If you need something you can't put together yourself, email <a href="mailto:support@bratrax.com">support@bratrax.com</a> with what you're after — several of today's dashboards started as customer requests.</p>
-      </div>
-
-      <div class="qa-block">
         <h3 class="q">How often does Bratrax refresh my data?</h3>
         <p class="a"><strong>Store data (Shopify/WooCommerce orders): hourly.</strong> New orders appear in your dashboard within about an hour of being placed. <strong>Ad platform data (Meta, Google, TikTok, Bing, Pinterest, Taboola, Outbrain, Klaviyo): every 4 hours.</strong> Spend and performance can therefore trail the ad platform's own UI by a few hours — that's the sync interval, not missing data.</p>
         <p class="a">Why not real-time: tools that show "instant" sales are reporting off their pixel alone. Bratrax uses pixel data to <em>enrich your actual order record</em> — the number you see reconciles with your store, at the cost of up to an hour of lag.</p>
@@ -1190,17 +1137,7 @@
 
       <div class="qa-block">
         <h3 class="q">Which AI assistants does Bratrax connect to?</h3>
-        <p class="a">Claude is the assistant Bratrax supports today — you connect it through the MCP endpoint with your own Anthropic account. ChatGPT isn't supported yet; OpenAI support is on our roadmap.</p>
-      </div>
-
-      <div class="qa-block">
-        <h3 class="q">Why Anthropic-only at launch?</h3>
-        <p class="a">The DTC operators we work with are mostly on Claude, so we built for Claude first. OpenAI support is on our roadmap.</p>
-      </div>
-
-      <div class="qa-block">
-        <h3 class="q">What if I don't use Claude?</h3>
-        <p class="a">The dashboards stand alone — you get all the attribution and analytics value with or without AI. The AI integration is Claude-only at launch; OpenAI is on our roadmap.</p>
+        <p class="a">Claude is the assistant Bratrax supports today — you connect it through the MCP endpoint with your own Anthropic account. Why Claude first: most of the DTC operators we work with are on Claude. ChatGPT isn't supported yet; OpenAI support is on our roadmap.</p>
       </div>
 
       <div class="qa-block">
@@ -1208,10 +1145,6 @@
         <p class="a">Only the data your assistant explicitly pulls in response to your prompt. <strong>You control what's queried.</strong> We don't pipe your data to any LLM provider in the background.</p>
       </div>
 
-      <div class="qa-block">
-        <h3 class="q">How fresh is the data AI can query?</h3>
-        <p class="a">Whatever's in your dashboards is what the AI sees — same data, same freshness. Store data syncs hourly; ad platform data every 4 hours. The number you check on your dashboard in the morning is the same one the AI reasons about when you ask it why.</p>
-      </div>
     </section>
 
     <!-- ─── 03 Pricing & tiers ─── -->
@@ -1238,11 +1171,6 @@
         <h3 class="q">Why is the price $99 and not $5?</h3>
         <p class="a">Per-client infrastructure runs us about $2–4/month. We could charge $9 and still be profitable. We don't, because that's race-to-the-bottom logic and it eventually compromises the product.</p>
         <p class="a">$99 funds a small team and the refusal to take outside money. When founders complain about $300&ndash;$1,500/mo attribution tools, the real complaint isn't <em>"analytics should be free."</em> It's <em>"that $300&ndash;$1,500/mo is paying for sales teams, conferences, and investor returns — not better tech."</em></p>
-      </div>
-
-      <div class="qa-block">
-        <h3 class="q">I signed up at the $79 founding rate — does my price change?</h3>
-        <p class="a">No. Founding members — customers from the launch cohort — pay <strong>$79/month for the life of their Bratrax subscription.</strong> That rate will not change, regardless of current or future pricing. The founding offer is closed: new signups are at the standard $99/month rate.</p>
       </div>
 
       <div class="qa-block">
@@ -1281,11 +1209,6 @@
         <h3 class="q">How long does setup take?</h3>
         <p class="a">Most brands go from signup to live dashboard in <strong>under 10 minutes</strong>: connect your store (Shopify or WooCommerce), link your ad accounts, and dashboards populate with your recent data within minutes. No onboarding call needed. For Shopify, tracking is set up automatically — no manual pixel install; for WooCommerce, onboarding walks you through installing our WordPress plugin.</p>
         <p class="a">Two timelines to expect: <strong>recent data (last 14 days) — minutes.</strong> Your dashboards go live on this. <strong>Full history — hours to a few days.</strong> A historical backfill (roughly 60 days for ad platforms, a full year for your store) loads in the background.</p>
-      </div>
-
-      <div class="qa-block">
-        <h3 class="q">What happens after I sign up?</h3>
-        <p class="a">After signup, your dashboards populate within minutes (see <a href="#setup">"How long does setup take?"</a>). The optional next step is the AI integration: grab your MCP endpoint from settings and connect it to Claude.</p>
       </div>
 
       <div class="qa-block">
