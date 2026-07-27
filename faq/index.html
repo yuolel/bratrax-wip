@@ -645,7 +645,7 @@
   "@type": "FAQPage",
   "url": "https://bratrax.com/faq",
   "inLanguage": "en",
-  "dateModified": "2026-06-22",
+  "dateModified": "2026-07-27",
   "mainEntity": [
     {
       "@type": "Question",
@@ -669,6 +669,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "No. And I want to be clear about why — because most tools either dodge this question or quietly sell you the lie. Perfect attribution doesn't exist because attribution is not causation. We are not telling you why a customer bought. We can't. Nobody can. What we're showing you is what your customer actually did on your site before they bought — the sessions, the channels, the sequence. That's correlation, presented honestly. The moment a tool tells you it knows why an order happened, it's stopped doing analytics and started doing astrology. Bratrax gives you the picture. You bring the judgment."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which attribution models do you get?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Five standard models out of the box: first-touch, last-touch, linear, time-decay, and position-based. We recommend anchoring decisions on first-touch and last-touch."
       }
     },
     {
@@ -701,6 +709,22 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. The default dashboards are a starting point, not a straitjacket — open any dashboard, click Edit dashboard, and rearrange, add, or change charts to fit how you work. For anything you can't put together yourself, email support@bratrax.com — several of today's dashboards started as customer requests."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can you build me a custom report?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Most of the time you can build exactly what you need yourself: open any dashboard, click Edit dashboard, and rearrange, add, or change charts. If you need something you can't put together yourself, email support@bratrax.com with what you're after — several of today's dashboards started as customer requests."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How often does Bratrax refresh my data?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Store data (Shopify/WooCommerce orders): hourly — new orders appear in your dashboard within about an hour of being placed. Ad platform data (Meta, Google, TikTok, Bing, Pinterest, Taboola, Outbrain, Klaviyo): every 4 hours — spend and performance can therefore trail the ad platform's own UI by a few hours; that's the sync interval, not missing data. Why not real-time: tools that show 'instant' sales are reporting off their pixel alone. Bratrax uses pixel data to enrich your actual order record — the number you see reconciles with your store, at the cost of up to an hour of lag."
       }
     },
     {
@@ -769,6 +793,14 @@
     },
     {
       "@type": "Question",
+      "name": "What does Bratrax Lite cost?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bratrax Lite is $99/month flat, month-to-month, with a $1 first month. No annual contract, no GMV-based scaling, no per-event fees. One click to cancel — we don't make you call anybody."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "How does the $1 trial work?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -789,6 +821,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Per-client infrastructure runs us about $2–4/month. We could charge $9 and still be profitable. We don't, because that's race-to-the-bottom logic and it eventually compromises the product. $99 funds a small team and the refusal to take outside money. When founders complain about $300–$1,500/mo attribution tools, the real complaint isn't \"analytics should be free.\" It's \"that $300–$1,500/mo is paying for sales teams, conferences, and investor returns — not better tech.\""
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "I signed up at the $79 founding rate — does my price change?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Founding members — customers from the launch cohort — pay $79/month for the life of their Bratrax subscription. That rate will not change, regardless of current or future pricing. The founding offer is closed: new signups are at the standard $99/month rate."
       }
     },
     {
@@ -821,6 +861,14 @@
       "acceptedAnswer": {
         "@type": "Answer",
         "text": "Yes. Your data and dashboard setup travel with you."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I see Bratrax before paying?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes — go to bratrax.com/try-demo, enter your email, and you get viewer access to a real demo workspace with live dashboards. The fastest way to see the product before paying anything."
       }
     },
     {
@@ -921,6 +969,14 @@
     },
     {
       "@type": "Question",
+      "name": "How do I cancel?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Go to Settings → Billing in the app and click Manage Subscription. That opens your billing portal, where you can cancel, change your payment method, or download invoices — no email or call required. After you cancel, your access continues to the end of the period you already paid for, and you can un-cancel from the same portal any time before it ends."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "What happens if I cancel?",
       "acceptedAnswer": {
         "@type": "Answer",
@@ -1013,7 +1069,7 @@
     <p class="faq-hero-sub">
       Pricing, product, AI, setup, platforms, data — everything you need to know.
     </p>
-    <div class="faq-hero-updated">Last updated June 22, 2026</div>
+    <div class="faq-hero-updated">Last updated July 27, 2026</div>
   </div>
 </section>
 
@@ -1064,6 +1120,11 @@
       </div>
 
       <div class="qa-block">
+        <h3 class="q">Which attribution models do you get?</h3>
+        <p class="a">Five standard models out of the box: <strong>first-touch, last-touch, linear, time-decay, and position-based.</strong> We recommend anchoring decisions on first-touch and last-touch — see the next question for why.</p>
+      </div>
+
+      <div class="qa-block">
         <h3 class="q">Why do you recommend first-touch and last-touch over multi-touch?</h3>
         <p class="a">Because they're the foundation. First touch is where the journey started. Last touch is what closed it. Everything else — linear, time-decay, position-based — is a derivative of those two anchors. If your first and last touch data isn't clean, no fancier model will save you.</p>
         <p class="a">We built the data layer underneath so that once your basis is solid, any other model can be added on top in minutes — it's a config change, not a re-architecture. We give you the five standard models out of the box, but here's the honest framing: <strong>use single-touch for decisions</strong> (the math is additive — one order, one credit, revenue sums correctly), <strong>use multi-touch for exploration.</strong></p>
@@ -1092,6 +1153,17 @@
       <div class="qa-block">
         <h3 class="q">Can I customize the dashboards?</h3>
         <p class="a">Yes. The default dashboards are a starting point, not a straitjacket — open any dashboard, click <strong>Edit dashboard</strong>, and rearrange, add, or change charts to fit how you work. For anything you can't put together yourself, email <a href="mailto:support@bratrax.com">support@bratrax.com</a> — several of today's dashboards started as customer requests.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Can you build me a custom report?</h3>
+        <p class="a">Most of the time you can build exactly what you need yourself: open any dashboard, click <strong>Edit dashboard</strong>, and rearrange, add, or change charts. If you need something you can't put together yourself, email <a href="mailto:support@bratrax.com">support@bratrax.com</a> with what you're after — several of today's dashboards started as customer requests.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">How often does Bratrax refresh my data?</h3>
+        <p class="a"><strong>Store data (Shopify/WooCommerce orders): hourly.</strong> New orders appear in your dashboard within about an hour of being placed. <strong>Ad platform data (Meta, Google, TikTok, Bing, Pinterest, Taboola, Outbrain, Klaviyo): every 4 hours.</strong> Spend and performance can therefore trail the ad platform's own UI by a few hours — that's the sync interval, not missing data.</p>
+        <p class="a">Why not real-time: tools that show "instant" sales are reporting off their pixel alone. Bratrax uses pixel data to <em>enrich your actual order record</em> — the number you see reconciles with your store, at the cost of up to an hour of lag.</p>
       </div>
 
       <div class="qa-block">
@@ -1148,6 +1220,11 @@
       <h2>Pricing &amp; <span class="serif-accent">tiers.</span></h2>
 
       <div class="qa-block">
+        <h3 class="q">What does Bratrax Lite cost?</h3>
+        <p class="a">Bratrax Lite is <strong>$99/month flat, month-to-month, with a $1 first month.</strong> No annual contract, no GMV-based scaling, no per-event fees. One click to cancel — we don't make you call anybody.</p>
+      </div>
+
+      <div class="qa-block">
         <h3 class="q">How does the $1 trial work?</h3>
         <p class="a">Pay $1 to start. For your first month, run Bratrax beside whatever attribution tool you're using today &mdash; you don't have to switch yet. <strong>If by your renewal date we explain at least as much of your revenue as your current tool does, you keep us at the rate shown on the pricing card.</strong> If we don't, cancel from settings before your renewal date and you pay nothing more.</p>
       </div>
@@ -1161,6 +1238,11 @@
         <h3 class="q">Why is the price $99 and not $5?</h3>
         <p class="a">Per-client infrastructure runs us about $2–4/month. We could charge $9 and still be profitable. We don't, because that's race-to-the-bottom logic and it eventually compromises the product.</p>
         <p class="a">$99 funds a small team and the refusal to take outside money. When founders complain about $300&ndash;$1,500/mo attribution tools, the real complaint isn't <em>"analytics should be free."</em> It's <em>"that $300&ndash;$1,500/mo is paying for sales teams, conferences, and investor returns — not better tech."</em></p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">I signed up at the $79 founding rate — does my price change?</h3>
+        <p class="a">No. Founding members — customers from the launch cohort — pay <strong>$79/month for the life of their Bratrax subscription.</strong> That rate will not change, regardless of current or future pricing. The founding offer is closed: new signups are at the standard $99/month rate.</p>
       </div>
 
       <div class="qa-block">
@@ -1189,6 +1271,11 @@
     <section class="faq-section" id="setup">
       <span class="faq-section-label">04 — Setup</span>
       <h2>Getting <span class="serif-accent">started.</span></h2>
+
+      <div class="qa-block">
+        <h3 class="q">Can I see Bratrax before paying?</h3>
+        <p class="a">Yes — go to <a href="https://bratrax.com/try-demo">bratrax.com/try-demo</a>, enter your email, and you get viewer access to a real demo workspace with live dashboards. The fastest way to see the product before paying anything.</p>
+      </div>
 
       <div class="qa-block">
         <h3 class="q">How long does setup take?</h3>
@@ -1267,6 +1354,11 @@
       <div class="qa-block">
         <h3 class="q">Can I export my data?</h3>
         <p class="a">Yes, a few ways. Every chart and table on every dashboard can be exported — open the dashboard, click <strong>Edit dashboard</strong>, then <strong>Go to explore</strong> on any widget and use the <strong>Export</strong> button (CSV, Excel, or Parquet). Technical users get full SQL access through the MCP endpoint. And if you want everything at once — into your own BigQuery or S3, say — email <a href="mailto:support@bratrax.com">support@bratrax.com</a> and we'll arrange the export. Your data is yours; no hostage situations.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">How do I cancel?</h3>
+        <p class="a">Go to <strong>Settings &rarr; Billing</strong> in the app and click <strong>Manage Subscription</strong>. That opens your billing portal, where you can cancel, change your payment method, or download invoices — no email or call required. After you cancel, your access continues to the end of the period you already paid for, and you can un-cancel from the same portal any time before it ends.</p>
       </div>
 
       <div class="qa-block">
