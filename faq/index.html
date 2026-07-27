@@ -716,7 +716,7 @@
       "name": "What's an MCP endpoint?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "MCP (Model Context Protocol) is an open standard that lets AI assistants connect to external data sources. Your Bratrax MCP endpoint connects to Claude at launch. OpenAI MCP support is on our roadmap. Because MCP is an open protocol, any MCP-compatible client will work via the same endpoint, no migration. You provide your own API key. We provide the data connection. No additional cost from us, no token markup."
+        "text": "MCP (Model Context Protocol) is an open standard that lets AI assistants connect to external data sources. Your Bratrax MCP endpoint lets Claude query your attribution data directly — cohort cuts, custom calculations, anything you'd otherwise export to a spreadsheet. Setup takes about 2 minutes from Settings → MCP in the app. You bring your own Claude account. We provide the data connection — no additional cost from us, no token markup."
       }
     },
     {
@@ -732,7 +732,7 @@
       "name": "Which AI assistants does Bratrax connect to?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Claude at launch — install the endpoint with your own Anthropic API key. OpenAI MCP support is on our roadmap. MCP is an open protocol, so the same endpoint will work with any MCP-compatible client as those clients mature — you won't have to migrate anything."
+        "text": "Claude is the assistant Bratrax supports today — you connect it through the MCP endpoint with your own Anthropic account. ChatGPT isn't supported yet; OpenAI support is on our roadmap."
       }
     },
     {
@@ -740,7 +740,7 @@
       "name": "Why Anthropic-only at launch?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "The DTC operators we talk to are mostly on Claude. We're shipping with the integration we know our buyers will actually use, then expanding to OpenAI and any other MCP-compatible client as those mature. Same endpoint, no migration."
+        "text": "The DTC operators we work with are mostly on Claude, so we built for Claude first. OpenAI support is on our roadmap."
       }
     },
     {
@@ -764,7 +764,7 @@
       "name": "How fresh is the data AI can query?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Active accounts refresh every hour. Idle accounts refresh every two hours. Whatever's in your dashboards is what AI sees — so the number you eyeball in the morning is the same one AI reasons about when you ask it why."
+        "text": "Whatever's in your dashboards is what the AI sees — same data, same freshness. Store data syncs hourly; ad platform data every 4 hours. The number you check on your dashboard in the morning is the same one the AI reasons about when you ask it why."
       }
     },
     {
@@ -1107,8 +1107,8 @@
 
       <div class="qa-block">
         <h3 class="q">What's an MCP endpoint?</h3>
-        <p class="a">MCP (Model Context Protocol) is an open standard that lets AI assistants connect to external data sources. Your Bratrax MCP endpoint connects to Claude at launch. OpenAI MCP support is on our roadmap.</p>
-        <p class="a">Because MCP is an open protocol, any MCP-compatible client will work via the same endpoint, no migration. <strong>You provide your own API key. We provide the data connection.</strong> No additional cost from us, no token markup.</p>
+        <p class="a">MCP (Model Context Protocol) is an open standard that lets AI assistants connect to external data sources. Your Bratrax MCP endpoint lets Claude query your attribution data directly — cohort cuts, custom calculations, anything you'd otherwise export to a spreadsheet.</p>
+        <p class="a">Setup takes about 2 minutes from <strong>Settings &rarr; MCP</strong> in the app. <strong>You bring your own Claude account. We provide the data connection</strong> — no additional cost from us, no token markup.</p>
       </div>
 
       <div class="qa-block">
@@ -1118,12 +1118,12 @@
 
       <div class="qa-block">
         <h3 class="q">Which AI assistants does Bratrax connect to?</h3>
-        <p class="a">Claude at launch — install the endpoint with your own Anthropic API key. OpenAI MCP support is on our roadmap. MCP is an open protocol, so the same endpoint will work with any MCP-compatible client as those clients mature — <strong>you won't have to migrate anything.</strong></p>
+        <p class="a">Claude is the assistant Bratrax supports today — you connect it through the MCP endpoint with your own Anthropic account. ChatGPT isn't supported yet; OpenAI support is on our roadmap.</p>
       </div>
 
       <div class="qa-block">
         <h3 class="q">Why Anthropic-only at launch?</h3>
-        <p class="a">The DTC operators we talk to are mostly on Claude. We're shipping with the integration we know our buyers will actually use, then expanding to OpenAI and any other MCP-compatible client as those mature. Same endpoint, no migration.</p>
+        <p class="a">The DTC operators we work with are mostly on Claude, so we built for Claude first. OpenAI support is on our roadmap.</p>
       </div>
 
       <div class="qa-block">
@@ -1138,7 +1138,7 @@
 
       <div class="qa-block">
         <h3 class="q">How fresh is the data AI can query?</h3>
-        <p class="a">Active accounts refresh every hour. Idle accounts refresh every two hours. Whatever's in your dashboards is what AI sees — so the number you eyeball in the morning is the same one AI reasons about when you ask it why.</p>
+        <p class="a">Whatever's in your dashboards is what the AI sees — same data, same freshness. Store data syncs hourly; ad platform data every 4 hours. The number you check on your dashboard in the morning is the same one the AI reasons about when you ask it why.</p>
       </div>
     </section>
 
