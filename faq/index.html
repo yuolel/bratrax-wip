@@ -908,7 +908,7 @@
       "name": "Is my store data safe?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Your data lives in its own ClickHouse instance — not pooled with anyone else's. We don't share it between clients. We don't sell it. We don't use it for anything other than powering your dashboards and your MCP queries. Same architecture we use for $5K/mo Clear Vision clients — you're getting their data security on a $99/mo plan."
+        "text": "Yes. Your data lives in its own dedicated database, isolated from every other client's — never pooled into a shared table. We don't share it between clients, we don't sell it, and we don't use it for anything other than powering your dashboards and your MCP queries. It's the same isolation architecture behind our enterprise Clear Vision plan — you get that security on Lite too."
       }
     },
     {
@@ -916,7 +916,7 @@
       "name": "Can I export my data?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Your data lives in its own ClickHouse instance — query it with SQL, export to BigQuery, S3, CSV, wherever you want it."
+        "text": "Yes, a few ways. Every chart and table on every dashboard can be exported — open the dashboard, click Edit dashboard, then Go to explore on any widget and use the Export button (CSV, Excel, or Parquet). Technical users get full SQL access through the MCP endpoint. And if you want everything at once — into your own BigQuery or S3, say — email support@bratrax.com and we'll arrange the export. Your data is yours; no hostage situations."
       }
     },
     {
@@ -932,7 +932,7 @@
       "name": "What happens if Bratrax gets acquired or shuts down?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "If we get acquired, your pricing is locked in writing — your rate doesn't change because someone bought us. If we shut down, your data is already in your ClickHouse instance — you don't need us to keep using it. We built it that way on purpose."
+        "text": "Whatever happens to us, your data isn't trapped. Two things protect you: your source data always lives in your own accounts — your store platform, your ad platforms, tools like Klaviyo — so we're never the only copy. And you can export everything Bratrax builds — dashboard data, attribution, the full order-level records — at any time."
       }
     }
   ]
@@ -1265,12 +1265,12 @@
 
       <div class="qa-block">
         <h3 class="q">Is my store data safe?</h3>
-        <p class="a">Yes. <strong>Your data lives in its own ClickHouse instance — not pooled with anyone else's.</strong> We don't share it between clients. We don't sell it. We don't use it for anything other than powering your dashboards and your MCP queries. Same architecture we use for $5K/mo Clear Vision clients — you're getting their data security on a $99/mo plan.</p>
+        <p class="a">Yes. <strong>Your data lives in its own dedicated database, isolated from every other client's — never pooled into a shared table.</strong> We don't share it between clients, we don't sell it, and we don't use it for anything other than powering your dashboards and your MCP queries. It's the same isolation architecture behind our enterprise Clear Vision plan — you get that security on Lite too.</p>
       </div>
 
       <div class="qa-block">
         <h3 class="q">Can I export my data?</h3>
-        <p class="a">Yes. Your data lives in its own ClickHouse instance — query it with SQL, export to BigQuery, S3, CSV, wherever you want it.</p>
+        <p class="a">Yes, a few ways. Every chart and table on every dashboard can be exported — open the dashboard, click <strong>Edit dashboard</strong>, then <strong>Go to explore</strong> on any widget and use the <strong>Export</strong> button (CSV, Excel, or Parquet). Technical users get full SQL access through the MCP endpoint. And if you want everything at once — into your own BigQuery or S3, say — email <a href="mailto:support@bratrax.com">support@bratrax.com</a> and we'll arrange the export. Your data is yours; no hostage situations.</p>
       </div>
 
       <div class="qa-block">
@@ -1280,7 +1280,7 @@
 
       <div class="qa-block">
         <h3 class="q">What happens if Bratrax gets acquired or shuts down?</h3>
-        <p class="a">If we get acquired, your pricing is locked in writing — your rate doesn't change because someone bought us. If we shut down, your data is already in your ClickHouse instance — you don't need us to keep using it. <strong>We built it that way on purpose.</strong></p>
+        <p class="a">Whatever happens to us, your data isn't trapped. Two things protect you: <strong>your source data always lives in your own accounts</strong> — your store platform, your ad platforms, tools like Klaviyo — so we're never the only copy. And <strong>you can export everything Bratrax builds</strong> — dashboard data, attribution, the full order-level records — at any time.</p>
       </div>
     </section>
 
