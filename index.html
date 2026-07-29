@@ -3596,8 +3596,7 @@ Email/SMS:            $750,000   (15%)
           // The form posts via fetch and never navigates, so GA4 sees nothing on
           // its own — the signup has to be reported explicitly.
           if (typeof gtag === 'function') {
-            gtag('event', 'generate_lead', {
-              method: 'newsletter',
+            gtag('event', 'newsletter_signup', {
               form_source: source,
               page_group: PAGE
             });
