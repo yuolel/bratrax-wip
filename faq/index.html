@@ -4,6 +4,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) — GA4 -->
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q78FNCB1BH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q78FNCB1BH');
+</script>
+
 <title>Bratrax Lite FAQ — Shopify Attribution Analytics, $99/mo</title>
 <meta name="description" content="FAQ for Bratrax Lite — DTC attribution for Shopify at $99/mo flat. Pricing, MCP/Claude integration, comparisons to Triple Whale &amp; Northbeam.">
 <link rel="canonical" href="https://bratrax.com/faq">
@@ -1430,6 +1441,39 @@
   }
 
   searchInput.addEventListener('input', filterFAQ);
+</script>
+
+<!-- GA4 CONVERSION EVENTS -->
+<script>
+  // The waitlist CTAs and the Clear Vision link are plain <a> navigations, so GA4
+  // credits them as pageviews on the destination rather than as actions taken here.
+  // Delegated so every CTA instance is covered without per-button wiring.
+  (function() {
+    document.addEventListener('click', function(e) {
+      if (typeof gtag !== 'function') return;
+      if (!e.target || !e.target.closest) return;
+
+      const link = e.target.closest('a[href]');
+      if (!link) return;
+
+      const href = link.getAttribute('href') || '';
+      const section = link.closest('section, header, footer');
+      const where = (section && (section.id || String(section.className).split(' ')[0])) || 'unknown';
+
+      if (href.indexOf('/signup') !== -1) {
+        gtag('event', 'waitlist_cta_click', {
+          cta_text: (link.textContent || '').trim().slice(0, 60),
+          cta_location: where,
+          page_path: location.pathname
+        });
+      } else if (href.indexOf('typeform.com') !== -1) {
+        gtag('event', 'clear_vision_apply_click', {
+          cta_location: where,
+          page_path: location.pathname
+        });
+      }
+    });
+  })();
 </script>
 
 </body>

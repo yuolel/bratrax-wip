@@ -4,6 +4,17 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) — GA4 -->
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q78FNCB1BH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q78FNCB1BH');
+</script>
+
 <title>Bratrax Lite — $1 to try us against the giants. Join the waitlist.</title>
 <meta name="description" content="Doors open in waves. Join the Bratrax Lite waitlist — when you're in, it's $1 your first month beside your current attribution tool, then $99/mo flat. No contract, no GMV scaling.">
 <link rel="canonical" href="https://bratrax.com/">
@@ -3582,6 +3593,15 @@ Email/SMS:            $750,000   (15%)
           });
           if (!res.ok) throw new Error('Request failed: ' + res.status);
 
+          // The form posts via fetch and never navigates, so GA4 sees nothing on
+          // its own — the signup has to be reported explicitly.
+          if (typeof gtag === 'function') {
+            gtag('event', 'newsletter_signup', {
+              form_source: source,
+              page_group: PAGE
+            });
+          }
+
           const success = document.createElement('div');
           success.className = 'form-success';
           success.textContent = "✓ You're on the list. Brat will be in your inbox soon.";
@@ -3633,6 +3653,39 @@ Email/SMS:            $750,000   (15%)
       });
     }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
     headerObserver.observe(hero);
+  })();
+</script>
+
+<!-- GA4 CONVERSION EVENTS -->
+<script>
+  // The waitlist CTAs and the Clear Vision link are plain <a> navigations, so GA4
+  // credits them as pageviews on the destination rather than as actions taken here.
+  // Delegated so every CTA instance is covered without per-button wiring.
+  (function() {
+    document.addEventListener('click', function(e) {
+      if (typeof gtag !== 'function') return;
+      if (!e.target || !e.target.closest) return;
+
+      const link = e.target.closest('a[href]');
+      if (!link) return;
+
+      const href = link.getAttribute('href') || '';
+      const section = link.closest('section, header, footer');
+      const where = (section && (section.id || String(section.className).split(' ')[0])) || 'unknown';
+
+      if (href.indexOf('/signup') !== -1) {
+        gtag('event', 'waitlist_cta_click', {
+          cta_text: (link.textContent || '').trim().slice(0, 60),
+          cta_location: where,
+          page_path: location.pathname
+        });
+      } else if (href.indexOf('typeform.com') !== -1) {
+        gtag('event', 'clear_vision_apply_click', {
+          cta_location: where,
+          page_path: location.pathname
+        });
+      }
+    });
   })();
 </script>
 
