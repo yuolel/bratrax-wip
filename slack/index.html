@@ -349,15 +349,20 @@
   .chip-primary { border-color: var(--color-acid-mid); color: var(--color-text-bright); }
 
   .facts { list-style: none; padding: 0; margin: 28px 0 0; }
+  /* Absolute-positioned marker rather than a grid column: a grid container
+     turns every inline child into its own item, so the <strong> and the text
+     after it would land in separate cells. */
   .facts li {
-    display: grid; grid-template-columns: 22px 1fr; gap: 12px;
-    padding: 13px 0; border-bottom: 1px solid rgba(58,58,58,0.5);
+    position: relative;
+    padding: 13px 0 13px 34px;
+    border-bottom: 1px solid rgba(58,58,58,0.5);
     font-size: 15px; color: var(--color-text-secondary);
   }
   .facts li:last-child { border-bottom: none; }
   .facts li::before {
     content: '—'; color: var(--color-acid);
     font-family: 'Space Mono', monospace; font-weight: 700;
+    position: absolute; left: 0; top: 13px;
   }
   .facts strong { color: var(--color-text-bright); }
 
@@ -642,8 +647,8 @@
 </section>
 
 <!-- ─────────── DYNAMIC FOOTER (Bratrax shared partial, with inline fallback) ─────────── -->
-<div id="brx-footer">
-  <footer style="background:#0A0A0A;color:#E8E4DC;border-top:1px solid #3A3A3A;padding:40px 32px;font-family:'Space Mono','SF Mono',Menlo,ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;position:relative;z-index:1">
+<div id="brx-footer" style="position:relative;z-index:1">
+  <footer style="background:#0A0A0A;color:#E8E4DC;border-top:1px solid #3A3A3A;padding:40px 32px;font-family:'Space Mono','SF Mono',Menlo,ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">
     <div style="max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
       <div style="color:#858585;letter-spacing:0.5px">&copy; 2026 Bratrax</div>
       <nav style="display:flex;flex-wrap:wrap;gap:20px;align-items:center">
@@ -658,8 +663,8 @@
   </footer>
 </div>
 <script>
-  fetch('https://bratrax.com/partials/footer.html')
-    .then(function(r){ return r.ok ? r.text() : Promise.reject(); })
+  fetch('https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/partials/footer.html')
+    .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.text(); })
     .then(function(html){ document.getElementById('brx-footer').innerHTML = html; })
     .catch(function(){});
 </script>
