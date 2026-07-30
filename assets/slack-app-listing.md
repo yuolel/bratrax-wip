@@ -88,7 +88,7 @@ Bratrax combines a first-party pixel with your full order record, so revenue sto
 
 Stores: Shopify (including Shopify-native subscriptions) and WooCommerce, plus external landing pages and Funnelish funnels via the pixel.
 Ads: Meta, Google Ads, TikTok Ads, Microsoft/Bing Ads, Pinterest Ads, Taboola, Outbrain.
-Email and SMS: Klaviyo.
+Email, SMS and CRM: Klaviyo, Bloomreach.
 
 **Setup**
 

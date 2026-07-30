@@ -67,42 +67,51 @@ Ask your Shopify or WooCommerce numbers anything — spend, revenue, ROAS, and a
 
 ### Long description
 
+Plain text, spaced so it survives Slack's editor (see note below).
+
 ```
 Shopify and WooCommerce attribution that reconciles — answerable in the channel where the decision gets made.
 
 Bratrax combines a first-party pixel with your full order record, so revenue stops landing in a bucket labeled "Direct." Ask for the number in plain English and get it back in Slack, with the math you can audit.
 
-Ask things like
+ASK THINGS LIKE
 
-- "NC ROAS by source for the last 30 days — allocate spend by new-customer order share, not total."
-- "Why did blended ROAS drop last week?"
-- "Funnel dropoff by step, last 7 days."
-- "Top 10 SKUs by net revenue this month, with returns."
+• "NC ROAS by source for the last 30 days — allocate spend by new-customer order share, not total."
 
-What's behind the answers
+• "Why did blended ROAS drop last week?"
 
-- A first-party tracking pixel served from your own domain, so adblockers can't kill it.
-- Your full order record as the canonical attribution unit — when the pixel misses a touch (UTM stripped, session expired, iOS dropped it), the order fills the gap.
-- 5 attribution models — first-touch, last-touch, linear, time-decay, position-based — recalculated at query time.
-- Numbers that reconcile to your store and to your ad platform reports. Read the config yourself; there is no proprietary math to take on faith.
+• "Funnel dropoff by step, last 7 days."
 
-Connects to
+• "Top 10 SKUs by net revenue this month, with returns."
+
+WHAT'S BEHIND THE ANSWERS
+
+• A first-party tracking pixel served from your own domain, so adblockers can't kill it.
+
+• Your full order record as the canonical attribution unit — when the pixel misses a touch (UTM stripped, session expired, iOS dropped it), the order fills the gap.
+
+• 5 attribution models — first-touch, last-touch, linear, time-decay, position-based — recalculated at query time.
+
+• Numbers that reconcile to your store and to your ad platform reports. Read the config yourself; there is no proprietary math to take on faith.
+
+CONNECTS TO
 
 Stores: Shopify (including Shopify-native subscriptions) and WooCommerce, plus external landing pages and Funnelish funnels via the pixel.
+
 Ads: Meta, Google Ads, TikTok Ads, Microsoft/Bing Ads, Pinterest Ads, Taboola, Outbrain.
-Email and SMS: Klaviyo.
 
-Setup
+Email, SMS and CRM: Klaviyo, Bloomreach.
 
-Connect your Bratrax account first, then add Slack from Settings → Slack — one click, and the bot is in your workspace. Mention @bratrax in any channel or DM it directly. On Shopify, tracking sets itself up; no manual pixel install. On WooCommerce, you authorize the store API and install our WordPress plugin, and onboarding walks you through both. Either way, a full year of store history backfills in the background.
+SETUP
 
-Pricing
+Connect your Bratrax account first, then add Slack from Settings → Slack — one click, and the bot is in your workspace. Mention @bratrax in any channel or DM it directly.
+
+On Shopify, tracking sets itself up; no manual pixel install. On WooCommerce, you authorize the store API and install our WordPress plugin, and onboarding walks you through both. Either way, a full year of store history backfills in the background.
+
+PRICING
 
 Requires a Bratrax account. Bratrax Lite is $99/mo flat — the same bill at $500K GMV or $20M. No contract, no GMV scaling, no token markup.
 ```
-
-Apply bold to the six section headings in Slack's editor: the opening line,
-*Ask things like*, *What's behind the answers*, *Connects to*, *Setup*, *Pricing*.
 
 ### The rest
 

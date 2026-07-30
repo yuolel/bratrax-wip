@@ -35,17 +35,35 @@ Bratrax community workspace, where the channel is the trust boundary because
 answers are visible to everyone in it. Replaced with "Mention `@bratrax` in any
 channel or DM it directly."
 
-### 2. Bloomreach dropped from the connector list
+### 2. Bloomreach — flagged, then reinstated (my error)
 
-**Was:** "Email, SMS and CRM: Klaviyo, Bloomreach."
+I briefly cut Bloomreach from the connector list on the grounds that it was
+half-wired. That was wrong, and the claim stands as originally written.
 
-Bloomreach has an OAuth route (`server/onboarding.py:4400`) but is **not** in
-`_SUPPORTED_INTEGRATIONS`, the canonical registry, and its extract mapping is
-empty: `_PLATFORM_TO_PREFIXES["bloomreach"] = []`. A half-wired connector should
-not be a listing claim.
+The mistake was reading `_SUPPORTED_INTEGRATIONS` in `server/onboarding.py` as
+the canonical connector registry. Its own docstring says otherwise — it backs the
+**super-admin CRM Connections card**, not the customer-facing connector list. I
+compounded it with a stale `# (when wired)` comment at `onboarding.py:4486`.
 
-**Now:** "Email and SMS: Klaviyo." Restore Bloomreach when it lands in the
-registry with a non-empty extract mapping.
+Bloomreach is a live connector:
+
+- Customer-facing entry in `rill/web-local/src/lib/bratrax/connectors/platforms.ts`
+  with a dedicated `BloomreachCredentialModal.svelte`
+- Documented in the in-app help (`content/admin/02-connecting-platforms.md`)
+- Extractors exist: `scripts/direct_extract/extract_bloomreach.py`,
+  `bloomreach_backfill.py`, `scripts/discover_schemas/bloomreach.py`
+
+**The trap for anyone auditing this again:** `server/routes/sync_status.py:110`
+lists bloomreach among platforms with "no live recurring pipeline". That comment
+is about how the **Last sync** timestamp is displayed — those platforms fall back
+to backfill/connected time instead of `extract_run_metrics`. It is not a
+statement that the connector is inert. The same list includes **woocommerce,
+taboola, outbrain and pinterest**, all of which are unambiguously supported. Do
+not read that line as a support matrix.
+
+**Lesson for future connector claims:** verify against
+`rill/web-local/src/lib/bratrax/connectors/platforms.ts` — the list the customer
+actually sees — not a server-side registry scoped to one admin screen.
 
 ### 3. No digest / proactive-alert line added
 
