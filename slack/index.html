@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) — GA4 -->
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q78FNCB1BH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q78FNCB1BH');
+</script>
+
+<title>Bratrax for Slack — Ask your store numbers in the channel</title>
+<meta name="description" content="Ask your Shopify or WooCommerce numbers anything — spend, revenue, ROAS, and attribution — without leaving Slack. Mention @bratrax and get the answer with the math you can audit.">
+<link rel="canonical" href="https://bratrax.com/slack">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bratrax.com/slack">
+<meta property="og:title" content="Bratrax for Slack — Ask your store numbers in the channel">
+<meta property="og:description" content="Ask your Shopify or WooCommerce numbers anything — spend, revenue, ROAS, and attribution — without leaving Slack.">
+<meta property="og:site_name" content="Bratrax">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Bratrax for Slack">
+<meta name="twitter:description" content="Ask your Shopify or WooCommerce numbers anything — spend, revenue, ROAS, and attribution — in Slack.">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Outfit:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --color-bg: #0A0A0A;
+    --color-surface: #141414;
+    --color-surface-hover: #1E1E1E;
+    --color-border: #3A3A3A;
+    --color-text-muted: #858585;
+    --color-text-secondary: #B0B0B0;
+    --color-text: #E8E4DC;
+    --color-text-bright: #FAFAF5;
+    --color-acid: #D4FF00;
+    --color-acid-dim: rgba(212,255,0,0.08);
+    --color-acid-mid: rgba(212,255,0,0.25);
+    --color-red: #FF3B30;
+
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-2xl: 64px;
+
+    --maxw: 1200px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Outfit', 'Helvetica Neue', sans-serif;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* Graph-paper canvas texture — page canvas only, never on cards or data
+     surfaces (design system §Visual Texture). */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      repeating-linear-gradient(0deg, var(--color-acid-mid) 0 1px, transparent 1px 40px),
+      repeating-linear-gradient(90deg, var(--color-acid-mid) 0 1px, transparent 1px 40px);
+    opacity: 0.055;
+  }
+
+  /* ─────────── HEADER ─────────── */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .site-header-inner {
+    max-width: calc(var(--maxw) + 64px);
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand-mark { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .header-actions { display: flex; align-items: center; gap: 4px; }
+  .nav-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    padding: 10px 14px;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--color-text-bright); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: opacity 0.2s, transform 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--color-acid); color: #000; }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-outline { background: transparent; border: 1px solid var(--color-border); color: var(--color-text); }
+  .btn-outline:hover { border-color: var(--color-acid-mid); color: var(--color-text-bright); }
+  .btn-arrow::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; }
+  .btn-large { padding: 15px 26px; font-size: 12px; }
+
+  /* ─────────── SHARED LAYOUT ─────────── */
+  .wrap { position: relative; z-index: 1; max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(212,255,0,0.7);
+    margin-bottom: 24px;
+  }
+  .serif-accent {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-acid);
+  }
+  section { position: relative; z-index: 1; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(30px, 3.6vw, 46px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.4px;
+    color: var(--color-text-bright);
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+  h3 { font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--color-text-bright); }
+  p { color: var(--color-text-secondary); }
+
+  /* ─────────── HERO ─────────── */
+  .hero { padding: 80px 0 64px; border-bottom: 1px solid var(--color-border); }
+  .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
+  .hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(40px, 5.2vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: var(--color-text-bright);
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+  .hero-sub { font-size: 19px; max-width: 34ch; margin: 0 0 32px; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
+  .hero-note {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: var(--color-text-muted);
+    margin-top: 20px;
+  }
+
+  /* ─────────── SLACK THREAD MOCK ─────────── */
+  .thread {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 22px;
+  }
+  .thread-chrome {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 14px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--color-border);
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--color-text-muted);
+  }
+  .msg { display: flex; gap: 12px; margin-bottom: 20px; }
+  .msg:last-child { margin-bottom: 0; }
+  .avatar {
+    width: 34px; height: 34px; flex-shrink: 0;
+    border-radius: 4px;
+    display: grid; place-items: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 13px; font-weight: 700;
+  }
+  .avatar-human { background: var(--color-surface-hover); color: var(--color-text-secondary); border: 1px solid var(--color-border); }
+  .avatar-bot { background: var(--color-acid); color: #000; }
+  .msg-body { min-width: 0; flex: 1; }
+  .msg-who {
+    font-size: 14px; font-weight: 700; color: var(--color-text-bright);
+    display: flex; align-items: baseline; gap: 8px; margin-bottom: 4px;
+  }
+  .badge-app {
+    font-family: 'Space Mono', monospace;
+    font-size: 9px; font-weight: 700; letter-spacing: 1px;
+    background: var(--color-surface-hover); color: var(--color-text-muted);
+    padding: 2px 5px; border: 1px solid var(--color-border);
+    text-transform: uppercase;
+  }
+  .msg-text { font-size: 15px; color: var(--color-text-secondary); margin: 0; }
+  .msg-text strong { color: var(--color-text-bright); }
+  .mention { color: var(--color-acid); background: var(--color-acid-dim); padding: 0 3px; }
+
+  .mini-table { width: 100%; border-collapse: collapse; margin: 12px 0 10px; font-size: 13px; }
+  .mini-table th {
+    text-align: left;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    color: var(--color-text-muted);
+    padding: 6px 10px 6px 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  .mini-table td {
+    padding: 7px 10px 7px 0;
+    border-bottom: 1px solid rgba(58,58,58,0.45);
+    color: var(--color-text-secondary);
+    font-variant-numeric: tabular-nums;
+  }
+  .mini-table td.num { text-align: right; font-family: 'Space Mono', monospace; padding-right: 0; }
+  .mini-table tr:last-child td { border-bottom: none; }
+  .delta-down { color: var(--color-red); }
+  .delta-up { color: var(--color-acid); }
+
+  .thread-footer {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; letter-spacing: 0.5px; color: var(--color-text-muted);
+    margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(58,58,58,0.45);
+  }
+  .pill-btn {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase;
+    border: 1px solid var(--color-border); color: var(--color-text-secondary);
+    padding: 6px 11px; margin: 10px 6px 0 0;
+  }
+  .pill-btn.primary { border-color: var(--color-acid-mid); color: var(--color-acid); }
+
+  /* ─────────── GENERIC SECTIONS ─────────── */
+  .band { padding: 72px 0; border-bottom: 1px solid var(--color-border); }
+  .band-tight { padding: 56px 0; }
+
+  .cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 36px; }
+  .card { background: var(--color-surface); border: 1px solid var(--color-border); padding: 26px; }
+  .card h3 { font-size: 17px; margin: 0 0 10px; }
+  .card p { font-size: 15px; margin: 0; }
+
+  .asks { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; margin-top: 32px; }
+  .ask {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 2px solid var(--color-acid-mid);
+    padding: 16px 20px;
+    font-size: 15px;
+    color: var(--color-text);
+  }
+
+  .steps { counter-reset: step; margin-top: 36px; display: grid; gap: 2px; }
+  .step {
+    counter-increment: step;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 20px;
+    align-items: start;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 22px 24px;
+  }
+  .step::before {
+    content: counter(step, decimal-leading-zero);
+    font-family: 'Space Mono', monospace;
+    font-size: 20px; font-weight: 700;
+    color: var(--color-acid);
+  }
+  .step h3 { font-size: 17px; margin: 0 0 6px; }
+  .step p { font-size: 15px; margin: 0; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .conn-group { margin-bottom: 24px; }
+  .conn-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--color-text-muted); display: block; margin-bottom: 10px;
+  }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 0.5px;
+    border: 1px solid var(--color-border);
+    background: var(--color-surface);
+    color: var(--color-text-secondary);
+    padding: 7px 12px;
+  }
+  .chip-primary { border-color: var(--color-acid-mid); color: var(--color-text-bright); }
+
+  .facts { list-style: none; padding: 0; margin: 28px 0 0; }
+  .facts li {
+    display: grid; grid-template-columns: 22px 1fr; gap: 12px;
+    padding: 13px 0; border-bottom: 1px solid rgba(58,58,58,0.5);
+    font-size: 15px; color: var(--color-text-secondary);
+  }
+  .facts li:last-child { border-bottom: none; }
+  .facts li::before {
+    content: '—'; color: var(--color-acid);
+    font-family: 'Space Mono', monospace; font-weight: 700;
+  }
+  .facts strong { color: var(--color-text-bright); }
+
+  /* ─────────── CLOSER ─────────── */
+  .closer { padding: 88px 0; text-align: center; }
+  .closer h2 { max-width: 20ch; margin-left: auto; margin-right: auto; }
+  .closer p { font-size: 18px; max-width: 52ch; margin: 0 auto 32px; }
+  .closer-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  /* ─────────── RESPONSIVE ─────────── */
+  @media (max-width: 900px) {
+    .hero-grid, .split { grid-template-columns: 1fr; gap: 40px; }
+    .cards { grid-template-columns: 1fr; }
+    .asks { grid-template-columns: 1fr; }
+    .hero-sub { max-width: none; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    .site-header-inner { padding: 12px 20px; }
+    .nav-link-back { display: none; }
+    .hero { padding: 56px 0 44px; }
+    .band { padding: 52px 0; }
+    .step { grid-template-columns: 40px 1fr; gap: 14px; padding: 18px; }
+    .thread { padding: 16px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─────────── STICKY HEADER ─────────── -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="https://bratrax.com/" class="brand-mark" aria-label="Bratrax — Home">
+      <svg width="145" height="20" viewBox="0 0 189 26" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bratrax">
+        <path d="M0 20.664H2.376V4.536H0V0H11.052C12.252 0 13.308 0.168 14.22 0.504C15.156 0.84 15.936 1.296 16.56 1.872C17.208 2.448 17.688 3.144 18 3.96C18.336 4.752 18.504 5.616 18.504 6.552V6.984C18.504 8.424 18.096 9.576 17.28 10.44C16.488 11.304 15.48 11.904 14.256 12.24V12.888C15.48 13.224 16.488 13.836 17.28 14.724C18.096 15.588 18.504 16.74 18.504 18.18V18.612C18.504 19.548 18.336 20.424 18 21.24C17.688 22.032 17.208 22.728 16.56 23.328C15.936 23.904 15.156 24.36 14.22 24.696C13.308 25.032 12.252 25.2 11.052 25.2H0V20.664ZM7.128 20.664H10.584C11.592 20.664 12.408 20.448 13.032 20.016C13.656 19.584 13.968 18.864 13.968 17.856V17.64C13.968 16.632 13.656 15.912 13.032 15.48C12.408 15.048 11.592 14.832 10.584 14.832H7.128V20.664ZM7.128 10.296H10.584C11.592 10.296 12.408 10.092 13.032 9.684C13.656 9.252 13.968 8.532 13.968 7.524V7.308C13.968 6.3 13.656 5.592 13.032 5.184C12.408 4.752 11.592 4.536 10.584 4.536H7.128V10.296Z" fill="#E8E4DC"/>
+        <path d="M43.935 25.2H39.183V17.64C39.183 17.064 39.027 16.596 38.715 16.236C38.427 15.876 37.935 15.696 37.239 15.696H31.767V25.2H27.015V0H36.663C37.959 0 39.099 0.18 40.083 0.539999C41.067 0.900001 41.883 1.404 42.531 2.052C43.203 2.676 43.707 3.408 44.043 4.248C44.403 5.088 44.583 5.988 44.583 6.948V7.812C44.583 8.844 44.307 9.816 43.755 10.728C43.203 11.616 42.351 12.3 41.199 12.78V13.428C42.039 13.524 42.699 13.848 43.179 14.4C43.683 14.952 43.935 15.648 43.935 16.488V25.2ZM31.767 11.16H36.303C37.455 11.16 38.331 10.896 38.931 10.368C39.531 9.816 39.831 9.048 39.831 8.064V7.632C39.831 6.792 39.531 6.072 38.931 5.472C38.331 4.848 37.455 4.536 36.303 4.536H31.767V11.16Z" fill="#E8E4DC"/>
+        <path d="M65.7299 19.8H57.1619L55.9379 25.2H50.9699L56.9819 0H65.9099L71.9219 25.2H66.9539L65.7299 19.8ZM58.1699 15.264H64.6859L61.7699 2.376H61.1219L58.1699 15.264Z" fill="#E8E4DC"/>
+        <path d="M80.0729 0H98.2169V4.536H91.5209L87.1289 25.2H82.3769L86.7689 4.536H80.0729V0Z" fill="#E8E4DC"/>
+        <path d="M119.22 25.2H114.396L116.016 17.64C116.064 17.4 116.088 17.208 116.088 17.064C116.088 16.656 115.956 16.332 115.692 16.092C115.428 15.828 115.02 15.696 114.468 15.696H109.248L107.232 25.2H102.516L107.844 0H116.7C117.876 0 118.908 0.168 119.796 0.504C120.708 0.816 121.464 1.248 122.064 1.8C122.688 2.328 123.144 2.964 123.432 3.708C123.744 4.452 123.9 5.232 123.9 6.048C123.9 7.8 123.492 9.228 122.676 10.332C121.884 11.412 120.66 12.228 119.004 12.78V13.428C119.7 13.5 120.228 13.752 120.588 14.184C120.972 14.592 121.164 15.12 121.164 15.768C121.164 16.008 121.14 16.248 121.092 16.488L119.22 25.2ZM110.22 11.16H114.54C115.812 11.16 116.856 10.824 117.672 10.152C118.488 9.48 118.896 8.568 118.896 7.416C118.896 6.504 118.644 5.796 118.14 5.292C117.66 4.788 116.916 4.536 115.908 4.536H111.624L110.22 11.16Z" fill="#E8E4DC"/>
+        <path d="M143.859 19.8H135.291L134.067 25.2H129.099L135.111 0H144.039L150.051 25.2H145.083L143.859 19.8ZM136.299 15.264H142.815L139.899 2.376H139.251L136.299 15.264Z" fill="#E8E4DC"/>
+        <path d="M160.938 0L165.186 10.296H166.05L170.298 0H175.446L170.262 12.24V12.888L175.446 25.2H170.298L166.05 14.832H165.186L160.938 25.2H155.79L160.974 12.888V12.24L155.79 0H160.938Z" fill="#E8E4DC"/>
+        <path d="M188.081 22.284C188.081 22.764 187.985 23.22 187.793 23.652C187.625 24.06 187.385 24.42 187.073 24.732C186.761 25.02 186.389 25.248 185.957 25.416C185.549 25.608 185.117 25.704 184.661 25.704C184.181 25.704 183.737 25.608 183.329 25.416C182.921 25.248 182.561 25.02 182.249 24.732C181.937 24.42 181.685 24.06 181.493 23.652C181.325 23.22 181.241 22.764 181.241 22.284C181.241 21.804 181.325 21.36 181.493 20.952C181.685 20.52 181.937 20.16 182.249 19.872C182.561 19.56 182.921 19.32 183.329 19.152C183.737 18.96 184.181 18.864 184.661 18.864C185.117 18.864 185.549 18.96 185.957 19.152C186.389 19.32 186.761 19.56 187.073 19.872C187.385 20.16 187.625 20.52 187.793 20.952C187.985 21.36 188.081 21.804 188.081 22.284Z" fill="#D4FF00"/>
+      </svg>
+    </a>
+    <div class="header-actions">
+      <a href="https://bratrax.com/" class="nav-link nav-link-back">&larr; Back to site</a>
+      <a href="https://bratrax.com/faq#slack" class="nav-link">Slack FAQ</a>
+      <a href="https://bratrax.com/login" class="nav-link">Log in</a>
+      <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow">Join the waitlist</a>
+    </div>
+  </div>
+</header>
+
+<!-- ─────────── HERO ─────────── -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Bratrax for Slack</span>
+      <h1>Your numbers, <span class="serif-accent">in the channel</span> where the decision gets made.</h1>
+      <p class="hero-sub">
+        Ask your Shopify or WooCommerce numbers anything — spend, revenue, ROAS,
+        attribution. Mention <strong>@bratrax</strong> and get the answer back
+        with the math you can audit.
+      </p>
+      <div class="hero-cta">
+        <a href="https://bratrax.com/signup" class="btn btn-primary btn-large btn-arrow">Join the waitlist</a>
+        <a href="#how" class="btn btn-outline btn-large">How it works</a>
+      </div>
+      <p class="hero-note">Requires a Bratrax account · Read-only · Shopify &amp; WooCommerce</p>
+    </div>
+
+    <!-- Illustrative thread. Figures are representative, not a live account. -->
+    <div class="thread" role="img" aria-label="A Slack thread: a user asks why blended ROAS dropped last week, and Bratrax replies with a breakdown by channel showing Meta CPC nearly doubling.">
+      <div class="thread-chrome"># growth</div>
+
+      <div class="msg">
+        <div class="avatar avatar-human">SR</div>
+        <div class="msg-body">
+          <div class="msg-who">Sam</div>
+          <p class="msg-text"><span class="mention">@bratrax</span> why did blended ROAS drop last week?</p>
+        </div>
+      </div>
+
+      <div class="msg">
+        <div class="avatar avatar-bot">B</div>
+        <div class="msg-body">
+          <div class="msg-who">bratrax <span class="badge-app">App</span></div>
+          <p class="msg-text">
+            Blended ROAS went <strong>2.41 → 1.88</strong> (−22%) vs the prior 7 days.
+            Spend was flat; the move is <strong>Meta CPC</strong>, nearly doubled after
+            the Jul 14 campaign restructure.
+          </p>
+          <table class="mini-table">
+            <thead>
+              <tr><th>Channel</th><th style="text-align:right">Spend</th><th style="text-align:right">ROAS</th><th style="text-align:right">Δ</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Meta</td><td class="num">$41,208</td><td class="num">1.52</td><td class="num delta-down">−38%</td></tr>
+              <tr><td>Google</td><td class="num">$28,940</td><td class="num">2.71</td><td class="num delta-up">+4%</td></tr>
+              <tr><td>TikTok</td><td class="num">$9,115</td><td class="num">2.06</td><td class="num delta-down">−7%</td></tr>
+              <tr><td>Email / SMS</td><td class="num">—</td><td class="num">8.94</td><td class="num delta-up">+11%</td></tr>
+            </tbody>
+          </table>
+          <p class="msg-text">Google and email held. Meta is the whole delta.</p>
+          <div>
+            <span class="pill-btn primary">View in Bratrax →</span>
+            <span class="pill-btn">30d</span>
+            <span class="pill-btn">90d</span>
+          </div>
+          <div class="thread-footer">America/Chicago · today 9:14 AM</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── WHY ─────────── -->
+<section class="band">
+  <div class="wrap">
+    <span class="section-label">01 — Why it's in Slack</span>
+    <h2>The question gets asked in Slack. <span class="serif-accent">Answer it there.</span></h2>
+    <p style="font-size:18px;max-width:60ch">
+      The Monday ritual is export a CSV, paste it somewhere, squint at it, then
+      paraphrase the answer back into the channel. Bratrax skips to the last step.
+    </p>
+
+    <div class="cards">
+      <div class="card">
+        <h3>Ask in plain English</h3>
+        <p>No query language, no saved-report hunting. Ask the way you'd ask a colleague, including the follow-up — the thread keeps its context.</p>
+      </div>
+      <div class="card">
+        <h3>Charts and tables, natively</h3>
+        <p>Answers come back as real Slack charts and sortable tables, not screenshots. They render properly on mobile, which is where half the questions get asked.</p>
+      </div>
+      <div class="card">
+        <h3>One click into the dashboard</h3>
+        <p>Every answer carries a button through to the matching Bratrax dashboard, for when the number raises another question.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── ASKS ─────────── -->
+<section class="band">
+  <div class="wrap">
+    <span class="section-label">02 — What to ask it</span>
+    <h2>Things operators actually <span class="serif-accent">ask.</span></h2>
+    <div class="asks">
+      <div class="ask">"What was my spend today vs yesterday?"</div>
+      <div class="ask">"Top 5 campaigns by ROAS this week."</div>
+      <div class="ask">"NC ROAS by source for the last 30 days."</div>
+      <div class="ask">"Chart revenue by channel, last 14 days."</div>
+      <div class="ask">"Top 10 SKUs by net revenue this month, with returns."</div>
+      <div class="ask">"Funnel dropoff by step, last 7 days."</div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── HOW ─────────── -->
+<section class="band" id="how">
+  <div class="wrap">
+    <span class="section-label">03 — Setup</span>
+    <h2>Connect once. <span class="serif-accent">Then just ask.</span></h2>
+
+    <div class="steps">
+      <div class="step">
+        <div>
+          <h3>Connect your store to Bratrax</h3>
+          <p>On Shopify, tracking sets itself up — no manual pixel install. On WooCommerce, you authorize the store API and install our WordPress plugin; onboarding walks you through both. A full year of store history backfills in the background.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Add Slack from Settings &rarr; Slack</h3>
+          <p>One click takes you to Slack's approval screen and back. The connection is scoped to your workspace and your account — nobody else's data is reachable from it.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div>
+          <h3>Invite <span class="mention">@bratrax</span> to a channel, or DM it</h3>
+          <p>It answers when mentioned or messaged directly, and it only reads conversations it's part of. It never posts on its own.</p>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top:28px;font-size:15px;color:var(--color-text-muted)">
+      Setup starts inside Bratrax, not in Slack — the connection has to know which
+      store it's answering for.
+    </p>
+  </div>
+</section>
+
+<!-- ─────────── CONNECTORS + TRUST ─────────── -->
+<section class="band">
+  <div class="wrap split">
+    <div>
+      <span class="section-label">04 — What it can reach</span>
+      <h2>Everything Bratrax <span class="serif-accent">already knows.</span></h2>
+      <p style="font-size:16px">
+        The assistant reads the same data as your dashboards — so anything you've
+        connected is answerable in the channel.
+      </p>
+
+      <div class="conn-group" style="margin-top:28px">
+        <span class="conn-label">Stores</span>
+        <div class="chips">
+          <span class="chip chip-primary">Shopify</span>
+          <span class="chip chip-primary">WooCommerce</span>
+          <span class="chip">Funnelish</span>
+          <span class="chip">External landing pages</span>
+        </div>
+      </div>
+      <div class="conn-group">
+        <span class="conn-label">Ads</span>
+        <div class="chips">
+          <span class="chip">Meta</span>
+          <span class="chip">Google Ads</span>
+          <span class="chip">TikTok Ads</span>
+          <span class="chip">Microsoft Bing Ads</span>
+          <span class="chip">Pinterest</span>
+          <span class="chip">Taboola</span>
+          <span class="chip">Outbrain</span>
+        </div>
+      </div>
+      <div class="conn-group">
+        <span class="conn-label">Email &amp; SMS</span>
+        <div class="chips">
+          <span class="chip">Klaviyo</span>
+        </div>
+      </div>
+    </div>
+
+    <div>
+      <span class="section-label">05 — What it can't do</span>
+      <h2>Read-only, <span class="serif-accent">by design.</span></h2>
+      <ul class="facts">
+        <li><strong>It can't change anything.</strong> The assistant can query your metrics and read your dashboards. It cannot write to your data, your store, or your ad accounts.</li>
+        <li><strong>It only sees channels it's in.</strong> Channels it's been invited to, and DMs sent to it. Nothing else in your workspace.</li>
+        <li><strong>It doesn't store your messages.</strong> Your question is read to answer it and isn't written to our database.</li>
+        <li><strong>It answers for one store.</strong> A workspace is bound to one Bratrax account. Multi-store operators connect one workspace per store.</li>
+        <li><strong>It never posts unprompted.</strong> No alerts, no scheduled digests. It speaks when spoken to.</li>
+        <li><strong>Disconnect any time</strong> from Settings &rarr; Slack, or by removing the app in Slack. Either revokes the token and deletes the connection.</li>
+      </ul>
+      <p style="margin-top:22px;font-size:14px">
+        Full detail in the <a href="https://bratrax.com/privacy-policy" style="color:var(--color-acid);border-bottom:1px solid var(--color-acid-mid)">privacy policy</a>
+        and the <a href="https://bratrax.com/faq#slack" style="color:var(--color-acid);border-bottom:1px solid var(--color-acid-mid)">Slack FAQ</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── PRICING ─────────── -->
+<section class="band band-tight">
+  <div class="wrap">
+    <span class="section-label">06 — Pricing</span>
+    <h2>Included. <span class="serif-accent">Not an add-on.</span></h2>
+    <p style="font-size:18px;max-width:62ch">
+      The Slack assistant comes with Bratrax Lite — <strong style="color:var(--color-text-bright)">$99/mo flat</strong>,
+      the same bill at $500K GMV or $20M. No contract, no GMV scaling, no token markup.
+    </p>
+  </div>
+</section>
+
+<!-- ─────────── CLOSER ─────────── -->
+<section class="closer">
+  <div class="wrap">
+    <span class="eyebrow">Doors open in waves</span>
+    <h2>Get your numbers <span class="serif-accent">in the channel.</span></h2>
+    <p>
+      Bratrax is waitlist-only right now. Join and we'll reach out when the next
+      wave opens.
+    </p>
+    <div class="closer-cta">
+      <a href="https://bratrax.com/signup" class="btn btn-primary btn-large btn-arrow">Join the waitlist</a>
+      <a href="https://bratrax.com/faq#slack" class="btn btn-outline btn-large">Read the Slack FAQ</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── DYNAMIC FOOTER (Bratrax shared partial, with inline fallback) ─────────── -->
+<div id="brx-footer">
+  <footer style="background:#0A0A0A;color:#E8E4DC;border-top:1px solid #3A3A3A;padding:40px 32px;font-family:'Space Mono','SF Mono',Menlo,ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;position:relative;z-index:1">
+    <div style="max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+      <div style="color:#858585;letter-spacing:0.5px">&copy; 2026 Bratrax</div>
+      <nav style="display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+        <a href="https://bratrax.com/" style="color:#E8E4DC;text-decoration:none">Home</a>
+        <a href="https://bratrax.com/faq" style="color:#E8E4DC;text-decoration:none">FAQ</a>
+        <a href="https://bratrax.com/login" style="color:#D4FF00;text-decoration:none;border:1px solid rgba(212,255,0,0.45);padding:7px 14px">Login</a>
+        <a href="https://blog.bratrax.com/" style="color:#E8E4DC;text-decoration:none">Newsletter</a>
+        <a href="https://bratrax.com/privacy-policy" style="color:#858585;text-decoration:none">Privacy Policy</a>
+        <a href="https://bratrax.com/terms-of-service" style="color:#858585;text-decoration:none">Terms of Service</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+<script>
+  fetch('https://bratrax.com/partials/footer.html')
+    .then(function(r){ return r.ok ? r.text() : Promise.reject(); })
+    .then(function(html){ document.getElementById('brx-footer').innerHTML = html; })
+    .catch(function(){});
+</script>
+
+</body>
+</html>
