@@ -1,7 +1,9 @@
 # Bratrax — Slack app listing copy
 
 Copy for the Slack app config + Marketplace submission fields.
-Source of truth for product claims: `index.html` (bratrax.com homepage).
+Source of truth for product claims: `index.html` (homepage) and `faq/index.html`
+(the FAQ is the more complete list — it covers WooCommerce and the full
+connector set; the homepage is Shopify-only).
 Voice: blunt, math-forward, anti-BI-tool. Show the math, don't sell certainty.
 
 ---
@@ -24,25 +26,30 @@ review guidelines push back on those.
 Limit is ~140 characters. Slack reviewers want functional clarity, not superlatives.
 
 **Primary:**
-> Ask your Shopify numbers anything — spend, revenue, ROAS, and attribution, right in Slack.
+> Ask your Shopify or WooCommerce numbers anything — spend, revenue, ROAS, and attribution, in Slack.
 
-(90 characters)
+(99 characters)
 
 **Alt A — leads with the category:**
-> Shopify attribution in Slack. Ask where revenue came from — spend, ROAS, new-customer CPA — and get numbers that reconcile.
+> Shopify and WooCommerce attribution in Slack. Ask where revenue came from — spend, ROAS, new-customer CPA.
 
-(123 characters)
+(106 characters)
 
-**Alt B — closest to the current draft, minus the self-reference:**
-> Ask your store data anything — spend, revenue, ROAS, attribution. Shopify numbers that reconcile, answered in Slack.
+**Alt B — platform-agnostic, if both names feel crowded:**
+> Ask your store data anything — spend, revenue, ROAS, attribution. Numbers that reconcile, answered in Slack.
 
-(116 characters)
+(108 characters)
 
 Note on the current draft ("Ask your Bratrax store data anything…"): "Bratrax
 store data" reads as though Bratrax is the store. Drop the brand from the
 sentence — the app name is already directly above it in the listing — and spend
-those characters on the word **Shopify**, which is what a browsing operator
-filters for.
+those characters on the platform names instead.
+
+Both **Shopify** and **WooCommerce** are worth the characters. They're the words
+an operator scans for, and WooCommerce especially: nobody expects a DTC
+attribution tool to support it, so a Woo store owner who doesn't see the word
+assumes the answer is no and never opens the listing. Alt B is the fallback if
+the two names make the line feel like a spec sheet, but it gives up that filter.
 
 ---
 
@@ -52,9 +59,9 @@ Renders with bold and lists on the App Detail page.
 
 ---
 
-**Shopify attribution that reconciles — answerable in the channel where the decision gets made.**
+**Shopify and WooCommerce attribution that reconciles — answerable in the channel where the decision gets made.**
 
-Bratrax combines a first-party pixel with the full Shopify order record, so revenue stops landing in a bucket labeled "Direct." Ask for the number in plain English and get it back in Slack, with the math you can audit.
+Bratrax combines a first-party pixel with your full order record, so revenue stops landing in a bucket labeled "Direct." Ask for the number in plain English and get it back in Slack, with the math you can audit.
 
 **Ask things like**
 
@@ -66,17 +73,19 @@ Bratrax combines a first-party pixel with the full Shopify order record, so reve
 **What's behind the answers**
 
 - A first-party tracking pixel served from your own domain, so adblockers can't kill it.
-- The full Shopify order record as the canonical attribution unit — when the pixel misses a touch (UTM stripped, session expired, iOS dropped it), the order fills the gap.
+- Your full order record as the canonical attribution unit — when the pixel misses a touch (UTM stripped, session expired, iOS dropped it), the order fills the gap.
 - 5 attribution models — first-touch, last-touch, linear, time-decay, position-based — recalculated at query time.
-- Numbers that reconcile to Shopify and to your ad platform reports. Read the config yourself; there is no proprietary math to take on faith.
+- Numbers that reconcile to your store and to your ad platform reports. Read the config yourself; there is no proprietary math to take on faith.
 
 **Connects to**
 
-Shopify, Meta Ads, Google Ads, TikTok Ads, Bing Ads, Taboola, Outbrain, Klaviyo.
+Stores: Shopify (including Shopify-native subscriptions) and WooCommerce, plus external landing pages and Funnelish funnels via the pixel.
+Ads: Meta, Google Ads, TikTok Ads, Microsoft/Bing Ads, Pinterest Ads, Taboola, Outbrain.
+Email, SMS and CRM: Klaviyo, Bloomreach.
 
 **Setup**
 
-Install to your workspace, connect your Bratrax account, pick a channel. Most stores go from signup to live dashboards in under 10 minutes, with full historical backfill from day one — every order, customer, and SKU since you opened the store.
+Install to your workspace, connect your Bratrax account, pick a channel. Most stores go from signup to live dashboards in under 10 minutes. On Shopify, tracking sets itself up — no manual pixel install. On WooCommerce, you authorize the store API and install our WordPress plugin, and onboarding walks you through both. Either way, a full year of store history backfills in the background.
 
 **Pricing**
 
@@ -114,10 +123,12 @@ Bratrax feature, not what this Slack app is.
 **`https://bratrax.com/slack`** — does not exist yet. Needs building.
 
 Slack requires a URL where a user can learn about and install the app. Pointing
-it at the homepage works but converts worse: the homepage sells the $1 waitlist
-offer, not the Slack surface. A `/slack` page should carry the Slack-specific
-demo (a channel screenshot with a real answer), the connect-and-go steps, and
-the same waitlist CTA.
+it at the homepage works but converts worse, for two reasons: the homepage sells
+the $1 waitlist offer rather than the Slack surface, and it never mentions
+WooCommerce — so a Woo operator who arrives from the Slack listing hits a page
+that looks like it isn't for them. A `/slack` page should carry the
+Slack-specific demo (a channel screenshot with a real answer), both store paths,
+the connect-and-go steps, and the same waitlist CTA.
 
 ---
 
@@ -158,7 +169,7 @@ Shot list, in priority order:
 3. The Attribution dashboard, channel → campaign → ad set → ad drilldown (`dashboards/02-attribution-top.png`).
 4. Store Performance, the CFO screen (`dashboards/01-store-performance-top.png`).
 5. Before/after Direct bucket: 20% unattributed → 5%, the two Exhibit blocks side by side.
-6. The connector row — Shopify, Meta, Google, TikTok, Klaviyo.
+6. The connector row — Shopify **and WooCommerce**, Meta, Google, TikTok, Klaviyo. This is the only image that carries the Woo signal, so it earns its slot.
 
 Render on `#0A0A0A` with the graph-paper canvas texture. Per the design system,
 graph paper stays on the page canvas only — never on the cards or data surfaces
