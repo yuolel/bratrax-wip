@@ -283,6 +283,35 @@
     outline: 1px solid var(--color-border);
   }
   .cl-entry[data-type="Improved"]::before { background: var(--color-blue); }
+  .cl-read-more-btn {
+    margin-top: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-acid);
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+  .cl-read-more-btn:hover { opacity: 0.65; }
+  .cl-read-more-body {
+    margin-top: 18px;
+    padding-top: 18px;
+    border-top: 1px solid var(--color-border);
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+  }
+  .cl-read-more-body p + p { margin-top: 12px; }
   .cl-tag {
     display: inline-block;
     font-family: 'Space Mono', monospace;
