@@ -118,7 +118,7 @@ Requires a Bratrax account. Bratrax Lite is $99/mo flat — the same bill at $50
 | Field | Value |
 |---|---|
 | Background color | `#0A0A0A` |
-| Categories (max 3) | Analytics · Marketing · Bots |
+| Categories (max 3) | Analytics · Marketing — plus Finance if offered. **Bots is not in the dropdown**; it was an App Directory category and didn't survive into the Marketplace. Two is fine. |
 | Installing your app | **Install from your landing page** |
 | Installation landing page | `https://bratrax.com/slack` |
 | Direct install URL | Leave blank — not applicable with the landing-page option |

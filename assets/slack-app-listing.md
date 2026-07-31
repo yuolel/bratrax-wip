@@ -117,11 +117,18 @@ Pick up to 3, from Slack's fixed dropdown:
 
 1. **Analytics** — primary. This is the shelf operators browse.
 2. **Marketing** — attribution, ad spend, ROAS.
-3. **Bots** — it answers questions conversationally.
+3. **Finance** — if it's offered. Spend, revenue and ROAS reach the
+   founder/CFO reader, which is a real second audience.
 
-Swap **Bots** for **Finance** if the intended reader is the CFO/founder rather
-than the media buyer. Do not pick **Developer Tools** — the MCP endpoint is a
-Bratrax feature, not what this Slack app is.
+**"Bots" is not available** — confirmed against the live form on 2026-07-30. It
+was an App Directory category and did not survive the move to the Marketplace.
+Earlier drafts of this doc listed it; they were wrong.
+
+Two categories is fine. Slack allows up to three, it does not require three, and
+a category that only half-fits puts the listing on a shelf where nobody is
+looking for it. Do not reach for **Productivity** or **Sales** to fill the slot —
+Slack's Sales category means CRM and sales-team tooling. Do not pick **Developer
+Tools**; the MCP endpoint is a Bratrax feature, not what this Slack app is.
 
 ---
 
