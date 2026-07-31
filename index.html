@@ -854,6 +854,16 @@
     counter-increment: layer;
   }
   .fix-mechanism li:last-child { border-bottom: none; padding-bottom: 0; }
+  .mechanism-note {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin: 24px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+  }
   .fix-mechanism li::before {
     content: counter(layer, decimal-leading-zero);
     position: absolute;
@@ -2558,7 +2568,7 @@
       "name": "How much can you actually shrink the unattributed bucket?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Depends on your stack. The mechanism: a first-party tracking pixel served from your own domain, plus the Shopify order record as ground truth — when the pixel misses something, the order itself usually has enough context to recover the source. We've gotten it to 3% on a Bratrax client. Another landed at 5%. We won't promise a number because the result depends on conditions we don't control."
+        "text": "Depends on your stack. The mechanism: our tracking pixel captures the on-site journey, and your store's order record acts as ground truth — when the pixel misses something, the order itself usually has enough context to recover the source. We've gotten it to 3% on a Bratrax client. Another landed at 5%. We won't promise a number because the result depends on conditions we don't control."
       }
     },
     {
@@ -2823,9 +2833,10 @@ Email/SMS:            $700,000   (14%)
 
         <div class="fix-mechanism">
           <ol>
-            <li><strong>A first-party tracking pixel</strong> served from your own domain &mdash; so adblockers can't kill it. Captures click IDs, UTMs, and customer identifiers from the day you install.</li>
-            <li><strong>The full Shopify order record</strong> as the canonical attribution unit. When the pixel misses something &mdash; UTM stripped, iOS dropped a touch, session expired &mdash; we use what Shopify already knows about the order to fill in the gap.</li>
+            <li><strong>A first-party tracking pixel</strong> on your store &mdash; capturing click IDs, UTMs, and customer identifiers from the day you install.</li>
+            <li><strong>The full order record</strong> as the canonical attribution unit. When the pixel misses something &mdash; UTM stripped, adblocker, iOS dropped a touch, session expired &mdash; we use what your store already knows about the order to fill in the gap.</li>
           </ol>
+          <p class="mechanism-note">Most tools stop at layer one. That's why a blocked pixel turns into &ldquo;Direct&rdquo; on their dashboard &mdash; their ceiling is whatever their tracking survives. We treat the pixel as evidence, not as the source of truth.</p>
         </div>
 
       </div>
@@ -3455,7 +3466,7 @@ Email/SMS:            $750,000   (15%)
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">How much can you actually shrink the unattributed bucket?</button>
-        <div class="faq-a"><p>Depends on your stack. The mechanism: a first-party tracking pixel served from your own domain, plus the Shopify order record as ground truth &mdash; when the pixel misses something, the order itself usually has enough context to recover the source. We've gotten it to 3% on a Bratrax client. Another landed at 5%. We won't promise a number because the result depends on conditions we don't control.</p></div>
+        <div class="faq-a"><p>Depends on your stack. The mechanism: our tracking pixel captures the on-site journey, and your store's order record acts as ground truth &mdash; when the pixel misses something, the order itself usually has enough context to recover the source. We've gotten it to 3% on a Bratrax client. Another landed at 5%. We won't promise a number because the result depends on conditions we don't control.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Which AI assistants does Bratrax connect to?</button>
