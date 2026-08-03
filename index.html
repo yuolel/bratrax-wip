@@ -1842,22 +1842,24 @@
   }
   .integrations-list {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     flex: 1;
-    justify-content: space-around;
-    padding: 0 22px;
+    justify-content: center;
+    gap: 10px 18px;
+    padding: 12px 20px;
     list-style: none;
     margin: 0;
-    white-space: nowrap;
   }
   .brand {
     font-family: 'Space Mono', 'JetBrains Mono', monospace;
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.1px;
     text-transform: uppercase;
     line-height: 1;
     flex-shrink: 0;
+    white-space: nowrap;
   }
 
   /* Color theming per section */
@@ -1881,7 +1883,7 @@
   @media (max-width: 540px) {
     .integrations-label { padding: 0 14px; font-size: 9px; }
     .brand { font-size: 12px; letter-spacing: 1px; }
-    .integrations-list { gap: 22px; padding: 0 16px; }
+    .integrations-list { gap: 8px 18px; padding: 12px 16px; }
   }
 
   /* Tiers */
@@ -2633,7 +2635,7 @@
   "applicationSubCategory": "Marketing Attribution",
   "operatingSystem": "Web",
   "url": "https://bratrax.com/",
-  "description": "D2C attribution analytics for Shopify and WooCommerce. Connects to Meta, Google, TikTok, Bing, Taboola, Outbrain, Klaviyo, and Anthropic. Per-client ClickHouse warehouse, MCP endpoint for AI queries (Claude at launch), 5 attribution models, set up in under 10 minutes. Try for $1 the first month, then $99/month flat — no contract, no GMV scaling.",
+  "description": "D2C attribution analytics for Shopify and WooCommerce. Connects to Meta, Google, TikTok, Bing, Pinterest, Taboola, Outbrain, Klaviyo, Bloomreach, and Anthropic. Per-client ClickHouse warehouse, MCP endpoint for AI queries (Claude at launch), 5 attribution models, set up in under 10 minutes. Try for $1 the first month, then $99/month flat — no contract, no GMV scaling.",
   "offers": {
     "@type": "Offer",
     "name": "Bratrax Lite monthly subscription",
@@ -3314,9 +3316,11 @@ Email/SMS:            $750,000   (15%)
             <li class="brand">Google Ads</li>
             <li class="brand">TikTok Ads</li>
             <li class="brand">Bing Ads</li>
+            <li class="brand">Pinterest Ads</li>
             <li class="brand">Taboola</li>
             <li class="brand">Outbrain</li>
             <li class="brand">Klaviyo</li>
+            <li class="brand">Bloomreach</li>
             <li class="brand">Anthropic</li>
           </ul>
         </div>
