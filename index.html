@@ -854,6 +854,16 @@
     counter-increment: layer;
   }
   .fix-mechanism li:last-child { border-bottom: none; padding-bottom: 0; }
+  .mechanism-note {
+    font-family: 'Outfit', sans-serif;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin: 24px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid var(--color-border);
+  }
   .fix-mechanism li::before {
     content: counter(layer, decimal-leading-zero);
     position: absolute;
@@ -1832,22 +1842,24 @@
   }
   .integrations-list {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     flex: 1;
-    justify-content: space-around;
-    padding: 0 22px;
+    justify-content: center;
+    gap: 10px 18px;
+    padding: 12px 20px;
     list-style: none;
     margin: 0;
-    white-space: nowrap;
   }
   .brand {
     font-family: 'Space Mono', 'JetBrains Mono', monospace;
     font-size: 13px;
     font-weight: 700;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.1px;
     text-transform: uppercase;
     line-height: 1;
     flex-shrink: 0;
+    white-space: nowrap;
   }
 
   /* Color theming per section */
@@ -1871,7 +1883,7 @@
   @media (max-width: 540px) {
     .integrations-label { padding: 0 14px; font-size: 9px; }
     .brand { font-size: 12px; letter-spacing: 1px; }
-    .integrations-list { gap: 22px; padding: 0 16px; }
+    .integrations-list { gap: 8px 18px; padding: 12px 16px; }
   }
 
   /* Tiers */
@@ -2558,7 +2570,7 @@
       "name": "How much can you actually shrink the unattributed bucket?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Depends on your stack. The mechanism: a first-party tracking pixel served from your own domain, plus the Shopify order record as ground truth — when the pixel misses something, the order itself usually has enough context to recover the source. We've gotten it to 3% on a Bratrax client. Another landed at 5%. We won't promise a number because the result depends on conditions we don't control."
+        "text": "Depends on your stack. The mechanism: our tracking pixel captures the on-site journey, and your store's order record acts as ground truth — when the pixel misses something, the order itself usually has enough context to recover the source. We've gotten it to 3% on a Bratrax client. Another landed at 5%. We won't promise a number because the result depends on conditions we don't control."
       }
     },
     {
@@ -2566,7 +2578,7 @@
       "name": "Which AI assistants does Bratrax connect to?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Claude at launch — install the MCP endpoint with your own Anthropic API key. OpenAI on roadmap. Same endpoint, no migration. If you don't use Claude, the dashboards still stand alone."
+        "text": "Claude at launch — install the MCP endpoint with your own Anthropic API key. OpenAI on roadmap. If you don't use Claude, the dashboards still stand alone."
       }
     },
     {
@@ -2574,7 +2586,7 @@
       "name": "How fresh is my data?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Active accounts refresh every hour. Idle accounts refresh every two hours."
+        "text": "Your store's orders refresh every hour. Ad platforms, email and SMS refresh every 4 hours — that's the platforms' own reporting rhythm, and spend figures firm up over the day on their side too. If a number looks stale, every dashboard shows its \u201cas of\u201d time."
       }
     },
     {
@@ -2623,7 +2635,7 @@
   "applicationSubCategory": "Marketing Attribution",
   "operatingSystem": "Web",
   "url": "https://bratrax.com/",
-  "description": "D2C attribution analytics for Shopify. Connects to Meta, Google, TikTok, Bing, Taboola, Outbrain, Klaviyo, and Anthropic. Per-client ClickHouse warehouse, MCP endpoint for AI queries (Claude at launch), 5 attribution models, set up in under 10 minutes. Try for $1 the first month, then $99/month flat — no contract, no GMV scaling.",
+  "description": "D2C attribution analytics for Shopify and WooCommerce. Connects to Meta, Google, TikTok, Bing, Pinterest, Taboola, Outbrain, Klaviyo, Bloomreach, and Anthropic. Per-client ClickHouse warehouse, MCP endpoint for AI queries (Claude at launch), 5 attribution models, set up in under 10 minutes. Try for $1 the first month, then $99/month flat — no contract, no GMV scaling.",
   "offers": {
     "@type": "Offer",
     "name": "Bratrax Lite monthly subscription",
@@ -2823,9 +2835,10 @@ Email/SMS:            $700,000   (14%)
 
         <div class="fix-mechanism">
           <ol>
-            <li><strong>A first-party tracking pixel</strong> served from your own domain &mdash; so adblockers can't kill it. Captures click IDs, UTMs, and customer identifiers from the day you install.</li>
-            <li><strong>The full Shopify order record</strong> as the canonical attribution unit. When the pixel misses something &mdash; UTM stripped, iOS dropped a touch, session expired &mdash; we use what Shopify already knows about the order to fill in the gap.</li>
+            <li><strong>A first-party tracking pixel</strong> on your store &mdash; capturing click IDs, UTMs, and customer identifiers from the day you install.</li>
+            <li><strong>The full order record</strong> as the canonical attribution unit. When the pixel misses something &mdash; UTM stripped, adblocker, iOS dropped a touch, session expired &mdash; we use what your store already knows about the order to fill in the gap.</li>
           </ol>
+          <p class="mechanism-note">Most tools stop at layer one. That's why a blocked pixel turns into &ldquo;Direct&rdquo; on their dashboard &mdash; their ceiling is whatever their tracking survives. We treat the pixel as evidence, not as the source of truth.</p>
         </div>
 
       </div>
@@ -3038,7 +3051,7 @@ Email/SMS:            $750,000   (15%)
 
     <p class="sec-sub reveal reveal-d2"><strong>The dashboards do the standard cuts. Your AI does the rest.</strong></p>
     <p class="sec-sub reveal reveal-d2">
-      Every Bratrax account ships with an MCP endpoint &mdash; an open standard your AI uses to query your data directly. <strong>Claude works at launch</strong> with your own Anthropic key. OpenAI on the roadmap; same endpoint, no migration.
+      Every Bratrax account ships with an MCP endpoint &mdash; an open standard your AI uses to query your data directly. <strong>Claude works at launch</strong> with your own Anthropic key. OpenAI on the roadmap.
     </p>
     <p class="sec-sub reveal reveal-d3">We don't ship a proprietary chatbot. We don't mark up tokens. We don't gate AI behind a tier.</p>
 
@@ -3166,7 +3179,7 @@ Email/SMS:            $750,000   (15%)
           </tr>
           <tr>
             <td>Pricing model</td>
-            <td class="us">Flat, life-locked</td>
+            <td class="us">Flat, no GMV scaling</td>
             <td>GMV-scaled</td>
             <td>Tracked-rev tiered</td>
             <td>Custom</td>
@@ -3250,8 +3263,8 @@ Email/SMS:            $750,000   (15%)
           </svg>
         </div>
         <div class="step-num">01</div>
-        <h3>Connect Shopify.</h3>
-        <p>One click. Full historical backfill from day one &mdash; every order, customer, and SKU since you opened the store. No six-week wait for data.</p>
+        <h3>Connect your store.</h3>
+        <p>Shopify connects in one click; WooCommerce installs with a plugin. Full historical backfill from day one &mdash; your history loads in the background while you&rsquo;re already using the dashboards. No six-week wait for data.</p>
       </div>
       <div class="step reveal reveal-d1">
         <div class="step-icon" aria-hidden="true">
@@ -3262,7 +3275,7 @@ Email/SMS:            $750,000   (15%)
         </div>
         <div class="step-num">02</div>
         <h3>Link Meta, Google, TikTok, Klaviyo, and more.</h3>
-        <p>OAuth across the board. Shopify handles tracking automatically; off-Shopify pages get a guided snippet.</p>
+        <p>OAuth across the board. On Shopify tracking installs itself, WooCommerce gets a plugin, and any off-store landing pages get a guided snippet.</p>
       </div>
       <div class="step reveal reveal-d2">
         <div class="step-icon" aria-hidden="true">
@@ -3288,7 +3301,7 @@ Email/SMS:            $750,000   (15%)
         </div>
         <div class="step-num">04</div>
         <h3>Plug in Claude.</h3>
-        <p>Install the MCP endpoint with your own Anthropic API key. OpenAI on roadmap. Same endpoint, no migration.</p>
+        <p>Install the MCP endpoint with your own Anthropic API key. OpenAI on roadmap.</p>
       </div>
     </div>
 
@@ -3298,13 +3311,16 @@ Email/SMS:            $750,000   (15%)
           <div class="integrations-label">Connects to</div>
           <ul class="integrations-list">
             <li class="brand">Shopify</li>
+            <li class="brand">WooCommerce</li>
             <li class="brand">Facebook Ads</li>
             <li class="brand">Google Ads</li>
             <li class="brand">TikTok Ads</li>
             <li class="brand">Bing Ads</li>
+            <li class="brand">Pinterest Ads</li>
             <li class="brand">Taboola</li>
             <li class="brand">Outbrain</li>
             <li class="brand">Klaviyo</li>
+            <li class="brand">Bloomreach</li>
             <li class="brand">Anthropic</li>
           </ul>
         </div>
@@ -3332,10 +3348,10 @@ Email/SMS:            $750,000   (15%)
         <ul>
           <li>7 pre-built dashboards</li>
           <li>5 attribution models, switch between them any time</li>
-          <li>Connects to Shopify and 7 ad/email platforms at launch</li>
+          <li>Connects to Shopify or WooCommerce, plus your ad and email platforms</li>
           <li>MCP endpoint &mdash; Claude at launch, OpenAI on roadmap</li>
           <li>Queryable data warehouse + easy export anytime</li>
-          <li>Numbers reconcile to Shopify and ad-platform reports</li>
+          <li>Numbers reconcile to your store and ad-platform reports</li>
           <li>Flat pricing, no contract</li>
         </ul>
         <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow" style="width:100%; justify-content:center;">Join the waitlist</a>
@@ -3370,13 +3386,14 @@ Email/SMS:            $750,000   (15%)
 <section class="section">
   <div class="container">
     <span class="sec-label reveal">08 &mdash; Who Bratrax Lite is for</span>
-    <h2 class="sec-head sec-head-oneline reveal reveal-d1">Built for Shopify D2C. <span class="serif-accent">Not for everyone.</span></h2>
+    <h2 class="sec-head sec-head-oneline reveal reveal-d1">Built for D2C. <span class="serif-accent">Not for everyone.</span></h2>
 
     <div class="fit-grid">
       <div class="fit-col yes reveal reveal-d2">
         <div class="fit-head">A fit if</div>
         <ul>
-          <li>You run a <strong>Shopify D2C</strong> brand doing $500K&ndash;$20M annually.</li>
+          <li>You run a <strong>Shopify or WooCommerce D2C</strong> brand doing $500K&ndash;$20M annually.</li>
+          <li><strong>You run more than one store</strong> and want them behind one login &mdash; multi-store accounts are available on request.</li>
           <li>You spend on <strong>Meta, Google, or both</strong> and you're tired of three dashboards disagreeing every Monday.</li>
           <li>You already use <strong>Claude</strong> (or are open to it) and want it on your business data.</li>
           <li>You've tried other attribution tools and got more dashboards instead of more clarity.</li>
@@ -3385,9 +3402,9 @@ Email/SMS:            $750,000   (15%)
       <div class="fit-col no reveal reveal-d3">
         <div class="fit-head">Not a fit (yet)</div>
         <ul>
-          <li><strong>Not on Shopify.</strong> Other commerce platforms are on the roadmap.</li>
+          <li><strong>On another commerce platform.</strong> Shopify and WooCommerce are what we support today.</li>
           <li><strong>Agency call funnels or affiliate VSLs.</strong> Lite is D2C-specific.</li>
-          <li><strong>Running multiple separately-owned stores.</strong> Single-store at launch.</li>
+          <li><strong>No store of your own.</strong> We read orders from your Shopify or WooCommerce store &mdash; marketplace-only sellers (Amazon, Etsy, eBay) have nothing for us to connect.</li>
           <li><strong>Want managed ads or a human strategist.</strong> Lite is the tool. Clear Vision is the service.</li>
         </ul>
       </div>
@@ -3417,7 +3434,7 @@ Email/SMS:            $750,000   (15%)
         <p>"Direct" isn't a channel &mdash; it's the tool giving up. A UTM it didn't recognize, a click ID it ignored, a touch it never tied to the order. They see that bucket and shrug. Edge case. <em>Good enough.</em> That shrug is what I built Bratrax against.</p>
         <p>And the shrug isn't laziness &mdash; it's math. A tool chasing growth has to optimize for volume: onboard fast, ship "good enough," move on. Going to the end of the world for one store's weird leak doesn't scale, so they don't.</p>
         <p>We're three engineers. No sales team to feed, no investors telling us to grow, no one to commission. We're profitable at 100 clients and we'd be profitable at 1,000 &mdash; so we don't need to scale, and that's the whole point. It frees us to obsess over your one weird leak instead of your wallet. And that obsession is the part I love. Figuring out that some brand's off-label UTM is actually TikTok spend hiding in "Direct" is the most fun I have all week. I'd do it whether it paid or not.</p>
-        <p>How it works: the order is the truth. We take everything we can get about it &mdash; our own pixel, Shopify's event stream, the referral data buried in the order &mdash; and stitch it back together to find where the sale came from. When we hit something new, we solve it and write it into one shared rules file, so the next store inherits it on day one. Every leak we crack for one client makes every client after them sharper. <strong>It's how we got a store's "Direct" from a fifth down to 3%.</strong></p>
+        <p>How it works: the order is the truth. We take everything we can get about it &mdash; our own pixel, your store's event stream, the referral data buried in the order &mdash; and stitch it back together to find where the sale came from. When we hit something new, we solve it and write it into one shared rules file, so the next store inherits it on day one. Every leak we crack for one client makes every client after them sharper. <strong>It's how we got a store's "Direct" from a fifth down to 3%.</strong></p>
         <p>One thing straight: Bratrax won't tell you <em>why</em> someone bought. No tool can. We show you what they did before &mdash; every source, every touch we can recover &mdash; honestly. <strong>You bring the judgment.</strong></p>
         <p>When you're in, try us for $1 beside whatever you're paying. <strong>If we explain more of your revenue than they do, keep us. If not, you're out a dollar.</strong></p>
         <p class="founder-sign">&mdash; Brat</p>
@@ -3455,15 +3472,15 @@ Email/SMS:            $750,000   (15%)
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">How much can you actually shrink the unattributed bucket?</button>
-        <div class="faq-a"><p>Depends on your stack. The mechanism: a first-party tracking pixel served from your own domain, plus the Shopify order record as ground truth &mdash; when the pixel misses something, the order itself usually has enough context to recover the source. We've gotten it to 3% on a Bratrax client. Another landed at 5%. We won't promise a number because the result depends on conditions we don't control.</p></div>
+        <div class="faq-a"><p>Depends on your stack. The mechanism: our tracking pixel captures the on-site journey, and your store's order record acts as ground truth &mdash; when the pixel misses something, the order itself usually has enough context to recover the source. We've gotten it to 3% on a Bratrax client. Another landed at 5%. We won't promise a number because the result depends on conditions we don't control.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Which AI assistants does Bratrax connect to?</button>
-        <div class="faq-a"><p>Claude at launch &mdash; install the MCP endpoint with your own Anthropic API key. OpenAI on roadmap. Same endpoint, no migration. If you don't use Claude, the dashboards still stand alone.</p></div>
+        <div class="faq-a"><p>Claude at launch &mdash; install the MCP endpoint with your own Anthropic API key. OpenAI on roadmap. If you don't use Claude, the dashboards still stand alone.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">How fresh is my data?</button>
-        <div class="faq-a"><p>Active accounts refresh every hour. Idle accounts refresh every two hours.</p></div>
+        <div class="faq-a"><p>Your store's orders refresh <strong>every hour</strong>. Ad platforms, email and SMS refresh <strong>every 4 hours</strong> &mdash; that's the platforms' own reporting rhythm, and spend figures firm up over the day on their side too. If a number looks stale, every dashboard shows its &ldquo;as of&rdquo; time.</p></div>
       </div>
       <div class="faq-item">
         <button class="faq-q" aria-expanded="false">Will this give me "perfect" attribution?</button>
