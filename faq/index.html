@@ -760,7 +760,7 @@
       "name": "Does Bratrax work with Claude or ChatGPT?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Claude, yes — it's the assistant Bratrax supports today; you connect it through the MCP endpoint with your own Anthropic account. ChatGPT isn't supported yet — OpenAI support is on our roadmap. Why Claude first: most of the DTC operators we work with are on Claude."
+        "text": "Claude, yes — two ways. Connect your own Claude account through the MCP endpoint, and the AI side runs under your Anthropic account. Or use the Bratrax assistant for Slack, which we run for you — no AI account needed on your end. ChatGPT isn't supported yet — OpenAI support is on our roadmap. Why Claude first: most of the DTC operators we work with are on Claude."
       }
     },
     {
@@ -768,7 +768,7 @@
       "name": "Is my data sent to my AI provider when I query?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Only the data your assistant explicitly pulls in response to your prompt. You control what's queried. We don't pipe your data to any LLM provider in the background."
+        "text": "Only when you ask it something, and only the data needed to answer that question. Nothing runs in the background. If you connect your own Claude account through MCP, that data goes to your Anthropic account, under your contract with them. If you use the Slack assistant, your question and the data needed to answer it go to Anthropic on our account."
       }
     },
     {
@@ -954,6 +954,30 @@
         "@type": "Answer",
         "text": "Whatever happens to us, your data isn't trapped. Two things protect you: your source data always lives in your own accounts — your store platform, your ad platforms, tools like Klaviyo — so we're never the only copy. And your data is exportable — dashboard data, attribution, and order-level records can be exported from your dashboards at any time, and if you ever leave, you can request a full export from support@bratrax.com and we'll hand over your complete dataset."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I install the Bratrax app for Slack?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "From inside Bratrax, not from Slack. Go to Settings → Slack and click Connect Slack. That takes you to Slack's approval screen and back — one click, and the bot is in your workspace. It has to start on the Bratrax side because the connection needs to know which store it's answering for. Once it's connected, invite @bratrax to any channel or send it a direct message, and ask. You'll need a Bratrax account with your store connected first."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What can the Slack app see?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only the conversations it's part of — channels you've invited it to, and DMs you send it. It can't read channels it isn't a member of, and it doesn't post unless you mention it or message it directly. There are no alerts and no scheduled digests. It doesn't store your messages: your question is read in order to answer it and isn't written to our database. What we do store is the workspace connection itself — your workspace ID and name, the access token Slack issues us, and which Bratrax account it's linked to. It's read-only over your data: it can query your metrics and read your dashboards, but can't write to your data, your store, or your ad accounts, and it only ever reaches the one Bratrax account the workspace is connected to. To answer a question, we send it — along with the store data needed to answer — to Anthropic's Claude."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How do I disconnect the Slack app?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Two ways, and either one is enough. In Bratrax, go to Settings → Slack and click Disconnect. Or remove the app from your Slack workspace the way you'd remove any app. Both revoke the access token with Slack and delete the stored connection. The bot stops responding immediately, and none of your Bratrax data is affected — you can reconnect later whenever you want."
+      }
     }
   ]
 }
@@ -1054,6 +1078,7 @@
       <li><a href="#setup">Setup</a></li>
       <li><a href="#platforms">Platforms &amp; fit</a></li>
       <li><a href="#risk">Risk, data, cancellation</a></li>
+      <li><a href="#slack">Slack</a></li>
     </ol>
   </aside>
 
@@ -1149,12 +1174,14 @@
 
       <div class="qa-block">
         <h3 class="q">Does Bratrax work with Claude or ChatGPT?</h3>
-        <p class="a">Claude, yes — it's the assistant Bratrax supports today; you connect it through the MCP endpoint with your own Anthropic account. ChatGPT isn't supported yet — OpenAI support is on our roadmap. Why Claude first: most of the DTC operators we work with are on Claude.</p>
+        <p class="a">Claude, yes — two ways. Connect <strong>your own Claude account</strong> through the MCP endpoint, and the AI side runs under your Anthropic account. Or use the <strong>Bratrax assistant for Slack</strong>, which we run for you — no AI account needed on your end.</p>
+        <p class="a">ChatGPT isn't supported yet — OpenAI support is on our roadmap. Why Claude first: most of the DTC operators we work with are on Claude.</p>
       </div>
 
       <div class="qa-block">
         <h3 class="q">Is my data sent to my AI provider when I query?</h3>
-        <p class="a">Only the data your assistant explicitly pulls in response to your prompt. <strong>You control what's queried.</strong> We don't pipe your data to any LLM provider in the background.</p>
+        <p class="a">Only when you ask it something, and only the data needed to answer that question. <strong>Nothing runs in the background.</strong></p>
+        <p class="a">If you connect your own Claude account through MCP, that data goes to your Anthropic account, under your contract with them. If you use the Slack assistant, your question and the data needed to answer it go to Anthropic on our account.</p>
       </div>
 
     </section>
@@ -1305,6 +1332,34 @@
         <h3 class="q">What happens if Bratrax gets acquired or shuts down?</h3>
         <p class="a">Whatever happens to us, your data isn't trapped. Two things protect you: <strong>your source data always lives in your own accounts</strong> — your store platform, your ad platforms, tools like Klaviyo — so we're never the only copy. And <strong>your data is exportable</strong> — dashboard data, attribution, and order-level records can be exported from your dashboards at any time, and if you ever leave, you can request a full export from <a href="mailto:support@bratrax.com">support@bratrax.com</a> and we'll hand over your complete dataset.</p>
       </div>
+    </section>
+
+    <!-- ─── 07 Slack ─── -->
+    <section class="faq-section" id="slack">
+      <span class="faq-section-label">07 — Slack</span>
+      <h2>The <span class="serif-accent">Slack</span> assistant.</h2>
+
+      <div class="qa-block">
+        <h3 class="q">How do I install the Bratrax app for Slack?</h3>
+        <p class="a">From inside Bratrax, not from Slack. Go to <strong>Settings &rarr; Slack</strong> and click <strong>Connect Slack</strong>. That takes you to Slack's approval screen and back — one click, and the bot is in your workspace.</p>
+        <p class="a">It has to start on the Bratrax side because the connection needs to know which store it's answering for. Installing from Slack first would give you a bot with nothing to say. Once it's connected, invite <strong>@bratrax</strong> to any channel or send it a direct message, and ask.</p>
+        <p class="a">You'll need a Bratrax account with your store connected first. If you don't have one yet, <a href="https://bratrax.com/signup">join the waitlist</a> — we open enrollment in waves.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">What can the Slack app see?</h3>
+        <p class="a"><strong>Only the conversations it's part of</strong> — channels you've invited it to, and DMs you send it. It can't read channels it isn't a member of, and it doesn't post unless you mention it or message it directly. There are no alerts and no scheduled digests; it speaks when spoken to.</p>
+        <p class="a"><strong>It doesn't store your messages.</strong> Your question is read in order to answer it and isn't written to our database. What we do store is the workspace connection itself: your workspace ID and name, the access token Slack issues us, and which Bratrax account it's linked to.</p>
+        <p class="a"><strong>It's read-only over your data.</strong> It can query your metrics and read your dashboards. It can't write to your data, your store, or your ad accounts. And it only ever reaches the one Bratrax account the workspace is connected to — it can't be talked into showing anyone else's numbers.</p>
+        <p class="a">To answer a question, we send it — along with the store data needed to answer — to Anthropic's Claude. See the <a href="https://bratrax.com/privacy-policy">privacy policy</a> for the full picture.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">How do I disconnect it?</h3>
+        <p class="a">Two ways, and either one is enough. In Bratrax, go to <strong>Settings &rarr; Slack</strong> and click <strong>Disconnect</strong>. Or remove the app from your Slack workspace the way you'd remove any app.</p>
+        <p class="a">Both revoke the access token with Slack and delete the stored connection. The bot stops responding immediately, and none of your Bratrax data is affected — you can reconnect later whenever you want.</p>
+      </div>
+
     </section>
 
   </main>
