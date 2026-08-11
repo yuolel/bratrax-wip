@@ -760,7 +760,7 @@
       "name": "Does Bratrax work with Claude or ChatGPT?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Claude, yes — it's the assistant Bratrax supports today; you connect it through the MCP endpoint with your own Anthropic account. ChatGPT isn't supported yet — OpenAI support is on our roadmap. Why Claude first: most of the DTC operators we work with are on Claude."
+        "text": "Claude, yes — two ways. Connect your own Claude account through the MCP endpoint, and the AI side runs under your Anthropic account. Or use the Bratrax assistant for Slack, which we run for you — no AI account needed on your end. ChatGPT isn't supported yet — OpenAI support is on our roadmap. Why Claude first: most of the DTC operators we work with are on Claude."
       }
     },
     {
@@ -768,7 +768,7 @@
       "name": "Is my data sent to my AI provider when I query?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Only the data your assistant explicitly pulls in response to your prompt. You control what's queried. We don't pipe your data to any LLM provider in the background."
+        "text": "Only when you ask it something, and only the data needed to answer that question. Nothing runs in the background. If you connect your own Claude account through MCP, that data goes to your Anthropic account, under your contract with them. If you use the Slack assistant, your question and the data needed to answer it go to Anthropic on our account."
       }
     },
     {
@@ -1174,12 +1174,14 @@
 
       <div class="qa-block">
         <h3 class="q">Does Bratrax work with Claude or ChatGPT?</h3>
-        <p class="a">Claude, yes — it's the assistant Bratrax supports today; you connect it through the MCP endpoint with your own Anthropic account. ChatGPT isn't supported yet — OpenAI support is on our roadmap. Why Claude first: most of the DTC operators we work with are on Claude.</p>
+        <p class="a">Claude, yes — two ways. Connect <strong>your own Claude account</strong> through the MCP endpoint, and the AI side runs under your Anthropic account. Or use the <strong>Bratrax assistant for Slack</strong>, which we run for you — no AI account needed on your end.</p>
+        <p class="a">ChatGPT isn't supported yet — OpenAI support is on our roadmap. Why Claude first: most of the DTC operators we work with are on Claude.</p>
       </div>
 
       <div class="qa-block">
         <h3 class="q">Is my data sent to my AI provider when I query?</h3>
-        <p class="a">Only the data your assistant explicitly pulls in response to your prompt. <strong>You control what's queried.</strong> We don't pipe your data to any LLM provider in the background.</p>
+        <p class="a">Only when you ask it something, and only the data needed to answer that question. <strong>Nothing runs in the background.</strong></p>
+        <p class="a">If you connect your own Claude account through MCP, that data goes to your Anthropic account, under your contract with them. If you use the Slack assistant, your question and the data needed to answer it go to Anthropic on our account.</p>
       </div>
 
     </section>
