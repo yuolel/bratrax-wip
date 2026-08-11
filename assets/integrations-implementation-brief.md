@@ -138,5 +138,6 @@ Better 5 strong pages than 8 with thin ones dragging the cluster down.
 - [ ] Sweep every spoke for "Shopify orders" where it should read "your order record" — two store platforms now
 - [ ] Schema on hub + spokes; per-page meta titles/descriptions targeting the real queries
 - [ ] Internal links (hub↔spokes, spokes→homepage/`/vs/`/changelog) + breadcrumbs; claude↔slack cross-link
-- [ ] Separate `/integrations/` sitemap; footer/nav link to the hub *(placement TBD — nav and footer structure is an open decision)*
+- [ ] Separate `/integrations/` sitemap
+- [ ] Add every spoke to the footer's two-column Integrations block, and the hub to the top nav — both settled; see `site-architecture.md` → Internal linking strategy. The footer's Integrations column ships with the spokes, not before
 - [ ] Ongoing: every new connector shipped = a new spoke + a changelog entry

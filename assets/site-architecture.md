@@ -421,7 +421,44 @@ The architecture only pays off if internal linking actually wires the pages toge
 
 **The homepage links to** the `/vs/X` set via a "How we compare" section. The homepage is the most-linked page on the site, so a homepage link to a comparison page passes more authority than any other internal link.
 
-**The footer links to** key destinations only: Pricing, FAQ (or anchor), Blog, About (or anchor), Privacy, Terms. Keep it tight.
+### Top navigation — two items, deliberately
+
+**Integrations · Pricing** — plus Log in and the primary CTA. Nothing else.
+
+A nav link appears on every page, which makes it the strongest internal link on the site. Spend it on what you most want to rank (Integrations, the whole programmatic play) and what buyers click (Pricing, highest commercial intent). Everything else — Changelog, FAQ, Newsletter, the `/vs/` set — is reachable from the footer and earns its rankings through content and cadence, not nav position.
+
+**Blocked on content.** `/integrations` and `/pricing` are currently `noindex` placeholders with a single heading each. Do not put them in the nav until they carry real content; two headline nav items leading to empty pages is worse than no nav change.
+
+### Footer — five columns over the legal bar
+
+The legal links keep the separate bottom row added in August 2026. The columns sit above it.
+
+```
+PRODUCT        INTEGRATIONS                          COMPARE            COMPANY
+Integrations   Shopify           Taboola             vs Triple Whale    Newsletter
+Pricing        WooCommerce       Outbrain            vs Hyros           Contact
+Changelog      Meta              Klaviyo             …                  Log in
+FAQ            Google Ads        Bloomreach          All comparisons →
+               TikTok            Claude
+               Bing              Slack
+                                 All integrations →
+───────────────────────────────────────────────────────────────────────────────
+© 2026 Bratrax                                    Privacy Policy · Terms of Service
+```
+
+**Integrations spans two columns, grouped by category.** Left is where you sell and where you spend (two store platforms, then the four ad platforms); right is native, email/SMS, and the two AI surfaces. Six and six, and the break lands on a real seam rather than an arbitrary midpoint. **The second column carries no visible heading** — the eye reads it as a continuation of the first.
+
+**Accessibility:** that second column still needs a heading in the markup, visually hidden. Without one a screen reader announces six orphan links with no context.
+
+**All twelve spokes are listed, not a Tier 1 subset.** Two columns buys the room, and a site-wide footer link means every spoke satisfies the no-orphan rule the day it ships. `All integrations →` carries anyone who wants the hub.
+
+**Stacking:** on narrow screens the five columns collapse to one and the two integration columns merge under a single heading — which is why the category order matters. Stacked, it reads stores → ads → native → email → AI.
+
+**If five columns feels wide** at the 1080px max-width, Compare and Company can share one column stacked vertically, taking it to four.
+
+**Sequencing.** The Integrations column ships when the spokes do — dead links in a site-wide footer are worse than no column. Product, Compare and Company can be built now.
+
+**Implementation.** The footer exists in eleven places: `partials/footer.html` (fetched at runtime from GitHub raw) plus an inline fallback on ten pages. Both must carry the same structure, or the site changes shape whenever the fetch fails. One mechanical pass.
 
 **No orphan pages.** Every published page must have at least one inbound internal link from a navigational or contextual context. Audit quarterly.
 
@@ -493,5 +530,6 @@ Bratrax Clear Vision is a custom-built consultative product (~$5K/mo, dedicated 
 | Integrations SEO arrangement | 2026-06-24 | Per-platform reconciliation angle as the unique core (anti-thin); one canonical URL per query (meta not facebook, google-ads); Claude as one flagship page; roadmap hub-listed only; depth-tiered build. See `integrations-implementation-brief.md`. |
 | Slack lives under `/integrations`, not the top level | 2026-08-11 | Slack is a *surface*, not a data source — same class as Claude, which the brief already treats as a special non-connector spoke. Gets `/integrations/slack` with `/slack` as a 301 once the hub ships; needs no menu item of its own. |
 | WooCommerce and Bloomreach added to the connector set | 2026-08-11 | Both were missing from the June brief. WooCommerce is a `primary` connector co-equal with Shopify, so "the foundation" is two store platforms and spoke copy can't say "reconciles to Shopify orders." Verified against `connectors/platforms.ts`, the customer-facing list — not `_SUPPORTED_INTEGRATIONS`, which is scoped to the super-admin CRM card and omits live connectors. |
-| Nav + footer structure | — | **OPEN.** Top menu and footer to be decided together; footer likely a multi-column map, top menu deliberately short. Nothing in this doc's Internal linking section is settled until then. |
+| Top nav = Integrations + Pricing only | 2026-08-11 | A nav link fires on every page, so it's the strongest internal link available — spend it on the page we most want to rank and the page buyers click. Everything else lives in the footer. Blocked until both pages carry real content; they are `noindex` placeholders today. |
+| Footer = five columns over the legal bar | 2026-08-11 | Integrations spans two category-grouped columns (6/6, second column unheaded but with a visually-hidden heading for screen readers) so all twelve spokes get a site-wide inbound link and satisfy the no-orphan rule on ship day. Compare and Company can merge into one column if five reads too wide. Integrations column waits for the spokes. |
 | Refresh doc to post-launch | 2026-06-24 | $1-trial launch shipped June 2026; founding window closed, $99 standard, 30-day money-back dropped. |
