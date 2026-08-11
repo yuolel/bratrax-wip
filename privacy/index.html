@@ -294,6 +294,7 @@ td strong { color: var(--ink); }
   <ul>
     <li><strong>Workspace and installation details:</strong> your Slack workspace (team) ID, enterprise ID where applicable, workspace name, the bot access token issued to us, the granted permission scopes, and the identity of the Bratrax user who performed the installation.</li>
     <li><strong>Channel links:</strong> where a specific channel is linked to a Bratrax account, the channel ID and name.</li>
+    <li><strong>Channel link codes:</strong> where you link a channel using a one-time code, the code itself, the Bratrax account and user it was issued to, and its expiry. These codes are single-use and expire within minutes.</li>
   </ul>
   <p><strong>We do not store the content of your Slack messages.</strong> When you mention the assistant or send it a direct message, we read that message and, for follow-up questions, the recent messages in that conversation thread, in order to answer. That content is processed in memory to generate the reply and is not written to our database. Message content is sent to Anthropic to produce the answer, as described in Section 4.2.</p>
   <p>The assistant only reads conversations it participates in &mdash; channels it has been invited to and direct messages sent to it. It cannot read channels it is not a member of. It responds only when mentioned or messaged directly; it does not post on its own initiative.</p>
