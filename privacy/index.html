@@ -248,7 +248,7 @@ td strong { color: var(--ink); }
     <ul>
       <li><strong>Who we are.</strong> Bratrax is an attribution analytics product for direct-to-consumer brands. It is operated by Inceptly LLC, a Delaware limited liability company.</li>
       <li><strong>What we collect.</strong> Account information you provide (name, email, billing details), store and marketing data you connect through OAuth (Shopify, Meta, Google, and other supported platforms), usage data about how you interact with the Service, and limited visitor and product-usage data collected via the Bratrax pixel and Google Analytics across our website and the Service.</li>
-      <li><strong>How we use it.</strong> Primarily to deliver the Service you pay for. We also use aggregated and de-identified data to improve the Service and publish industry benchmarks.</li>
+      <li><strong>How we use it.</strong> Primarily to deliver the Service you pay for. We also use aggregated and de-identified data to improve the Service, and we may publish industry benchmarks on the same basis.</li>
       <li><strong>Who we share it with.</strong> A short list of named vendors that help us run the Service (hosting, database, payments, email). We do not sell your personal information.</li>
       <li><strong>Per-customer isolation.</strong> We keep each customer's data logically separated. We do not commingle one customer's data with another's.</li>
       <li><strong>Where your data is hosted.</strong> Customer Data is hosted in the European Union, in a Hetzner data centre in Helsinki, Finland. Backups are held in United States cloud storage, and our team accesses the Service from outside the EEA &mdash; both are covered by appropriate safeguards, including the European Commission&rsquo;s Standard Contractual Clauses.</li>
@@ -292,9 +292,8 @@ td strong { color: var(--ink); }
   <h3>2.3 Information we collect from Slack</h3>
   <p>If you connect the Bratrax assistant to your Slack workspace, we collect and store the following:</p>
   <ul>
-    <li><strong>Workspace and installation details:</strong> your Slack workspace (team) ID, enterprise ID where applicable, workspace name, the bot access token issued to us, the granted permission scopes, and the identity of the Bratrax user who performed the installation.</li>
-    <li><strong>Channel links:</strong> where a specific channel is linked to a Bratrax account, the channel ID and name.</li>
-    <li><strong>Channel link codes:</strong> where you link a channel using a one-time code, the code itself, the Bratrax account and user it was issued to, and its expiry. These codes are single-use and expire within minutes.</li>
+    <li><strong>Workspace and installation details:</strong> your Slack workspace and enterprise identifiers, the workspace name, the credentials and permissions Slack issues to us for that installation, and the identity of the Bratrax user who installed the app.</li>
+    <li><strong>Channel links:</strong> where a specific channel is linked to a Bratrax account, the channel identifier and name, together with the short-lived code used to establish that link.</li>
   </ul>
   <p><strong>We do not store the content of your Slack messages.</strong> When you mention the assistant or send it a direct message, we read that message and, for follow-up questions, the recent messages in that conversation thread, in order to answer. That content is processed in memory to generate the reply and is not written to our database. Message content is sent to Anthropic to produce the answer, as described in Section 4.2.</p>
   <p>The assistant only reads conversations it participates in &mdash; channels it has been invited to and direct messages sent to it. It cannot read channels it is not a member of. It responds only when mentioned or messaged directly; it does not post on its own initiative.</p>
@@ -359,7 +358,7 @@ td strong { color: var(--ink); }
 
   <h3>4.2 AI providers</h3>
   <p>There are two distinct ways your data can reach an AI provider, and they carry different responsibilities.</p>
-  <p><strong>AI features we operate.</strong> Some Bratrax features generate answers using a large language model on our infrastructure &mdash; today, the Bratrax assistant for Slack. When you ask it a question, your message, the recent context of that conversation thread, and the store data needed to answer are sent to <strong>Anthropic</strong> (Claude) to produce the response. Anthropic is a named subprocessor in Section 4.1 and processes this data on our instructions. These features are optional: they process data only when you use them, and only for the account they are connected to.</p>
+  <p><strong>AI features we operate.</strong> Some Bratrax features generate answers using a large language model &mdash; today, the Bratrax assistant for Slack. When you ask it a question, your message, the recent context of that conversation thread, and the store data needed to answer are sent to <strong>Anthropic</strong> (Claude) to produce the response. Anthropic is a named subprocessor in Section 4.1 and processes this data on our instructions. These features are optional: they process data only when you use them, and only for the account they are connected to.</p>
   <p>Enterprise customers may supply their own Anthropic API key, in which case that traffic runs under your own contract with Anthropic rather than ours.</p>
   <p><strong>AI providers you connect yourself.</strong> If you connect an AI provider to Bratrax through the Model Context Protocol (MCP) &mdash; for example, Anthropic's Claude or OpenAI's ChatGPT &mdash; any data you query flows directly from Bratrax to that provider under your contract with that provider. <strong>Bratrax is not a subprocessor in that data flow.</strong> The provider's own privacy terms govern what they do with the data, and we are not responsible for their data practices.</p>
 
@@ -391,7 +390,7 @@ td strong { color: var(--ink); }
   <h2>6. How Long We Keep Your Information</h2>
   <ul>
     <li><strong>Active customer data:</strong> for as long as your subscription is active.</li>
-    <li><strong>After cancellation or termination:</strong> we retain customer data for up to 180 days, structured as (i) a 30-day self-serve export window during which you retain access to your dashboards and ClickHouse instance, followed by (ii) up to 150 additional days of cold retention, during which your data is not accessible to you but can be restored on written request. After 180 days, we permanently delete customer data.</li>
+    <li><strong>After cancellation or termination:</strong> we retain customer data for up to 180 days, structured as (i) a 30-day self-serve export window during which you retain access to your dashboards and to direct queryable access to your data, followed by (ii) up to 150 additional days of cold retention, during which your data is not accessible to you but can be restored on written request. After 180 days, we permanently delete customer data.</li>
     <li><strong>Billing records:</strong> retained as required by applicable tax and accounting law.</li>
     <li><strong>Marketing and prospect data:</strong> retained until you unsubscribe or request deletion.</li>
     <li><strong>Website analytics:</strong> Google Analytics data is retained for the period configured on our Google Analytics property (currently 14 months), after which Google deletes event-level data.</li>
