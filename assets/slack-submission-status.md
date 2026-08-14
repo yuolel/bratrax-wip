@@ -1,7 +1,7 @@
 # Slack Marketplace submission — outstanding items
 
-**Status:** Not submitted. Listing filled in; six items open.
-**Last checked:** 2026-08-11 against `VidTao/bratrax` `main` @ `0962068d2`.
+**Status:** Not submitted. Listing filled in; nine items open.
+**Last checked:** 2026-08-14 against `VidTao/bratrax` `main` @ `0962068d2`, and against Slack's published Marketplace guidelines.
 
 Working reference for the fields themselves: [`slack-submission-form.md`](slack-submission-form.md).
 
@@ -15,10 +15,10 @@ Working reference for the fields themselves: [`slack-submission-form.md`](slack-
 
 ---
 
-## Open — six items
+## Open — nine items
 
 ### 1. Agents migration ⚠️ do first — dev handover written: [slack-dev-handover.md](slack-dev-handover.md)
-Slack shows a banner: *"The agentic app experience is changing. You'll need to update your app to the new experience."* Bratrax uses `assistant:write` and the assistant-thread events, so this is aimed at us. **First because a required migration would change the app config and manifest, and the other five are downstream.** Status: unread — click through to Agents and see what it asks.
+Slack is deprecating the `assistant_view` experience Bratrax is built on. **Update Now is one-way and permanent per app**, and it changes the events the bot runs on — `assistant_thread_started`, which drives our suggested prompts, goes away. Needs a developer, not a click. Full brief with file-and-line touchpoints, ordering, and a test plan: **[slack-dev-handover.md](slack-dev-handover.md)**.
 
 ### 2. Scope reasons — 18 required, 0 written
 Submission step 2 shows *"Please add reasons for your app to request this scope"* against every scope. All 18 need a written justification via **Manage Reasons**. Not optional; Slack reviews the reasons as well as the scopes.
@@ -40,8 +40,20 @@ Three, 1600×1000, PNG or JPG. The only empty field on the listing form. Shot 1 
 ### 5. Reviewer test credentials
 Submission step 4 (locked until 2 and 3 are done). Needs an **admin**-role account on the demo client — `/try-demo` issues `viewer`, and every Slack settings route is gated by `_require_admin_or_super`, so a viewer cannot connect a workspace. Paste-ready instructions in `slack-submission-form.md` §3. Yuliya can obtain.
 
-### 6. Install count
-Slack's guidance mentions roughly 10 installations on workspaces other than our own. Now that customers can self-connect this should climb on its own. **Unverified** — the exact threshold and any exceptions could not be confirmed; Slack's docs block automated access. Check the real number before submitting.
+### 6. Install count — threshold now confirmed
+The guidelines list as unsuitable any app *"installed on less than 5 active workspaces and have less than 10 weekly active users."* Active workspaces are ones used in the past 28 days, sandboxes excluded. So the bar is **5 active workspaces and 10 weekly active users** — not the "roughly 10 installs" recorded earlier. Now that customers can self-connect this should climb on its own; check the real number before submitting.
+
+### 7. Two disclaimers required — not yet written
+The AI guidelines require both on the **landing page and in the long description**: that the app uses an LLM and can generate inaccurate output, and that a **paid Slack plan** is needed for the AI agent container (with a note that other features still work on free plans). Neither exists today.
+
+### 8. Enhanced review is guaranteed — prepare for it
+Requesting `*:history` and `files:read` automatically triggers Slack's enhanced review. We already meet the standard it tests against — their rule is *"DON'T store any Slack data you obtain. Store metadata instead and pull in data in real time, i.e. zero-copy"* — which is exactly the architecture. Four AI disclosures are also required in Security & Compliance: model used, retention and how the LLM uses the data, LLM data tenancy, LLM data residency.
+
+### 9. Smaller listing fixes
+- **Short description** should be 10 words or fewer; the current one is about 14.
+- **Long description** should use Slack message formatting — bold headings rather than the CAPS currently in place.
+- **Add a collaborator** to the app; required before approval.
+- **Respond to `help`** in the agent container — a guideline requirement and a code gap. Covered in the dev handover.
 
 ---
 
