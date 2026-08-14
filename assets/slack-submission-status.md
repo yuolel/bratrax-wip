@@ -17,7 +17,7 @@ Working reference for the fields themselves: [`slack-submission-form.md`](slack-
 
 ## Open — six items
 
-### 1. Agents migration ⚠️ do first
+### 1. Agents migration ⚠️ do first — dev handover written: [slack-dev-handover.md](slack-dev-handover.md)
 Slack shows a banner: *"The agentic app experience is changing. You'll need to update your app to the new experience."* Bratrax uses `assistant:write` and the assistant-thread events, so this is aimed at us. **First because a required migration would change the app config and manifest, and the other five are downstream.** Status: unread — click through to Agents and see what it asks.
 
 ### 2. Scope reasons — 18 required, 0 written
