@@ -618,7 +618,7 @@ td strong { color: var(--ink); }
   <h3>Integrity and availability</h3>
   <ul>
     <li>Customer Personal Data is hosted in the European Union, on dedicated servers in a Hetzner data centre in Helsinki, Finland. Backups are held in cloud storage located in the United States.</li>
-    <li>Backups are taken on the following schedule: a weekly full backup of the analytical database retained for 90 days; an hourly incremental backup of the event stream retained for 7 days; and a daily dump of the relational database, of which the 7 most recent copies are kept. All backups are encrypted and are held in cloud storage in the United States, as described in Section 10.1.</li>
+    <li>Backups are taken on the following schedule: a weekly full backup of the analytical database retained for 90 days; an hourly incremental backup of the event stream retained for 7 days; and a daily dump of the relational database, of which the 7 most recent copies are kept. All backups are encrypted and are held in cloud storage in the United States, as described in Section 10.1. <strong>The backup set comprises the databases only. Application and server logs are not included in it and do not leave the European Union.</strong></li>
     <li>Data pipeline and data-quality failures — including extraction jobs and per-customer reconciliation — raise automated alerts to the engineering team. <strong>Automated alerting on host and infrastructure availability is not currently configured</strong>, and is on Bratrax's roadmap.</li>
     <li>Data retrieved from Connected Platforms is versioned so that corrections and restatements from the source platform are reflected rather than duplicated.</li>
   </ul>
