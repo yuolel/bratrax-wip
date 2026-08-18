@@ -359,7 +359,7 @@ td strong { color: var(--ink); }
   <p>Bratrax's technical and organizational measures are described in Annex II. Two apply as structural properties of the Service:</p>
   <ul>
     <li><strong>Per-customer isolation.</strong> Each customer's data is held in a dedicated logical data store. Bratrax does not commingle one customer's data with another's.</li>
-    <li><strong>EU data residency.</strong> Customer Personal Data is hosted in the European Union, on dedicated servers in a Hetzner data centre in Helsinki, Finland. Backups are held in the United States, as described in Section 10.1.</li>
+    <li><strong>EU data residency.</strong> Customer Personal Data is hosted on dedicated servers in the European Union (Finland). Backups are held in the United States, as described in Section 10.1.</li>
   </ul>
   <h2>9. Audits and Information</h2>
   <p>Bratrax will make available to Customer the information reasonably necessary to demonstrate compliance with Article 28 of the GDPR. In the first instance this means the information published in this DPA and its Annexes, together with any security documentation, questionnaire responses, or third-party audit reports Bratrax makes generally available to customers.</p>
@@ -376,7 +376,7 @@ td strong { color: var(--ink); }
   <p>Audit findings are the Confidential Information of both parties.</p>
   <h2>10. International Transfers</h2>
   <h3>10.1 Where data is held and who accesses it</h3>
-  <p>Customer Personal Data is hosted in the European Union, on dedicated servers in a Hetzner data centre in Helsinki, Finland. <strong>Backups are held in cloud storage located in the United States.</strong></p>
+  <p>Customer Personal Data is hosted on dedicated servers in the European Union (Finland). <strong>Backups are held in cloud storage located in the United States.</strong></p>
   <p>Bratrax is a United States company. Its personnel and contractors work remotely and access Customer Personal Data from <strong>Spain, Bosnia and Herzegovina, and Ukraine</strong>. Where that access is by a contractor engaged through its own legal entity, it constitutes a transfer of Personal Data to that entity's country of establishment. Bosnia and Herzegovina and Ukraine are not the subject of an adequacy decision by the European Commission. Certain Subprocessors listed in Annex III are located in the United States.</p>
   <h3>10.2 Standard Contractual Clauses</h3>
   <p>Where Bratrax Processes Personal Data protected by the GDPR and transfers it to a country that has not been the subject of an adequacy decision, the SCCs are incorporated into this DPA by reference and apply, completed as follows:</p>
@@ -421,7 +421,7 @@ td strong { color: var(--ink); }
   <h2>12. Deletion and Return</h2>
   <p><strong>Customer's choice.</strong> On termination or expiry of the Agreement, Customer may direct Bratrax to return or to delete Customer Personal Data. Customer may exercise that choice at any time, before or after termination, by written notice to <a href="mailto:legal@bratrax.com">legal@bratrax.com</a>.</p>
   <p><strong>Return.</strong> Customer may export Customer Personal Data in a structured, commonly used, machine-readable format at any time during the Agreement and during the 30 days following termination, using the export functions of the Service. Where Customer is unable to export data it is entitled to, Bratrax will provide reasonable assistance on written request.</p>
-  <p><strong>Deletion on request.</strong> Where Customer directs deletion, Bratrax will delete Customer Personal Data from its live systems within 30 days of the direction. <strong>Deletion under this paragraph is irreversible.</strong> Once performed, Customer Personal Data cannot be restored and any later restoration request cannot be met. Customer should export anything it wishes to keep before directing deletion. This is deliberate: where Customer directs deletion because one of its own Data Subjects has exercised an erasure right, a restorable copy would defeat that request.</p>
+  <p><strong>Deletion on request.</strong> Where Customer directs deletion, Bratrax will delete Customer Personal Data from its live systems within 30 days of the direction. <strong>Deletion under this paragraph is irreversible.</strong> Once performed, Customer Personal Data cannot be restored and any later restoration request cannot be met. Customer should export anything it wishes to keep before directing deletion.</p>
   <p><strong>Where Customer gives no direction.</strong> Where Customer has not directed return or deletion, Bratrax will retain Customer Personal Data on the following schedule, which mirrors Section 15.4 of the Agreement, so that Customer's data is not lost through inadvertent lapse of the subscription:</p>
   <ul>
     <li><strong>Days 0–30 after termination:</strong> Customer retains access to the Service and may export Customer Personal Data.</li>
@@ -554,9 +554,9 @@ td strong { color: var(--ink); }
   <p>This Annex populates Annex II of the SCCs. Bratrax maintains the measures described below and may update them from time to time provided the overall level of security is not materially reduced.</p>
   <h3>Pseudonymization and encryption</h3>
   <ul>
-    <li><strong>In transit.</strong> Connections between Customer and the Service are encrypted using TLS. Traffic between Bratrax's own systems, including between the application layer and the analytical database, travels over an encrypted WireGuard tunnel on a private network and is not exposed to the public internet. Connections to the relational database use TLS, with certificate verification and client certificates on the paths that support it.</li>
+    <li><strong>In transit.</strong> Connections between Customer and the Service are encrypted in transit using TLS. Traffic between Bratrax's own systems travels over an encrypted private network that is not exposed to the public internet. Connections to Bratrax's databases are encrypted in transit.</li>
     <li><strong>Backups.</strong> All backup copies of Customer Personal Data are encrypted.</li>
-    <li><strong>Credentials.</strong> User passwords are stored as salted bcrypt hashes and are never stored or transmitted in plaintext. Session tokens are JSON Web Tokens signed with an asymmetric key and expire fourteen days after issue.</li>
+    <li><strong>Credentials.</strong> User passwords are salted and stored using a strong one-way hashing algorithm, and are never stored or transmitted in plaintext. Session tokens are cryptographically signed and expire after a defined period.</li>
     <li><strong>Platform credentials.</strong> OAuth tokens and platform credentials are used only to retrieve the data Customer has authorized, access to them is restricted to the systems that require it, and they are not written to application logs. Customer may revoke Bratrax's access at any time from the relevant Connected Platform.</li>
     <li><strong>Pseudonymization.</strong> Anonymous visitor activity is keyed to pseudonymous session and device identifiers rather than to directly identifying data, until and unless the visitor is resolved to a known customer through Customer's own data.</li>
   </ul>
@@ -570,8 +570,8 @@ td strong { color: var(--ink); }
   </ul>
   <h3>Integrity and availability</h3>
   <ul>
-    <li><strong>Data residency.</strong> Customer Personal Data is hosted in the European Union, on dedicated servers in a Hetzner data centre in Helsinki, Finland. Encrypted backups are held in cloud storage located in the United States.</li>
-    <li><strong>Backup schedule.</strong> A weekly full backup of the analytical database retained for 90 days; an hourly incremental backup of the event stream retained for 7 days; and a daily dump of the relational database, of which the 7 most recent copies are kept. Backup creation is monitored.</li>
+    <li><strong>Data residency.</strong> Customer Personal Data is hosted on dedicated servers in the European Union (Finland). Encrypted backups are held in cloud storage located in the United States.</li>
+    <li><strong>Backups.</strong> Customer Personal Data is backed up regularly, using a combination of full and incremental backups with defined retention periods. All backups are encrypted, and backup creation is monitored.</li>
     <li><strong>Pipeline monitoring.</strong> Data pipeline and data-quality failures, including extraction jobs and per-customer reconciliation, raise automated alerts to the engineering team.</li>
     <li><strong>Versioning.</strong> Data retrieved from Connected Platforms is versioned so that corrections and restatements from the source platform are reflected rather than duplicated.</li>
   </ul>
