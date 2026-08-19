@@ -340,7 +340,7 @@ td strong { color: var(--ink); }
   <h3>5.2 Terms imposed on Subprocessors</h3>
   <p>Bratrax will engage each Subprocessor under a written contract imposing data protection obligations that are, in substance, no less protective than those in this DPA. Bratrax remains fully liable to Customer for a Subprocessor's performance of its data protection obligations.</p>
   <h3>5.3 Notice of changes</h3>
-  <p>Bratrax will give Customer at least <strong>30 days' notice</strong> before a new Subprocessor begins Processing Customer Personal Data, by updating Annex III on this page and sending notice to the email address associated with Customer's account administrator. Customer is responsible for keeping that address current.</p>
+  <p>Bratrax will give Customer at least <strong>30 days' notice</strong> before a new Subprocessor begins Processing Customer Personal Data, by updating the Subprocessor list at Annex III and sending notice to the email address associated with Customer's account administrator. Customer is responsible for keeping that address current.</p>
   <h3>5.4 Objection</h3>
   <p>Customer may object to a new Subprocessor on reasonable data protection grounds by emailing <a href="mailto:legal@bratrax.com">legal@bratrax.com</a> within 15 days of that notice, stating the grounds. The parties will work together in good faith to find a commercially reasonable alternative &mdash; for example, disabling the affected feature for Customer. If no such alternative is available within 60 days of the objection, Customer may terminate the portion of the subscription that cannot be provided without the objected-to Subprocessor, on written notice. Termination on this ground is the sole remedy for an unresolved objection. Fees already paid are not refunded, consistent with Sections 4.3 and 15.2 of the Agreement.</p>
   <h3>5.5 Emergency replacement</h3>
@@ -361,6 +361,7 @@ td strong { color: var(--ink); }
     <li><strong>Per-customer isolation.</strong> Each customer's data is held in a dedicated logical data store. Bratrax does not commingle one customer's data with another's.</li>
     <li><strong>EU data residency.</strong> Customer Personal Data is hosted on servers in the European Union (Finland). Backups are held in the United States, as described in Section 10.1.</li>
   </ul>
+  <p>These structural measures form part of the measures described in Annex II, and Bratrax may change how they are implemented in accordance with Section 4.2, provided the overall level of protection is not materially reduced.</p>
   <h2>9. Audits and Information</h2>
   <p>Bratrax will make available to Customer the information reasonably necessary to demonstrate compliance with Article 28 of the GDPR. In the first instance this means the information published in this DPA and its Annexes, together with any security documentation, questionnaire responses, or third-party audit reports Bratrax makes generally available to customers.</p>
   <p>Bratrax maintains a record of the categories of Processing carried out on behalf of Customer in accordance with Article 30(2) of the GDPR, and will make that record available to a Supervisory Authority on request.</p>
@@ -487,7 +488,7 @@ td strong { color: var(--ink); }
   <h3>16.1 Term</h3>
   <p>This DPA takes effect when Customer accepts the Agreement and continues until Bratrax has deleted all Customer Personal Data in accordance with Section 12. Provisions that by their nature should survive termination do so.</p>
   <h3>16.2 Changes to this DPA</h3>
-  <p>Bratrax may update this DPA where necessary to reflect a change in Data Protection Laws, a change in an approved transfer mechanism, the engagement of a new Subprocessor, or a material change in the nature of the Processing carried out under the Service, and may make non-material corrections and clarifications at any time. Bratrax will give at least 30 days' notice of any material change by posting an updated version on this page and notifying Customer's account administrator, except where a shorter period is required to comply with law or to address a security risk.</p>
+  <p>Bratrax may update this DPA where necessary to reflect a change in Data Protection Laws, a change in an approved transfer mechanism, or a material change in the nature of the Processing carried out under the Service, and may make non-material corrections and clarifications at any time. Bratrax will give at least 30 days' notice of any material change by posting an updated version on this page and notifying Customer's account administrator, except where a shorter period is required to comply with law or to address a security risk.</p>
   <p>Changes will not materially reduce the protections afforded to Customer Personal Data. Where Customer reasonably considers that a change does materially reduce those protections, Customer may notify Bratrax within the notice period, and the parties will discuss the change in good faith. If the parties do not resolve the matter within 30 days, Customer may terminate the affected portion of the subscription on written notice. Fees already paid are not refunded.</p>
   <p>This Section does not permit Bratrax to vary the SCCs, the UK Addendum, or the Swiss amendments, which may only be modified as those instruments permit.</p>
   <h3>16.3 Order of precedence</h3>
@@ -552,72 +553,19 @@ td strong { color: var(--ink); }
   <hr class="annex-rule">
 
   <h2 id="annex-ii">Annex II &mdash; Technical and Organizational Measures</h2>
-  <p>This Annex populates Annex II of the SCCs. Bratrax maintains the measures described below and may update them from time to time provided the overall level of security is not materially reduced.</p>
-  <h3>Pseudonymization and encryption</h3>
+  <p>This Annex populates Annex II of the SCCs. The technical and organizational measures Bratrax maintains are described in its Security Documentation, published at <a href="https://bratrax.com/security">https://bratrax.com/security</a>, which forms part of this Annex and is updated from time to time provided the overall level of security is not materially reduced. Those measures address, at a minimum:</p>
   <ul>
-    <li><strong>In transit.</strong> Connections between Customer and the Service are encrypted in transit using TLS. Traffic between Bratrax's own systems travels over an encrypted private network that is not exposed to the public internet. Connections to Bratrax's databases are encrypted in transit.</li>
-    <li><strong>Backups.</strong> All backup copies of Customer Personal Data are encrypted.</li>
-    <li><strong>Credentials.</strong> User passwords are salted and stored using a strong one-way hashing algorithm, and are never stored or transmitted in plaintext. Session tokens are cryptographically signed and expire after a defined period.</li>
-    <li><strong>Platform credentials.</strong> OAuth tokens and platform credentials are used only to retrieve the data Customer has authorized, access to them is restricted to the systems that require it, and they are not written to application logs. Customer may revoke Bratrax's access at any time from the relevant Connected Platform.</li>
-    <li><strong>Pseudonymization.</strong> Anonymous visitor activity is keyed to pseudonymous session and device identifiers rather than to directly identifying data, until and unless the visitor is resolved to a known customer through Customer's own data.</li>
-  </ul>
-  <h3>Confidentiality and access control</h3>
-  <ul>
-    <li><strong>Per-customer data isolation.</strong> Each customer's data is held in a dedicated logical data store. One customer's data is not commingled with another's, and application-level access controls scope every query to the requesting customer's own data.</li>
-    <li><strong>Role-based access control</strong> within the Service: an administrator role with full access to the customer account, and a read-only viewer role that cannot modify configuration, connect platforms, manage users, or access billing.</li>
-    <li><strong>Least-privilege access</strong> for Bratrax personnel. Access to production systems and Customer Personal Data is limited to personnel who require it to operate or support the Service, is granted through individual accounts over a private network, and is revoked on departure.</li>
-    <li><strong>Logged administrative access.</strong> Use of Bratrax's internal support role, which permits viewing a customer account as that customer sees it, is logged, recording the person, the customer account accessed, and the time.</li>
-    <li><strong>Confidentiality obligations.</strong> All personnel with access to Customer Personal Data are bound by written confidentiality obligations.</li>
-  </ul>
-  <h3>Integrity and availability</h3>
-  <ul>
-    <li><strong>Data residency.</strong> Customer Personal Data is hosted on servers in the European Union (Finland). Encrypted backups are held in cloud storage located in the United States.</li>
-    <li><strong>Backups.</strong> Customer Personal Data is backed up regularly, using a combination of full and incremental backups with defined retention periods. All backups are encrypted, and backup creation is monitored.</li>
-    <li><strong>Pipeline monitoring.</strong> Data pipeline and data-quality failures, including extraction jobs and per-customer reconciliation, raise automated alerts to the engineering team.</li>
-    <li><strong>Versioning.</strong> Data retrieved from Connected Platforms is versioned so that corrections and restatements from the source platform are reflected rather than duplicated.</li>
-  </ul>
-  <h3>Resilience and restoration</h3>
-  <ul>
-    <li>The analytics layer is rebuildable from source data held in the raw ingestion layer and, where necessary, by re-retrieval from Connected Platforms, which limits the impact of corruption in derived tables.</li>
-    <li>Customer Personal Data can be restored from the encrypted backup set described above.</li>
-  </ul>
-  <h3>Governance and testing</h3>
-  <ul>
-    <li>Changes to production systems are made through version-controlled code review, with a second engineer reviewing before merge.</li>
-    <li>Infrastructure and application configuration are held in version control.</li>
-    <li>Security incidents are investigated, documented, and remediated, and are notified to affected customers in accordance with Section 7 of this DPA.</li>
-    <li>Security practices and the Subprocessors listed in Annex III are reviewed on a regular basis.</li>
-  </ul>
-  <h3>Measures applying to Subprocessors</h3>
-  <ul>
-    <li>Each Subprocessor is engaged under a written contract imposing data protection obligations no less protective, in substance, than those in this DPA.</li>
-    <li>Subprocessors receive only the categories of data necessary for their stated purpose, as set out in Annex III.</li>
-    <li>Subprocessors are reviewed before engagement and periodically thereafter.</li>
+    <li>encryption in transit, and pseudonymization of anonymous visitor activity;</li>
+    <li>confidentiality obligations and role-based, least-privilege access control, with administrative access logged;</li>
+    <li>per-customer data isolation, enforced by application-level access controls;</li>
+    <li>data residency in the European Union, with encrypted, monitored backups;</li>
+    <li>resilience and restoration, including rebuild from source data; and</li>
+    <li>secure development and change control, and written data protection terms imposed on every Subprocessor.</li>
   </ul>
   <hr class="annex-rule">
 
   <h2 id="annex-iii">Annex III &mdash; Subprocessors</h2>
-  <p>This Annex populates Annex III of the SCCs. It lists the Subprocessors authorized to Process Customer Personal Data. It is maintained on this page, and changes are notified in accordance with Section 5.3.</p>
-  <h3>Subprocessors of Customer Personal Data</h3>
-  <div class="table-wrap">
-    <table>
-      <thead>
-        <tr><th>Subprocessor</th><th>Location</th><th>Purpose</th><th>Data processed</th></tr>
-      </thead>
-      <tbody>
-        <tr><td><strong>Hetzner Online GmbH</strong></td><td>Finland (EU)</td><td>Primary cloud hosting infrastructure for Customer Data</td><td>All categories of Customer Personal Data described in Annex I</td></tr>
-        <tr><td><strong>Anthropic PBC</strong></td><td>United States</td><td>Powers AI features Bratrax operates, including the Bratrax assistant for Slack and the in-product AI sidebar (Section 11.1)</td><td>The user's question, recent conversation context, and the Customer Personal Data needed to answer it. Transmitted to generate a response only, and not used to train models (Section 11.4).</td></tr>
-        <tr><td><strong>Slack Technologies (Salesforce, Inc.)</strong></td><td>United States</td><td>Hosts the Bratrax community Slack workspace, which Bratrax operates under its own agreement with Slack. Listed on that basis only &mdash; where Customer installs the assistant into Customer's own workspace, Slack Processes under Customer's agreement and is not a Bratrax Subprocessor (Section 11.3).</td><td>Assistant replies delivered in a linked channel of the community workspace, including any figures, tables, or charts drawn from Customer Data</td></tr>
-        <tr><td><strong>Google Cloud</strong></td><td>United States</td><td>Storage of encrypted backups of Customer Personal Data</td><td>Backups of all categories of Customer Personal Data described in Annex I</td></tr>
-        <tr><td><strong>Software development and support contractors</strong></td><td>Outside the EEA. The countries concerned, and the name of each entity, are available on request to <a href="mailto:legal@bratrax.com">legal@bratrax.com</a></td><td>Development, maintenance, and support of the Service</td><td>Access to Customer Personal Data held in Bratrax's systems, to the extent required to perform those services. Each entity is engaged under written data protection terms no less protective than this DPA and, where established outside the EEA, under the Standard Contractual Clauses</td></tr>
-        <tr><td><strong>Twilio SendGrid (Twilio Inc.)</strong></td><td>United States</td><td>Delivery of transactional email arising from user administration &mdash; account and team invitations, password resets, connector alerts, and service notices</td><td>Name and email address of Customer's authorized users, and the content of the notices sent to them</td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <p><strong>On the contractor entry.</strong> Bratrax's development and support work is performed by contractors engaged through their own legal entities, listed as a category. The current list of entities and countries is provided on request, and any addition to this group is notified under Section 5.3, carrying the same right to object under Section 5.4.</p>
-  <p>Transfers to Subprocessors located outside the EEA are made under the transfer mechanisms described in Section 10, and each such Subprocessor is bound by data protection terms no less protective, in substance, than those in this DPA.</p>
-
+  <p>This Annex populates Annex III of the SCCs. The current list of Subprocessors authorized to Process Customer Personal Data is published at <a href="https://bratrax.com/subprocessors">https://bratrax.com/subprocessors</a>, which forms part of this Annex. Changes are notified in accordance with Section 5.3, and Customer may object under Section 5.4. Transfers to Subprocessors located outside the EEA are made under the transfer mechanisms described in Section 10, and each such Subprocessor is bound by data protection terms no less protective, in substance, than those in this DPA.</p>
 
 </main>
 

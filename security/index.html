@@ -1,0 +1,330 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) — GA4 -->
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q78FNCB1BH"></script>
+<script>
+ window.dataLayer = window.dataLayer || [];
+ function gtag(){dataLayer.push(arguments);}
+ gtag('js', new Date());
+ gtag('config', 'G-Q78FNCB1BH');
+</script>
+
+<title>Security Measures — Bratrax</title>
+<meta name="description" content="The technical and organizational measures Bratrax (Inceptly LLC) maintains to protect customer personal data — encryption, access control, isolation, backups, and governance. Forms Annex II of our DPA.">
+<link rel="canonical" href="https://bratrax.com/security">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNzkiIGhlaWdodD0iODAiIHZpZXdCb3g9IjAgMCA3OSA4MCIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9Ijc5IiBoZWlnaHQ9Ijc5IiByeD0iMTAiIGZpbGw9IiNFOEU0REMiLz4KPHBhdGggZD0iTTAgNjYuOTcwNkg2LjM5MjIzVjIzLjY3NjVIMFYxMS41SDI5LjczMzZDMzIuOTYyIDExLjUgMzUuODAzIDExLjk1MSAzOC4yNTY1IDEyLjg1MjlDNDAuNzc0NyAxMy43NTQ5IDQyLjg3MzIgMTQuOTc5IDQ0LjU1MTkgMTYuNTI1MkM0Ni4yOTUzIDE4LjA3MTQgNDcuNTg2NiAxOS45Mzk4IDQ4LjQyNiAyMi4xMzAzQzQ5LjMzIDI0LjI1NjMgNDkuNzgxOSAyNi41NzU2IDQ5Ljc4MTkgMjkuMDg4MlYzMC4yNDc5QzQ5Ljc4MTkgMzQuMTEzNCA0OC42ODQzIDM3LjIwNTkgNDYuNDg5IDM5LjUyNTJDNDQuMzU4MiA0MS44NDQ1IDQxLjY0NjQgNDMuNDU1MiAzOC4zNTM0IDQ0LjM1NzFWNDYuMDk2NkM0MS42NDY0IDQ2Ljk5ODYgNDQuMzU4MiA0OC42NDE1IDQ2LjQ4OSA1MS4wMjUyQzQ4LjY4NDMgNTMuMzQ0NSA0OS43ODE5IDU2LjQzNyA0OS43ODE5IDYwLjMwMjVWNjEuNDYyMkM0OS43ODE5IDYzLjk3NDggNDkuMzMgNjYuMzI2MyA0OC40MjYgNjguNTE2OEM0Ny41ODY2IDcwLjY0MjkgNDYuMjk1MyA3Mi41MTEyIDQ0LjU1MTkgNzQuMTIxOEM0Mi44NzMyIDc1LjY2ODEgNDAuNzc0NyA3Ni44OTIyIDM4LjI1NjUgNzcuNzk0MUMzNS44MDMgNzguNjk2MSAzMi45NjIgNzkuMTQ3IDI5LjczMzYgNzkuMTQ3SDBWNjYuOTcwNlpNMTkuMTc2NyA2Ni45NzA2SDI4LjQ3NDVDMzEuMTg2MyA2Ni45NzA2IDMzLjM4MTcgNjYuMzkwOCAzNS4wNjA0IDY1LjIzMTFDMzYuNzM5MiA2NC4wNzE0IDM3LjU3ODYgNjIuMTM4NyAzNy41Nzg2IDU5LjQzMjhWNTguODUyOUMzNy41Nzg2IDU2LjE0NzEgMzYuNzM5MiA1NC4yMTQzIDM1LjA2MDQgNTMuMDU0NkMzMy4zODE3IDUxLjg5NSAzMS4xODYzIDUxLjMxNTEgMjguNDc0NSA1MS4zMTUxSDE5LjE3NjdWNjYuOTcwNlpNMTkuMTc2NyAzOS4xMzg3SDI4LjQ3NDVDMzEuMTg2MyAzOS4xMzg3IDMzLjM4MTcgMzguNTkxIDM1LjA2MDQgMzcuNDk1OEMzNi43MzkyIDM2LjMzNjEgMzcuNTc4NiAzNC40MDM0IDM3LjU3ODYgMzEuNjk3NVYzMS4xMTc2QzM3LjU3ODYgMjguNDExOCAzNi43MzkyIDI2LjUxMTIgMzUuMDYwNCAyNS40MTZDMzMuMzgxNyAyNC4yNTYzIDMxLjE4NjMgMjMuNjc2NSAyOC40NzQ1IDIzLjY3NjVIMTkuMTc2N1YzOS4xMzg3WiIgZmlsbD0iIzBBMEEwQSIvPgo8cGF0aCBkPSJNNzkgNjkuOTY2NEM3OSA3MS4yNTQ5IDc4Ljc0MTcgNzIuNDc5IDc4LjIyNTIgNzMuNjM4NkM3Ny43NzMyIDc0LjczMzkgNzcuMTI3NSA3NS43MDAzIDc2LjI4ODEgNzYuNTM3OEM3NS40NDg4IDc3LjMxMDkgNzQuNDQ4IDc3LjkyMyA3My4yODU3IDc4LjM3MzlDNzIuMTg4MSA3OC44ODkzIDcxLjAyNTkgNzkuMTQ3IDY5Ljc5OTEgNzkuMTQ3QzY4LjUwNzcgNzkuMTQ3IDY3LjMxMzIgNzguODg5MyA2Ni4yMTU1IDc4LjM3MzlDNjUuMTE3OSA3Ny45MjMgNjQuMTQ5NCA3Ny4zMTA5IDYzLjMxIDc2LjUzNzhDNjIuNDcwNiA3NS43MDAzIDYxLjc5MjYgNzQuNzMzOSA2MS4yNzYxIDczLjYzODZDNjAuODI0MSA3Mi40NzkgNjAuNTk4MSA3MS4yNTQ5IDYwLjU5ODEgNjkuOTY2NEM2MC41OTgxIDY4LjY3NzkgNjAuODI0MSA2Ny40ODYgNjEuMjc2MSA2Ni4zOTA3QzYxLjc5MjYgNjUuMjMxMSA2Mi40NzA2IDY0LjI2NDcgNjMuMzEgNjMuNDkxNkM2NC4xNDk0IDYyLjY1NCA2NS4xMTc5IDYyLjAwOTggNjYuMjE1NSA2MS41NTg4QzY3LjMxMzIgNjEuMDQzNCA2OC41MDc3IDYwLjc4NTcgNjkuNzk5MSA2MC43ODU3QzcxLjAyNTkgNjAuNzg1NyA3Mi4xODgxIDYxLjA0MzQgNzMuMjg1NyA2MS41NTg4Qzc0LjQ0OCA2Mi4wMDk4IDc1LjQ0ODggNjIuNjU0IDc2LjI4ODEgNjMuNDkxNkM3Ny4xMjc1IDY0LjI2NDcgNzcuNzczMiA2NS4yMzExIDc4LjIyNTIgNjYuMzkwN0M3OC43NDE3IDY3LjQ4NiA3OSA2OC42Nzc5IDc5IDY5Ljk2NjRaIiBmaWxsPSIjRDRGRjAwIi8+Cjwvc3ZnPgo=">
+<link rel="apple-touch-icon" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F5F2EB;
+  --paper-2: #EDE9E0;
+  --ink: #0A0A0A;
+  --ink-soft: #1A1A18;
+  --ink-mid: #3A3832;
+  --ink-muted: #5C564A;
+  --rule: #D8D3C6;
+  --rule-soft: #E4DFD2;
+
+  --black: #0A0A0A;
+  --off-black: #141414;
+  --dark-mid: #3A3A3A;
+  --dark-muted: #858585;
+  --off-white: #E8E4DC;
+
+  --acid: #D4FF00;
+  --acid-wash: rgba(212, 255, 0, 0.35);
+
+  --font-display: 'Outfit', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Space Mono', 'JetBrains Mono', monospace;
+  --font-body: 'Outfit', sans-serif;
+}
+
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; background: var(--paper); }
+
+body {
+ font-family: var(--font-body);
+ color: var(--ink-soft);
+ background: var(--paper);
+ line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+ text-rendering: optimizeLegibility;
+}
+
+::selection { background: var(--acid); color: var(--ink); }
+
+.article a {
+ color: var(--ink);
+ text-decoration: underline;
+ text-underline-offset: 3px;
+ text-decoration-thickness: 1px;
+ text-decoration-color: var(--ink-muted);
+}
+.article a:hover {
+ background: var(--acid-wash);
+ text-decoration-color: var(--ink);
+}
+.article a:focus-visible { outline: 2px solid var(--ink); outline-offset: 3px; }
+
+/* ───────── DARK NAV ───────── */
+nav {
+ position: sticky; top: 0; z-index: 100;
+ background: rgba(10, 10, 10, 0.92);
+ backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+ border-bottom: 1px solid rgba(212, 255, 0, 0.1);
+}
+.nav-wrap {
+ max-width: 1080px; margin: 0 auto; padding: 16px 32px;
+ display: flex; align-items: center; justify-content: space-between; gap: 24px;
+}
+.logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
+.logo img,
+.logo svg { height: 26px; width: auto; display: block; }
+.nav-link {
+ font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+ letter-spacing: 1.5px; text-transform: uppercase;
+ color: var(--off-white); text-decoration: none;
+ padding: 8px 0; border-bottom: 1px solid transparent;
+ transition: color 0.2s, border-color 0.2s;
+}
+.nav-link:hover { color: var(--acid); border-bottom-color: var(--acid); }
+
+/* ───────── ARTICLE ───────── */
+.article {
+ max-width: 760px; margin: 0 auto; padding: 72px 32px 96px;
+}
+
+.eyebrow {
+ font-family: var(--font-mono); font-size: 11px; font-weight: 700;
+ letter-spacing: 2.5px; text-transform: uppercase;
+ color: var(--ink-muted); margin-bottom: 20px;
+}
+
+h1 {
+ font-family: var(--font-display); font-weight: 900;
+ font-size: clamp(40px, 5.5vw, 60px); line-height: 1.08;
+ letter-spacing: -0.8px; color: var(--ink);
+ margin-bottom: 20px;
+}
+
+.effective {
+ font-family: var(--font-mono); font-size: 13px;
+ color: var(--ink-muted); letter-spacing: 0.3px;
+ padding-bottom: 28px; margin-bottom: 40px;
+ border-bottom: 1px solid var(--rule);
+}
+.effective strong { color: var(--ink); font-weight: 700; }
+
+h2 {
+ font-family: var(--font-display); font-weight: 800;
+ font-size: 28px; line-height: 1.2; letter-spacing: -0.3px;
+ color: var(--ink); margin-top: 64px; margin-bottom: 20px;
+ padding-top: 28px; border-top: 1px solid var(--rule-soft);
+}
+h2:first-of-type { border-top: none; padding-top: 0; }
+
+h3 {
+ font-family: var(--font-display); font-weight: 700;
+ font-size: 19px; line-height: 1.35;
+ color: var(--ink); margin-top: 36px; margin-bottom: 14px;
+}
+
+h4 {
+ font-family: var(--font-mono); font-size: 12px; font-weight: 700;
+ letter-spacing: 1.5px; text-transform: uppercase;
+ color: var(--ink-muted); margin-top: 28px; margin-bottom: 10px;
+}
+
+p {
+ font-size: 17px; font-weight: 400;
+ color: var(--ink-soft); line-height: 1.75;
+ margin-bottom: 20px;
+}
+
+strong { color: var(--ink); font-weight: 700; }
+em { font-style: italic; }
+
+ul, ol { margin: 0 0 24px 0; padding-left: 26px; }
+li {
+ font-size: 17px; line-height: 1.75;
+ color: var(--ink-soft); margin-bottom: 10px;
+}
+li::marker { color: var(--ink); }
+
+hr { border: none; height: 1px; background: var(--rule); margin: 48px 0; }
+
+/* ALLCAPS legal blocks */
+p.allcaps {
+ font-size: 15px; line-height: 1.75;
+ letter-spacing: 0.2px;
+ color: var(--ink-mid);
+}
+
+/* SUMMARY BOX */
+.summary-box {
+ background: var(--paper-2);
+ border: 1px solid var(--rule);
+ border-left: 3px solid var(--ink);
+ padding: 28px 32px; margin: 32px 0 48px;
+}
+.summary-box h2 {
+ border: none; padding-top: 0; margin-top: 0; margin-bottom: 18px;
+ font-size: 20px; font-weight: 800;
+}
+.summary-box ul { margin-bottom: 0; padding-left: 22px; }
+.summary-box li { font-size: 15.5px; margin-bottom: 10px; line-height: 1.65; }
+.summary-box li:last-child { margin-bottom: 0; }
+
+/* ANNEX divider */
+.annex-rule {
+ margin-top: 72px; padding-top: 0; border: none;
+ height: 3px; background: var(--ink);
+}
+
+/* TABLE */
+.table-wrap { overflow-x: auto; margin: 24px 0 28px; }
+table {
+ width: 100%; border-collapse: collapse;
+ font-size: 15px; background: var(--paper-2);
+ border: 1px solid var(--rule);
+}
+th, td {
+ padding: 14px 16px; text-align: left; vertical-align: top;
+ border-bottom: 1px solid var(--rule-soft);
+}
+th {
+ font-family: var(--font-mono); font-size: 11px;
+ font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase;
+ color: var(--ink); background: var(--paper);
+ border-bottom: 1px solid var(--rule);
+}
+tr:last-child td { border-bottom: none; }
+td { color: var(--ink-soft); }
+td strong { color: var(--ink); }
+
+@media (max-width: 640px) {
+  .article { padding: 48px 22px 72px; }
+  .nav-wrap { padding: 14px 22px; }
+ h1 { font-size: 34px; letter-spacing: -0.4px; }
+ h2 { font-size: 24px; margin-top: 48px; }
+ h3 { font-size: 17px; }
+ p, li { font-size: 16px; }
+  .summary-box { padding: 22px 22px; }
+ th, td { padding: 12px 12px; font-size: 14px; }
+  .logo img,
+  .logo svg { height: 22px; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-wrap">
+    <a class="logo" href="https://bratrax.com/" aria-label="Bratrax home">
+      <svg width="189" height="26" viewBox="0 0 189 26" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bratrax">
+        <path d="M0 20.664H2.376V4.536H0V0H11.052C12.252 0 13.308 0.168 14.22 0.504C15.156 0.84 15.936 1.296 16.56 1.872C17.208 2.448 17.688 3.144 18 3.96C18.336 4.752 18.504 5.616 18.504 6.552V6.984C18.504 8.424 18.096 9.576 17.28 10.44C16.488 11.304 15.48 11.904 14.256 12.24V12.888C15.48 13.224 16.488 13.836 17.28 14.724C18.096 15.588 18.504 16.74 18.504 18.18V18.612C18.504 19.548 18.336 20.424 18 21.24C17.688 22.032 17.208 22.728 16.56 23.328C15.936 23.904 15.156 24.36 14.22 24.696C13.308 25.032 12.252 25.2 11.052 25.2H0V20.664ZM7.128 20.664H10.584C11.592 20.664 12.408 20.448 13.032 20.016C13.656 19.584 13.968 18.864 13.968 17.856V17.64C13.968 16.632 13.656 15.912 13.032 15.48C12.408 15.048 11.592 14.832 10.584 14.832H7.128V20.664ZM7.128 10.296H10.584C11.592 10.296 12.408 10.092 13.032 9.684C13.656 9.252 13.968 8.532 13.968 7.524V7.308C13.968 6.3 13.656 5.592 13.032 5.184C12.408 4.752 11.592 4.536 10.584 4.536H7.128V10.296Z" fill="#E8E4DC"/>
+        <path d="M43.935 25.2H39.183V17.64C39.183 17.064 39.027 16.596 38.715 16.236C38.427 15.876 37.935 15.696 37.239 15.696H31.767V25.2H27.015V0H36.663C37.959 0 39.099 0.18 40.083 0.539999C41.067 0.900001 41.883 1.404 42.531 2.052C43.203 2.676 43.707 3.408 44.043 4.248C44.403 5.088 44.583 5.988 44.583 6.948V7.812C44.583 8.844 44.307 9.816 43.755 10.728C43.203 11.616 42.351 12.3 41.199 12.78V13.428C42.039 13.524 42.699 13.848 43.179 14.4C43.683 14.952 43.935 15.648 43.935 16.488V25.2ZM31.767 11.16H36.303C37.455 11.16 38.331 10.896 38.931 10.368C39.531 9.816 39.831 9.048 39.831 8.064V7.632C39.831 6.792 39.531 6.072 38.931 5.472C38.331 4.848 37.455 4.536 36.303 4.536H31.767V11.16Z" fill="#E8E4DC"/>
+        <path d="M65.7299 19.8H57.1619L55.9379 25.2H50.9699L56.9819 0H65.9099L71.9219 25.2H66.9539L65.7299 19.8ZM58.1699 15.264H64.6859L61.7699 2.376H61.1219L58.1699 15.264Z" fill="#E8E4DC"/>
+        <path d="M80.0729 0H98.2169V4.536H91.5209L87.1289 25.2H82.3769L86.7689 4.536H80.0729V0Z" fill="#E8E4DC"/>
+        <path d="M119.22 25.2H114.396L116.016 17.64C116.064 17.4 116.088 17.208 116.088 17.064C116.088 16.656 115.956 16.332 115.692 16.092C115.428 15.828 115.02 15.696 114.468 15.696H109.248L107.232 25.2H102.516L107.844 0H116.7C117.876 0 118.908 0.168 119.796 0.504C120.708 0.816 121.464 1.248 122.064 1.8C122.688 2.328 123.144 2.964 123.432 3.708C123.744 4.452 123.9 5.232 123.9 6.048C123.9 7.8 123.492 9.228 122.676 10.332C121.884 11.412 120.66 12.228 119.004 12.78V13.428C119.7 13.5 120.228 13.752 120.588 14.184C120.972 14.592 121.164 15.12 121.164 15.768C121.164 16.008 121.14 16.248 121.092 16.488L119.22 25.2ZM110.22 11.16H114.54C115.812 11.16 116.856 10.824 117.672 10.152C118.488 9.48 118.896 8.568 118.896 7.416C118.896 6.504 118.644 5.796 118.14 5.292C117.66 4.788 116.916 4.536 115.908 4.536H111.624L110.22 11.16Z" fill="#E8E4DC"/>
+        <path d="M143.859 19.8H135.291L134.067 25.2H129.099L135.111 0H144.039L150.051 25.2H145.083L143.859 19.8ZM136.299 15.264H142.815L139.899 2.376H139.251L136.299 15.264Z" fill="#E8E4DC"/>
+        <path d="M160.938 0L165.186 10.296H166.05L170.298 0H175.446L170.262 12.24V12.888L175.446 25.2H170.298L166.05 14.832H165.186L160.938 25.2H155.79L160.974 12.888V12.24L155.79 0H160.938Z" fill="#E8E4DC"/>
+        <path d="M188.081 22.284C188.081 22.764 187.985 23.22 187.793 23.652C187.625 24.06 187.385 24.42 187.073 24.732C186.761 25.02 186.389 25.248 185.957 25.416C185.549 25.608 185.117 25.704 184.661 25.704C184.181 25.704 183.737 25.608 183.329 25.416C182.921 25.248 182.561 25.02 182.249 24.732C181.937 24.42 181.685 24.06 181.493 23.652C181.325 23.22 181.241 22.764 181.241 22.284C181.241 21.804 181.325 21.36 181.493 20.952C181.685 20.52 181.937 20.16 182.249 19.872C182.561 19.56 182.921 19.32 183.329 19.152C183.737 18.96 184.181 18.864 184.661 18.864C185.117 18.864 185.549 18.96 185.957 19.152C186.389 19.32 186.761 19.56 187.073 19.872C187.385 20.16 187.625 20.52 187.793 20.952C187.985 21.36 188.081 21.804 188.081 22.284Z" fill="#D4FF00"/>
+      </svg>
+    </a>
+    <a class="nav-link" href="https://bratrax.com/">&larr; Back to site</a>
+  </div>
+</nav>
+
+<main class="article">
+
+  <div class="eyebrow">Legal</div>
+  <h1>Security Measures</h1>
+  <div class="effective">Version 1.0&nbsp;·&nbsp;19 August 2026</div>
+
+  <p>This page describes the technical and organizational measures Bratrax maintains to protect Customer Personal Data. It forms Annex II of the <a href="https://bratrax.com/data-processing-agreement">Data Processing Agreement</a> and of the Standard Contractual Clauses incorporated into it. Bratrax may update these measures from time to time provided the overall level of security is not materially reduced.</p>
+
+  <h3>Pseudonymization and encryption</h3>
+  <ul>
+    <li><strong>In transit.</strong> Connections between Customer and the Service are encrypted in transit using TLS. Traffic between Bratrax's own systems travels over an encrypted private network that is not exposed to the public internet. Connections to Bratrax's databases are encrypted in transit.</li>
+    <li><strong>Backups.</strong> All backup copies of Customer Personal Data are encrypted.</li>
+    <li><strong>Credentials.</strong> User passwords are salted and stored using a strong one-way hashing algorithm, and are never stored or transmitted in plaintext. Session tokens are cryptographically signed and expire after a defined period.</li>
+    <li><strong>Platform credentials.</strong> OAuth tokens and platform credentials are used only to retrieve the data Customer has authorized, access to them is restricted to the systems that require it, and they are not written to application logs. Customer may revoke Bratrax's access at any time from the relevant Connected Platform.</li>
+    <li><strong>Pseudonymization.</strong> Anonymous visitor activity is keyed to pseudonymous session and device identifiers rather than to directly identifying data, until and unless the visitor is resolved to a known customer through Customer's own data.</li>
+  </ul>
+  <h3>Confidentiality and access control</h3>
+  <ul>
+    <li><strong>Per-customer data isolation.</strong> Each customer's data is held in a dedicated logical data store. One customer's data is not commingled with another's, and application-level access controls scope every query to the requesting customer's own data.</li>
+    <li><strong>Role-based access control</strong> within the Service: an administrator role with full access to the customer account, and a read-only viewer role that cannot modify configuration, connect platforms, manage users, or access billing.</li>
+    <li><strong>Least-privilege access</strong> for Bratrax personnel. Access to production systems and Customer Personal Data is limited to personnel who require it to operate or support the Service, is granted through individual accounts over a private network, and is revoked on departure.</li>
+    <li><strong>Logged administrative access.</strong> Use of Bratrax's internal support role, which permits viewing a customer account as that customer sees it, is logged, recording the person, the customer account accessed, and the time.</li>
+    <li><strong>Confidentiality obligations.</strong> All personnel with access to Customer Personal Data are bound by written confidentiality obligations.</li>
+  </ul>
+  <h3>Integrity and availability</h3>
+  <ul>
+    <li><strong>Data residency.</strong> Customer Personal Data is hosted on servers in the European Union (Finland). Encrypted backups are held in cloud storage located in the United States.</li>
+    <li><strong>Backups.</strong> Customer Personal Data is backed up regularly, using a combination of full and incremental backups with defined retention periods. All backups are encrypted, and backup creation is monitored.</li>
+    <li><strong>Pipeline monitoring.</strong> Data pipeline and data-quality failures, including extraction jobs and per-customer reconciliation, raise automated alerts to the engineering team.</li>
+    <li><strong>Versioning.</strong> Data retrieved from Connected Platforms is versioned so that corrections and restatements from the source platform are reflected rather than duplicated.</li>
+  </ul>
+  <h3>Resilience and restoration</h3>
+  <ul>
+    <li>The analytics layer is rebuildable from source data held in the raw ingestion layer and, where necessary, by re-retrieval from Connected Platforms, which limits the impact of corruption in derived tables.</li>
+    <li>Customer Personal Data can be restored from the encrypted backup set described above.</li>
+  </ul>
+  <h3>Governance and testing</h3>
+  <ul>
+    <li>Changes to production systems are made through version-controlled code review, with a second engineer reviewing before merge.</li>
+    <li>Infrastructure and application configuration are held in version control.</li>
+    <li>Security incidents are investigated, documented, and remediated, and are notified to affected customers in accordance with Section 7 of this DPA.</li>
+    <li>Security practices and the Subprocessors listed in Annex III are reviewed on a regular basis.</li>
+  </ul>
+  <h3>Measures applying to Subprocessors</h3>
+  <ul>
+    <li>Each Subprocessor is engaged under a written contract imposing data protection obligations no less protective, in substance, than those in this DPA.</li>
+    <li>Subprocessors receive only the categories of data necessary for their stated purpose, as set out in Annex III.</li>
+    <li>Subprocessors are reviewed before engagement and periodically thereafter.</li>
+  </ul>
+
+</main>
+
+<!-- ─────────── DYNAMIC FOOTER (Bratrax shared partial, with inline fallback) ─────────── -->
+<div id="brx-footer">
+  <footer style="background:#0A0A0A;color:#E8E4DC;border-top:1px solid #3A3A3A;padding:40px 32px;font-family:'Space Mono','SF Mono',Menlo,ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">
+    <div style="max-width:1080px;margin:0 auto">
+      <nav style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:center">
+        <a href="https://bratrax.com/" style="color:#E8E4DC;text-decoration:none">Home</a>
+        <a href="https://bratrax.com/faq" style="color:#E8E4DC;text-decoration:none">FAQ</a>
+        <a href="https://bratrax.com/login" style="color:#D4FF00;text-decoration:none;border:1px solid rgba(212,255,0,0.45);padding:7px 14px">Login</a>
+        <a href="https://blog.bratrax.com/" style="color:#E8E4DC;text-decoration:none">Newsletter</a>
+      </nav>
+      <div style="margin-top:20px;padding-top:24px;border-top:1px solid rgba(232,228,220,0.08);display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:16px">
+        <div style="color:#858585;letter-spacing:0.5px">&copy; 2026 Bratrax</div>
+        <nav style="display:flex;flex-wrap:wrap;gap:22px;align-items:center">
+          <a href="https://bratrax.com/privacy-policy" style="color:#858585;text-decoration:none;font-size:10px;letter-spacing:1.2px">Privacy Policy</a>
+          <a href="https://bratrax.com/terms-of-service" style="color:#858585;text-decoration:none;font-size:10px;letter-spacing:1.2px">Terms of Service</a>
+          <a href="https://bratrax.com/data-processing-agreement" style="color:#858585;text-decoration:none;font-size:10px;letter-spacing:1.2px">DPA</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+</div>
+<script>
+ fetch('https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/partials/footer.html')
+    .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.text(); })
+    .then(function(html){ document.getElementById('brx-footer').innerHTML = html; })
+    .catch(function(){});
+</script>
+
+</body>
+</html>
