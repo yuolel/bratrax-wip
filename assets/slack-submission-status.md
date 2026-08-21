@@ -42,18 +42,20 @@ Three, 1600×1000, PNG or JPG. The only empty field on the listing form. Shot 1 
 ### 5. Reviewer test credentials
 Submission step 4 (locked until 2 and 3 are done). Needs an **admin**-role account on the demo client — `/try-demo` issues `viewer`, and every Slack settings route is gated by `_require_admin_or_super`, so a viewer cannot connect a workspace. Paste-ready instructions in `slack-submission-form.md` §3. Yuliya can obtain.
 
-### 6. Install count — threshold now confirmed
-The guidelines list as unsuitable any app *"installed on less than 5 active workspaces and have less than 10 weekly active users."* Active workspaces are ones used in the past 28 days, sandboxes excluded. So the bar is **5 active workspaces and 10 weekly active users** — not the "roughly 10 installs" recorded earlier. Now that customers can self-connect this should climb on its own; check the real number before submitting.
+### 6. Install count — 2 more workspaces needed
+Slack's own counter, 2026-08-19: **3 active workspaces, 11 users active in the past 28 days.** The guidelines list as unsuitable any app *"installed on less than 5 active workspaces and have less than 10 weekly active users."* So: over on users, **two workspaces short**.
 
-### 7. Two disclaimers — ✅ on `/slack`, still to paste into the listing
-Both now live on the landing page as a "Before you rely on it" band. The same two paragraphs still need to go into the Slack **long description** — the guidelines require them in both places. Text is in the rewritten description.
+Two wrinkles, neither worth relying on. Slack's counter reports **28-day** actives while the guideline says **weekly** actives — different metrics, so the 11 may not be the 11 they mean. And the guideline joins the two conditions with "and", which read literally means an app only fails if both are true. Get to 5 workspaces and neither question arises. Counts refresh every 24 hours.
+
+### 7. Two disclaimers — ✅ done, both places
+Live on the `/slack` landing page as a "Before you rely on it" band, and in the listing's long description as the closing paragraph. The guidelines require both surfaces.
 
 ### 8. Enhanced review is guaranteed — prepare for it
 Requesting `*:history` and `files:read` automatically triggers Slack's enhanced review. We already meet the standard it tests against — their rule is *"DON'T store any Slack data you obtain. Store metadata instead and pull in data in real time, i.e. zero-copy"* — which is exactly the architecture. Four AI disclosures are also required in Security & Compliance: model used, retention and how the LLM uses the data, LLM data tenancy, LLM data residency.
 
 ### 9. Smaller listing fixes
-- **Short description** should be 10 words or fewer; the current one is about 14.
-- **Long description** should use Slack message formatting — bold headings rather than the CAPS currently in place.
+- ~~**Short description**~~ — ✅ live. *"Shopify and WooCommerce attribution that adds up, where decisions happen."* 10 words.
+- ~~**Long description**~~ — ✅ live. Rewritten against Slack's four criteria and their Hiretron example; no headings, benefit-led bullets, both AI disclaimers in the tail.
 - **Add a collaborator** to the app; required before approval.
 - ~~**Respond to `help`**~~ — ✅ done in `a95a62220`. `_is_help_request` matches a bare "help" only, deliberately not a substring, so "help me find my best campaign" still goes to the assistant.
 

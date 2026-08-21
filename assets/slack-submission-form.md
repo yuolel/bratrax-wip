@@ -9,6 +9,14 @@ Two places to fill things in:
 Slack reshuffles these forms periodically, so field names may not match exactly.
 Match on meaning.
 
+**Connector claims: check the Connections screen, not the code.** Two lists in the codebase
+look authoritative and are not. `_SUPPORTED_INTEGRATIONS` in `server/onboarding.py` is
+scoped to the super-admin CRM card and omits live connectors. `connectors/platforms.ts`
+defines cards that include entries not yet deployed — as of 2026-08-19 it lists Stripe,
+GoHighLevel, ClickFunnels and Google Analytics, none of which render for customers. The
+only reliable source is **Settings → Connections** in the running app. Both mistakes were
+made in this document before this note existed.
+
 ---
 
 ## 1. App config — already set from the manifest
@@ -23,25 +31,36 @@ Verify rather than retype. Source of truth is `slack/manifest.yaml` in `VidTao/b
 | OAuth redirect URL | `https://api.bratrax.com/slack/oauth_redirect` |
 | Event subscriptions request URL | `https://api.bratrax.com/slack/events` |
 | Interactivity request URL | `https://api.bratrax.com/slack/interactive` |
-| Bot events | `app_mention`, `app_uninstalled`, `assistant_thread_started`, `assistant_thread_context_changed`, `link_shared`, `message.im`, `tokens_revoked` |
+| Bot events | `app_mention`, `app_uninstalled`, `app_context_changed`, `app_home_opened`, `message.im`, `tokens_revoked` |
 | Org-wide deploy | Off |
 | Socket mode | Off |
 | Token rotation | Off |
 
-**One change to make.** The manifest carries `background_color: "#0b0b0b"`. It should be
-`#0A0A0A` — the actual page background on bratrax.com. One step darker; invisible alone,
-visible against a screenshot. Fix it in both the app config and `slack/manifest.yaml`.
+**Background colour:** `#0A0A0A`. ✅ Fixed in the app config. Confirm `slack/manifest.yaml`
+matches — it carried `#0b0b0b`, one step lighter, which reads as a seam against any
+screenshot pulled from bratrax.com.
 
-### Bot scopes (18) — verify the list matches
+**Agents migration:** the manifest moved from `assistant_view` to `agent_view` in
+`a95a62220`. Clicking **Update Now** on Features → Agents is still outstanding, is
+one-way per app, and rewrites the manifest server-side. See `slack-dev-handover.md`.
+
+### Bot scopes (16) — verify the list matches
+
+`links:read` and `links:write` were removed in `a95a62220`; nothing used them and Slack
+rejects scopes held for untestable future functionality.
 
 ```
 app_mentions:read      assistant:write        channels:history
 channels:read          chat:write             files:write
 files:read             groups:history         groups:read
 groups:write           im:history             im:read
-im:write               links:read             links:write
-reactions:write        users:read             users:read.email
+im:write               reactions:write        users:read
+users:read.email
 ```
+
+Every scope needs a written reason via **Manage Reasons**, minimum 75 characters. The rule
+is to explain *how the app uses it*, not what the scope does — a reason that describes the
+scope, or defers to another entry ("as channels:read, for private channels"), gets bounced.
 
 Three that reviewers question, with the answer:
 
@@ -60,57 +79,47 @@ Three that reviewers question, with the answer:
 Bratrax
 ```
 
-### Short description — 99 characters
-```
-Ask your Shopify or WooCommerce numbers anything — spend, revenue, ROAS, and attribution, in Slack.
-```
+### Short description — 10 words, 73 characters
 
-### Long description
-
-Plain text, spaced so it survives Slack's editor (see note below).
+**LIVE in the listing as of 2026-08-19.**
 
 ```
-Shopify and WooCommerce attribution that reconciles — answerable in the channel where the decision gets made.
+Shopify and WooCommerce attribution that adds up, where decisions happen.
+```
 
-Bratrax combines a first-party pixel with your full order record, so revenue stops landing in a bucket labeled "Direct." Ask for the number in plain English and get it back in Slack, with the math you can audit.
+"Adds up" replaced "reconciled": same meaning, no accounting vocabulary. Avoid bare superiority adjectives here — "precise", "accurate", "honest" assert quality without saying why, and there is nothing behind them a buyer or reviewer can check. Mechanism words work; character words do not.
 
-ASK THINGS LIKE
+### Long description — 2,329 characters
 
-• "NC ROAS by source for the last 30 days — allocate spend by new-customer order share, not total."
+**LIVE in the listing as of 2026-08-19.** Written against Slack's four stated criteria and modelled on their own Hiretron example: one opening that says what the service is, one line on what it connects to, then bullets that are all things the reader *does in Slack*. No headings, no bold — the earlier heading-and-CAPS versions were a product page, not an app listing.
 
-• "Why did blended ROAS drop last week?"
+```
+Bratrax is an attribution platform for Shopify and WooCommerce brands: rather than trusting what each ad platform claims it drove, it joins your ad spend to your actual order record. That precision comes from recovering the touches most tools quietly drop (a stripped UTM, an expired session, a conversion iOS never reported), so far less of your revenue ends up stranded in a bucket labeled "Direct" — and you can see exactly which channels and campaigns are driving your sales.
 
-• "Funnel dropoff by step, last 7 days."
+This app puts those numbers in Slack. Ask in the channel where the decision is being made, get the answer there, and keep moving — without anyone opening the app.
 
-• "Top 10 SKUs by net revenue this month, with returns."
+• Ask the way you'd ask a colleague. Mention @bratrax in a channel, or send it a direct message: "Why did blended ROAS drop last week?" or "Top 10 SKUs by net revenue this month, with returns."
 
-WHAT'S BEHIND THE ANSWERS
+• Get an answer, not a dashboard link. The number, a short explanation of what moved, and charts and tables that are as readable on your phone as on your laptop.
 
-• A first-party tracking pixel served from your own domain, so adblockers can't kill it.
+• Ask the obvious follow-up. "And just for Facebook?" works — it remembers what you were talking about. Swap the window to 7, 30 or 90 days with a button, or open the full dashboard when you want to go deeper.
 
-• Your full order record as the canonical attribution unit — when the pixel misses a touch (UTM stripped, session expired, iOS dropped it), the order fills the gap.
+• Answer once, for everyone. The question and the number land in the same place, so nobody has to relay a screenshot or repeat themselves in three places.
 
-• 5 attribution models — first-touch, last-touch, linear, time-decay, position-based — recalculated at query time.
+• It stays quiet. It speaks when you mention it or message it directly, and it only sees the channels you invite it to.
 
-• Numbers that reconcile to your store and to your ad platform reports. Read the config yourself; there is no proprietary math to take on faith.
+Bratrax connects to:
 
-CONNECTS TO
+Stores — Shopify, WooCommerce, Amazon Seller Central
+Advertising — Meta, Google Ads, TikTok, Microsoft Bing, Pinterest, Amazon Ads, Taboola, Outbrain
+Email and SMS — Klaviyo, Bloomreach
+Landing pages — external page builders, including Funnelish
 
-Stores: Shopify (including Shopify-native subscriptions) and WooCommerce, plus external landing pages and Funnelish funnels via the pixel.
+More are added regularly.
 
-Ads: Meta, Google Ads, TikTok Ads, Microsoft/Bing Ads, Pinterest Ads, Taboola, Outbrain.
+To set up: create a Bratrax account and connect your store, then open Settings → Slack and authorize the app. The bot is in your workspace a few clicks later.
 
-Email, SMS and CRM: Klaviyo, Bloomreach.
-
-SETUP
-
-Connect your Bratrax account first, then add Slack from Settings → Slack — one click, and the bot is in your workspace. Mention @bratrax in any channel or DM it directly.
-
-On Shopify, tracking sets itself up; no manual pixel install. On WooCommerce, you authorize the store API and install our WordPress plugin, and onboarding walks you through both. Either way, a full year of store history backfills in the background.
-
-PRICING
-
-Requires a Bratrax account. Bratrax Lite is $99/mo flat — the same bill at $500K GMV or $20M. No contract, no GMV scaling, no token markup.
+Requires a Bratrax account ($99/mo flat, no GMV scaling). Answers are generated by a large language model and can be wrong — every answer links back to the dashboard it came from, so you can check the number before you act on it. Slack's split-view assistant panel requires a paid Slack plan; on a free plan you can still mention @bratrax in any channel or send it a direct message.
 ```
 
 ### The rest
