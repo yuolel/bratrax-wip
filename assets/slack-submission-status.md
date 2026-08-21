@@ -1,7 +1,7 @@
 # Slack Marketplace submission — outstanding items
 
 **Status:** Not submitted. Listing filled in; nine items open.
-**Last checked:** 2026-08-14 against `VidTao/bratrax` `main` @ `0962068d2`, and against Slack's published Marketplace guidelines.
+**Last checked:** 2026-08-19 against `VidTao/bratrax` `main` @ `48ba046f1`, and against Slack's published Marketplace guidelines.
 
 Working reference for the fields themselves: [`slack-submission-form.md`](slack-submission-form.md).
 
@@ -17,11 +17,13 @@ Working reference for the fields themselves: [`slack-submission-form.md`](slack-
 
 ## Open — nine items
 
-### 1. Agents migration ⚠️ do first — dev handover written: [slack-dev-handover.md](slack-dev-handover.md)
-Slack is deprecating the `assistant_view` experience Bratrax is built on. **Update Now is one-way and permanent per app**, and it changes the events the bot runs on — `assistant_thread_started`, which drives our suggested prompts, goes away. Needs a developer, not a click. Full brief with file-and-line touchpoints, ordering, and a test plan: **[slack-dev-handover.md](slack-dev-handover.md)**.
+### 1. Agents migration — ✅ code done, Slack-side action pending
+A developer completed the code migration on 2026-08-17 (`a95a62220`): `assistant_view` → `agent_view`, `app_home_opened` and `app_context_changed` handlers added, and the old `assistant_thread_*` handlers deliberately **kept alongside** them so the app works on both experiences during the transition.
 
-### 2. Scope reasons — 18 required, 0 written
-Submission step 2 shows *"Please add reasons for your app to request this scope"* against every scope. All 18 need a written justification via **Manage Reasons**. Not optional; Slack reviews the reasons as well as the scopes.
+**What remains is on the Slack side:** click **Update Now** on Features → Agents. Still one-way and permanent per app — do it on a dev app first, then diff Slack's regenerated manifest against `slack/manifest.yaml` and let Slack's version win on conflicts. The manifest carries an in-file comment saying it is provisional until then. See [slack-dev-handover.md](slack-dev-handover.md).
+
+### 2. Scope reasons — now 16, not 18
+`links:read` and `links:write` were removed in `a95a62220` along with the `link_shared` subscription, so the list is **16**. The two rows disappear from the form once the manifest change reaches the Slack app config. Every remaining scope needs a written justification via **Manage Reasons** — Slack reviews the reasons as well as the scopes, and the rule is to explain *how the app uses it*, not what the scope does.
 
 Can be drafted from the code — the three that usually draw questions are already answered in `slack-submission-form.md`:
 
@@ -43,8 +45,8 @@ Submission step 4 (locked until 2 and 3 are done). Needs an **admin**-role accou
 ### 6. Install count — threshold now confirmed
 The guidelines list as unsuitable any app *"installed on less than 5 active workspaces and have less than 10 weekly active users."* Active workspaces are ones used in the past 28 days, sandboxes excluded. So the bar is **5 active workspaces and 10 weekly active users** — not the "roughly 10 installs" recorded earlier. Now that customers can self-connect this should climb on its own; check the real number before submitting.
 
-### 7. Two disclaimers required — not yet written
-The AI guidelines require both on the **landing page and in the long description**: that the app uses an LLM and can generate inaccurate output, and that a **paid Slack plan** is needed for the AI agent container (with a note that other features still work on free plans). Neither exists today.
+### 7. Two disclaimers — ✅ on `/slack`, still to paste into the listing
+Both now live on the landing page as a "Before you rely on it" band. The same two paragraphs still need to go into the Slack **long description** — the guidelines require them in both places. Text is in the rewritten description.
 
 ### 8. Enhanced review is guaranteed — prepare for it
 Requesting `*:history` and `files:read` automatically triggers Slack's enhanced review. We already meet the standard it tests against — their rule is *"DON'T store any Slack data you obtain. Store metadata instead and pull in data in real time, i.e. zero-copy"* — which is exactly the architecture. Four AI disclosures are also required in Security & Compliance: model used, retention and how the LLM uses the data, LLM data tenancy, LLM data residency.
@@ -53,17 +55,20 @@ Requesting `*:history` and `files:read` automatically triggers Slack's enhanced 
 - **Short description** should be 10 words or fewer; the current one is about 14.
 - **Long description** should use Slack message formatting — bold headings rather than the CAPS currently in place.
 - **Add a collaborator** to the app; required before approval.
-- **Respond to `help`** in the agent container — a guideline requirement and a code gap. Covered in the dev handover.
+- ~~**Respond to `help`**~~ — ✅ done in `a95a62220`. `_is_help_request` matches a bare "help" only, deliberately not a substring, so "help me find my best campaign" still goes to the assistant.
 
 ---
 
-## Verified against current code (2026-08-11)
+## Verified against current code (2026-08-19)
 
-Re-checked after the product repo moved 74 commits. Nothing changed that affects any published claim:
+Re-checked at `main` @ `48ba046f1`:
 
-- **18 bot scopes** — same set as the manifest.
+- **16 bot scopes** — `links:read` and `links:write` removed in `a95a62220`.
 - **7-tool read-only MCP allowlist** — `query_sql` and `workshop_write_knowledge` still excluded.
 - **Four Slack tables** — `slack_installations`, `slack_oauth_states`, `slack_channel_links`, `slack_link_codes`. No message-content column; the only writes are installations and channel links.
 - **No scheduler** — the assistant is still strictly reactive. No alerts, no digests.
+- **Events migrated** — `app_mention`, `app_uninstalled`, `app_context_changed`, `app_home_opened`, `message.im`, `tokens_revoked`. `link_shared` gone.
+
+One inaccurate product claim was found and corrected in the listing copy: *"a first-party tracking pixel served from your own domain, so adblockers can't kill it."* Merchant-domain pixel serving is not implemented — the script loads from Bratrax-controlled hosts. The FAQ team removed the same sentence in `a2ea441` for this reason; the Slack listing still carried it.
 
 Re-run these checks before submitting if the repo moves again; the privacy policy and FAQ both depend on them.
