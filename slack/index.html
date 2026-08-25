@@ -156,6 +156,8 @@
     color: rgba(212,255,0,0.7);
     margin-bottom: 24px;
   }
+  .eyebrow-slack { display: inline-flex; align-items: center; gap: 9px; }
+  .eyebrow-slack svg { flex: 0 0 16px; }
   .serif-accent {
     font-family: 'DM Serif Display', Georgia, serif;
     font-style: italic;
@@ -212,29 +214,57 @@
     text-align: center;
   }
 
+  /* Full width inside the wrap, for the one screenshot that has to be read
+     rather than recognised. */
+  .figure-wide { max-width: 100%; }
+
+  .steps-row {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 2px; margin-top: 40px;
+  }
+  .step-h {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 24px 26px 26px;
+  }
+  .step-n {
+    font-family: 'Space Mono', monospace;
+    font-size: 20px; font-weight: 700; color: var(--color-acid);
+    display: block; margin-bottom: 12px;
+  }
+  .step-h h3 { font-size: 17px; margin: 0 0 8px; }
+  .step-h p { font-size: 15px; margin: 0; }
+
   /* ─────────── CAROUSEL ─────────── */
   /* Built on native scroll-snap, not a library. Without JS the track is still
      a scrollable, swipeable row of cards — the buttons and dots only enhance
      it. That matters here: this page is served into an <iframe srcdoc>, and a
      dependency that failed to load would leave a dead frame where the product
      tour should be. */
-  .carousel { position: relative; margin-top: 40px; }
+  /* Full-bleed: the carousel is a direct child of <section>, outside .wrap, so
+     it gets the page width without any 100vw arithmetic — and 100vw would be
+     wrong here anyway, since it counts the vertical scrollbar and would push
+     the track a few pixels wide. The side padding centres the active slide and
+     leaves its neighbours half-visible at the edges, which is what tells a
+     reader there is more to see. */
+  .carousel { --slide-w: min(860px, 84vw); position: relative; margin-top: 40px; }
   .track {
     display: flex;
-    gap: 24px;
+    gap: 28px;
     overflow-x: auto;
     scroll-snap-type: x mandatory;
     scroll-behavior: smooth;
     scrollbar-width: none;
-    padding-bottom: 4px;
+    padding: 0 calc((100% - var(--slide-w)) / 2) 4px;
   }
   .track::-webkit-scrollbar { display: none; }
   .slide {
-    flex: 0 0 100%;
+    flex: 0 0 var(--slide-w);
     scroll-snap-align: center;
-    max-width: 900px;
-    margin: 0 auto;
+    transition: opacity 0.4s;
   }
+  /* The off-centre slides recede so the eye lands on the active one. */
+  .slide[data-active="false"] { opacity: 0.35; }
   .slide img { display: block; width: 100%; height: auto; }
   .slide figcaption {
     font-family: 'Space Mono', monospace;
@@ -398,7 +428,8 @@
 
   /* ─────────── RESPONSIVE ─────────── */
   @media (max-width: 900px) {
-    .split, .zig { grid-template-columns: 1fr; gap: 40px; }
+    .split, .zig, .steps-row { grid-template-columns: 1fr; gap: 40px; }
+    .steps-row { gap: 2px; }
     .zig-flip > :first-child { order: 0; }
     .asks { grid-template-columns: 1fr; }
     .hero-sub { max-width: none; }
@@ -452,14 +483,25 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero-head">
-      <span class="eyebrow">Bratrax for Slack</span>
+      <!-- Slack's own mark, inline. Their brand guidelines allow it to show an
+           integration; it is not recoloured or altered, which they do not. -->
+      <span class="eyebrow eyebrow-slack">
+        <svg viewBox="0 0 122.8 122.8" width="16" height="16" aria-hidden="true" focusable="false">
+          <path d="M25.8 77.6c0 7.1-5.8 12.9-12.9 12.9S0 84.7 0 77.6s5.8-12.9 12.9-12.9h12.9v12.9zM32.3 77.6c0-7.1 5.8-12.9 12.9-12.9s12.9 5.8 12.9 12.9v32.3c0 7.1-5.8 12.9-12.9 12.9s-12.9-5.8-12.9-12.9V77.6z" fill="#E01E5A"/>
+          <path d="M45.2 25.8c-7.1 0-12.9-5.8-12.9-12.9S38.1 0 45.2 0s12.9 5.8 12.9 12.9v12.9H45.2zM45.2 32.3c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9H12.9C5.8 58.1 0 52.3 0 45.2s5.8-12.9 12.9-12.9h32.3z" fill="#36C5F0"/>
+          <path d="M97 45.2c0-7.1 5.8-12.9 12.9-12.9s12.9 5.8 12.9 12.9-5.8 12.9-12.9 12.9H97V45.2zM90.5 45.2c0 7.1-5.8 12.9-12.9 12.9s-12.9-5.8-12.9-12.9V12.9C64.7 5.8 70.5 0 77.6 0s12.9 5.8 12.9 12.9v32.3z" fill="#2EB67D"/>
+          <path d="M77.6 97c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9-12.9-5.8-12.9-12.9V97h12.9zM77.6 90.5c-7.1 0-12.9-5.8-12.9-12.9s5.8-12.9 12.9-12.9h32.3c7.1 0 12.9 5.8 12.9 12.9s-5.8 12.9-12.9 12.9H77.6z" fill="#ECB22E"/>
+        </svg>
+        Bratrax for Slack
+      </span>
       <h1>Your numbers, <span class="serif-accent">in the channel</span> where the decision gets made.</h1>
     </div>
     <p class="hero-sub">
-      Somebody asks why ROAS dropped. You go and find out, come back, and by
-      then the thread has moved on. <strong>Ask Bratrax in the channel instead
-      and the answer lands where the question was asked</strong> — the number,
-      what moved it, and a chart everyone can see at the same time.
+      Somebody asks why ROAS dropped. Type
+      <span class="mention">@bratrax</span> and the answer lands right there in
+      the thread — the number, what moved it, and a chart everyone can see at
+      the same time. <strong>No dashboard, no screenshot, no
+      &ldquo;give me a minute.&rdquo;</strong>
     </p>
     <div class="hero-cta">
       <a href="https://bratrax.com/settings/slack" class="btn btn-primary btn-large btn-arrow">Connect your workspace</a>
@@ -478,13 +520,16 @@
 <section class="band">
   <div class="wrap">
     <span class="section-label">In the channel</span>
-    <h2>Stop being the person who <span class="serif-accent">goes and checks.</span></h2>
-    <p style="font-size:18px;max-width:60ch">
-      Export the CSV, paste it somewhere, squint, then type the answer back into
-      the channel. That round trip is the job Bratrax takes off you.
+    <h2>Everything you'd open Bratrax for, <span class="serif-accent">without opening Bratrax.</span></h2>
+    <p style="font-size:18px;max-width:62ch">
+      Ask in the channel and the answer comes back already narrowed to what you
+      asked — the range, the channel, the campaign. Want it tighter? Ask again.
+      Nobody screenshots a dashboard, nobody re-crops a chart, and nobody leaves
+      the conversation to go and look.
     </p>
+  </div>
 
-    <div class="carousel">
+  <div class="carousel">
       <div class="track" id="track" tabindex="0" role="group" aria-label="What the assistant does in Slack">
         <!-- Ordered the way you meet the app: the empty DM on install, then the
              charts, then the tables, then the follow-up you only think to ask
@@ -525,11 +570,10 @@
         </figure>
       </div>
 
-      <div class="carousel-nav">
-        <button class="c-btn" id="prev" type="button" aria-label="Previous">&larr;</button>
-        <div class="dots" id="dots" role="tablist" aria-label="Choose a slide"></div>
-        <button class="c-btn" id="next" type="button" aria-label="Next">&rarr;</button>
-      </div>
+    <div class="carousel-nav">
+      <button class="c-btn" id="prev" type="button" aria-label="Previous">&larr;</button>
+      <div class="dots" id="dots" role="tablist" aria-label="Choose a slide"></div>
+      <button class="c-btn" id="next" type="button" aria-label="Next">&rarr;</button>
     </div>
   </div>
 </section>
@@ -538,10 +582,11 @@
 <section class="band">
   <div class="wrap">
     <span class="section-label">What to ask it</span>
-    <h2>The questions you'd rather not <span class="serif-accent">wait for.</span></h2>
-    <p style="font-size:17px;max-width:56ch;margin-bottom:4px">
-      Deliberately not the ones in the tour above — these are the awkward ones,
-      the kind that usually mean opening three tabs.
+    <h2>The questions that used to <span class="serif-accent">take all afternoon.</span></h2>
+    <p style="font-size:17px;max-width:58ch;margin-bottom:4px">
+      Not lookups — the questions where you'd normally cross-reference two
+      dashboards and a spreadsheet before you could answer. One line, one
+      answer, in the thread.
     </p>
     <!-- Kept clear of the questions shown in the carousel: repeating them makes
          the page look like it can answer six things. -->
@@ -560,44 +605,36 @@
 <section class="band" id="how">
   <div class="wrap">
     <span class="section-label">Setup</span>
-    <h2>One minute now. <span class="serif-accent">Every answer after that.</span></h2>
+    <h2>Three steps between you and <span class="serif-accent">asking in the channel.</span></h2>
 
-    <div class="zig" style="margin-top:36px">
-      <div>
-    <div class="steps" style="margin-top:0">
-      <div class="step">
-        <div>
-          <h3>Connect your store to Bratrax</h3>
-          <p>On Shopify, tracking sets itself up — no manual pixel install. On WooCommerce, you authorize the store API and install our WordPress plugin; onboarding walks you through both. A full year of store history backfills in the background.</p>
-        </div>
+    <!-- Screenshot first and full width, steps underneath as a row. Beside the
+         steps at half width the settings capture was too small to read, which
+         defeats the only reason it is here: showing where the button is. -->
+    <figure class="figure figure-wide">
+      <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-connect.png"
+           width="1600" height="1000" loading="lazy"
+           alt="Connect it from your settings. The Bratrax app with the Settings menu open and Slack highlighted; the Slack tab shows the connected workspace and a button to connect another one.">
+    </figure>
+
+    <div class="steps-row">
+      <div class="step-h">
+        <span class="step-n">01</span>
+        <h3>Connect your store</h3>
+        <p>On Shopify, tracking sets itself up — no manual pixel install. On WooCommerce you authorize the store API and install our plugin. A full year of history backfills in the background.</p>
       </div>
-      <div class="step">
-        <div>
-          <h3>Add Slack from Settings &rarr; Slack</h3>
-          <p>One click takes you to Slack's approval screen and back. The connection is scoped to your workspace and your account — nobody else's data is reachable from it.</p>
-        </div>
+      <div class="step-h">
+        <span class="step-n">02</span>
+        <h3>Add Slack from Settings</h3>
+        <p>One click takes you to Slack's approval screen and back. The connection is scoped to your workspace and your account — nobody else's data is reachable from it.</p>
       </div>
-      <div class="step">
-        <div>
-          <h3>Invite <span class="mention">@bratrax</span> to a channel, or DM it</h3>
-          <p>It answers when mentioned or messaged directly, and it only reads conversations it's part of. It never posts on its own.</p>
-        </div>
+      <div class="step-h">
+        <span class="step-n">03</span>
+        <h3>Invite it, and ask</h3>
+        <p>Mention <span class="mention">@bratrax</span> in any channel or send it a direct message. It reads only the conversations it is part of, and never posts on its own.</p>
       </div>
     </div>
 
-      <p style="margin-top:20px;font-size:15px;color:var(--color-text-muted)">
-      Setup starts inside Bratrax, not in Slack — the connection has to know which
-      store it's answering for.
-    </p>
-      </div>
-      <figure class="figure">
-        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-connect.png"
-             width="1600" height="1000" loading="lazy"
-             alt="Connect it from your settings. The Bratrax app with the Settings menu open and Slack highlighted; the Slack tab shows the connected workspace and a button to connect another one.">
-      </figure>
-    </div>
-
-    <div class="hero-cta" style="margin-top:36px">
+    <div class="hero-cta" style="margin-top:40px;justify-content:center">
       <a href="https://bratrax.com/settings/slack" class="btn btn-primary btn-large btn-arrow">Connect your workspace</a>
     </div>
   </div>
@@ -608,10 +645,11 @@
   <div class="wrap split">
     <div>
       <span class="section-label">What it reaches</span>
-      <h2>Everything Bratrax <span class="serif-accent">already knows.</span></h2>
+      <h2>If it's on a dashboard, <span class="serif-accent">you can just ask.</span></h2>
       <p style="font-size:16px">
-        The assistant reads the same data as your dashboards — so anything you've
-        connected is answerable in the channel.
+        The assistant reads exactly what your dashboards read. Connect a
+        platform and its numbers are answerable in the channel the same day —
+        nothing extra to set up.
       </p>
 
       <!-- Grouped to match the Marketplace listing. Only add a chip for a
@@ -659,7 +697,12 @@
 
     <div>
       <span class="section-label">What it won't do</span>
-      <h2>Read-only, <span class="serif-accent">by design.</span></h2>
+      <h2>It answers questions. <span class="serif-accent">It won't break anything.</span></h2>
+      <p style="font-size:16px;margin-bottom:26px">
+        It can pull any number in your account in seconds, and it cannot change
+        a single one — not your data, not your store, not your ad accounts. It
+        only ever sees the channels you invite it into.
+      </p>
       <ul class="facts">
         <li><strong>It can't change anything.</strong> The assistant can query your metrics and read your dashboards. It cannot write to your data, your store, or your ad accounts.</li>
         <li><strong>It only sees channels it's in.</strong> Channels it's been invited to, and DMs sent to it. Nothing else in your workspace.</li>
@@ -690,31 +733,15 @@
   </div>
 </section>
 
-<!-- ─────────── PRICING ─────────── -->
-<section class="band band-tight">
-  <div class="wrap">
-    <span class="section-label">Pricing</span>
-    <h2>You already <span class="serif-accent">pay for this.</span></h2>
-    <p style="font-size:18px;max-width:62ch">
-      The Slack assistant is part of every Bratrax plan. There is no Slack tier,
-      no per-seat charge, and no metered bill for the questions your team asks —
-      invite the whole company to the channel and the price does not move.
-    </p>
-    <p style="font-size:18px;max-width:62ch">
-      Bratrax Lite is <strong style="color:var(--color-text-bright)">$99/mo flat</strong>:
-      the same bill at $500K GMV or $20M. No contract, no GMV scaling.
-    </p>
-  </div>
-</section>
-
 <!-- ─────────── CLOSER ─────────── -->
 <section class="closer">
   <div class="wrap">
     <span class="eyebrow">Already in your plan</span>
     <h2>The next time someone asks, <span class="serif-accent">just answer.</span></h2>
     <p>
-      It is sitting in your settings waiting to be switched on. About a minute,
-      and you never have to go and check again.
+      The assistant comes with every Bratrax plan — no Slack tier, no per-seat
+      charge, no bill that grows with the questions your team asks. It is
+      sitting in your settings waiting to be switched on.
     </p>
     <div class="closer-cta">
       <a href="https://bratrax.com/settings/slack" class="btn btn-primary btn-large btn-arrow">Connect your workspace</a>
@@ -796,8 +823,56 @@
       for (var j = 0; j < all.length; j++) {
         all[j].setAttribute('aria-current', j === n ? 'true' : 'false');
       }
-      prev.disabled = n <= 0;
-      next.disabled = n >= slides.length - 1;
+      for (var k = 0; k < slides.length; k++) {
+        slides[k].setAttribute('data-active', k === n ? 'true' : 'false');
+      }
+      // Not disabled any more: autoplay wraps around, so there is always a
+      // next slide, and a button that greys out halfway through would say
+      // otherwise.
+      prev.disabled = false;
+      next.disabled = false;
+    }
+
+    // Autoplay. The arrows alone did not say "there is more here" loudly
+    // enough; motion does.
+    var ADVANCE = 5200;
+    var timer = null;
+    var still = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+    function tick() {
+      var n = index();
+      go(n >= slides.length - 1 ? 0 : n + 1);
+    }
+    function play() {
+      // Honour reduced-motion: those readers get the arrows and dots only.
+      if (timer || still.matches) return;
+      timer = setInterval(tick, ADVANCE);
+    }
+    function pause() {
+      clearInterval(timer);
+      timer = null;
+    }
+    // Hovering, or tabbing in, means someone is reading this slide — leave it
+    // alone until they move on.
+    var root = track.parentNode;
+    root.addEventListener('mouseenter', pause);
+    root.addEventListener('mouseleave', play);
+    root.addEventListener('focusin', pause);
+    root.addEventListener('focusout', play);
+    // Any deliberate move restarts the clock rather than fighting it.
+    root.addEventListener('pointerdown', function () { pause(); });
+    root.addEventListener('pointerup', function () { play(); });
+    // Off-screen carousels should not run; it burns battery and the reader
+    // returns to a slide they never chose.
+    if ('IntersectionObserver' in window) {
+      new IntersectionObserver(function (entries) {
+        entries[0].isIntersecting ? play() : pause();
+      }, { threshold: 0.35 }).observe(root);
+    } else {
+      play();
+    }
+    if (still.addEventListener) {
+      still.addEventListener('change', function () { still.matches ? pause() : play(); });
     }
     // Driven by scroll, not by the buttons, so dragging and swiping keep the
     // dots honest too.
