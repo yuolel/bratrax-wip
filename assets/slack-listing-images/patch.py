@@ -296,7 +296,7 @@ JOBS = [
     ),
 ]
 
-if __name__ == "__main__":
+def main() -> None:
     originals = HERE / "originals"
     shots = HERE / "shots"
     shots.mkdir(exist_ok=True)
@@ -316,10 +316,17 @@ if __name__ == "__main__":
     # The Bratrax settings captures carry no Slack chrome — only the account
     # chip in the header needs the initial swapped. Both themes render that chip
     # in the same violet, so one colour serves both.
+    # These two originals are deliberately NOT committed: they show an internal
+    # admin address, and this repository is public. Their anonymised results in
+    # shots/ are committed instead, so the page still builds from a clean clone;
+    # drop the raw captures back in to re-run this step.
     for theme in ("light", "dark"):
+        raw = originals / f"raw-settings-{theme}.png"
+        if not raw.exists():
+            print(f"  raw-settings-{theme}.png absent — keeping the committed shot")
+            continue
         patch_account_chip(
-            originals / f"raw-settings-{theme}.png",
-            shots / f"shot-settings-{theme}.png",
+            raw, shots / f"shot-settings-{theme}.png",
             search=(1740, 0, 1832, 70), fill=(86, 85, 255),
         )
 
@@ -336,6 +343,9 @@ if __name__ == "__main__":
     # connected itself to their Slack — the opposite of true, and a bad thing to
     # imply in a product whose whole pitch is trustworthy handling of your data.
     p = shots / "shot-settings-dark.png"
+    if not (originals / "raw-settings-dark.png").exists():
+        print("  shot-settings-dark.png already anonymised — nothing to redo")
+        return
     im = Image.open(p).convert("RGB")
     card_bg = im.getpixel((520, 660))                      # clear of any text
     name_ink = brightest_ink(im, (496, 742, 580, 770))     # a workspace name
@@ -378,3 +388,7 @@ if __name__ == "__main__":
     prompts = Image.open(originals / "raw-prompts.png").convert("RGB")
     prompts.crop((0, 0, 1400, 668)).save(shots / "shot-prompts.png", "PNG")
     print("  shot-prompts.png: cropped to 1400x668 (trimmed clipped element)")
+
+
+if __name__ == "__main__":
+    main()
