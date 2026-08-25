@@ -247,22 +247,26 @@
      the track a few pixels wide. The side padding centres the active slide and
      leaves its neighbours half-visible at the edges, which is what tells a
      reader there is more to see. */
+  /* Positioned with transform, not scrollLeft.
+     The first build used an overflow-x scroll container with scroll-snap, and
+     autoplay never moved it. Measured in a harness reproducing the live
+     <iframe srcdoc>: the track reported clientWidth 1440 against scrollWidth
+     5392, so it was genuinely scrollable, yet assigning scrollLeft read back
+     unchanged — with snap on and with snap off, smooth and instant alike.
+     Rather than keep chasing a scroll container that will not scroll, the track
+     is moved by transform, which is a style: it either applies or it does not,
+     and it can be verified by reading it back. Swipe is kept by hand below. */
   .carousel { --slide-w: min(860px, 84vw); position: relative; margin-top: 40px; }
+  .viewport { overflow: hidden; }
   .track {
     display: flex;
     gap: 28px;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-    scrollbar-width: none;
-    padding: 0 calc((100% - var(--slide-w)) / 2) 4px;
+    padding: 0 calc((100% - var(--slide-w)) / 2);
+    transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    touch-action: pan-y;
   }
-  .track::-webkit-scrollbar { display: none; }
-  .slide {
-    flex: 0 0 var(--slide-w);
-    scroll-snap-align: center;
-    transition: opacity 0.4s;
-  }
+  .slide { flex: 0 0 var(--slide-w); transition: opacity 0.4s; }
   /* The off-centre slides recede so the eye lands on the active one. */
   .slide[data-active="false"] { opacity: 0.35; }
   .slide img { display: block; width: 100%; height: auto; }
@@ -287,8 +291,6 @@
     transition: border-color 0.2s, color 0.2s;
   }
   .c-btn:hover { border-color: var(--color-acid-mid); color: var(--color-acid); }
-  .c-btn:disabled { opacity: 0.3; cursor: default; }
-  .c-btn:disabled:hover { border-color: var(--color-border); color: var(--color-text); }
   .dots { display: flex; gap: 8px; }
   .dot {
     width: 8px; height: 8px; padding: 0;
@@ -297,6 +299,7 @@
     transition: background 0.2s;
   }
   .dot[aria-current="true"] { background: var(--color-acid); }
+  @media (prefers-reduced-motion: reduce) { .track { transition: none; } }
 
   /* ─────────── ZIGZAG ─────────── */
   /* Text one side, picture the other, sides swapped on the second instance.
@@ -530,6 +533,7 @@
   </div>
 
   <div class="carousel">
+      <div class="viewport">
       <div class="track" id="track" tabindex="0" role="group" aria-label="What the assistant does in Slack">
         <!-- Ordered the way you meet the app: the empty DM on install, then the
              charts, then the tables, then the follow-up you only think to ask
@@ -569,6 +573,7 @@
           <figcaption>&ldquo;And just for Facebook?&rdquo; works. The thread remembers what you were on about.</figcaption>
         </figure>
       </div>
+    </div>
 
     <div class="carousel-nav">
       <button class="c-btn" id="prev" type="button" aria-label="Previous">&larr;</button>
@@ -619,18 +624,18 @@
     <div class="steps-row">
       <div class="step-h">
         <span class="step-n">01</span>
-        <h3>Connect your store</h3>
-        <p>On Shopify, tracking sets itself up — no manual pixel install. On WooCommerce you authorize the store API and install our plugin. A full year of history backfills in the background.</p>
+        <h3>Set up Bratrax</h3>
+        <p>Create your account, connect your store, and connect the ad platforms you spend on. That is the part that takes the longest, and you only do it once.</p>
       </div>
       <div class="step-h">
         <span class="step-n">02</span>
         <h3>Add Slack from Settings</h3>
-        <p>One click takes you to Slack's approval screen and back. The connection is scoped to your workspace and your account — nobody else's data is reachable from it.</p>
+        <p>One click takes you to Slack's approval screen and back again. That is the whole of it — no keys to copy, nothing to configure.</p>
       </div>
       <div class="step-h">
         <span class="step-n">03</span>
-        <h3>Invite it, and ask</h3>
-        <p>Mention <span class="mention">@bratrax</span> in any channel or send it a direct message. It reads only the conversations it is part of, and never posts on its own.</p>
+        <h3>Ask, wherever you already are</h3>
+        <p>Mention <span class="mention">@bratrax</span> in any channel, or send it a direct message. Answers land in the same thread, so the numbers stay with the conversation that needed them.</p>
       </div>
     </div>
 
@@ -647,7 +652,7 @@
       <span class="section-label">What it reaches</span>
       <h2>If it's on a dashboard, <span class="serif-accent">you can just ask.</span></h2>
       <p style="font-size:16px">
-        The assistant reads exactly what your dashboards read. Connect a
+        <span class="mention">@bratrax</span> reads exactly what your dashboards read. Connect a
         platform and its numbers are answerable in the channel the same day —
         nothing extra to set up.
       </p>
@@ -692,12 +697,20 @@
           <span class="chip">External page builders</span>
         </div>
       </div>
-      <p style="font-size:14px;color:var(--color-text-muted);margin:0">More are added regularly.</p>
+      <p style="font-size:14px;color:var(--color-text-muted);margin:0 0 30px">More are added regularly.</p>
+
+      <div class="notes">
+        <p><strong>* It can be wrong.</strong> Answers are generated by a large
+        language model. It can misread a question, reach for the wrong date
+        range, or state a number with more confidence than it has earned. Every
+        answer carries a link into the dashboard it came from &mdash; check
+        anything you're about to act on.</p>
+      </div>
     </div>
 
     <div>
       <span class="section-label">What it won't do</span>
-      <h2>It answers questions. <span class="serif-accent">It won't break anything.</span></h2>
+      <h2>It won't break anything.</h2>
       <p style="font-size:16px;margin-bottom:26px">
         It can pull any number in your account in seconds, and it cannot change
         a single one — not your data, not your store, not your ad accounts. It
@@ -715,20 +728,6 @@
         Full detail in the <a href="https://bratrax.com/privacy-policy" style="color:var(--color-acid);border-bottom:1px solid var(--color-acid-mid)">privacy policy</a>
         and the <a href="https://bratrax.com/faq#slack" style="color:var(--color-acid);border-bottom:1px solid var(--color-acid-mid)">Slack FAQ</a>.
       </p>
-    </div>
-  </div>
-</section>
-
-<!-- ─────────── DISCLAIMERS ─────────── -->
-<!-- Required by Slack's Marketplace guidelines (AI components + Agent/Assistant
-     UI): the LLM-accuracy notice and the paid-Slack-plan notice must appear on
-     the landing page AND in the listing's long description. Keep both. -->
-<section class="band band-tight">
-  <div class="wrap">
-    <span class="section-label">Before you rely on it</span>
-    <div class="notes">
-      <p><strong>It can be wrong.</strong> Answers are generated by a large language model. It can misread a question, reach for the wrong date range, or state a number with more confidence than it has earned. Every answer carries a link into the dashboard it came from &mdash; check anything you're about to act on.</p>
-      <p><strong>The split-view assistant panel needs a paid Slack plan.</strong> That's Slack's requirement, not ours. On a free plan you can still mention <span class="mention">@bratrax</span> in any channel or send it a direct message &mdash; it answers the same way.</p>
     </div>
   </div>
 </section>
@@ -772,9 +771,9 @@
   </footer>
 </div>
 <script>
-  // Carousel. Progressive enhancement only — without this the track is still a
-  // swipeable, scrollable row, so a script error degrades to a usable page
-  // rather than a broken one.
+  // Carousel. Transform-positioned: `i` is the active slide and the track is
+  // moved to match. Without JS the slides simply sit in a row, which is a
+  // legible fallback rather than a broken one.
   (function () {
     var track = document.getElementById('track');
     var dots = document.getElementById('dots');
@@ -782,107 +781,88 @@
     var slides = track.querySelectorAll('.slide');
     if (slides.length < 2) return;
 
-    // Measured from the DOM rather than assumed: the slide is a percentage of
-    // the track and the gap is a CSS value, so both change with the viewport.
-    function step() {
-      return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth;
+    var i = 0;
+
+    // Measured, not assumed: slide width is a clamp against the viewport and
+    // the gap is a CSS value, so both change as the window resizes.
+    function stepPx() {
+      return slides[1].offsetLeft - slides[0].offsetLeft;
     }
-    function index() {
-      return Math.round(track.scrollLeft / step());
+    function render() {
+      track.style.transform = 'translateX(' + (-i * stepPx()) + 'px)';
+      for (var j = 0; j < slides.length; j++) {
+        slides[j].setAttribute('data-active', j === i ? 'true' : 'false');
+      }
+      var all = dots.children;
+      for (var k = 0; k < all.length; k++) {
+        all[k].setAttribute('aria-current', k === i ? 'true' : 'false');
+      }
     }
-    function go(i) {
-      track.scrollTo({ left: Math.max(0, Math.min(slides.length - 1, i)) * step(), behavior: 'smooth' });
+    // Wraps, so there is always a next slide and the arrows never dead-end.
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      render();
     }
 
-    for (var i = 0; i < slides.length; i++) {
+    for (var d = 0; d < slides.length; d++) {
       (function (n) {
-        var d = document.createElement('button');
-        d.className = 'dot';
-        d.type = 'button';
-        d.setAttribute('role', 'tab');
-        d.setAttribute('aria-label', 'Slide ' + (n + 1) + ' of ' + slides.length);
-        d.addEventListener('click', function () { go(n); });
-        dots.appendChild(d);
-      })(i);
+        var b = document.createElement('button');
+        b.className = 'dot';
+        b.type = 'button';
+        b.setAttribute('role', 'tab');
+        b.setAttribute('aria-label', 'Slide ' + (n + 1) + ' of ' + slides.length);
+        b.addEventListener('click', function () { go(n); restart(); });
+        dots.appendChild(b);
+      })(d);
     }
 
-    var prev = document.getElementById('prev');
-    var next = document.getElementById('next');
-    prev.addEventListener('click', function () { go(index() - 1); });
-    next.addEventListener('click', function () { go(index() + 1); });
+    document.getElementById('prev').addEventListener('click', function () { go(i - 1); restart(); });
+    document.getElementById('next').addEventListener('click', function () { go(i + 1); restart(); });
 
-    // Arrow keys once the track has focus; it is tabbable for exactly this.
     track.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { e.preventDefault(); go(index() + 1); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); go(index() - 1); }
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1); restart(); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(i - 1); restart(); }
     });
 
-    function sync() {
-      var n = index();
-      var all = dots.children;
-      for (var j = 0; j < all.length; j++) {
-        all[j].setAttribute('aria-current', j === n ? 'true' : 'false');
+    // Swipe, since the track is no longer a native scroller. Threshold rather
+    // than live drag: it is a five-slide marketing carousel, not a gallery.
+    var startX = null;
+    track.addEventListener('pointerdown', function (e) { startX = e.clientX; pause(); });
+    track.addEventListener('pointerup', function (e) {
+      if (startX !== null) {
+        var dx = e.clientX - startX;
+        if (Math.abs(dx) > 50) go(dx < 0 ? i + 1 : i - 1);
       }
-      for (var k = 0; k < slides.length; k++) {
-        slides[k].setAttribute('data-active', k === n ? 'true' : 'false');
-      }
-      // Not disabled any more: autoplay wraps around, so there is always a
-      // next slide, and a button that greys out halfway through would say
-      // otherwise.
-      prev.disabled = false;
-      next.disabled = false;
-    }
+      startX = null;
+      play();
+    });
+    track.addEventListener('pointercancel', function () { startX = null; play(); });
 
-    // Autoplay. The arrows alone did not say "there is more here" loudly
-    // enough; motion does.
     var ADVANCE = 5200;
     var timer = null;
     var still = window.matchMedia('(prefers-reduced-motion: reduce)');
 
-    function tick() {
-      var n = index();
-      go(n >= slides.length - 1 ? 0 : n + 1);
-    }
     function play() {
-      // Honour reduced-motion: those readers get the arrows and dots only.
+      // Reduced-motion readers get the arrows, dots and swipe, but no motion
+      // they did not ask for.
       if (timer || still.matches) return;
-      timer = setInterval(tick, ADVANCE);
+      timer = setInterval(function () { go(i + 1); }, ADVANCE);
     }
-    function pause() {
-      clearInterval(timer);
-      timer = null;
-    }
-    // Hovering, or tabbing in, means someone is reading this slide — leave it
-    // alone until they move on.
-    var root = track.parentNode;
+    function pause() { clearInterval(timer); timer = null; }
+    function restart() { pause(); play(); }
+
+    // Hovering or tabbing in means someone is reading this slide.
+    var root = track.parentNode.parentNode;
     root.addEventListener('mouseenter', pause);
     root.addEventListener('mouseleave', play);
     root.addEventListener('focusin', pause);
     root.addEventListener('focusout', play);
-    // Any deliberate move restarts the clock rather than fighting it.
-    root.addEventListener('pointerdown', function () { pause(); });
-    root.addEventListener('pointerup', function () { play(); });
-    // Off-screen carousels should not run; it burns battery and the reader
-    // returns to a slide they never chose.
-    if ('IntersectionObserver' in window) {
-      new IntersectionObserver(function (entries) {
-        entries[0].isIntersecting ? play() : pause();
-      }, { threshold: 0.35 }).observe(root);
-    } else {
-      play();
-    }
-    if (still.addEventListener) {
-      still.addEventListener('change', function () { still.matches ? pause() : play(); });
-    }
-    // Driven by scroll, not by the buttons, so dragging and swiping keep the
-    // dots honest too.
-    var queued;
-    track.addEventListener('scroll', function () {
-      clearTimeout(queued);
-      queued = setTimeout(sync, 80);
-    });
-    window.addEventListener('resize', sync);
-    sync();
+
+    // Re-measure on resize: the step depends on the viewport.
+    window.addEventListener('resize', render);
+
+    render();
+    play();
   })();
 
   fetch('https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/partials/footer.html')
