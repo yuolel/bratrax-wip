@@ -18,13 +18,31 @@ explanation above it, and the full button row.
 Slack allows six. Four is a strong set; `05` overlaps `02` and sits smallest,
 so use it only to fill the gallery.
 
-## `email-connect-slack.png` is not a listing image
+## The `email-connect-slack-*` pair is not for the listing
 
-It shows the Bratrax web app, not Slack. Slack's image guidance is explicit —
+Both show the Bratrax web app, not Slack. Slack's image guidance is explicit —
 *"show your app/service in the context of Slack, not other tools your service
-may integrate with"* — and a submission can be returned over it. It is built
-here for the **customer email**, where pointing people at Settings → Slack is
-the entire job.
+may integrate with"* — and a submission can be returned over it. They are built
+for the **customer email**, where pointing people at Settings → Slack is the
+entire job.
+
+Two variants, and they are not the same screen in two themes:
+
+| File | Screen | Reads as |
+|---|---|---|
+| `email-connect-slack-light.png` | The Settings dropdown, with SLACK called out | Where to click |
+| `email-connect-slack-dark.png` | The Slack tab itself, connected workspaces and the connect button | Where you land |
+
+**The dark one is the stronger choice.** The app's light theme is a warm cream
+almost identical to the plate, so the capture dissolves into the background and
+only the hairline separates them; near-black against cream reads as an inset
+device. It also carries more of the story — the menu path *and* the destination,
+including the acid "connect another workspace" button.
+
+One thing to decide before sending: the dark capture shows
+`superadmin@bratrax.com` twice, in the "connected by" lines. It is a role
+account rather than a person, but it is an internal address going out to
+customers.
 
 ## Why real captures, not rebuilt ones
 

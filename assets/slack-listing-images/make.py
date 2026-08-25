@@ -148,9 +148,14 @@ IMAGES = [
         "shot-chart.png",
     ),
     (
-        "email-connect-slack",
+        "email-connect-slack-light",
         'Connect it from your <span class="pill">settings</span>',
-        "shot-settings-slack.png",
+        "shot-settings-light.png",
+    ),
+    (
+        "email-connect-slack-dark",
+        'Connect it from your <span class="pill">settings</span>',
+        "shot-settings-dark.png",
     ),
 ]
 

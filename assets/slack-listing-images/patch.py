@@ -201,7 +201,7 @@ JOBS = [
     ),
     (
         "raw-channel-trend.png", "shot-channel-trend.png",
-        [Occurrence(avatar=(28, 26, 84, 82), name_row=(84, 28, 520, 52),
+        [Occurrence(avatar=(10, 12, 62, 64), name_row=(64, 14, 470, 39),
                     timestamp="Yesterday at 1:48 PM")],
     ),
     (
@@ -228,21 +228,39 @@ if __name__ == "__main__":
     for src_name, dst_name, occs in JOBS:
         patch(originals / src_name, shots / dst_name, occs)
 
-    # Two captures caught the leading edge of the next message below the thread.
-    # Left in, that reads as a crop artefact rather than as part of the answer.
-    for name, keep_h in (("shot-follow-up.png", 590), ("shot-channel-trend.png", 793)):
-        p = shots / name
-        with Image.open(p) as im:
-            w = im.width
-            im.crop((0, 0, w, keep_h)).save(p, "PNG")
-        print(f"  {name}: trimmed to {w}x{keep_h} (next message peeking in)")
+    # The follow-up capture caught the leading edge of the next message below
+    # the thread. Left in, that reads as a crop artefact rather than as part of
+    # the answer. (channel-trend was re-cropped at source, so it needs nothing.)
+    p = shots / "shot-follow-up.png"
+    with Image.open(p) as im:
+        w = im.width
+        im.crop((0, 0, w, 590)).save(p, "PNG")
+    print(f"  shot-follow-up.png: trimmed to {w}x590 (next message peeking in)")
 
-    # The Bratrax settings capture carries no Slack chrome — only the account
-    # chip in its header needs the initial swapped.
-    patch_account_chip(
-        originals / "raw-settings-slack.png", shots / "shot-settings-slack.png",
-        search=(1750, 5, 1832, 70), fill=(86, 85, 255),
-    )
+    # The Bratrax settings captures carry no Slack chrome — only the account
+    # chip in the header needs the initial swapped. Both themes render that chip
+    # in the same violet, so one colour serves both.
+    for theme in ("light", "dark"):
+        patch_account_chip(
+            originals / f"raw-settings-{theme}.png",
+            shots / f"shot-settings-{theme}.png",
+            search=(1740, 0, 1832, 70), fill=(86, 85, 255),
+        )
+
+    # The dark capture ran on past the page and caught a half-drawn tooltip in
+    # the bottom 14px. Cutting there would leave the acid "connect another
+    # workspace" button — the actual call to action, and the reason this image
+    # exists — flush against the crop, so the page background is extended back
+    # underneath it instead. Only background is synthesised; no content moves.
+    p = shots / "shot-settings-dark.png"
+    with Image.open(p) as im:
+        w = im.width
+        body = im.crop((0, 0, w, 877))
+        bg = im.getpixel((60, 700))          # left margin, clear of the card
+        padded = Image.new("RGB", (w, 877 + 22), bg)
+        padded.paste(body, (0, 0))
+        padded.save(p, "PNG")
+    print(f"  shot-settings-dark.png: tooltip cut, background extended -> {w}x899")
 
     # No name or photo in the Messages-tab capture; it only needs the stray
     # half-rendered element at the bottom edge trimmed off.
