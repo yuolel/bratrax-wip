@@ -39,10 +39,15 @@ only the hairline separates them; near-black against cream reads as an inset
 device. It also carries more of the story — the menu path *and* the destination,
 including the acid "connect another workspace" button.
 
-One thing to decide before sending: the dark capture shows
-`superadmin@bratrax.com` twice, in the "connected by" lines. It is a role
-account rather than a person, but it is an internal address going out to
-customers.
+The connected-workspaces card in the dark capture is anonymised: the admin
+address becomes `you@yourcompany.com` in both rows and the first workspace
+becomes `Your Company`. The **Bratrax** workspace row is left alone — that name
+is the brand, and showing it is the point.
+
+Substituted rather than blurred. A blur reads as redaction, which is an odd
+thing to put in marketing copy; a placeholder reads as the illustration it is.
+`Your Company` is exactly as long as `Inceptly LLC`, so that line's width does
+not change at all.
 
 ## Why real captures, not rebuilt ones
 

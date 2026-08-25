@@ -156,6 +156,67 @@ def patch(src: Path, dst: Path, occurrences: list[Occurrence]) -> None:
     im.save(dst, "PNG")
 
 
+def bright_bbox(im: Image.Image, box, thresh: int = 90):
+    """Bounds of everything brighter than `thresh` inside `box`.
+
+    The inverse of tight_bbox, for the dark-theme app: there the text is light
+    on near-black rather than dark on white.
+    """
+    region = im.crop(box).convert("L")
+    bb = region.point(lambda p: 255 if p > thresh else 0).getbbox()
+    if bb is None:
+        raise ValueError(f"nothing brighter than {thresh} inside {box}")
+    return (box[0] + bb[0], box[1] + bb[1], box[0] + bb[2], box[1] + bb[3])
+
+
+def brightest_ink(im: Image.Image, box) -> tuple[int, int, int]:
+    """The lightest pixel in `box` — the core of a stroke.
+
+    Sampling a single guessed coordinate lands on an antialiased edge as often
+    as not, and on a subpixel-rendered screenshot those edges carry a blue or
+    orange fringe. Taking the brightest pixel finds solid ink instead.
+    """
+    region = im.crop(box).convert("RGB")
+    px = region.load()
+    return max(
+        (px[x, y] for x in range(region.width) for y in range(region.height)),
+        key=sum,
+    )
+
+
+def replace_mono_run(im: Image.Image, box, old: str, new: str, *, keep_prefix: str,
+                     bold: bool, bg, ink) -> None:
+    """Swap the tail of a monospaced line, leaving `keep_prefix` in place.
+
+    The app sets these in Space Mono, so the run's start is arithmetic rather
+    than a guess: fit the size to the measured line, then advance by the width
+    of the prefix.
+
+    Both the size and the vertical position are taken from the ORIGINAL string,
+    never the replacement. Size, because matching the rendered width of the text
+    actually on screen is the only calibration available. Position, because
+    aligning the new string's own box to the line's top would ride it up or down
+    by whatever ascenders and descenders the two strings happen not to share —
+    "connected …" has a `d` and a `t`, "you@…" has neither.
+    """
+    line = bright_bbox(im, box)
+    ref = keep_prefix + old
+    face = "SpaceMono-bold.ttf" if bold else "SpaceMono-regular.ttf"
+    font = fit_size(ref, line[2] - line[0], str(FONTS / face))
+
+    off = font.getbbox(ref)
+    origin_x = line[0] - off[0]
+    start = round(origin_x + font.getlength(keep_prefix))
+
+    draw = ImageDraw.Draw(im)
+    # Erase a few px wider than the ink: the glyphs are antialiased, and the
+    # measured bbox stops at the last pixel above threshold, not at the last
+    # pixel touched.
+    draw.rectangle((start - 3, line[1] - 5, line[2] + 4, line[3] + 5), fill=bg)
+    draw.text((start, line[1] - off[1]), new, font=font, fill=ink)
+    print(f"    {old!r} -> {new!r} at x={start}, {font.size}px")
+
+
 def patch_account_chip(src: Path, dst: Path, search: tuple[int, int, int, int],
                        fill: tuple[int, int, int]) -> None:
     """Redraw the Bratrax header's account chip with the new initial.
@@ -246,6 +307,32 @@ if __name__ == "__main__":
             shots / f"shot-settings-{theme}.png",
             search=(1740, 0, 1832, 70), fill=(86, 85, 255),
         )
+
+    # Anonymise the connected-workspaces card in the dark capture. This one
+    # goes to customers, and it otherwise shows an internal admin address twice.
+    # Substituted rather than blurred: a blur reads as redaction, which is a
+    # strange thing to put in marketing copy, while a placeholder reads as the
+    # illustration it is. "Your Company" is exactly as long as "Inceptly LLC",
+    # so that line's width does not change at all.
+    #
+    # The Bratrax workspace row stays as-is — that name is the brand, and
+    # showing it is the point.
+    p = shots / "shot-settings-dark.png"
+    im = Image.open(p).convert("RGB")
+    card_bg = im.getpixel((520, 660))                      # clear of any text
+    name_ink = brightest_ink(im, (496, 742, 580, 770))     # the "Bratrax" row
+    meta_ink = brightest_ink(im, (496, 700, 700, 724))     # the muted grey
+
+    replace_mono_run(im, (490, 665, 700, 700), "Inceptly LLC", "Your Company",
+                     keep_prefix="", bold=True, bg=card_bg, ink=name_ink)
+    for y0, y1, date in ((695, 728, "21/08/2026"), (766, 800, "28/07/2026")):
+        replace_mono_run(
+            im, (490, y0, 1050, y1),
+            "superadmin@bratrax.com", "you@yourcompany.com",
+            keep_prefix=f"connected {date}  by ",
+            bold=False, bg=card_bg, ink=meta_ink,
+        )
+    im.save(p, "PNG")
 
     # The dark capture ran on past the page and caught a half-drawn tooltip in
     # the bottom 14px. Cutting there would leave the acid "connect another
