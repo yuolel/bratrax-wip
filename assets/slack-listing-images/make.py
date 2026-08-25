@@ -113,21 +113,44 @@ PLATE = """<!DOCTYPE html>
 </html>
 """
 
+# Numbered in the order they should be uploaded. The first four are the
+# recommended listing set; 05 is a spare.
+#
+# `email-connect-slack` is deliberately NOT part of that set. Slack's image
+# guidance is "show your app/service in the context of Slack, not other tools
+# your service may integrate with", and that capture is the Bratrax web app.
+# It is built here for the customer email, where showing people where to click
+# is the whole point.
 IMAGES = [
     (
-        "01-revenue-chart",
-        'See what actually drove <span class="pill">revenue</span>',
-        "shot-chart.png",
+        "01-campaign-table",
+        'The whole table, in the <span class="pill">thread</span>',
+        "shot-campaign-table.png",
     ),
     (
-        "02-follow-up",
+        "02-channel-trend",
+        'See every channel at <span class="pill">once</span>',
+        "shot-channel-trend.png",
+    ),
+    (
+        "03-follow-up",
         'Ask the obvious <span class="pill">follow-up</span>',
         "shot-follow-up.png",
     ),
     (
-        "03-suggested-prompts",
+        "04-suggested-prompts",
         'Know what to ask on <span class="pill">day one</span>',
         "shot-prompts.png",
+    ),
+    (
+        "05-revenue-chart",
+        'See what actually drove <span class="pill">revenue</span>',
+        "shot-chart.png",
+    ),
+    (
+        "email-connect-slack",
+        'Connect it from your <span class="pill">settings</span>',
+        "shot-settings-slack.png",
     ),
 ]
 

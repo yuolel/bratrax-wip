@@ -156,13 +156,53 @@ def patch(src: Path, dst: Path, occurrences: list[Occurrence]) -> None:
     im.save(dst, "PNG")
 
 
-# Hints were read off 3x zooms of each header strip. The three captures were
-# taken at different UI scales, which is why none of these numbers repeat.
+def patch_account_chip(src: Path, dst: Path, search: tuple[int, int, int, int],
+                       fill: tuple[int, int, int]) -> None:
+    """Redraw the Bratrax header's account chip with the new initial.
+
+    Not a Slack capture, so none of the header machinery above applies — the
+    chip is a solid square of one known colour, so it is located by matching
+    that colour rather than by luminance.
+    """
+    im = Image.open(src).convert("RGB")
+    region = im.crop(search)
+    px = region.load()
+    hits = [
+        (x, y)
+        for x in range(region.width)
+        for y in range(region.height)
+        if all(abs(px[x, y][c] - fill[c]) < 24 for c in range(3))
+    ]
+    if not hits:
+        raise ValueError(f"no chip matching {fill} inside {search}")
+
+    x0 = search[0] + min(x for x, _ in hits)
+    y0 = search[1] + min(y for _, y in hits)
+    x1 = search[0] + max(x for x, _ in hits)
+    y1 = search[1] + max(y for _, y in hits)
+
+    draw = ImageDraw.Draw(im)
+    draw.rectangle((x0, y0, x1, y1), fill=fill)
+    font = ImageFont.truetype(str(FONTS / "Outfit-bold.ttf"),
+                              max(8, round((y1 - y0) * 0.62)))
+    draw.text(((x0 + x1) / 2, (y0 + y1) / 2 + 1), NEW_NAME[0],
+              font=font, fill=WHITE, anchor="mm")
+    im.save(dst, "PNG")
+    print(f"  {dst.name}: account chip {x1 - x0 + 1}x{y1 - y0 + 1} -> '{NEW_NAME[0]}'")
+
+
+# Hints were read off 3x zooms of each header strip. Every capture was taken at
+# a different UI scale, which is why none of these numbers repeat.
 JOBS = [
     (
-        "raw-chart.png", "shot-chart.png",
-        [Occurrence(avatar=(12, 14, 62, 64), name_row=(64, 16, 430, 40),
-                    timestamp="19 minutes ago")],
+        "raw-campaign-table.png", "shot-campaign-table.png",
+        [Occurrence(avatar=(8, 18, 60, 70), name_row=(62, 20, 480, 43),
+                    timestamp="1 minute ago")],
+    ),
+    (
+        "raw-channel-trend.png", "shot-channel-trend.png",
+        [Occurrence(avatar=(28, 26, 84, 82), name_row=(84, 28, 520, 52),
+                    timestamp="Yesterday at 1:48 PM")],
     ),
     (
         "raw-follow-up.png", "shot-follow-up.png",
@@ -172,6 +212,11 @@ JOBS = [
             Occurrence(avatar=(22, 306, 84, 372), name_row=(86, 316, 560, 344),
                        timestamp="Just now"),
         ],
+    ),
+    (
+        "raw-chart.png", "shot-chart.png",
+        [Occurrence(avatar=(12, 14, 62, 64), name_row=(64, 16, 430, 40),
+                    timestamp="19 minutes ago")],
     ),
 ]
 
@@ -183,12 +228,21 @@ if __name__ == "__main__":
     for src_name, dst_name, occs in JOBS:
         patch(originals / src_name, shots / dst_name, occs)
 
-    # The follow-up capture caught the top hairline of the next message.
-    # Left in, it reads as a crop artefact rather than as part of the thread.
-    fu = shots / 'shot-follow-up.png'
-    with Image.open(fu) as im:
-        im.crop((0, 0, im.width, 590)).save(fu, 'PNG')
-    print('  shot-follow-up.png: trimmed to 1200x590 (stray divider)')
+    # Two captures caught the leading edge of the next message below the thread.
+    # Left in, that reads as a crop artefact rather than as part of the answer.
+    for name, keep_h in (("shot-follow-up.png", 590), ("shot-channel-trend.png", 793)):
+        p = shots / name
+        with Image.open(p) as im:
+            w = im.width
+            im.crop((0, 0, w, keep_h)).save(p, "PNG")
+        print(f"  {name}: trimmed to {w}x{keep_h} (next message peeking in)")
+
+    # The Bratrax settings capture carries no Slack chrome — only the account
+    # chip in its header needs the initial swapped.
+    patch_account_chip(
+        originals / "raw-settings-slack.png", shots / "shot-settings-slack.png",
+        search=(1750, 5, 1832, 70), fill=(86, 85, 255),
+    )
 
     # No name or photo in the Messages-tab capture; it only needs the stray
     # half-rendered element at the bottom edge trimmed off.
