@@ -186,32 +186,35 @@
   h3 { font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--color-text-bright); }
   p { color: var(--color-text-secondary); }
 
-  /* ─────────── SCREENSHOTS ─────────── */
-  /* Real captures of the app in Slack, shown at or near 1:1 inside the 1200px
-     wrap. They were tried in a half-width column first: at ~550px a 1200px-wide
-     capture renders its 15px Slack text at about 7px, which is unreadable — so
-     every screenshot runs the full width of the container instead. */
-  .figure { margin: 0; }
-  .figure img {
-    display: block;
-    width: 100%;
-    height: auto;
-    border: 1px solid var(--color-border);
-  }
+  /* ─────────── EXHIBIT CARDS ─────────── */
+  /* The same 1600x1000 cards built for the Slack Marketplace listing: a real
+     capture on the Bratrax cream plate, each carrying its own headline.
+     Reusing them keeps one set of assets for the listing, this page and the
+     customer email, and they arrive uniform in size and treatment.
+
+     They stay on the dark page rather than the page turning cream. Every other
+     page on bratrax.com is #0A0A0A and the shared footer partial is dark, so a
+     light page here would be the odd one out and the footer would clash. On
+     black the cream reads as a framed exhibit, which is the intent.
+
+     900px, not full width. The card's own headline is the thing being read —
+     at 900px it renders around 31px, comfortably. The capture inside is
+     evidence that this is really Slack, not a document to read at arm's
+     length; anyone who wants the detail can open the image. */
+  .figure { margin: 0 auto; max-width: 900px; }
+  .figure img { display: block; width: 100%; height: auto; }
   .figure figcaption {
     font-family: 'Space Mono', monospace;
     font-size: 11px;
     letter-spacing: 0.5px;
     color: var(--color-text-muted);
-    margin-top: 12px;
+    margin-top: 14px;
+    text-align: center;
   }
-  /* The Messages-tab and settings captures are much wider than they are tall;
-     left full-bleed they dwarf the threads. Capped so the set reads evenly. */
-  .figure-narrow { max-width: 940px; }
 
-  .feature + .feature { margin-top: 56px; }
-  .feature h3 { font-size: 22px; margin: 0 0 8px; }
-  .feature p { font-size: 16px; margin: 0 0 22px; max-width: 62ch; }
+  /* No heading above a card: the card already carries one, and saying it twice
+     is the fastest way to make a page feel padded. */
+  .gallery { display: grid; gap: 52px; margin-top: 44px; }
 
   /* ─────────── HERO ─────────── */
   .hero { padding: 72px 0 64px; border-bottom: 1px solid var(--color-border); }
@@ -333,7 +336,7 @@
     .split { grid-template-columns: 1fr; gap: 40px; }
     .asks { grid-template-columns: 1fr; }
     .hero-sub { max-width: none; }
-    .feature + .feature { margin-top: 40px; }
+    .gallery { gap: 36px; }
   }
   @media (max-width: 640px) {
     .wrap { padding: 0 20px; }
@@ -404,10 +407,9 @@
     </p>
 
     <figure class="figure">
-      <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/thread-table.png"
-           width="1001" height="642"
+      <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-table.png"
+           width="1600" height="1000"
            alt="A Slack thread. Someone asks @bratrax for the top 10 campaigns by ROAS this week; bratrax replies with a short read of the results and a sortable table of campaign, ROAS, attributed revenue and spend, followed by buttons to open the dashboard or re-run over 7, 30 or 90 days.">
-      <figcaption>A real answer in Slack — the read, the table, and a way back into the dashboard.</figcaption>
     </figure>
   </div>
 </section>
@@ -419,53 +421,37 @@
   <div class="wrap">
     <span class="section-label">01 — What it does</span>
     <h2>The question gets asked in Slack. <span class="serif-accent">Answer it there.</span></h2>
-    <p style="font-size:18px;max-width:60ch;margin-bottom:52px">
+    <p style="font-size:18px;max-width:60ch">
       The Monday ritual is export a CSV, paste it somewhere, squint at it, then
       paraphrase the answer back into the channel. Bratrax skips to the last step.
     </p>
 
-    <div class="feature">
-      <h3>Ask the way you'd ask a colleague</h3>
-      <p>
-        No query language, no hunting for a saved report. And the obvious
-        follow-up works — &ldquo;and just for Facebook?&rdquo; — because the
-        thread keeps its context.
-      </p>
+    <div class="gallery">
       <figure class="figure">
-        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/thread-follow-up.png"
-             width="1200" height="590" loading="lazy"
-             alt="A Slack thread. Julia asks what her spend was today versus yesterday; bratrax answers with both figures, the percentage change, and a note that today is still accumulating. She then asks about month-to-date spend and gets that figure with a daily average.">
-        <figcaption>The second question is scoped off the first. No repeating yourself.</figcaption>
+        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-follow-up.png"
+             width="1600" height="1000" loading="lazy"
+             alt="Ask the obvious follow-up. A Slack thread where Julia asks what her spend was today versus yesterday, gets both figures and the percentage change, then asks about month-to-date spend and gets that figure with a daily average.">
+        <figcaption>The second question is scoped off the first &mdash; no repeating yourself.</figcaption>
       </figure>
-    </div>
 
-    <div class="feature">
-      <h3>Charts and tables, native to Slack</h3>
-      <p>
-        Answers come back as real Slack charts and sortable tables, not
-        screenshots of a dashboard — so they stay readable on a phone, which is
-        where half of these questions get asked. Every answer carries a button
-        through to the dashboard it came from.
-      </p>
       <figure class="figure">
-        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/thread-chart.png"
-             width="1017" height="787" loading="lazy"
-             alt="A Slack thread. Julia asks bratrax to chart revenue by channel for the last 14 days; bratrax summarises which channels led and by how much, then renders an interactive line chart with one line per channel and buttons to re-run over 7, 30 or 90 days.">
-        <figcaption>Five channels over fourteen days, rendered by Slack itself.</figcaption>
+        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-trend.png"
+             width="1600" height="1000" loading="lazy"
+             alt="See every channel at once. A Slack thread where Julia asks bratrax to chart revenue by channel for the last 14 days, and bratrax replies with a summary and an interactive line chart carrying one line per channel.">
+        <figcaption>Rendered by Slack itself, so it stays readable on a phone.</figcaption>
       </figure>
-    </div>
 
-    <div class="feature">
-      <h3>Nothing to learn on day one</h3>
-      <p>
-        Open a direct message with it and it offers the first few questions. Or
-        invite it to a channel and mention it there — it answers when spoken to
-        and never posts on its own.
-      </p>
-      <figure class="figure figure-narrow">
-        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/messages-tab.png"
-             width="1400" height="668" loading="lazy"
-             alt="The bratrax app's Messages tab in Slack on first open, offering three suggested prompts: Today's spend, Top campaigns, and Revenue chart.">
+      <figure class="figure">
+        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-revenue.png"
+             width="1600" height="1000" loading="lazy"
+             alt="See what actually drove revenue. A Slack thread where bratrax breaks down attributed revenue by channel and renders it as a bar chart, with buttons to open the dashboard or re-run over 7, 30 or 90 days.">
+        <figcaption>Every answer carries a button through to the dashboard it came from.</figcaption>
+      </figure>
+
+      <figure class="figure">
+        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-prompts.png"
+             width="1600" height="1000" loading="lazy"
+             alt="Know what to ask on day one. The bratrax app's Messages tab in Slack on first open, offering three suggested prompts: Today's spend, Top campaigns, and Revenue chart.">
         <figcaption>First open, before you have typed anything.</figcaption>
       </figure>
     </div>
@@ -515,11 +501,11 @@
       </div>
     </div>
 
-    <figure class="figure figure-narrow" style="margin-top:36px">
-      <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/settings-slack.png"
-           width="1836" height="817" loading="lazy"
-           alt="The Bratrax app with the Settings menu open and Slack highlighted. The Slack tab shows the connected workspace, when it was connected, and a button to connect another workspace.">
-      <figcaption>Settings &rarr; Slack. One screen, one button.</figcaption>
+    <figure class="figure" style="margin-top:44px">
+      <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-connect.png"
+           width="1600" height="1000" loading="lazy"
+           alt="Connect it from your settings. The Bratrax app with the Settings menu open and Slack highlighted; the Slack tab shows the connected workspace and a button to connect another one.">
+      <figcaption>One screen, one button.</figcaption>
     </figure>
 
     <p style="margin-top:28px;font-size:15px;color:var(--color-text-muted)">
