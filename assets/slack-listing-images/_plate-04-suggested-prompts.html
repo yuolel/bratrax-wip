@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=1600">
+<title>04-suggested-prompts</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  /* Canvas colour on <html> too, so no bare page shows through if the render
+     area is ever larger than the fixed-size body. COLOUR ONLY — the grid lives
+     solely on .graph-paper. Duplicating it here stacks two grids outside the
+     body box and the lines render visibly darker there. */
+  html { background-color: #F5F2EB; min-height: 100%; }
+  body {
+    width: 1600px; height: 1000px; overflow: hidden;
+    background: #F5F2EB; font-family: 'Outfit', sans-serif; position: relative;
+  }
+
+  .graph-paper {
+    position: fixed; inset: 0;
+    background-image:
+      linear-gradient(rgba(160,150,130,0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(160,150,130,0.15) 1px, transparent 1px);
+    background-size: 40px 40px; pointer-events: none;
+  }
+  .vignette {
+    position: fixed; inset: 0;
+    background: radial-gradient(ellipse at 50% 50%, transparent 45%, rgba(0,0,0,0.06) 100%);
+    pointer-events: none;
+  }
+
+  .frame {
+    position: relative; z-index: 1; width: 1600px; height: 1000px;
+    padding: 54px 0 56px 0;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  .headline {
+    font-family: 'Outfit', sans-serif; font-weight: 900; font-size: 56px;
+    letter-spacing: -0.5px; color: #1A1A18; text-align: center; line-height: 1.08;
+  }
+  /* Acid green is never text on cream — contrast fails. The accent word takes
+     the highlighter pill instead: black on solid, undiluted acid. */
+  .pill { background: #D4FF00; color: #0A0A0A; padding: 2px 12px 4px 12px; }
+  .wordmark {
+    font-family: 'Space Mono', monospace; font-size: 15px; letter-spacing: 3px;
+    text-transform: uppercase; color: #7A7568; margin-top: auto;
+  }
+</style>
+</head>
+<body>
+  <div class="graph-paper"></div>
+  <div class="vignette"></div>
+  <div class="frame">
+    <div class="headline">Know what to ask on <span class="pill">day one</span></div>
+    <div class="wordmark">bratrax &nbsp;·&nbsp; attribution that adds up</div>
+  </div>
+</body>
+</html>
