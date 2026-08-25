@@ -212,15 +212,80 @@
     text-align: center;
   }
 
-  /* No heading above a card: the card already carries one, and saying it twice
-     is the fastest way to make a page feel padded. */
-  .gallery { display: grid; gap: 52px; margin-top: 44px; }
+  /* ─────────── CAROUSEL ─────────── */
+  /* Built on native scroll-snap, not a library. Without JS the track is still
+     a scrollable, swipeable row of cards — the buttons and dots only enhance
+     it. That matters here: this page is served into an <iframe srcdoc>, and a
+     dependency that failed to load would leave a dead frame where the product
+     tour should be. */
+  .carousel { position: relative; margin-top: 40px; }
+  .track {
+    display: flex;
+    gap: 24px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    padding-bottom: 4px;
+  }
+  .track::-webkit-scrollbar { display: none; }
+  .slide {
+    flex: 0 0 100%;
+    scroll-snap-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .slide img { display: block; width: 100%; height: auto; }
+  .slide figcaption {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 0.5px;
+    color: var(--color-text-muted);
+    margin-top: 14px; text-align: center;
+  }
+
+  .carousel-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 18px; margin-top: 22px;
+  }
+  .c-btn {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    width: 40px; height: 40px;
+    font-size: 15px; line-height: 1;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .c-btn:hover { border-color: var(--color-acid-mid); color: var(--color-acid); }
+  .c-btn:disabled { opacity: 0.3; cursor: default; }
+  .c-btn:disabled:hover { border-color: var(--color-border); color: var(--color-text); }
+  .dots { display: flex; gap: 8px; }
+  .dot {
+    width: 8px; height: 8px; padding: 0;
+    background: var(--color-border);
+    border: none; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .dot[aria-current="true"] { background: var(--color-acid); }
+
+  /* ─────────── ZIGZAG ─────────── */
+  /* Text one side, picture the other, sides swapped on the second instance.
+     Only used where the picture is a supporting detail; the carousel cards
+     carry their own headline and would fight a heading placed beside them. */
+  .zig { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+  .zig-flip > :first-child { order: 2; }
 
   /* ─────────── HERO ─────────── */
   .hero { padding: 72px 0 64px; border-bottom: 1px solid var(--color-border); }
-  /* px, not ch: `ch` resolves against THIS element's 16px font size, not the
-     68px h1 inside it, which squeezed the headline to one word per line. */
-  .hero-head { max-width: 900px; }
+  /* Centred because the hero's picture is now the carousel below it, which is
+     centred too; left-aligned text with the old image slot empty left a hole
+     down the right-hand side.
+     px, not ch, on the width: `ch` resolves against THIS element's 16px font
+     size rather than the 68px h1 inside it, which squeezed the headline to one
+     word per line. */
+  .hero { text-align: center; }
+  .hero-head { max-width: 900px; margin: 0 auto; }
+  .hero .hero-cta { justify-content: center; }
   .hero h1 {
     font-family: 'Outfit', sans-serif;
     font-size: clamp(40px, 5.2vw, 68px);
@@ -231,7 +296,7 @@
     margin: 0 0 20px;
     text-wrap: balance;
   }
-  .hero-sub { font-size: 19px; max-width: 62ch; margin: 0 0 32px; }
+  .hero-sub { font-size: 19px; max-width: 62ch; margin: 0 auto 32px; }
   .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; }
   .hero-note {
     font-family: 'Space Mono', monospace;
@@ -333,7 +398,8 @@
 
   /* ─────────── RESPONSIVE ─────────── */
   @media (max-width: 900px) {
-    .split { grid-template-columns: 1fr; gap: 40px; }
+    .split, .zig { grid-template-columns: 1fr; gap: 40px; }
+    .zig-flip > :first-child { order: 0; }
     .asks { grid-template-columns: 1fr; }
     .hero-sub { max-width: none; }
     .gallery { gap: 36px; }
@@ -375,8 +441,8 @@
       <!-- Existing customers are the audience this page has to serve first: the
            app ships with their plan, and the only thing standing between them
            and using it is knowing where the button is. /settings/slack is a
-           real route and bounces through login when signed out. The waitlist
-           keeps its place for prospects, one step down. -->
+           real route and bounces through login when signed out. Prospects get
+           "Try Bratrax" one step down, in the hero note and the closer. -->
       <a href="https://bratrax.com/settings/slack" class="btn btn-primary btn-arrow">Connect your workspace</a>
     </div>
   </div>
@@ -390,27 +456,19 @@
       <h1>Your numbers, <span class="serif-accent">in the channel</span> where the decision gets made.</h1>
     </div>
     <p class="hero-sub">
-      Bratrax joins your ad spend to your actual order record, recovering the
-      touches most tools quietly drop — a stripped UTM, an expired session, a
-      conversion iOS never reported — so far less of your revenue ends up filed
-      under &ldquo;Direct.&rdquo; <strong>This puts those numbers in Slack.</strong>
-      Mention <span class="mention">@bratrax</span> in the channel where the
-      argument is happening, and get the answer there.
+      Somebody asks why ROAS dropped. You go and find out, come back, and by
+      then the thread has moved on. <strong>Ask Bratrax in the channel instead
+      and the answer lands where the question was asked</strong> — the number,
+      what moved it, and a chart everyone can see at the same time.
     </p>
     <div class="hero-cta">
       <a href="https://bratrax.com/settings/slack" class="btn btn-primary btn-large btn-arrow">Connect your workspace</a>
-      <a href="#how" class="btn btn-outline btn-large">How it works</a>
+      <a href="#how" class="btn btn-outline btn-large">See how it works</a>
     </div>
     <p class="hero-note">
-      Included with every Bratrax plan · Read-only · Not on Bratrax yet?
-      <a href="https://bratrax.com/signup">Join the waitlist</a>
+      Included with every plan · Takes about a minute · New to Bratrax?
+      <a href="https://bratrax.com/signup">Try Bratrax</a>
     </p>
-
-    <figure class="figure">
-      <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-table.png"
-           width="1600" height="1000"
-           alt="A Slack thread. Someone asks @bratrax for the top 10 campaigns by ROAS this week; bratrax replies with a short read of the results and a sortable table of campaign, ROAS, attributed revenue and spend, followed by buttons to open the dashboard or re-run over 7, 30 or 90 days.">
-    </figure>
   </div>
 </section>
 
@@ -419,41 +477,59 @@
      argument; the prose only says what to look at. -->
 <section class="band">
   <div class="wrap">
-    <span class="section-label">01 — What it does</span>
-    <h2>The question gets asked in Slack. <span class="serif-accent">Answer it there.</span></h2>
+    <span class="section-label">In the channel</span>
+    <h2>Stop being the person who <span class="serif-accent">goes and checks.</span></h2>
     <p style="font-size:18px;max-width:60ch">
-      The Monday ritual is export a CSV, paste it somewhere, squint at it, then
-      paraphrase the answer back into the channel. Bratrax skips to the last step.
+      Export the CSV, paste it somewhere, squint, then type the answer back into
+      the channel. That round trip is the job Bratrax takes off you.
     </p>
 
-    <div class="gallery">
-      <figure class="figure">
-        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-follow-up.png"
-             width="1600" height="1000" loading="lazy"
-             alt="Ask the obvious follow-up. A Slack thread where Julia asks what her spend was today versus yesterday, gets both figures and the percentage change, then asks about month-to-date spend and gets that figure with a daily average.">
-        <figcaption>The second question is scoped off the first &mdash; no repeating yourself.</figcaption>
-      </figure>
+    <div class="carousel">
+      <div class="track" id="track" tabindex="0" role="group" aria-label="What the assistant does in Slack">
+        <!-- Ordered the way you meet the app: the empty DM on install, then the
+             charts, then the tables, then the follow-up you only think to ask
+             once you trust the first answer. -->
+        <figure class="slide">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-prompts.png"
+               width="1600" height="1000"
+               alt="Know what to ask on day one. The bratrax app's Messages tab in Slack on first open, offering three suggested prompts: Today's spend, Top campaigns, and Revenue chart.">
+          <figcaption>Nothing to learn. It opens with the first three questions already written.</figcaption>
+        </figure>
 
-      <figure class="figure">
-        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-trend.png"
-             width="1600" height="1000" loading="lazy"
-             alt="See every channel at once. A Slack thread where Julia asks bratrax to chart revenue by channel for the last 14 days, and bratrax replies with a summary and an interactive line chart carrying one line per channel.">
-        <figcaption>Rendered by Slack itself, so it stays readable on a phone.</figcaption>
-      </figure>
+        <figure class="slide">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-trend.png"
+               width="1600" height="1000" loading="lazy"
+               alt="See every channel at once. A Slack thread where Julia asks bratrax to chart revenue by channel for the last 14 days, and bratrax replies with a summary and an interactive line chart carrying one line per channel.">
+          <figcaption>Slack draws the chart, so it is still readable on the phone in your hand.</figcaption>
+        </figure>
 
-      <figure class="figure">
-        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-revenue.png"
-             width="1600" height="1000" loading="lazy"
-             alt="See what actually drove revenue. A Slack thread where bratrax breaks down attributed revenue by channel and renders it as a bar chart, with buttons to open the dashboard or re-run over 7, 30 or 90 days.">
-        <figcaption>Every answer carries a button through to the dashboard it came from.</figcaption>
-      </figure>
+        <figure class="slide">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-revenue.png"
+               width="1600" height="1000" loading="lazy"
+               alt="See what actually drove revenue. A Slack thread where bratrax breaks down attributed revenue by channel and renders it as a bar chart, with buttons to open the dashboard or re-run over 7, 30 or 90 days.">
+          <figcaption>Sceptical of a number? Every answer carries a button to the dashboard behind it.</figcaption>
+        </figure>
 
-      <figure class="figure">
-        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-prompts.png"
-             width="1600" height="1000" loading="lazy"
-             alt="Know what to ask on day one. The bratrax app's Messages tab in Slack on first open, offering three suggested prompts: Today's spend, Top campaigns, and Revenue chart.">
-        <figcaption>First open, before you have typed anything.</figcaption>
-      </figure>
+        <figure class="slide">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-table.png"
+               width="1600" height="1000" loading="lazy"
+               alt="The whole table, in the thread. A Slack thread where someone asks for the top 10 campaigns by ROAS this week and bratrax replies with a short read of the results plus a sortable table of campaign, ROAS, attributed revenue and spend.">
+          <figcaption>Ranked, and told what the ranking means. Nobody has to relay a screenshot.</figcaption>
+        </figure>
+
+        <figure class="slide">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-follow-up.png"
+               width="1600" height="1000" loading="lazy"
+               alt="Ask the obvious follow-up. A Slack thread where Julia asks what her spend was today versus yesterday, gets both figures and the percentage change, then asks about month-to-date spend and gets that figure with a daily average.">
+          <figcaption>&ldquo;And just for Facebook?&rdquo; works. The thread remembers what you were on about.</figcaption>
+        </figure>
+      </div>
+
+      <div class="carousel-nav">
+        <button class="c-btn" id="prev" type="button" aria-label="Previous">&larr;</button>
+        <div class="dots" id="dots" role="tablist" aria-label="Choose a slide"></div>
+        <button class="c-btn" id="next" type="button" aria-label="Next">&rarr;</button>
+      </div>
     </div>
   </div>
 </section>
@@ -461,15 +537,21 @@
 <!-- ─────────── ASKS ─────────── -->
 <section class="band">
   <div class="wrap">
-    <span class="section-label">02 — What to ask it</span>
-    <h2>Things operators actually <span class="serif-accent">ask.</span></h2>
+    <span class="section-label">What to ask it</span>
+    <h2>The questions you'd rather not <span class="serif-accent">wait for.</span></h2>
+    <p style="font-size:17px;max-width:56ch;margin-bottom:4px">
+      Deliberately not the ones in the tour above — these are the awkward ones,
+      the kind that usually mean opening three tabs.
+    </p>
+    <!-- Kept clear of the questions shown in the carousel: repeating them makes
+         the page look like it can answer six things. -->
     <div class="asks">
-      <div class="ask">"What was my spend today vs yesterday?"</div>
-      <div class="ask">"Top 5 campaigns by ROAS this week."</div>
-      <div class="ask">"NC ROAS by source for the last 30 days."</div>
-      <div class="ask">"Chart revenue by channel, last 14 days."</div>
-      <div class="ask">"Top 10 SKUs by net revenue this month, with returns."</div>
-      <div class="ask">"Funnel dropoff by step, last 7 days."</div>
+      <div class="ask">"Which campaigns lost money last week?"</div>
+      <div class="ask">"What's my real CAC once returns are out?"</div>
+      <div class="ask">"How much revenue is still landing in Direct?"</div>
+      <div class="ask">"Did the email flow beat the paid campaign?"</div>
+      <div class="ask">"Which SKUs are actually carrying the margin?"</div>
+      <div class="ask">"Which ad set is scaling, and which one is stalling?"</div>
     </div>
   </div>
 </section>
@@ -477,10 +559,12 @@
 <!-- ─────────── HOW ─────────── -->
 <section class="band" id="how">
   <div class="wrap">
-    <span class="section-label">03 — Setup</span>
-    <h2>Connect once. <span class="serif-accent">Then just ask.</span></h2>
+    <span class="section-label">Setup</span>
+    <h2>One minute now. <span class="serif-accent">Every answer after that.</span></h2>
 
-    <div class="steps">
+    <div class="zig" style="margin-top:36px">
+      <div>
+    <div class="steps" style="margin-top:0">
       <div class="step">
         <div>
           <h3>Connect your store to Bratrax</h3>
@@ -501,19 +585,19 @@
       </div>
     </div>
 
-    <figure class="figure" style="margin-top:44px">
-      <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-connect.png"
-           width="1600" height="1000" loading="lazy"
-           alt="Connect it from your settings. The Bratrax app with the Settings menu open and Slack highlighted; the Slack tab shows the connected workspace and a button to connect another one.">
-      <figcaption>One screen, one button.</figcaption>
-    </figure>
-
-    <p style="margin-top:28px;font-size:15px;color:var(--color-text-muted)">
+      <p style="margin-top:20px;font-size:15px;color:var(--color-text-muted)">
       Setup starts inside Bratrax, not in Slack — the connection has to know which
       store it's answering for.
     </p>
+      </div>
+      <figure class="figure">
+        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/slack/media/card-connect.png"
+             width="1600" height="1000" loading="lazy"
+             alt="Connect it from your settings. The Bratrax app with the Settings menu open and Slack highlighted; the Slack tab shows the connected workspace and a button to connect another one.">
+      </figure>
+    </div>
 
-    <div class="hero-cta" style="margin-top:28px">
+    <div class="hero-cta" style="margin-top:36px">
       <a href="https://bratrax.com/settings/slack" class="btn btn-primary btn-large btn-arrow">Connect your workspace</a>
     </div>
   </div>
@@ -523,7 +607,7 @@
 <section class="band">
   <div class="wrap split">
     <div>
-      <span class="section-label">04 — What it can reach</span>
+      <span class="section-label">What it reaches</span>
       <h2>Everything Bratrax <span class="serif-accent">already knows.</span></h2>
       <p style="font-size:16px">
         The assistant reads the same data as your dashboards — so anything you've
@@ -574,7 +658,7 @@
     </div>
 
     <div>
-      <span class="section-label">05 — What it can't do</span>
+      <span class="section-label">What it won't do</span>
       <h2>Read-only, <span class="serif-accent">by design.</span></h2>
       <ul class="facts">
         <li><strong>It can't change anything.</strong> The assistant can query your metrics and read your dashboards. It cannot write to your data, your store, or your ad accounts.</li>
@@ -609,11 +693,16 @@
 <!-- ─────────── PRICING ─────────── -->
 <section class="band band-tight">
   <div class="wrap">
-    <span class="section-label">06 — Pricing</span>
-    <h2>Included. <span class="serif-accent">Not an add-on.</span></h2>
+    <span class="section-label">Pricing</span>
+    <h2>You already <span class="serif-accent">pay for this.</span></h2>
     <p style="font-size:18px;max-width:62ch">
-      The Slack assistant comes with Bratrax Lite — <strong style="color:var(--color-text-bright)">$99/mo flat</strong>,
-      the same bill at $500K GMV or $20M. No contract, no GMV scaling, no token markup.
+      The Slack assistant is part of every Bratrax plan. There is no Slack tier,
+      no per-seat charge, and no metered bill for the questions your team asks —
+      invite the whole company to the channel and the price does not move.
+    </p>
+    <p style="font-size:18px;max-width:62ch">
+      Bratrax Lite is <strong style="color:var(--color-text-bright)">$99/mo flat</strong>:
+      the same bill at $500K GMV or $20M. No contract, no GMV scaling.
     </p>
   </div>
 </section>
@@ -621,20 +710,20 @@
 <!-- ─────────── CLOSER ─────────── -->
 <section class="closer">
   <div class="wrap">
-    <span class="eyebrow">Already included in your plan</span>
-    <h2>Get your numbers <span class="serif-accent">in the channel.</span></h2>
+    <span class="eyebrow">Already in your plan</span>
+    <h2>The next time someone asks, <span class="serif-accent">just answer.</span></h2>
     <p>
-      If you already have Bratrax, the assistant is waiting in your settings —
-      connecting a workspace takes about a minute.
+      It is sitting in your settings waiting to be switched on. About a minute,
+      and you never have to go and check again.
     </p>
     <div class="closer-cta">
       <a href="https://bratrax.com/settings/slack" class="btn btn-primary btn-large btn-arrow">Connect your workspace</a>
       <a href="https://bratrax.com/faq#slack" class="btn btn-outline btn-large">Read the Slack FAQ</a>
     </div>
     <p style="font-size:15px;margin-top:28px">
-      Not on Bratrax yet? Doors open in waves —
-      <a href="https://bratrax.com/signup" style="color:var(--color-acid);border-bottom:1px solid var(--color-acid-mid)">join the waitlist</a>
-      and we'll reach out when the next one opens.
+      New to Bratrax?
+      <a href="https://bratrax.com/signup" style="color:var(--color-acid);border-bottom:1px solid var(--color-acid-mid)">Try Bratrax</a>
+      — the assistant is included from day one.
     </p>
   </div>
 </section>
@@ -656,6 +745,71 @@
   </footer>
 </div>
 <script>
+  // Carousel. Progressive enhancement only — without this the track is still a
+  // swipeable, scrollable row, so a script error degrades to a usable page
+  // rather than a broken one.
+  (function () {
+    var track = document.getElementById('track');
+    var dots = document.getElementById('dots');
+    if (!track || !dots) return;
+    var slides = track.querySelectorAll('.slide');
+    if (slides.length < 2) return;
+
+    // Measured from the DOM rather than assumed: the slide is a percentage of
+    // the track and the gap is a CSS value, so both change with the viewport.
+    function step() {
+      return slides.length > 1 ? slides[1].offsetLeft - slides[0].offsetLeft : track.clientWidth;
+    }
+    function index() {
+      return Math.round(track.scrollLeft / step());
+    }
+    function go(i) {
+      track.scrollTo({ left: Math.max(0, Math.min(slides.length - 1, i)) * step(), behavior: 'smooth' });
+    }
+
+    for (var i = 0; i < slides.length; i++) {
+      (function (n) {
+        var d = document.createElement('button');
+        d.className = 'dot';
+        d.type = 'button';
+        d.setAttribute('role', 'tab');
+        d.setAttribute('aria-label', 'Slide ' + (n + 1) + ' of ' + slides.length);
+        d.addEventListener('click', function () { go(n); });
+        dots.appendChild(d);
+      })(i);
+    }
+
+    var prev = document.getElementById('prev');
+    var next = document.getElementById('next');
+    prev.addEventListener('click', function () { go(index() - 1); });
+    next.addEventListener('click', function () { go(index() + 1); });
+
+    // Arrow keys once the track has focus; it is tabbable for exactly this.
+    track.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); go(index() + 1); }
+      if (e.key === 'ArrowLeft') { e.preventDefault(); go(index() - 1); }
+    });
+
+    function sync() {
+      var n = index();
+      var all = dots.children;
+      for (var j = 0; j < all.length; j++) {
+        all[j].setAttribute('aria-current', j === n ? 'true' : 'false');
+      }
+      prev.disabled = n <= 0;
+      next.disabled = n >= slides.length - 1;
+    }
+    // Driven by scroll, not by the buttons, so dragging and swiping keep the
+    // dots honest too.
+    var queued;
+    track.addEventListener('scroll', function () {
+      clearTimeout(queued);
+      queued = setTimeout(sync, 80);
+    });
+    window.addEventListener('resize', sync);
+    sync();
+  })();
+
   fetch('https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/partials/footer.html')
     .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.text(); })
     .then(function(html){ document.getElementById('brx-footer').innerHTML = html; })
