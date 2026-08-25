@@ -40,14 +40,20 @@ device. It also carries more of the story — the menu path *and* the destinatio
 including the acid "connect another workspace" button.
 
 The connected-workspaces card in the dark capture is anonymised: the admin
-address becomes `you@yourcompany.com` in both rows and the first workspace
-becomes `Your Company`. The **Bratrax** workspace row is left alone — that name
-is the brand, and showing it is the point.
+address becomes `you@yourcompany.com` and the workspace becomes `Your Company`.
 
 Substituted rather than blurred. A blur reads as redaction, which is an odd
 thing to put in marketing copy; a placeholder reads as the illustration it is.
 `Your Company` is exactly as long as `Inceptly LLC`, so that line's width does
 not change at all.
+
+**The second workspace row is deleted outright**, not renamed. It said
+"Bratrax", and a row named Bratrax sitting beside the customer's own workspace
+reads as Bratrax having connected *itself* to their Slack — the opposite of what
+happens, and a bad thing to imply in a product whose pitch is trustworthy
+handling of your numbers. `splice_out_band` removes the 82px between the list's
+inner divider and the card's bottom border and pulls the rest up; the seam falls
+on the card's straight side borders, so it is invisible.
 
 ## Why real captures, not rebuilt ones
 

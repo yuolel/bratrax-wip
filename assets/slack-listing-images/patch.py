@@ -169,6 +169,21 @@ def bright_bbox(im: Image.Image, box, thresh: int = 90):
     return (box[0] + bb[0], box[1] + bb[1], box[0] + bb[2], box[1] + bb[3])
 
 
+def splice_out_band(im: Image.Image, y0: int, y1: int) -> Image.Image:
+    """Delete rows [y0, y1) and pull everything below up to meet the cut.
+
+    Only safe where every column crossing the band is vertically uniform — a
+    card's side borders, or flat background. Here the band is one row of a
+    bordered list, so the seam falls on straight verticals and is invisible.
+    """
+    top = im.crop((0, 0, im.width, y0))
+    bottom = im.crop((0, y1, im.width, im.height))
+    out = Image.new("RGB", (im.width, im.height - (y1 - y0)))
+    out.paste(top, (0, 0))
+    out.paste(bottom, (0, y0))
+    return out
+
+
 def brightest_ink(im: Image.Image, box) -> tuple[int, int, int]:
     """The lightest pixel in `box` — the core of a stroke.
 
@@ -308,30 +323,32 @@ if __name__ == "__main__":
             search=(1740, 0, 1832, 70), fill=(86, 85, 255),
         )
 
-    # Anonymise the connected-workspaces card in the dark capture. This one
-    # goes to customers, and it otherwise shows an internal admin address twice.
+    # Anonymise the connected-workspaces card in the dark capture. This one goes
+    # to customers, and it otherwise showed an internal admin address twice.
+    #
     # Substituted rather than blurred: a blur reads as redaction, which is a
     # strange thing to put in marketing copy, while a placeholder reads as the
     # illustration it is. "Your Company" is exactly as long as "Inceptly LLC",
     # so that line's width does not change at all.
     #
-    # The Bratrax workspace row stays as-is — that name is the brand, and
-    # showing it is the point.
+    # The Bratrax row is then deleted outright. Left in, a second workspace
+    # named "Bratrax" alongside the customer's own reads as Bratrax having
+    # connected itself to their Slack — the opposite of true, and a bad thing to
+    # imply in a product whose whole pitch is trustworthy handling of your data.
     p = shots / "shot-settings-dark.png"
     im = Image.open(p).convert("RGB")
     card_bg = im.getpixel((520, 660))                      # clear of any text
-    name_ink = brightest_ink(im, (496, 742, 580, 770))     # the "Bratrax" row
+    name_ink = brightest_ink(im, (496, 742, 580, 770))     # a workspace name
     meta_ink = brightest_ink(im, (496, 700, 700, 724))     # the muted grey
 
     replace_mono_run(im, (490, 665, 700, 700), "Inceptly LLC", "Your Company",
                      keep_prefix="", bold=True, bg=card_bg, ink=name_ink)
-    for y0, y1, date in ((695, 728, "21/08/2026"), (766, 800, "28/07/2026")):
-        replace_mono_run(
-            im, (490, y0, 1050, y1),
-            "superadmin@bratrax.com", "you@yourcompany.com",
-            keep_prefix=f"connected {date}  by ",
-            bold=False, bg=card_bg, ink=meta_ink,
-        )
+    replace_mono_run(
+        im, (490, 695, 1050, 728),
+        "superadmin@bratrax.com", "you@yourcompany.com",
+        keep_prefix="connected 21/08/2026  by ",
+        bold=False, bg=card_bg, ink=meta_ink,
+    )
     im.save(p, "PNG")
 
     # The dark capture ran on past the page and caught a half-drawn tooltip in
@@ -339,15 +356,22 @@ if __name__ == "__main__":
     # workspace" button — the actual call to action, and the reason this image
     # exists — flush against the crop, so the page background is extended back
     # underneath it instead. Only background is synthesised; no content moves.
-    p = shots / "shot-settings-dark.png"
     with Image.open(p) as im:
         w = im.width
         body = im.crop((0, 0, w, 877))
         bg = im.getpixel((60, 700))          # left margin, clear of the card
         padded = Image.new("RGB", (w, 877 + 22), bg)
         padded.paste(body, (0, 0))
-        padded.save(p, "PNG")
-    print(f"  shot-settings-dark.png: tooltip cut, background extended -> {w}x899")
+
+        # Drop the Bratrax row: the 82px band between the list's inner divider
+        # (y=732) and the card's bottom border (y=814). Cutting to the border
+        # rather than through it means the padding that sat above the divider
+        # becomes the padding below the surviving row, so the card closes up at
+        # its natural spacing instead of looking cropped.
+        spliced = splice_out_band(padded, 732, 814)
+        spliced.save(p, "PNG")
+    print(f"  shot-settings-dark.png: tooltip cut, second workspace row removed "
+          f"-> {w}x{spliced.height}")
 
     # No name or photo in the Messages-tab capture; it only needs the stray
     # half-rendered element at the bottom edge trimmed off.
