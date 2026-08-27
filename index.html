@@ -187,6 +187,58 @@
   }
   .nav-link:hover { color: var(--color-acid); }
 
+  /* Jump nav — appears once the hero scrolls out of view; lets a visitor who
+     already knows what they want skip straight to it instead of scrolling
+     the whole page. Fixed (not sticky) so it never reserves layout space
+     while hidden. Top offset is set by JS to sit flush under the header. */
+  .jump-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 45;
+    background: rgba(10,10,10,0.95);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+    opacity: 0;
+    transform: translateY(-6px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+  }
+  .jump-nav.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  .jump-nav-inner {
+    max-width: calc(var(--maxw) + 64px);
+    margin: 0 auto;
+    padding: 0 32px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .jump-nav-inner::-webkit-scrollbar { display: none; }
+  .jump-nav-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    padding: 13px 14px 11px;
+    white-space: nowrap;
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .jump-nav-link:hover {
+    color: var(--color-acid);
+    border-bottom-color: var(--color-acid);
+  }
+
   /* Buttons */
   .btn {
     display: inline-flex;
@@ -249,6 +301,13 @@
   .section-tight { padding: 64px 32px; }
   .container { max-width: var(--maxw); margin: 0 auto; }
   .container-narrow { max-width: var(--maxw-narrow); margin: 0 auto; }
+
+  /* Anchor targets need headroom now that the header + jump-nav are both
+     fixed/sticky once scrolled: without this, a jump lands the heading
+     directly under ~110px of fixed chrome. */
+  #pain, #fix, #ai, #dashboard, #compare, #start, #how-it-works, #faq {
+    scroll-margin-top: 120px;
+  }
 
   /* Hero */
   .hero { padding: 32px 32px 80px; position: relative; z-index: 1; }
@@ -532,6 +591,27 @@
     padding-bottom: 1px;
   }
   .hero-pedigree a:hover { border-bottom-color: var(--color-text-bright); }
+
+  /* Scroll cue — replaces a third hero CTA button. A single button (Sign up)
+     plus one secondary (Try demo) is the whole ask; "keep reading" doesn't
+     need button weight. */
+  .hero-scroll-cue {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    border-bottom: 1px dashed var(--color-border);
+    padding-bottom: 2px;
+    margin: 0 0 28px;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .hero-scroll-cue:hover {
+    color: var(--color-acid);
+    border-bottom-color: var(--color-acid-mid);
+  }
 
   /* Stat strip */
   .stat-strip {
@@ -2629,6 +2709,19 @@
   </div>
 </header>
 
+<!-- JUMP NAV — hidden over the hero, fades in once scrolled past. Lets a
+     visitor who already knows what they want (pricing, FAQ, the comparison
+     table) skip straight there instead of scrolling the whole page. -->
+<nav class="jump-nav" aria-label="Page sections">
+  <div class="jump-nav-inner">
+    <a href="#how-it-works" class="jump-nav-link">How it works</a>
+    <a href="#dashboard" class="jump-nav-link">Dashboards</a>
+    <a href="#compare" class="jump-nav-link">Compare</a>
+    <a href="#start" class="jump-nav-link">Pricing</a>
+    <a href="#faq" class="jump-nav-link">FAQ</a>
+  </div>
+</nav>
+
 <!-- HERO -->
 <section class="hero">
   <div class="container">
@@ -2643,21 +2736,19 @@
         </p>
 
         <p class="hero-sub reveal reveal-d2">
-          We don't ask you to switch. We ask you to compare. <strong style="color: var(--color-acid);">Run Bratrax beside your current tool for a month, for $1.</strong> If we stack up (and we're pretty sure we will), cancel them and keep us at <strong>$99/mo &mdash; flat, no contract.</strong> Same math, $1,000+ less per month.
+          We don't ask you to switch &mdash; we ask you to compare. <strong style="color: var(--color-acid);">Run Bratrax beside your current tool for a month, for $1.</strong> Stacks up? Keep us at <strong>$99/mo &mdash; flat, no contract.</strong>
         </p>
 
         <div class="hero-ctas reveal reveal-d2" style="margin-bottom: 14px;">
           <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow">Sign up</a>
-          <a href="#fix" class="btn btn-outline btn-arrow">See the proof</a>
-          <a href="/try-demo" data-bratrax-action="try-demo" class="btn btn-primary btn-arrow">Try demo</a>
+          <a href="/try-demo" data-bratrax-action="try-demo" class="btn btn-outline btn-arrow">Try demo</a>
         </div>
-        <p class="reveal reveal-d2" style="font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--color-text-muted); margin: 0 0 32px; line-height: 1.6;">
+        <p class="reveal reveal-d2" style="font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--color-text-muted); margin: 0 0 20px; line-height: 1.6;">
           $1 to start &middot; Cancel anytime &middot; No contract
         </p>
+        <a href="#pain" class="hero-scroll-cue reveal reveal-d2">See the proof <span aria-hidden="true">&darr;</span></a>
 
         <ul class="hero-bullets reveal reveal-d2">
-          <li><strong>$1 for your first month</strong> &mdash; full access, run us beside your current tool</li>
-          <li><strong>After your first month? $99/mo flat at any GMV</strong> &mdash; same bill at $500K or $20M, no contract</li>
           <li><strong>Audit any number yourself</strong> &mdash; read the config, no proprietary math</li>
           <li><strong>Bring your own Claude</strong> &mdash; your API key, no token markup</li>
         </ul>
@@ -3080,7 +3171,7 @@ Email/SMS:            $750,000   (15%)
 </section>
 
 <!-- 05 — THE MATH -->
-<section class="section">
+<section class="section" id="compare">
   <div class="container">
     <span class="sec-label reveal">05 &mdash; Bratrax vs Triple Whale, Hyros, Northbeam</span>
     <h2 class="sec-head reveal reveal-d1">The <span class="serif-accent">math.</span></h2>
@@ -3185,7 +3276,7 @@ Email/SMS:            $750,000   (15%)
 </section>
 
 <!-- 06 — HOW IT WORKS -->
-<section class="section" style="border-top: 1px solid var(--color-border);">
+<section class="section" id="how-it-works" style="border-top: 1px solid var(--color-border);">
   <div class="container">
     <span class="sec-label reveal">06 &mdash; How to set up Bratrax Lite</span>
     <h2 class="sec-head reveal reveal-d1">Live in under <span class="serif-accent">10 minutes.</span></h2>
@@ -3384,7 +3475,7 @@ Email/SMS:            $750,000   (15%)
 </section>
 
 <!-- 10 — FAQ -->
-<section class="section">
+<section class="section" id="faq">
   <div class="container container-narrow">
     <span class="sec-label reveal">10 &mdash; Shopify attribution FAQ</span>
     <h2 class="sec-head sec-head-narrow reveal reveal-d1">Common <span class="serif-accent">questions.</span></h2>
@@ -3599,14 +3690,25 @@ Email/SMS:            $750,000   (15%)
     heroReveals.forEach(el => el.classList.add('visible'));
   }));
 
-  // Header CTA: outline while hero is in view, solid acid once scrolled past
+  // Header CTA: outline while hero is in view, solid acid once scrolled past.
+  // Same observer also drives the jump-nav: hidden over the hero, visible
+  // once scrolled past — one signal, two things react to it.
   (function() {
     const header = document.querySelector('.site-header');
     const hero = document.querySelector('.hero');
+    const jumpNav = document.querySelector('.jump-nav');
     if (!header || !hero) return;
+
+    if (jumpNav) {
+      const setJumpNavOffset = () => { jumpNav.style.top = header.offsetHeight + 'px'; };
+      setJumpNavOffset();
+      window.addEventListener('resize', setJumpNavOffset);
+    }
+
     const headerObserver = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         header.classList.toggle('over-hero', entry.isIntersecting);
+        if (jumpNav) jumpNav.classList.toggle('visible', !entry.isIntersecting);
       });
     }, { threshold: 0, rootMargin: '-60px 0px 0px 0px' });
     headerObserver.observe(hero);
