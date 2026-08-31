@@ -214,7 +214,7 @@
     margin-bottom: 24px;
   }
   .eyebrow-shop { display: inline-flex; align-items: center; gap: 9px; }
-  .eyebrow-shop svg { flex: 0 0 16px; }
+  .eyebrow-shop svg, .eyebrow-shop img { flex: 0 0 20px; display: block; }
   .serif-accent {
     font-family: 'DM Serif Display', Georgia, serif;
     font-style: italic;
@@ -377,6 +377,8 @@
     font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
     color: var(--color-acid); display: block; margin-bottom: 12px;
   }
+  .door-tag-shop { display: inline-flex; align-items: center; gap: 7px; }
+  .door-tag-shop img { display: block; }
   .door h3 { font-size: 21px; margin: 0 0 12px; }
   .door p { font-size: 15px; margin: 0 0 18px; }
   .door .door-price {
@@ -472,13 +474,12 @@
       <a href="https://bratrax.com/integrations" class="nav-link nav-link-hide">Integrations</a>
       <a href="#faq" class="nav-link">FAQ</a>
       <a href="https://bratrax.com/login" class="nav-link">Log in</a>
-      <!-- Prospect-facing page: the primary path for a Shopify merchant is the
-           native install from the App Store. The bratrax.com signup is offered
-           one step down, in the hero and the two-doors section.
+      <!-- Primary path is the $1 self-serve signup on bratrax.com; the Shopify
+           App Store install is the secondary option (hero + two-doors section).
            TODO(app-store-url): the listing slug is temporary
            (apps.shopify.com/platform-connector-2) and will be rebranded — swap
            every occurrence when the branded URL is live. -->
-      <a href="https://apps.shopify.com/platform-connector-2" class="btn btn-primary btn-arrow">Install on Shopify</a>
+      <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow">Start for $1</a>
     </div>
   </div>
 </header>
@@ -487,14 +488,10 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero-head">
-      <!-- Neutral commerce glyph — deliberately NOT the Shopify bag mark, which
-           we don't have licence to use. "Shopify" appears in text only
-           (nominative use). -->
+      <!-- Official Shopify logo — the same asset the product ships — used to
+           show the integration. Displayed unmodified. -->
       <span class="eyebrow eyebrow-shop">
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" aria-hidden="true" focusable="false">
-          <path d="M5 8.5h14l-1 11.5H6L5 8.5Z" stroke="#D4FF00" stroke-width="1.6" stroke-linejoin="round"/>
-          <path d="M8.5 8.5a3.5 3.5 0 0 1 7 0" stroke="#D4FF00" stroke-width="1.6"/>
-        </svg>
+        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/shopify-logo.webp" width="20" height="20" alt="Shopify" decoding="async">
         Bratrax for Shopify
       </span>
       <h1>Shopify knows every order. <span class="serif-accent">It just can't tell you what earned it.</span></h1>
@@ -506,12 +503,12 @@
       what actually drove it — the ad, the email, the flow. <strong>One sale, counted once.</strong>
     </p>
     <div class="hero-cta">
-      <a href="https://apps.shopify.com/platform-connector-2" class="btn btn-primary btn-large btn-arrow">Install from the Shopify App Store</a>
-      <a href="#power" class="btn btn-outline btn-large">See what it powers</a>
+      <a href="https://bratrax.com/signup" class="btn btn-primary btn-large btn-arrow">Start for $1</a>
+      <a href="https://apps.shopify.com/platform-connector-2" class="btn btn-outline btn-large">Install from the Shopify App Store</a>
     </div>
     <p class="hero-note">
-      $99/mo flat &middot; no GMV scaling &middot; no contract &middot; 30-day free trial on Shopify
-      &middot; Prefer to start on the web? <a href="https://bratrax.com/signup">Sign up here</a>
+      $1 for your first month, then $99/mo flat &middot; no GMV scaling &middot; no contract
+      &middot; <a href="#power">See what it powers</a>
     </p>
   </div>
 </section>
@@ -657,37 +654,38 @@
 <section class="band" id="connect">
   <div class="wrap">
     <span class="section-label">Getting started</span>
-    <h2>Two doors, <span class="serif-accent">same room.</span></h2>
+    <h2>Start in a minute, <span class="serif-accent">two ways.</span></h2>
     <p class="lead">
-      Install from the Shopify App Store or start on the web — it's the same product, the same
-      $99/mo flat price, and both end with your store connected and your history loading.
+      Sign up on bratrax.com and test us for a dollar, or install straight from the Shopify App
+      Store — it's the same product, the same $99/mo flat price, and both end with your store
+      connected and your history loading.
     </p>
 
     <div class="doors">
       <div class="door">
-        <span class="door-tag">Install on Shopify</span>
-        <h3>From the Shopify App Store</h3>
-        <p>Find Bratrax in the App Store and click install. It walks you through creating your Bratrax account and connecting your store — without ever leaving Shopify.</p>
+        <span class="door-tag">Start here</span>
+        <h3>Sign up on bratrax.com</h3>
+        <p>Create your account and test us for a dollar, then connect Shopify in a single click from Settings &rarr; Connections. Tracking sets itself up — no pixel, no theme edits.</p>
+        <ol class="ministeps">
+          <li>Sign up at bratrax.com — $1 for your first month.</li>
+          <li>Go to <strong>Settings &rarr; Connections</strong> and connect Shopify.</li>
+          <li>Approve access — that's it. History backfills in the background.</li>
+        </ol>
+        <p class="door-price">$1 your first month &middot; then $99/mo flat &middot; cancel anytime</p>
+        <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow">Start for $1</a>
+      </div>
+
+      <div class="door">
+        <span class="door-tag door-tag-shop"><img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/shopify-logo.webp" width="16" height="16" alt="" aria-hidden="true"> Also on Shopify</span>
+        <h3>Install from the Shopify App Store</h3>
+        <p>Prefer to stay inside Shopify? Install Bratrax from the App Store and it walks you through creating your account and connecting your store — without ever leaving Shopify.</p>
         <ol class="ministeps">
           <li>Open the Bratrax listing and click <strong>Install</strong>.</li>
           <li>Approve the connection — account and store set up in one flow.</li>
           <li>Your dashboards start filling; the year backfills behind them.</li>
         </ol>
-        <p class="door-price">30-day free trial &middot; then $99/mo &middot; billed through your Shopify invoice</p>
-        <a href="https://apps.shopify.com/platform-connector-2" class="btn btn-primary btn-arrow">Open the App Store listing</a>
-      </div>
-
-      <div class="door">
-        <span class="door-tag">Start on the web</span>
-        <h3>From bratrax.com</h3>
-        <p>Create your account first, then connect Shopify in a single click from Settings &rarr; Connections. Tracking sets itself up — no pixel, no theme edits.</p>
-        <ol class="ministeps">
-          <li>Sign up at bratrax.com.</li>
-          <li>Go to <strong>Settings &rarr; Connections</strong> and connect Shopify.</li>
-          <li>Approve access — that's it. History backfills in the background.</li>
-        </ol>
-        <p class="door-price">$1 your first month &middot; then $99/mo &middot; billed on the web</p>
-        <a href="https://bratrax.com/signup" class="btn btn-outline btn-arrow">Sign up on bratrax.com</a>
+        <p class="door-price">30-day free trial &middot; then $99/mo &middot; billed through Shopify</p>
+        <a href="https://apps.shopify.com/platform-connector-2" class="btn btn-outline btn-arrow">Open the App Store listing</a>
       </div>
     </div>
     <p class="doors-note">Already on Bratrax? Connect your store from <a href="https://bratrax.com/connectors" class="inline-a">Settings &rarr; Connections</a>.</p>
@@ -771,8 +769,8 @@
       no contract.
     </p>
     <div class="closer-cta">
-      <a href="https://apps.shopify.com/platform-connector-2" class="btn btn-primary btn-large btn-arrow">Install from the Shopify App Store</a>
-      <a href="https://bratrax.com/signup" class="btn btn-outline btn-large">Start on bratrax.com</a>
+      <a href="https://bratrax.com/signup" class="btn btn-primary btn-large btn-arrow">Start for $1</a>
+      <a href="https://apps.shopify.com/platform-connector-2" class="btn btn-outline btn-large">Install from the Shopify App Store</a>
     </div>
     <p style="font-size:15px;margin-top:28px">
       Want the whole stack?
