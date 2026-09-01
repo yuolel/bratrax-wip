@@ -357,9 +357,9 @@
   }
   .facts li:last-child { border-bottom: none; }
   .facts li::before {
-    content: '—'; color: var(--color-acid);
-    font-family: 'Space Mono', monospace; font-weight: 700;
-    position: absolute; left: 0; top: 13px;
+    content: '✓'; color: var(--color-acid);
+    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px;
+    position: absolute; left: 0; top: 12px;
   }
   .facts strong { color: var(--color-text-bright); }
 
@@ -433,6 +433,38 @@
   .closer p { font-size: 18px; max-width: 54ch; margin: 0 auto 32px; }
   .closer-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
 
+  /* ─────────── PROBLEM / SOLUTION BEATS ─────────── */
+  .nowrap { white-space: nowrap; }
+  .beats { margin-top: 44px; display: grid; gap: 60px; }
+  .beat { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+  .beat-tag {
+    font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase; color: rgba(212,255,0,0.7);
+    display: block; margin-bottom: 14px;
+  }
+  .beat h3 {
+    font-family: 'Outfit', sans-serif; font-size: clamp(23px, 2.5vw, 31px);
+    font-weight: 900; line-height: 1.14; letter-spacing: -0.3px;
+    color: var(--color-text-bright); margin: 0 0 16px;
+  }
+  .beat p { font-size: 16px; margin: 0 0 14px; }
+  .beat p:last-child { margin-bottom: 0; }
+  .beat .resolve { color: var(--color-text); }
+  .beat .resolve strong { color: var(--color-acid); font-weight: 600; }
+  .beat-media { margin: 0; }
+  .beat-media img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
+  .beat-flip .beat-copy { order: 2; }
+  .beat-summary { margin: 60px auto 0; max-width: 1000px; }
+  .beat-summary img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
+  .beat-summary figcaption {
+    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.5px;
+    color: var(--color-text-muted); margin-top: 14px; text-align: center;
+  }
+  @media (max-width: 900px) {
+    .beat { grid-template-columns: 1fr; gap: 26px; }
+    .beat-flip .beat-copy { order: 0; }
+  }
+
   /* ─────────── RESPONSIVE ─────────── */
   @media (max-width: 900px) {
     .split, .doors { grid-template-columns: 1fr; gap: 40px; }
@@ -497,7 +529,7 @@
       The order lands in Shopify clean — but the click that started it was an ad three days ago,
       so the sale shows up as <span class="direct">Direct</span>. Meanwhile Meta, Google and TikTok
       each take credit for it. Bratrax reads your real Shopify orders and ties every one back to
-      what actually drove it — the ad, the email, the flow. <strong>One sale, counted once.</strong>
+      what actually drove it — the ad, the email, the flow. <strong><span class="nowrap">One sale, counted once</span> — numbers you can finally trust.</strong>
     </p>
     <div class="hero-cta">
       <a href="https://bratrax.com/signup" class="btn btn-primary btn-large btn-arrow">Start for $1</a>
@@ -505,7 +537,7 @@
     </div>
     <p class="hero-note">
       $1 for your first month, then $99/mo flat &middot; no GMV scaling &middot; no contract
-      &middot; <a href="#power">See what it powers</a>
+      &middot; <a href="#power">See the problems it solves</a>
     </p>
   </div>
 </section>
@@ -513,19 +545,25 @@
 <!-- ─────────── RECONCILIATION CORE (the unique argument) ─────────── -->
 <section class="band">
   <div class="wrap">
-    <span class="section-label">The source of truth</span>
     <h2>The sale is real. The <span class="serif-accent">&ldquo;Direct&rdquo; label</span> is the lie.</h2>
     <p class="lead">
       Shopify is the one system that knows a sale actually happened — the order, the line items,
       the refund, the returning customer. What it doesn't know is <em>why</em>. So the sale a
-      Facebook ad started last Tuesday gets filed under Direct when the customer comes back and
+      Facebook ad started last Wednesday gets filed under Direct when the customer comes back and
       buys, and the platforms that did earn it — and three that didn't — all claim it at once.
     </p>
-    <div class="pull">
-      <p>Bratrax makes your Shopify orders the referee. Every order is matched back to the real
-      touch that drove it, so credit is settled against what shipped — not against whatever each
-      ad platform reports about itself.</p>
-    </div>
+    <p class="lead" style="margin-top:20px">
+      <strong style="color:var(--color-text-bright)">Bratrax makes your Shopify orders the referee.</strong>
+      Every order is matched back to the real touch that drove it, so credit is settled against what
+      shipped — not against whatever each ad platform reports about itself.
+    </p>
+
+    <figure class="figure figure-wide" style="margin-top:40px">
+      <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/order-path.png"
+           width="1488" height="819" loading="lazy"
+           alt="A Bratrax order detail for order #878218, a $122.35 sale, traced through a Klaviyo touch and a ten-step Shopify customer journey to a winning last-touch Meta campaign, ending in the conversion.">
+      <figcaption>A &ldquo;Direct&rdquo; sale, opened up: order #878218 traced back through the customer's journey to the Meta campaign that actually earned it.</figcaption>
+    </figure>
     <ul class="facts">
       <li><strong>The Direct bucket gets emptied.</strong> Orders that used to sit unattributed are traced back to the click, email or flow that started them.</li>
       <li><strong>Every order counted once.</strong> When Meta, Google and TikTok all claim the same sale, Bratrax settles it against your order record instead of summing three inflated numbers.</li>
@@ -539,7 +577,6 @@
 <section class="band">
   <div class="wrap split">
     <div>
-      <span class="section-label">What it reads</span>
       <h2>Straight from Shopify. <span class="serif-accent">No pixel to paste.</span></h2>
       <p style="font-size:16px">
         Bratrax reads your store through Shopify's own APIs — the same order record your
@@ -555,7 +592,6 @@
       </ul>
     </div>
     <div>
-      <span class="section-label">History from day one</span>
       <h2>A full year, <span class="serif-accent">backfilled in the background.</span></h2>
       <p style="font-size:16px">
         You don't start from an empty dashboard and wait six weeks for it to fill. Bratrax pulls
@@ -573,84 +609,89 @@
   </div>
 </section>
 
-<!-- ─────────── WHAT IT POWERS (carousel) ─────────── -->
+<!-- ─────────── PROBLEM / SOLUTION BEATS ─────────── -->
 <section class="band" id="power">
   <div class="wrap">
-    <span class="section-label">Once Shopify is connected</span>
-    <h2>Connect your store, and <span class="serif-accent">seven dashboards light up.</span></h2>
+    <h2>What your dashboards can't tell you. <span class="serif-accent">Bratrax can.</span></h2>
     <p class="lead">
-      Your orders are the spine of all of it — attribution, customer value, products, margin.
-      Everything below reads from the same Shopify order record, so the numbers agree with each
-      other and with your bank.
+      The Direct bucket is the loudest problem — it isn't the only one. Every view in Bratrax exists
+      to answer a question your ad managers and your Shopify reports quietly leave open.
     </p>
-  </div>
 
-  <div class="carousel">
-    <div class="viewport">
-      <div class="track" id="track" tabindex="0" role="group" aria-label="What Bratrax shows once Shopify is connected">
-        <figure class="slide">
-          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/01-channel-attribution-min.png"
-               width="1600" height="900"
-               alt="Every ad, ranked by what it earned. The Bratrax channel-attribution dashboard: MER, total sales, blended spend and new-customer ROAS tiles above a table breaking spend, attributed sales, ROAS, attributed orders and CPA down by channel, campaign, ad set and ad.">
-          <figcaption>Channel attribution — spend, ROAS and attributed orders for every channel, campaign, ad set and ad.</figcaption>
-        </figure>
+    <div class="beats">
 
-        <figure class="slide">
-          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/02-trace-any-sale-min.png"
-               width="1600" height="900" loading="lazy"
-               alt="Trace any sale, even the 'Direct' ones. An attributed-orders list and an order path graph showing one order traced through Klaviyo and a Shopify customer journey to a winning Meta touch, with the match reason and confidence for every order.">
-          <figcaption>Open any order to see the campaign, ad and touchpoints behind it — with the match reason and confidence.</figcaption>
-        </figure>
-
-        <figure class="slide">
-          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/03-attribution-models-min.png"
-               width="1600" height="900" loading="lazy"
-               alt="See how each model credits your sales. Three side-by-side attribution tables — first-touch, linear and last-touch — showing how credit for the same orders shifts between channels and ads under each model.">
-          <figcaption>First-touch, last-touch, linear, position, time-decay — watch credit move, then pick your model.</figcaption>
-        </figure>
-
-        <figure class="slide">
-          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/04-new-customers-min.png"
-               width="1600" height="900" loading="lazy"
-               alt="The new-customer math blended CPA hides. New-customer ROAS and new-customer CPA charts split out from returning buyers, beside blended-CPA tiles, so acquisition cost isn't masked by repeat orders.">
-          <figcaption>New-customer ROAS and CPA, split from returning buyers — so a blended average can't hide the real cost.</figcaption>
-        </figure>
-
-        <figure class="slide">
-          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/05-customer-profiles-min.png"
-               width="1600" height="900" loading="lazy"
-               alt="Know who buys and who's just lurking. A customer-value-by-acquisition table with lifetime value and revenue per channel, beside activation segments and a recommended action for each segment.">
-          <figcaption>Lifetime value by acquisition channel, plus a recommended action for every segment.</figcaption>
-        </figure>
-
-        <figure class="slide">
-          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/06-wholeapp-min.png"
-               width="1600" height="900" loading="lazy"
-               alt="Every dashboard, one source of truth. A montage of all seven Bratrax dashboards — attribution, commerce profile graph, customer analytics, store performance, email and SMS, products, and profile explorer — all reconciled against the same orders.">
-          <figcaption>Seven dashboards — attribution, customers, products, store, email &amp; SMS — all reconciled to the same orders.</figcaption>
-        </figure>
-
-        <figure class="slide">
-          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/07-cost-settings-min.png"
-               width="1600" height="900" loading="lazy"
-               alt="Your costs, your margin math. The Bratrax cost settings screen with tabs for cost of goods, shipping, gateway costs, custom expenses, media scope and profit rules, set against your Shopify products.">
-          <figcaption>Add COGS, shipping, gateway fees and profit rules — and every margin number reflects your real business.</figcaption>
+      <div class="beat">
+        <div class="beat-copy">
+          <span class="beat-tag">Which ads actually made money</span>
+          <h3>Know which ads paid off — and which quietly bled.</h3>
+          <p>Every ad platform reports its own flattering ROAS, and none of them agree. Winners and money-losers blur together inside one blended number.</p>
+          <p class="resolve"><strong>Bratrax ranks every ad by what it truly earned</strong> — spend, ROAS and attributed orders down to the channel, campaign, ad set and single ad, all reconciled to real Shopify orders.</p>
+        </div>
+        <figure class="beat-media">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/01-channel-attribution-dash.png" width="1080" height="900" loading="lazy" alt="The Bratrax channel-attribution dashboard: MER, total sales and new-customer ROAS tiles above a table breaking spend, attributed sales, ROAS, attributed orders and CPA down by channel, campaign, ad set and ad.">
         </figure>
       </div>
+
+      <div class="beat beat-flip">
+        <div class="beat-copy">
+          <span class="beat-tag">One version of the truth isn't enough</span>
+          <h3>See the sale through every model, not just one.</h3>
+          <p>Last-click flatters Google. First-touch flatters the top of the funnel. Commit to one model and you've quietly committed to one bias.</p>
+          <p class="resolve"><strong>Switch between five attribution models</strong> — first-touch, last-touch, linear, position and time-decay — and watch credit move between channels and ads. Then pick the one you trust, knowing exactly what it changes.</p>
+        </div>
+        <figure class="beat-media">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/03-attribution-models-dash.png" width="1000" height="900" loading="lazy" alt="Three side-by-side Bratrax attribution tables — first-touch, linear and last-touch — showing how credit for the same orders shifts between channels and ads under each model.">
+        </figure>
+      </div>
+
+      <div class="beat">
+        <div class="beat-copy">
+          <span class="beat-tag">The cost blended CPA hides</span>
+          <h3>See what a new customer really costs.</h3>
+          <p>Repeat orders drag your blended CPA down and make acquisition look cheaper than it is. Scale spend on that number and you scale a loss.</p>
+          <p class="resolve"><strong>Bratrax splits new-customer ROAS and CPA out from returning buyers</strong>, per channel — so the real cost of winning someone new can't hide behind an average.</p>
+        </div>
+        <figure class="beat-media">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/04-new-customers-dash.png" width="1095" height="900" loading="lazy" alt="Bratrax new-customer ROAS and new-customer CPA charts split out from returning buyers, beside blended-CPA tiles, so acquisition cost isn't masked by repeat orders.">
+        </figure>
+      </div>
+
+      <div class="beat beat-flip">
+        <div class="beat-copy">
+          <span class="beat-tag">Who's actually worth acquiring</span>
+          <h3>Know who buys again — and who never comes back.</h3>
+          <p>Two channels can post the same CPA while one brings loyal repeat buyers and the other brings one-and-done discount hunters. On a ROAS report they look identical.</p>
+          <p class="resolve"><strong>Bratrax ties lifetime value back to the acquisition channel</strong>, so you can pour budget into the customers who come back — and stop paying to acquire the ones who don't.</p>
+        </div>
+        <figure class="beat-media">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/05-customer-profiles-dash.png" width="1085" height="900" loading="lazy" alt="A Bratrax customer-value-by-acquisition table showing lifetime value and revenue per channel, beside activation segments and a recommended action for each segment.">
+        </figure>
+      </div>
+
+      <div class="beat">
+        <div class="beat-copy">
+          <span class="beat-tag">ROAS isn't profit</span>
+          <h3>Watch the margin, not just the ROAS.</h3>
+          <p>A 4× ROAS campaign can still lose money once COGS, shipping and gateway fees come out. Revenue dashboards will never show you that.</p>
+          <p class="resolve"><strong>Set your costs once</strong> — COGS, shipping, gateway fees, custom expenses — and every number on Bratrax turns into real contribution margin and true profit.</p>
+        </div>
+        <figure class="beat-media">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/07-cost-settings-dash.png" width="1000" height="900" loading="lazy" alt="The Bratrax cost settings screen with tabs for cost of goods, shipping, gateway costs, custom expenses, media scope and profit rules, set against your Shopify products.">
+        </figure>
+      </div>
+
     </div>
 
-    <div class="carousel-nav">
-      <button class="c-btn" id="prev" type="button" aria-label="Previous">&larr;</button>
-      <div class="dots" id="dots" role="tablist" aria-label="Choose a slide"></div>
-      <button class="c-btn" id="next" type="button" aria-label="Next">&rarr;</button>
-    </div>
+    <figure class="beat-summary">
+      <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/06-wholeapp-dash.png" width="1130" height="900" loading="lazy" alt="A montage of Bratrax's dashboards — attribution, commerce profile graph, customer analytics, store performance, email and SMS, products and profile explorer — all reconciled against the same Shopify orders.">
+      <figcaption>Attribution, customers, products, store, email &amp; SMS — every view reading from the same Shopify orders.</figcaption>
+    </figure>
   </div>
 </section>
 
 <!-- ─────────── TWO WAYS TO CONNECT ─────────── -->
 <section class="band" id="connect">
   <div class="wrap">
-    <span class="section-label">Getting started</span>
     <h2>Start in a minute, <span class="serif-accent">two ways.</span></h2>
     <p class="lead">
       Sign up on bratrax.com and test us for a dollar, or install straight from the Shopify App
@@ -693,7 +734,6 @@
 <section class="band">
   <div class="wrap split">
     <div>
-      <span class="section-label">What it touches</span>
       <h2>It reads your store. <span class="serif-accent">It doesn't run it.</span></h2>
       <p style="font-size:16px">
         Bratrax connects over Shopify's OAuth with the access it needs to read your orders and
@@ -707,7 +747,6 @@
       </ul>
     </div>
     <div>
-      <span class="section-label">Where it fits</span>
       <h2>Shopify is the foundation. <span class="serif-accent">Everything else reconciles to it.</span></h2>
       <p style="font-size:16px">
         Connect your ad platforms, email and SMS on top, and each one's self-reported numbers get
@@ -732,7 +771,6 @@
 <!-- ─────────── FAQ ─────────── -->
 <section class="band" id="faq">
   <div class="wrap">
-    <span class="section-label">Shopify FAQ</span>
     <h2>The questions <span class="serif-accent">Shopify sellers ask.</span></h2>
     <div class="faqs">
       <div class="faq-item">
@@ -758,7 +796,6 @@
 <!-- ─────────── CLOSER ─────────── -->
 <section class="closer">
   <div class="wrap">
-    <span class="eyebrow">Built on your orders</span>
     <h2>See what <span class="serif-accent">actually earned</span> the sale.</h2>
     <p>
       Connect Shopify and the guessing stops: every order traced to what drove it, the Direct
@@ -795,89 +832,6 @@
 </div>
 
 <script>
-  // Carousel — transform-positioned; without JS the slides sit in a legible row.
-  (function () {
-    var track = document.getElementById('track');
-    var dots = document.getElementById('dots');
-    if (!track || !dots) return;
-    var slides = track.querySelectorAll('.slide');
-    if (slides.length < 2) return;
-
-    var i = 0;
-
-    function stepPx() {
-      return slides[1].offsetLeft - slides[0].offsetLeft;
-    }
-    function render() {
-      track.style.transform = 'translateX(' + (-i * stepPx()) + 'px)';
-      for (var j = 0; j < slides.length; j++) {
-        slides[j].setAttribute('data-active', j === i ? 'true' : 'false');
-      }
-      var all = dots.children;
-      for (var k = 0; k < all.length; k++) {
-        all[k].setAttribute('aria-current', k === i ? 'true' : 'false');
-      }
-    }
-    function go(n) {
-      i = (n + slides.length) % slides.length;
-      render();
-    }
-
-    for (var d = 0; d < slides.length; d++) {
-      (function (n) {
-        var b = document.createElement('button');
-        b.className = 'dot';
-        b.type = 'button';
-        b.setAttribute('role', 'tab');
-        b.setAttribute('aria-label', 'Slide ' + (n + 1) + ' of ' + slides.length);
-        b.addEventListener('click', function () { go(n); restart(); });
-        dots.appendChild(b);
-      })(d);
-    }
-
-    document.getElementById('prev').addEventListener('click', function () { go(i - 1); restart(); });
-    document.getElementById('next').addEventListener('click', function () { go(i + 1); restart(); });
-
-    track.addEventListener('keydown', function (e) {
-      if (e.key === 'ArrowRight') { e.preventDefault(); go(i + 1); restart(); }
-      if (e.key === 'ArrowLeft') { e.preventDefault(); go(i - 1); restart(); }
-    });
-
-    var startX = null;
-    track.addEventListener('pointerdown', function (e) { startX = e.clientX; pause(); });
-    track.addEventListener('pointerup', function (e) {
-      if (startX !== null) {
-        var dx = e.clientX - startX;
-        if (Math.abs(dx) > 50) go(dx < 0 ? i + 1 : i - 1);
-      }
-      startX = null;
-      play();
-    });
-    track.addEventListener('pointercancel', function () { startX = null; play(); });
-
-    var ADVANCE = 3600;
-    var timer = null;
-    var still = window.matchMedia('(prefers-reduced-motion: reduce)');
-
-    function play() {
-      if (timer || still.matches) return;
-      timer = setInterval(function () { go(i + 1); }, ADVANCE);
-    }
-    function pause() { clearInterval(timer); timer = null; }
-    function restart() { pause(); play(); }
-
-    var root = track.parentNode.parentNode;
-    root.addEventListener('mouseenter', pause);
-    root.addEventListener('mouseleave', play);
-    root.addEventListener('focusin', pause);
-    root.addEventListener('focusout', play);
-
-    window.addEventListener('resize', render);
-
-    render();
-    play();
-  })();
-
   fetch('https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/partials/footer.html')
     .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.text(); })
     .then(function(html){ document.getElementById('brx-footer').innerHTML = html; })
