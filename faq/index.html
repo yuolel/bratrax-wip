@@ -994,6 +994,46 @@
         "@type": "Answer",
         "text": "Not to use it. Slack's split-view assistant panel requires a paid Slack plan — that is Slack's requirement, not ours. On a free Slack plan you can still mention @bratrax in any channel or send it a direct message, and it answers exactly the same way. On the Bratrax side there is nothing extra to buy: the assistant is included in every plan, with no per-seat charge and no metered billing for the questions your team asks."
       }
+    },
+    {
+      "@type": "Question",
+      "name": "Which Shopify plans and store setups does Bratrax support?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Any paid Shopify plan — Basic, Shopify, Advanced and Plus — including international and multi-currency stores. A store still on a free trial, with no paid plan behind it, can't be connected. If you run several stores, you connect one per Bratrax account." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does it track subscriptions, POS and my other sales channels?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Subscription revenue and status ride along with your Shopify orders, so subscription sales are already in your numbers, and orders from Shopify POS and your other Shopify sales channels are counted the same way. Dedicated connectors for the subscription apps (Recharge, Bold and Skio), for plan-level detail, are on the roadmap." }
+    },
+    {
+      "@type": "Question",
+      "name": "How does Bratrax figure out what drove an order Shopify files under “Direct”?",
+      "acceptedAnswer": { "@type": "Answer", "text": "It doesn't take an ad platform's word for it. Bratrax reads the first-party journey Shopify already records against each order — sessions, referrers and UTM parameters — alongside its own first-party click tracking, and stitches them into the real path to the sale. Every order gets a winning touch under the model you choose plus a confidence level you can see. Because it's first-party and tied to the order, it holds up through the cookie and iOS signal loss that breaks pixel-only tools, so the sale that used to sit in 'Direct' gets its real source back." }
+    },
+    {
+      "@type": "Question",
+      "name": "What Shopify data does Bratrax read — and can it see my customers' personal information?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Bratrax reads what it needs to attribute and cost your orders: order and transaction history, line items, order value, currency and discounts, refund and subscription status, abandoned checkouts, your product catalogue, and customer records — the last so it can tell first-time from returning buyers and stitch a customer's journey. It reads customer identifiers only for that, uses them for nothing else, and never sells or shares them. Full list in the privacy policy and DPA." }
+    },
+    {
+      "@type": "Question",
+      "name": "Is Bratrax read-only, and where does my data live?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Read-only: Bratrax can read your orders, customers and products but can't write, edit, refund or delete anything in Shopify. The data lands in your own logically isolated warehouse — never commingled with another store's — encrypted in transit, with EU data residency and encrypted, monitored backups, and it's yours to query directly, including with your own AI through the MCP endpoint. Full posture in the DPA." }
+    },
+    {
+      "@type": "Question",
+      "name": "What happens to my data if I disconnect or uninstall?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Disconnecting in Bratrax or uninstalling from Shopify revokes access immediately; Bratrax stops pulling new data at once. For what's already gathered: after you cancel you keep a 30-day export window, then it moves to cold retention and is permanently deleted at 180 days (you can request deletion sooner). Encrypted backups age out within 90 days after that. Details in the privacy policy." }
+    },
+    {
+      "@type": "Question",
+      "name": "How is Bratrax different from Shopify's built-in analytics — and from tools like Triple Whale or Northbeam?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Shopify's own analytics tells you a sale happened, but it leans last-click and drops most of what it can't see into 'Direct.' It can't reconcile what Meta, Google and TikTok each separately claim, and it won't show true CAC or margin. Bratrax sits on the same orders and adds cross-channel attribution across five models, new-customer economics, and real profit after costs. Against tools like Triple Whale and Northbeam, the difference is the model: $99/mo flat that never scales with GMV, your data in a warehouse you can query with your own AI, and no demo-gated onboarding." }
+    },
+    {
+      "@type": "Question",
+      "name": "I already run another attribution tool — how do I switch, and do I lose my history?",
+      "acceptedAnswer": { "@type": "Answer", "text": "You don't have to switch anything to try us, and you won't lose your history. Bratrax reads the orders and UTMs you already have, so there's no re-tagging, no new tracking scheme, no migration project — and the 365-day backfill puts your past on the dashboard from day one. Run Bratrax next to your current tool through the free trial, compare side by side, and keep whichever earns it. Most brands find more data and sharper insight for less, and stay." }
     }
   ]
 }
@@ -1095,6 +1135,7 @@
       <li><a href="#platforms">Platforms &amp; fit</a></li>
       <li><a href="#risk">Risk, data, cancellation</a></li>
       <li><a href="#slack">Slack</a></li>
+      <li><a href="#shopify">Shopify</a></li>
     </ol>
   </aside>
 
@@ -1386,6 +1427,53 @@
         <h3 class="q">Do I need a paid Slack plan?</h3>
         <p class="a">Not to use it. Slack's <strong>split-view assistant panel</strong> requires a paid Slack plan — that's Slack's requirement, not ours. On a free Slack plan you can still mention <strong>@bratrax</strong> in any channel or send it a direct message, and it answers exactly the same way.</p>
         <p class="a">On the Bratrax side there's nothing extra to buy. The assistant is included in every plan, with no per-seat charge and no metered billing for the questions your team asks.</p>
+      </div>
+
+    </section>
+
+    <!-- ─── 08 Shopify ─── -->
+    <section class="faq-section" id="shopify">
+      <span class="faq-section-label">08 — Shopify</span>
+      <h2>Bratrax for <span class="serif-accent">Shopify</span>.</h2>
+
+      <div class="qa-block">
+        <h3 class="q">Which Shopify plans and store setups does Bratrax support?</h3>
+        <p class="a">Any <strong>paid</strong> Shopify plan — Basic, Shopify, Advanced and Plus — including international and multi-currency stores. A store that's still on a free trial or hasn't picked a paid plan yet can't be connected, since there's no live subscription behind it. If you run several stores, you connect one per Bratrax account.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Does it track subscriptions, POS and my other sales channels?</h3>
+        <p class="a">Yes. Subscription revenue and status ride along with your Shopify orders, so subscription sales are already in your numbers, and orders from Shopify POS and your other Shopify sales channels are just orders to Bratrax — they're counted the same way. Dedicated connectors for the subscription apps (<strong>Recharge, Bold and Skio</strong>), for plan-level subscription detail, are on the roadmap.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">How does Bratrax figure out what drove an order Shopify files under “Direct”?</h3>
+        <p class="a">It doesn't take an ad platform's word for it. Bratrax reads the first-party journey Shopify already records against each order &mdash; the sessions, referrers and UTM parameters your store captures &mdash; alongside its own first-party click tracking, and stitches them into the real path that led to the sale.</p><p class="a">Every order then gets a winning touch under the attribution model you choose, plus a <strong>confidence level you can see</strong>. Because it's first-party and tied to the order record, it holds up through the cookie and iOS signal loss that breaks pixel-only tools &mdash; so the sale that used to sit in &ldquo;Direct&rdquo; gets its real source back.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">What Shopify data does Bratrax read — and can it see my customers' personal information?</h3>
+        <p class="a">Bratrax reads what it needs to attribute and cost your orders: order and transaction history, line items, order value, currency and discounts, refund and subscription status, abandoned checkouts, your product catalogue, and customer records &mdash; the last so it can tell a first-time buyer from a returning one and stitch a customer's journey together. It reads customer identifiers only for that; it isn't used for anything else, and Bratrax never sells or shares it. The full list is in the <a href="https://bratrax.com/privacy-policy">privacy policy</a> and <a href="https://bratrax.com/dpa">DPA</a>.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Is Bratrax read-only, and where does my data live?</h3>
+        <p class="a"><strong>Read-only.</strong> Bratrax can read your orders, customers and products; it can't write, edit, refund or delete anything in Shopify. The data it reads lands in your own <strong>logically isolated</strong> data warehouse &mdash; never commingled with another store's &mdash; encrypted in transit, with EU data residency and encrypted, monitored backups. It's yours to query directly, including with your own AI through the MCP endpoint. The full security posture is in the <a href="https://bratrax.com/dpa">DPA</a>.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">What happens to my data if I disconnect or uninstall?</h3>
+        <p class="a">Disconnecting in Bratrax or uninstalling from your Shopify admin revokes access immediately &mdash; Bratrax stops pulling new data at once. For what's already gathered: after you cancel you keep a <strong>30-day window to export</strong>, then it moves to cold retention and is permanently deleted at <strong>180 days</strong> (you can request deletion sooner). Encrypted backups age out on rotation within 90 days after that. It's all spelled out in the <a href="https://bratrax.com/privacy-policy">privacy policy</a>.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">How is Bratrax different from Shopify's built-in analytics — and from tools like Triple Whale or Northbeam?</h3>
+        <p class="a">Shopify's own analytics tells you a sale happened, but it leans last-click and drops most of what it can't see into &ldquo;Direct.&rdquo; It can't reconcile what Meta, Google and TikTok each separately claim, and it won't show you true CAC or margin. Bratrax sits on the same orders and adds cross-channel attribution across <strong>five models</strong>, new-customer economics, and real profit after your costs.</p><p class="a">Against tools like Triple Whale and Northbeam, the difference is the model: <strong>$99/mo flat that never scales with your GMV</strong>, your data in a warehouse you can query with your own AI, and no demo-gated onboarding. The full breakdowns live on <a href="https://bratrax.com/vs/triple-whale">vs Triple Whale</a> and <a href="https://bratrax.com/vs/hyros">vs Hyros</a>.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">I already run another attribution tool — how do I switch, and do I lose my history?</h3>
+        <p class="a">You don't have to switch anything to try us, and you won't lose your history. Bratrax reads the orders and UTMs you already have, so there's <strong>no re-tagging, no new tracking scheme, no migration project</strong> &mdash; and the 365-day backfill means your past is on the dashboard from day one, not something you rebuild. Run Bratrax next to your current tool through the free trial, compare the numbers side by side, and keep whichever earns it. Most brands find they're getting more data and sharper insight for less &mdash; and stay.</p>
       </div>
 
     </section>
