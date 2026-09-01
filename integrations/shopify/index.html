@@ -121,6 +121,7 @@
   body {
     margin: 0;
     font-family: 'Outfit', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
     background: var(--color-bg);
     color: var(--color-text);
     line-height: 1.6;
@@ -130,6 +131,9 @@
     overflow-x: hidden;
   }
   a { color: inherit; text-decoration: none; }
+  strong { font-weight: 600; }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li { text-wrap: pretty; }
 
   /* Graph-paper canvas texture — page canvas only, never on cards or data
      surfaces (design system §Visual Texture). */
@@ -351,15 +355,15 @@
   .facts { list-style: none; padding: 0; margin: 28px 0 0; }
   .facts li {
     position: relative;
-    padding: 13px 0 13px 34px;
+    padding: 13px 0 13px 26px;
     border-bottom: 1px solid rgba(58,58,58,0.5);
     font-size: 15px; color: var(--color-text-secondary);
   }
   .facts li:last-child { border-bottom: none; }
   .facts li::before {
-    content: '✓'; color: var(--color-acid);
-    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 15px;
-    position: absolute; left: 0; top: 12px;
+    content: '+'; color: var(--color-acid);
+    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 16px;
+    position: absolute; left: 0; top: 11px;
   }
   .facts strong { color: var(--color-text-bright); }
 
@@ -523,7 +527,7 @@
         <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/shopify-logo.webp" width="20" height="20" alt="Shopify" decoding="async">
         Bratrax for Shopify
       </span>
-      <h1>Shopify knows every order. <span class="serif-accent">It just can't tell you what earned it.</span></h1>
+      <h1>Shopify knows every order. It just can't tell you what <span class="serif-accent">earned</span> it.</h1>
     </div>
     <p class="hero-sub">
       The order lands in Shopify clean — but the click that started it was an ad three days ago,
@@ -545,7 +549,7 @@
 <!-- ─────────── RECONCILIATION CORE (the unique argument) ─────────── -->
 <section class="band">
   <div class="wrap">
-    <h2>The sale is real. The <span class="serif-accent">&ldquo;Direct&rdquo; label</span> is the lie.</h2>
+    <h2>The sale is real. The &ldquo;Direct&rdquo; label is a <span class="serif-accent">lie</span>.</h2>
     <p class="lead">
       Shopify is the one system that knows a sale actually happened — the order, the line items,
       the refund, the returning customer. What it doesn't know is <em>why</em>. So the sale a
@@ -577,7 +581,7 @@
 <section class="band">
   <div class="wrap split">
     <div>
-      <h2>Straight from Shopify. <span class="serif-accent">No pixel to paste.</span></h2>
+      <h2>Straight from Shopify. No pixel to <span class="serif-accent">paste</span>.</h2>
       <p style="font-size:16px">
         Bratrax reads your store through Shopify's own APIs — the same order record your
         accountant trusts. Connecting sets up tracking automatically: there's nothing to install
@@ -592,7 +596,7 @@
       </ul>
     </div>
     <div>
-      <h2>A full year, <span class="serif-accent">backfilled in the background.</span></h2>
+      <h2>A full year, <span class="serif-accent">backfilled</span> in the background.</h2>
       <p style="font-size:16px">
         You don't start from an empty dashboard and wait six weeks for it to fill. Bratrax pulls
         your history the moment you connect and keeps working while you're already reading numbers.
@@ -612,7 +616,7 @@
 <!-- ─────────── PROBLEM / SOLUTION BEATS ─────────── -->
 <section class="band" id="power">
   <div class="wrap">
-    <h2>What your dashboards can't tell you. <span class="serif-accent">Bratrax can.</span></h2>
+    <h2>What your dashboards can't tell you. Bratrax <span class="serif-accent">can</span>.</h2>
     <p class="lead">
       The Direct bucket is the loudest problem — it isn't the only one. Every view in Bratrax exists
       to answer a question your ad managers and your Shopify reports quietly leave open.
@@ -623,7 +627,7 @@
       <div class="beat">
         <div class="beat-copy">
           <span class="beat-tag">Which ads actually made money</span>
-          <h3>Know which ads paid off — and which quietly bled.</h3>
+          <h3>Know which ads paid off — and which quietly <span class="serif-accent">bled</span>.</h3>
           <p>Every ad platform reports its own flattering ROAS, and none of them agree. Winners and money-losers blur together inside one blended number.</p>
           <p class="resolve"><strong>Bratrax ranks every ad by what it truly earned</strong> — spend, ROAS and attributed orders down to the channel, campaign, ad set and single ad, all reconciled to real Shopify orders.</p>
         </div>
@@ -635,7 +639,7 @@
       <div class="beat beat-flip">
         <div class="beat-copy">
           <span class="beat-tag">One version of the truth isn't enough</span>
-          <h3>See the sale through every model, not just one.</h3>
+          <h3>See the sale through every model, not just <span class="serif-accent">one</span>.</h3>
           <p>Last-click flatters Google. First-touch flatters the top of the funnel. Commit to one model and you've quietly committed to one bias.</p>
           <p class="resolve"><strong>Switch between five attribution models</strong> — first-touch, last-touch, linear, position and time-decay — and watch credit move between channels and ads. Then pick the one you trust, knowing exactly what it changes.</p>
         </div>
@@ -647,7 +651,7 @@
       <div class="beat">
         <div class="beat-copy">
           <span class="beat-tag">The cost blended CPA hides</span>
-          <h3>See what a new customer really costs.</h3>
+          <h3>See what a new customer really <span class="serif-accent">costs</span>.</h3>
           <p>Repeat orders drag your blended CPA down and make acquisition look cheaper than it is. Scale spend on that number and you scale a loss.</p>
           <p class="resolve"><strong>Bratrax splits new-customer ROAS and CPA out from returning buyers</strong>, per channel — so the real cost of winning someone new can't hide behind an average.</p>
         </div>
@@ -659,7 +663,7 @@
       <div class="beat beat-flip">
         <div class="beat-copy">
           <span class="beat-tag">Who's actually worth acquiring</span>
-          <h3>Know who buys again — and who never comes back.</h3>
+          <h3>Know who buys again — and who never comes <span class="serif-accent">back</span>.</h3>
           <p>Two channels can post the same CPA while one brings loyal repeat buyers and the other brings one-and-done discount hunters. On a ROAS report they look identical.</p>
           <p class="resolve"><strong>Bratrax ties lifetime value back to the acquisition channel</strong>, so you can pour budget into the customers who come back — and stop paying to acquire the ones who don't.</p>
         </div>
@@ -671,7 +675,7 @@
       <div class="beat">
         <div class="beat-copy">
           <span class="beat-tag">ROAS isn't profit</span>
-          <h3>Watch the margin, not just the ROAS.</h3>
+          <h3>Watch the <span class="serif-accent">margin</span>, not just the ROAS.</h3>
           <p>A 4× ROAS campaign can still lose money once COGS, shipping and gateway fees come out. Revenue dashboards will never show you that.</p>
           <p class="resolve"><strong>Set your costs once</strong> — COGS, shipping, gateway fees, custom expenses — and every number on Bratrax turns into real contribution margin and true profit.</p>
         </div>
@@ -692,7 +696,7 @@
 <!-- ─────────── TWO WAYS TO CONNECT ─────────── -->
 <section class="band" id="connect">
   <div class="wrap">
-    <h2>Start in a minute, <span class="serif-accent">two ways.</span></h2>
+    <h2>Start in a minute, <span class="serif-accent">two</span> ways.</h2>
     <p class="lead">
       Sign up on bratrax.com and test us for a dollar, or install straight from the Shopify App
       Store — it's the same product, the same $99/mo flat price, and both end with your store
@@ -734,7 +738,7 @@
 <section class="band">
   <div class="wrap split">
     <div>
-      <h2>It reads your store. <span class="serif-accent">It doesn't run it.</span></h2>
+      <h2>It reads your store. It doesn't <span class="serif-accent">run</span> it.</h2>
       <p style="font-size:16px">
         Bratrax connects over Shopify's OAuth with the access it needs to read your orders and
         customers — and nothing to change them. It doesn't edit products, doesn't touch fulfilment,
@@ -747,7 +751,7 @@
       </ul>
     </div>
     <div>
-      <h2>Shopify is the foundation. <span class="serif-accent">Everything else reconciles to it.</span></h2>
+      <h2>Shopify is the foundation. Everything else <span class="serif-accent">reconciles</span> to it.</h2>
       <p style="font-size:16px">
         Connect your ad platforms, email and SMS on top, and each one's self-reported numbers get
         checked against the orders Shopify actually recorded.
@@ -771,7 +775,7 @@
 <!-- ─────────── FAQ ─────────── -->
 <section class="band" id="faq">
   <div class="wrap">
-    <h2>The questions <span class="serif-accent">Shopify sellers ask.</span></h2>
+    <h2>The questions Shopify sellers <span class="serif-accent">ask</span>.</h2>
     <div class="faqs">
       <div class="faq-item">
         <h3>Does Bratrax work with my Shopify store?</h3>
@@ -796,7 +800,7 @@
 <!-- ─────────── CLOSER ─────────── -->
 <section class="closer">
   <div class="wrap">
-    <h2>See what <span class="serif-accent">actually earned</span> the sale.</h2>
+    <h2>See what actually <span class="serif-accent">earned</span> the sale.</h2>
     <p>
       Connect Shopify and the guessing stops: every order traced to what drove it, the Direct
       bucket cleared out, and your history already on the dashboard. $99/mo flat — no GMV scaling,
