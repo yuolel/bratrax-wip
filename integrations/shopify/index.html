@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<!-- Google tag (gtag.js) — GA4 -->
+<link rel="preconnect" href="https://www.googletagmanager.com">
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Q78FNCB1BH"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-Q78FNCB1BH');
+</script>
+
+<title>Shopify attribution that adds up — Bratrax</title>
+<meta name="description" content="Real attribution for Shopify. Bratrax ties every order — even the ones Shopify calls 'Direct' — back to the ad, email or flow that earned it. $99/mo flat.">
+<link rel="canonical" href="https://bratrax.com/integrations/shopify">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://bratrax.com/integrations/shopify">
+<meta property="og:title" content="Shopify knows every order. It just can't tell you what earned it.">
+<meta property="og:description" content="Shopify knows every order. It just can't tell you what earned it. Bratrax ties every Shopify order back to the ad, email or flow that drove it — and clears out the 'Direct' bucket.">
+<meta property="og:site_name" content="Bratrax">
+<meta property="og:image" content="https://bratrax.com/og/shopify.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Shopify knows every order. It just can't tell you what earned it.">
+<meta name="twitter:description" content="Shopify knows every order. It just can't tell you what earned it. Bratrax ties every Shopify order back to what drove it.">
+<meta name="twitter:image" content="https://bratrax.com/og/shopify.png">
+
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+<link rel="apple-touch-icon" href="/favicon.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@1&family=Outfit:wght@300;400;600;700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<!-- ─────────── STRUCTURED DATA ─────────── -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": "Bratrax for Shopify",
+  "applicationCategory": "BusinessApplication",
+  "applicationSubCategory": "Marketing Attribution",
+  "operatingSystem": "Shopify, Web",
+  "url": "https://bratrax.com/integrations/shopify",
+  "sameAs": "https://apps.shopify.com/bratrax",
+  "offers": { "@type": "Offer", "price": "99", "priceCurrency": "USD" },
+  "description": "Bratrax connects to your Shopify store as the source of truth for attribution. It reads your real orders — including refunds, customers and products — and ties every one back to the ad, email or flow that actually drove it, clearing the sales that Shopify files under 'Direct'."
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://bratrax.com/" },
+    { "@type": "ListItem", "position": 2, "name": "Integrations", "item": "https://bratrax.com/integrations" },
+    { "@type": "ListItem", "position": 3, "name": "Shopify", "item": "https://bratrax.com/integrations/shopify" }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Do I need a developer, a pixel or theme edits to set it up?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. On Shopify, tracking installs itself the moment you connect — no pixel to paste, no theme code, and nothing for a developer to touch. You approve the connection and you are done. (WooCommerce is the platform that needs a plugin; Shopify does not.)" }
+    },
+    {
+      "@type": "Question",
+      "name": "Will connecting Bratrax slow down my store or affect checkout?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Bratrax reads your store through Shopify's API, and its tracking installs itself — there is no script for you to add to your theme and nothing sitting inside your checkout. Your storefront speed and your checkout stay exactly as they are." }
+    },
+    {
+      "@type": "Question",
+      "name": "I already use another attribution tool — do I have to switch or change anything?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No — and you do not have to give anything up to try us. Bratrax reads your existing Shopify orders and the UTMs and tracking you already have in place, so there is nothing to rebuild: no re-tagging ads, no new UTM scheme, no migration project. Run Bratrax alongside your current tool through the free trial, compare them side by side, and keep whichever you trust. We are betting you will see more data and sharper insight for less money." }
+    },
+    {
+      "@type": "Question",
+      "name": "Does the price go up as my store grows?",
+      "acceptedAnswer": { "@type": "Answer", "text": "No. Bratrax is $99/mo flat — no GMV scaling, no per-order fees, no revenue share. Most attribution tools quietly charge you more as you sell more; we do not. The price you start at is the price at ten times the volume." }
+    },
+    {
+      "@type": "Question",
+      "name": "How far back does my Shopify data go?",
+      "acceptedAnswer": { "@type": "Answer", "text": "A full year. When you connect, Bratrax backfills 365 days of your store history in the background, so you are not staring at an empty dashboard. The last 14 days populate within minutes, so you can start reading numbers straight away while the rest loads behind it." }
+    },
+    {
+      "@type": "Question",
+      "name": "Should I install from the Shopify App Store or sign up on bratrax.com?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Either works — it is the same product and the same $99/month flat price. Installing from the Shopify App Store creates your Bratrax account and connects your store without you leaving Shopify, and billing runs through your Shopify invoice with a 30-day free trial. Signing up on bratrax.com lets you connect Shopify in one click from Settings, and your first month is $1. Both land you in exactly the same place." }
+    }
+  ]
+}
+</script>
+
+<style>
+  :root {
+    --color-bg: #0A0A0A;
+    --color-surface: #141414;
+    --color-border: #3A3A3A;
+    --color-text-muted: #858585;
+    --color-text-secondary: #B0B0B0;
+    --color-text: #E8E4DC;
+    --color-text-bright: #FAFAF5;
+    --color-acid: #D4FF00;
+    --color-acid-dim: rgba(212,255,0,0.08);
+    --color-acid-mid: rgba(212,255,0,0.25);
+
+    --space-xs: 8px;
+    --space-sm: 16px;
+    --space-md: 24px;
+    --space-lg: 32px;
+    --space-xl: 48px;
+    --space-2xl: 64px;
+
+    --maxw: 1200px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    font-family: 'Outfit', 'Helvetica Neue', sans-serif;
+    font-weight: 300;
+    background: var(--color-bg);
+    color: var(--color-text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    position: relative;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+  strong { font-weight: 600; }
+  h1, h2, h3 { text-wrap: balance; }
+  p, li { text-wrap: pretty; }
+
+  /* Graph-paper canvas texture — page canvas only, never on cards or data
+     surfaces (design system §Visual Texture). */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      repeating-linear-gradient(0deg, var(--color-acid-mid) 0 1px, transparent 1px 40px),
+      repeating-linear-gradient(90deg, var(--color-acid-mid) 0 1px, transparent 1px 40px);
+    opacity: 0.055;
+  }
+
+  /* ─────────── HEADER ─────────── */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(10,10,10,0.92);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--color-border);
+  }
+  .site-header-inner {
+    max-width: calc(var(--maxw) + 64px);
+    margin: 0 auto;
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .brand-mark { display: inline-flex; align-items: center; gap: 12px; flex-shrink: 0; }
+  .header-actions { display: flex; align-items: center; gap: 4px; }
+  .nav-link {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    padding: 10px 14px;
+    transition: color 0.2s;
+  }
+  .nav-link:hover { color: var(--color-text-bright); }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    border: none;
+    transition: opacity 0.2s, transform 0.2s, border-color 0.2s;
+    white-space: nowrap;
+  }
+  .btn-primary { background: var(--color-acid); color: #000; }
+  .btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+  .btn-outline { background: transparent; border: 1px solid var(--color-border); color: var(--color-text); }
+  .btn-outline:hover { border-color: var(--color-acid-mid); color: var(--color-text-bright); }
+  .btn-arrow::after { content: '→'; font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; }
+  .btn-large { padding: 15px 26px; font-size: 12px; }
+
+  /* ─────────── SHARED LAYOUT ─────────── */
+  .wrap { position: relative; z-index: 1; max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  .eyebrow {
+    display: inline-block;
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(212,255,0,0.7);
+    margin-bottom: 24px;
+  }
+  .eyebrow-shop { display: inline-flex; align-items: center; gap: 9px; }
+  .eyebrow-shop svg, .eyebrow-shop img { flex: 0 0 20px; display: block; }
+  .serif-accent {
+    font-family: 'DM Serif Display', Georgia, serif;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-acid);
+  }
+  section { position: relative; z-index: 1; }
+  .section-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    display: block;
+    margin-bottom: 16px;
+  }
+  h2 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(30px, 3.6vw, 46px);
+    font-weight: 900;
+    line-height: 1.1;
+    letter-spacing: -0.4px;
+    color: var(--color-text-bright);
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+  h3 { font-family: 'Outfit', sans-serif; font-weight: 700; color: var(--color-text-bright); }
+  p { color: var(--color-text-secondary); }
+
+  /* ─────────── FIGURES ─────────── */
+  .figure { margin: 0 auto; max-width: 900px; }
+  .figure img { display: block; width: 100%; height: auto; }
+  .figure figcaption {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: var(--color-text-muted);
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  /* ─────────── CAROUSEL ─────────── */
+  /* Native scroll-snap fallback would be fine, but the track is transform-
+     positioned for the same reason as the Slack page: a scrollLeft container
+     refused to move inside an <iframe srcdoc>, and a transform is a style that
+     either applies or doesn't. Swipe is kept by hand below. */
+  .carousel { --slide-w: min(900px, 88vw); position: relative; margin-top: 40px; }
+  .viewport { overflow: hidden; }
+  .track {
+    display: flex;
+    gap: 28px;
+    padding: 0 calc((100% - var(--slide-w)) / 2);
+    transition: transform 0.38s cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: transform;
+    touch-action: pan-y;
+  }
+  .slide { flex: 0 0 var(--slide-w); transition: opacity 0.28s; }
+  .slide[data-active="false"] { opacity: 0.35; }
+  .slide img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
+  .slide figcaption {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px; letter-spacing: 0.5px;
+    color: var(--color-text-muted);
+    margin-top: 14px; text-align: center;
+  }
+
+  .carousel-nav {
+    display: flex; align-items: center; justify-content: center;
+    gap: 18px; margin-top: 22px;
+  }
+  .c-btn {
+    background: transparent;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+    width: 40px; height: 40px;
+    font-size: 15px; line-height: 1;
+    cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .c-btn:hover { border-color: var(--color-acid-mid); color: var(--color-acid); }
+  .dots { display: flex; gap: 8px; }
+  .dot {
+    width: 8px; height: 8px; padding: 0;
+    background: var(--color-border);
+    border: none; cursor: pointer;
+    transition: background 0.2s;
+  }
+  .dot[aria-current="true"] { background: var(--color-acid); }
+  @media (prefers-reduced-motion: reduce) { .track { transition: none; } }
+
+  /* ─────────── HERO ─────────── */
+  .hero { padding: 72px 0 64px; border-bottom: 1px solid var(--color-border); text-align: center; }
+  .hero-head { max-width: 940px; margin: 0 auto; }
+  .hero h1 {
+    font-family: 'Outfit', sans-serif;
+    font-size: clamp(40px, 5.2vw, 68px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -0.5px;
+    color: var(--color-text-bright);
+    margin: 0 0 20px;
+    text-wrap: balance;
+  }
+  .hero-sub { font-size: 19px; max-width: 64ch; margin: 0 auto 32px; }
+  .hero-cta { display: flex; flex-wrap: wrap; gap: 12px; align-items: center; justify-content: center; }
+  .hero-note {
+    font-family: 'Space Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    color: var(--color-text-muted);
+    margin: 20px 0 0;
+  }
+  .hero-note a { color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border); }
+  .hero-note a:hover { color: var(--color-acid); border-color: var(--color-acid-mid); }
+
+  .direct { color: var(--color-acid); background: var(--color-acid-dim); padding: 0 4px; font-weight: 600; }
+
+  /* ─────────── GENERIC SECTIONS ─────────── */
+  .band { padding: 72px 0; border-bottom: 1px solid var(--color-border); }
+  .lead { font-size: 18px; max-width: 62ch; }
+
+  .split { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+
+  /* Pull-quote for the reconciliation core */
+  .pull {
+    border-left: 2px solid var(--color-acid);
+    padding: 4px 0 4px 26px;
+    margin: 32px 0 0;
+    max-width: 60ch;
+  }
+  .pull p { font-size: 22px; color: var(--color-text-bright); font-weight: 600; line-height: 1.4; }
+
+  .facts { list-style: none; padding: 0; margin: 28px 0 0; }
+  .facts li {
+    position: relative;
+    padding: 13px 0 13px 26px;
+    border-bottom: 1px solid rgba(58,58,58,0.5);
+    font-size: 15px; color: var(--color-text-secondary);
+  }
+  .facts li:last-child { border-bottom: none; }
+  .facts li::before {
+    content: '+'; color: var(--color-acid);
+    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 16px;
+    position: absolute; left: 0; top: 11px;
+  }
+  .facts strong { color: var(--color-text-bright); }
+
+  /* ─────────── TWO DOORS ─────────── */
+  .doors { display: grid; grid-template-columns: 1fr 1fr; gap: 2px; margin-top: 40px; }
+  .door {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 30px 30px 32px;
+    display: flex;
+    flex-direction: column;
+  }
+  .door-tag {
+    font-family: 'Space Mono', monospace;
+    font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase;
+    color: var(--color-acid); display: block; margin-bottom: 12px;
+  }
+  .door-tag-shop { display: inline-flex; align-items: center; gap: 7px; }
+  .door-tag-shop img { display: block; }
+  .door h3 { font-size: 21px; margin: 0 0 12px; }
+  .door p { font-size: 15px; margin: 0 0 18px; }
+  .door .door-price {
+    font-family: 'Space Mono', monospace;
+    font-size: 12px; letter-spacing: 0.5px; color: var(--color-text-muted);
+    margin: 0 0 22px;
+  }
+  .door .btn { margin-top: auto; align-self: flex-start; }
+
+  .doors-note {
+    text-align: center; margin-top: 26px;
+    font-family: 'Space Mono', monospace; font-size: 12px; letter-spacing: 0.5px;
+    color: var(--color-text-muted);
+  }
+
+  /* ─────────── STEPS (per door, inline) ─────────── */
+  .ministeps { counter-reset: mstep; margin: 4px 0 20px; padding: 0; list-style: none; }
+  .ministeps li {
+    counter-increment: mstep;
+    position: relative;
+    padding: 7px 0 7px 30px;
+    font-size: 15px; color: var(--color-text-secondary);
+  }
+  .ministeps li::before {
+    content: counter(mstep);
+    position: absolute; left: 0; top: 7px;
+    font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700;
+    color: var(--color-acid);
+  }
+
+  /* ─────────── FAQ ─────────── */
+  .faqs { margin-top: 36px; display: grid; gap: 2px; }
+  .faq-item {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    padding: 24px 26px;
+  }
+  .faq-item h3 { font-size: 17px; margin: 0 0 10px; }
+  .faq-item p { font-size: 15px; margin: 0; }
+  .faq-item p + p { margin-top: 10px; }
+
+  /* ─────────── DISCLAIMERS ─────────── */
+  .notes { max-width: 72ch; border-left: 1px solid var(--color-border); padding-left: 22px; }
+  .notes p { font-size: 13px; font-style: italic; color: var(--color-text-muted); margin: 0 0 14px; }
+  .notes p:last-child { margin-bottom: 0; }
+  .notes strong { color: var(--color-text-secondary); font-weight: 600; }
+  .inline-a { color: var(--color-acid); border-bottom: 1px solid var(--color-acid-mid); }
+
+  /* ─────────── CLOSER ─────────── */
+  .closer { padding: 88px 0; text-align: center; }
+  .closer h2 { max-width: 22ch; margin-left: auto; margin-right: auto; }
+  .closer p { font-size: 18px; max-width: 54ch; margin: 0 auto 32px; }
+  .closer-cta { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+
+  /* ─────────── PROBLEM / SOLUTION BEATS ─────────── */
+  .nowrap { white-space: nowrap; }
+  .beats { margin-top: 44px; display: grid; gap: 60px; }
+  .beat { display: grid; grid-template-columns: 1fr 1fr; gap: 52px; align-items: center; }
+  .beat-tag {
+    font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase; color: rgba(212,255,0,0.7);
+    display: block; margin-bottom: 14px;
+  }
+  .beat h3 {
+    font-family: 'Outfit', sans-serif; font-size: clamp(23px, 2.5vw, 31px);
+    font-weight: 900; line-height: 1.14; letter-spacing: -0.3px;
+    color: var(--color-text-bright); margin: 0 0 16px;
+  }
+  .beat p { font-size: 16px; margin: 0 0 14px; }
+  .beat p:last-child { margin-bottom: 0; }
+  .beat .resolve { color: var(--color-text); }
+  .beat .resolve strong { color: var(--color-acid); font-weight: 600; }
+  .beat-media { margin: 0; }
+  .beat-media img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
+  .beat-flip .beat-copy { order: 2; }
+  .beat-summary { margin: 60px auto 0; max-width: 1000px; }
+  .beat-summary img { display: block; width: 100%; height: auto; border: 1px solid var(--color-border); }
+  .beat-summary figcaption {
+    font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 0.5px;
+    color: var(--color-text-muted); margin-top: 14px; text-align: center;
+  }
+  @media (max-width: 900px) {
+    .beat { grid-template-columns: 1fr; gap: 26px; }
+    .beat-flip .beat-copy { order: 0; }
+  }
+
+  /* ─────────── RESPONSIVE ─────────── */
+  @media (max-width: 900px) {
+    .split, .doors { grid-template-columns: 1fr; gap: 40px; }
+    .doors { gap: 2px; }
+    .hero-sub { max-width: none; }
+  }
+  @media (max-width: 640px) {
+    .wrap { padding: 0 20px; }
+    .site-header-inner { padding: 12px 20px; }
+    .nav-link-back, .nav-link-hide { display: none; }
+    .hero { padding: 56px 0 44px; }
+    .band { padding: 52px 0; }
+    .door { padding: 24px; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; scroll-behavior: auto !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ─────────── STICKY HEADER ─────────── -->
+<header class="site-header">
+  <div class="site-header-inner">
+    <a href="https://bratrax.com/" class="brand-mark" aria-label="Bratrax — Home">
+      <svg width="145" height="20" viewBox="0 0 189 26" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Bratrax">
+        <path d="M0 20.664H2.376V4.536H0V0H11.052C12.252 0 13.308 0.168 14.22 0.504C15.156 0.84 15.936 1.296 16.56 1.872C17.208 2.448 17.688 3.144 18 3.96C18.336 4.752 18.504 5.616 18.504 6.552V6.984C18.504 8.424 18.096 9.576 17.28 10.44C16.488 11.304 15.48 11.904 14.256 12.24V12.888C15.48 13.224 16.488 13.836 17.28 14.724C18.096 15.588 18.504 16.74 18.504 18.18V18.612C18.504 19.548 18.336 20.424 18 21.24C17.688 22.032 17.208 22.728 16.56 23.328C15.936 23.904 15.156 24.36 14.22 24.696C13.308 25.032 12.252 25.2 11.052 25.2H0V20.664ZM7.128 20.664H10.584C11.592 20.664 12.408 20.448 13.032 20.016C13.656 19.584 13.968 18.864 13.968 17.856V17.64C13.968 16.632 13.656 15.912 13.032 15.48C12.408 15.048 11.592 14.832 10.584 14.832H7.128V20.664ZM7.128 10.296H10.584C11.592 10.296 12.408 10.092 13.032 9.684C13.656 9.252 13.968 8.532 13.968 7.524V7.308C13.968 6.3 13.656 5.592 13.032 5.184C12.408 4.752 11.592 4.536 10.584 4.536H7.128V10.296Z" fill="#E8E4DC"/>
+        <path d="M43.935 25.2H39.183V17.64C39.183 17.064 39.027 16.596 38.715 16.236C38.427 15.876 37.935 15.696 37.239 15.696H31.767V25.2H27.015V0H36.663C37.959 0 39.099 0.18 40.083 0.539999C41.067 0.900001 41.883 1.404 42.531 2.052C43.203 2.676 43.707 3.408 44.043 4.248C44.403 5.088 44.583 5.988 44.583 6.948V7.812C44.583 8.844 44.307 9.816 43.755 10.728C43.203 11.616 42.351 12.3 41.199 12.78V13.428C42.039 13.524 42.699 13.848 43.179 14.4C43.683 14.952 43.935 15.648 43.935 16.488V25.2ZM31.767 11.16H36.303C37.455 11.16 38.331 10.896 38.931 10.368C39.531 9.816 39.831 9.048 39.831 8.064V7.632C39.831 6.792 39.531 6.072 38.931 5.472C38.331 4.848 37.455 4.536 36.303 4.536H31.767V11.16Z" fill="#E8E4DC"/>
+        <path d="M65.7299 19.8H57.1619L55.9379 25.2H50.9699L56.9819 0H65.9099L71.9219 25.2H66.9539L65.7299 19.8ZM58.1699 15.264H64.6859L61.7699 2.376H61.1219L58.1699 15.264Z" fill="#E8E4DC"/>
+        <path d="M80.0729 0H98.2169V4.536H91.5209L87.1289 25.2H82.3769L86.7689 4.536H80.0729V0Z" fill="#E8E4DC"/>
+        <path d="M119.22 25.2H114.396L116.016 17.64C116.064 17.4 116.088 17.208 116.088 17.064C116.088 16.656 115.956 16.332 115.692 16.092C115.428 15.828 115.02 15.696 114.468 15.696H109.248L107.232 25.2H102.516L107.844 0H116.7C117.876 0 118.908 0.168 119.796 0.504C120.708 0.816 121.464 1.248 122.064 1.8C122.688 2.328 123.144 2.964 123.432 3.708C123.744 4.452 123.9 5.232 123.9 6.048C123.9 7.8 123.492 9.228 122.676 10.332C121.884 11.412 120.66 12.228 119.004 12.78V13.428C119.7 13.5 120.228 13.752 120.588 14.184C120.972 14.592 121.164 15.12 121.164 15.768C121.164 16.008 121.14 16.248 121.092 16.488L119.22 25.2ZM110.22 11.16H114.54C115.812 11.16 116.856 10.824 117.672 10.152C118.488 9.48 118.896 8.568 118.896 7.416C118.896 6.504 118.644 5.796 118.14 5.292C117.66 4.788 116.916 4.536 115.908 4.536H111.624L110.22 11.16Z" fill="#E8E4DC"/>
+        <path d="M143.859 19.8H135.291L134.067 25.2H129.099L135.111 0H144.039L150.051 25.2H145.083L143.859 19.8ZM136.299 15.264H142.815L139.899 2.376H139.251L136.299 15.264Z" fill="#E8E4DC"/>
+        <path d="M160.938 0L165.186 10.296H166.05L170.298 0H175.446L170.262 12.24V12.888L175.446 25.2H170.298L166.05 14.832H165.186L160.938 25.2H155.79L160.974 12.888V12.24L155.79 0H160.938Z" fill="#E8E4DC"/>
+        <path d="M188.081 22.284C188.081 22.764 187.985 23.22 187.793 23.652C187.625 24.06 187.385 24.42 187.073 24.732C186.761 25.02 186.389 25.248 185.957 25.416C185.549 25.608 185.117 25.704 184.661 25.704C184.181 25.704 183.737 25.608 183.329 25.416C182.921 25.248 182.561 25.02 182.249 24.732C181.937 24.42 181.685 24.06 181.493 23.652C181.325 23.22 181.241 22.764 181.241 22.284C181.241 21.804 181.325 21.36 181.493 20.952C181.685 20.52 181.937 20.16 182.249 19.872C182.561 19.56 182.921 19.32 183.329 19.152C183.737 18.96 184.181 18.864 184.661 18.864C185.117 18.864 185.549 18.96 185.957 19.152C186.389 19.32 186.761 19.56 187.073 19.872C187.385 20.16 187.625 20.52 187.793 20.952C187.985 21.36 188.081 21.804 188.081 22.284Z" fill="#D4FF00"/>
+      </svg>
+    </a>
+    <div class="header-actions">
+      <a href="https://bratrax.com/" class="nav-link nav-link-back">&larr; Back to site</a>
+      <a href="https://bratrax.com/integrations" class="nav-link nav-link-hide">Integrations</a>
+      <a href="#faq" class="nav-link">FAQ</a>
+      <a href="https://bratrax.com/login" class="nav-link">Log in</a>
+      <!-- Primary path is the $1 self-serve signup on bratrax.com; the Shopify
+           App Store install is the secondary option (hero + two-doors section). -->
+      <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow">Start for $1</a>
+    </div>
+  </div>
+</header>
+
+<!-- ─────────── HERO ─────────── -->
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-head">
+      <!-- Official Shopify logo — the same asset the product ships — used to
+           show the integration. Displayed unmodified. -->
+      <span class="eyebrow eyebrow-shop">
+        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/shopify-logo.webp" width="20" height="20" alt="Shopify" decoding="async">
+        Bratrax for Shopify
+      </span>
+      <h1>Shopify knows every order. It just can't tell you what <span class="serif-accent">earned</span> it.</h1>
+    </div>
+    <p class="hero-sub">
+      The order lands in Shopify clean — but the click that started it was an ad three days ago,
+      so the sale shows up as <span class="direct">Direct</span>. Meanwhile Meta, Google and TikTok
+      each take credit for it. Bratrax reads your real Shopify orders and ties every one back to
+      what actually drove it — the ad, the email, the flow. <strong><span class="nowrap">One sale, counted once</span> — numbers you can finally trust.</strong>
+    </p>
+    <div class="hero-cta">
+      <a href="https://bratrax.com/signup" class="btn btn-primary btn-large btn-arrow">Start for $1</a>
+      <a href="https://apps.shopify.com/bratrax" class="btn btn-outline btn-large">Install from the Shopify App Store</a>
+    </div>
+    <p class="hero-note">
+      $1 for your first month, then $99/mo flat &middot; no GMV scaling &middot; no contract
+      &middot; <a href="#power">See the problems it solves</a>
+    </p>
+  </div>
+</section>
+
+<!-- ─────────── RECONCILIATION CORE (the unique argument) ─────────── -->
+<section class="band">
+  <div class="wrap">
+    <h2>The sale is real. The &ldquo;Direct&rdquo; label is a <span class="serif-accent">lie</span>.</h2>
+    <p class="lead">
+      Shopify is the one system that knows a sale actually happened — the order, the line items,
+      the refund, the returning customer. What it doesn't know is <em>why</em>. So the sale a
+      Facebook ad started last Wednesday gets filed under Direct when the customer comes back and
+      buys, and the platforms that did earn it — and three that didn't — all claim it at once.
+    </p>
+    <p class="lead" style="margin-top:20px">
+      <strong style="color:var(--color-text-bright)">Bratrax makes your Shopify orders the referee.</strong>
+      Every order is matched back to the real touch that drove it, so credit is settled against what
+      shipped — not against whatever each ad platform reports about itself.
+    </p>
+
+    <figure class="figure figure-wide" style="margin-top:40px">
+      <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/order-path.png"
+           width="1488" height="819" loading="lazy"
+           alt="A Bratrax order detail for order #878218, a $122.35 sale, traced through a Klaviyo touch and a ten-step Shopify customer journey to a winning last-touch Meta campaign, ending in the conversion.">
+      <figcaption>A &ldquo;Direct&rdquo; sale, opened up: order #878218 traced back through the customer's journey to the Meta campaign that actually earned it.</figcaption>
+    </figure>
+    <ul class="facts">
+      <li><strong>The Direct bucket gets emptied.</strong> Orders that used to sit unattributed are traced back to the click, email or flow that started them.</li>
+      <li><strong>Every order counted once.</strong> When Meta, Google and TikTok all claim the same sale, Bratrax settles it against your order record instead of summing three inflated numbers.</li>
+      <li><strong>True CAC, after refunds.</strong> Refunds and subscription status come straight from Shopify, so acquisition cost reflects what actually stuck — not gross checkouts.</li>
+      <li><strong>New vs returning, split out.</strong> Bratrax reads who's a first-time buyer from your Shopify customer record, so a blended average can't hide what new-customer acquisition really costs.</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ─────────── WHAT BRATRAX PULLS ─────────── -->
+<section class="band">
+  <div class="wrap split">
+    <div>
+      <h2>Straight from Shopify. No pixel to <span class="serif-accent">paste</span>.</h2>
+      <p style="font-size:16px">
+        Bratrax reads your store through Shopify's own APIs — the same order record your
+        accountant trusts. Connecting sets up tracking automatically: there's nothing to install
+        in your theme, no code to copy, no pixel to babysit.
+      </p>
+      <ul class="facts">
+        <li><strong>Orders &amp; transaction history</strong> — line items, order value, currency, discounts.</li>
+        <li><strong>Refunds &amp; subscription status</strong> — so revenue and CAC reflect what actually stuck.</li>
+        <li><strong>Customers</strong> — first-time vs returning, so new-customer metrics are real.</li>
+        <li><strong>Products</strong> — SKU-level performance and margin once you add costs.</li>
+        <li><strong>Abandoned checkouts</strong> — the drop-offs, not just the wins.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>A full year, <span class="serif-accent">backfilled</span> in the background.</h2>
+      <p style="font-size:16px">
+        You don't start from an empty dashboard and wait six weeks for it to fill. Bratrax pulls
+        your history the moment you connect and keeps working while you're already reading numbers.
+      </p>
+      <ul class="facts">
+        <li><strong>Recent data &mdash; minutes.</strong> The last 14 days populate almost immediately, so the dashboards are live while the rest loads.</li>
+        <li><strong>Full history &mdash; a full year.</strong> Bratrax backfills 365 days of your Shopify store history in the background, over a few hours to a couple of days.</li>
+        <li><strong>Then it stays current.</strong> New orders flow in continuously, and every one gets full Bratrax attribution from that point on.</li>
+      </ul>
+      <div class="notes" style="margin-top:26px">
+        <p>Store history backfills a full year. Connected <strong>ad platforms</strong> backfill roughly 60 days &mdash; the limit is what each ad API will hand back, not Bratrax.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── PROBLEM / SOLUTION BEATS ─────────── -->
+<section class="band" id="power">
+  <div class="wrap">
+    <h2>What your dashboards can't tell you. Bratrax <span class="serif-accent">can</span>.</h2>
+    <p class="lead">
+      The Direct bucket is the loudest problem — it isn't the only one. Every view in Bratrax exists
+      to answer a question your ad managers and your Shopify reports quietly leave open.
+    </p>
+
+    <div class="beats">
+
+      <div class="beat">
+        <div class="beat-copy">
+          <span class="beat-tag">Which ads actually made money</span>
+          <h3>Know which ads paid off — and which quietly <span class="serif-accent">bled</span>.</h3>
+          <p>Every ad platform reports its own flattering ROAS, and none of them agree. Winners and money-losers blur together inside one blended number.</p>
+          <p class="resolve"><strong>Bratrax ranks every ad by what it truly earned</strong> — spend, ROAS and attributed orders down to the channel, campaign, ad set and single ad, all reconciled to real Shopify orders.</p>
+        </div>
+        <figure class="beat-media">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/01-channel-attribution-dash.png" width="1080" height="900" loading="lazy" alt="The Bratrax channel-attribution dashboard: MER, total sales and new-customer ROAS tiles above a table breaking spend, attributed sales, ROAS, attributed orders and CPA down by channel, campaign, ad set and ad.">
+        </figure>
+      </div>
+
+      <div class="beat beat-flip">
+        <div class="beat-copy">
+          <span class="beat-tag">One version of the truth isn't enough</span>
+          <h3>See the sale through every model, not just <span class="serif-accent">one</span>.</h3>
+          <p>Last-click flatters Google. First-touch flatters the top of the funnel. Commit to one model and you've quietly committed to one bias.</p>
+          <p class="resolve"><strong>Switch between five attribution models</strong> — first-touch, last-touch, linear, position and time-decay — and watch credit move between channels and ads. Then pick the one you trust, knowing exactly what it changes.</p>
+        </div>
+        <figure class="beat-media">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/03-attribution-models-dash.png" width="1000" height="900" loading="lazy" alt="Three side-by-side Bratrax attribution tables — first-touch, linear and last-touch — showing how credit for the same orders shifts between channels and ads under each model.">
+        </figure>
+      </div>
+
+      <div class="beat">
+        <div class="beat-copy">
+          <span class="beat-tag">The cost blended CPA hides</span>
+          <h3>See what a new customer really <span class="serif-accent">costs</span>.</h3>
+          <p>Repeat orders drag your blended CPA down and make acquisition look cheaper than it is. Scale spend on that number and you scale a loss.</p>
+          <p class="resolve"><strong>Bratrax splits new-customer ROAS and CPA out from returning buyers</strong>, per channel — so the real cost of winning someone new can't hide behind an average.</p>
+        </div>
+        <figure class="beat-media">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/04-new-customers-dash.png" width="1095" height="900" loading="lazy" alt="Bratrax new-customer ROAS and new-customer CPA charts split out from returning buyers, beside blended-CPA tiles, so acquisition cost isn't masked by repeat orders.">
+        </figure>
+      </div>
+
+      <div class="beat beat-flip">
+        <div class="beat-copy">
+          <span class="beat-tag">Who's actually worth acquiring</span>
+          <h3>Know who buys again — and who never comes <span class="serif-accent">back</span>.</h3>
+          <p>Two channels can post the same CPA while one brings loyal repeat buyers and the other brings one-and-done discount hunters. On a ROAS report they look identical.</p>
+          <p class="resolve"><strong>Bratrax ties lifetime value back to the acquisition channel</strong>, so you can pour budget into the customers who come back — and stop paying to acquire the ones who don't.</p>
+        </div>
+        <figure class="beat-media">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/05-customer-profiles-dash.png" width="1085" height="900" loading="lazy" alt="A Bratrax customer-value-by-acquisition table showing lifetime value and revenue per channel, beside activation segments and a recommended action for each segment.">
+        </figure>
+      </div>
+
+      <div class="beat">
+        <div class="beat-copy">
+          <span class="beat-tag">ROAS isn't profit</span>
+          <h3>Watch the <span class="serif-accent">margin</span>, not just the ROAS.</h3>
+          <p>A 4× ROAS campaign can still lose money once COGS, shipping and gateway fees come out. Revenue dashboards will never show you that.</p>
+          <p class="resolve"><strong>Set your costs once</strong> — COGS, shipping, gateway fees, custom expenses — and every number on Bratrax turns into real contribution margin and true profit.</p>
+        </div>
+        <figure class="beat-media">
+          <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/07-cost-settings-dash.png" width="1000" height="900" loading="lazy" alt="The Bratrax cost settings screen with tabs for cost of goods, shipping, gateway costs, custom expenses, media scope and profit rules, set against your Shopify products.">
+        </figure>
+      </div>
+
+    </div>
+
+    <figure class="beat-summary">
+      <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/06-wholeapp-dash.png" width="1130" height="900" loading="lazy" alt="A montage of Bratrax's dashboards — attribution, commerce profile graph, customer analytics, store performance, email and SMS, products and profile explorer — all reconciled against the same Shopify orders.">
+      <figcaption>Attribution, customers, products, store, email &amp; SMS — every view reading from the same Shopify orders.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<!-- ─────────── TWO WAYS TO CONNECT ─────────── -->
+<section class="band" id="connect">
+  <div class="wrap">
+    <h2>Start in a minute, <span class="serif-accent">two</span> ways.</h2>
+    <p class="lead">
+      Sign up on bratrax.com and test us for a dollar, or install straight from the Shopify App
+      Store — it's the same product, the same $99/mo flat price, and both end with your store
+      connected and your history loading.
+    </p>
+
+    <div class="doors">
+      <div class="door">
+        <span class="door-tag">Start here</span>
+        <h3>Sign up on bratrax.com</h3>
+        <p>Create your account and test us for a dollar, then connect Shopify in a single click from Settings &rarr; Connections. Tracking sets itself up — no pixel, no theme edits.</p>
+        <ol class="ministeps">
+          <li>Sign up at bratrax.com — $1 for your first month.</li>
+          <li>Go to <strong>Settings &rarr; Connections</strong> and connect Shopify.</li>
+          <li>Approve access — that's it. History backfills in the background.</li>
+        </ol>
+        <p class="door-price">$1 your first month &middot; then $99/mo flat &middot; cancel anytime</p>
+        <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow">Start for $1</a>
+      </div>
+
+      <div class="door">
+        <span class="door-tag door-tag-shop"><img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/shopify/media/shopify-logo.webp" width="16" height="16" alt="" aria-hidden="true"> Also on Shopify</span>
+        <h3>Install from the Shopify App Store</h3>
+        <p>Prefer to stay inside Shopify? Install Bratrax from the App Store and it walks you through creating your account and connecting your store — without ever leaving Shopify.</p>
+        <ol class="ministeps">
+          <li>Open the Bratrax listing and click <strong>Install</strong>.</li>
+          <li>Approve the connection — account and store set up in one flow.</li>
+          <li>Your dashboards start filling; the year backfills behind them.</li>
+        </ol>
+        <p class="door-price">30-day free trial &middot; then $99/mo &middot; billed through Shopify</p>
+        <a href="https://apps.shopify.com/bratrax" class="btn btn-outline btn-arrow">Open the App Store listing</a>
+      </div>
+    </div>
+    <p class="doors-note">Already on Bratrax? Connect your store from <a href="https://bratrax.com/connectors" class="inline-a">Settings &rarr; Connections</a>.</p>
+  </div>
+</section>
+
+<!-- ─────────── TRUST ─────────── -->
+<section class="band">
+  <div class="wrap split">
+    <div>
+      <h2>It reads your store. It doesn't <span class="serif-accent">run</span> it.</h2>
+      <p style="font-size:16px">
+        Bratrax connects over Shopify's OAuth with the access it needs to read your orders and
+        customers — and nothing to change them. It doesn't edit products, doesn't touch fulfilment,
+        and can't place or refund an order.
+      </p>
+      <ul class="facts">
+        <li><strong>Read-only over your store.</strong> Bratrax pulls orders, customers and products. It doesn't write anything back to Shopify.</li>
+        <li><strong>Disconnect any time.</strong> Uninstall from your Shopify admin or disconnect in Settings &mdash; either one revokes access immediately.</li>
+        <li><strong>Your data stays yours.</strong> It lands in your own per-store warehouse, queryable by the AI you already pay for through the MCP endpoint.</li>
+      </ul>
+    </div>
+    <div>
+      <h2>Shopify is the foundation. Everything else <span class="serif-accent">reconciles</span> to it.</h2>
+      <p style="font-size:16px">
+        Connect your ad platforms, email and SMS on top, and each one's self-reported numbers get
+        checked against the orders Shopify actually recorded.
+      </p>
+      <ul class="facts">
+        <li><strong>Meta</strong> over-reports view-through &mdash; reconciled to real orders.</li>
+        <li><strong>Google</strong> leans last-click &mdash; re-credited across the path.</li>
+        <li><strong>TikTok</strong> reports on a lag &mdash; lined up to when the sale landed.</li>
+        <li><strong>Klaviyo</strong> claims email-assisted revenue &mdash; settled against the order.</li>
+      </ul>
+      <p style="margin-top:22px;font-size:14px">
+        See it head-to-head:
+        <a href="https://bratrax.com/vs/triple-whale" class="inline-a">vs Triple Whale</a> &middot;
+        <a href="https://bratrax.com/vs/hyros" class="inline-a">vs Hyros</a>.
+        Full data handling is in the <a href="https://bratrax.com/privacy-policy" class="inline-a">privacy policy</a>.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── FAQ ─────────── -->
+<section class="band" id="faq">
+  <div class="wrap">
+    <h2>The questions Shopify sellers <span class="serif-accent">ask</span>.</h2>
+    <div class="faqs">
+      <div class="faq-item">
+        <h3>Do I need a developer, a pixel or theme edits?</h3>
+        <p><strong>No.</strong> On Shopify, tracking installs itself the moment you connect — no pixel to paste, no theme code, nothing for a developer to touch. You approve the connection and you're done. (WooCommerce is the one that needs a plugin; Shopify doesn't.)</p>
+      </div>
+      <div class="faq-item">
+        <h3>Will connecting Bratrax slow down my store or affect checkout?</h3>
+        <p><strong>No.</strong> Bratrax reads your store through Shopify's API, and its tracking installs itself — there's no script for you to add to your theme and nothing sitting inside your checkout. Your storefront speed and your checkout stay exactly as they are.</p>
+      </div>
+      <div class="faq-item">
+        <h3>I already use another attribution tool — do I have to switch or change anything?</h3>
+        <p><strong>No — and you don't have to give anything up to try us.</strong> Bratrax reads your existing Shopify orders and the UTMs and tracking you already have, so there's nothing to rebuild: no re-tagging ads, no new UTM scheme, no migration project. Run us alongside your current tool through the free trial, compare side by side, and keep whichever you trust — we're betting you'll see more data and sharper insight for less money.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Does the price go up as my store grows?</h3>
+        <p><strong>No.</strong> Bratrax is $99/mo flat — no GMV scaling, no per-order fees, no revenue share. Most attribution tools quietly charge you more as you sell more; we don't. The price you start at is the price at 10× the volume.</p>
+      </div>
+      <div class="faq-item">
+        <h3>How far back does my Shopify data go?</h3>
+        <p><strong>A full year.</strong> When you connect, Bratrax backfills 365 days of your store history in the background, so you're not staring at an empty dashboard. The last 14 days populate within minutes, so you can start reading numbers straight away while the rest loads behind it.</p>
+      </div>
+      <div class="faq-item">
+        <h3>Should I install from the Shopify App Store or sign up on bratrax.com?</h3>
+        <p>Either — it's the same product and the same $99/mo flat price. The App Store creates your account and connects your store without leaving Shopify, billed through your Shopify invoice with a 30-day free trial. bratrax.com lets you connect Shopify in one click from Settings, with your first month at $1. Both land you in the same place.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─────────── CLOSER ─────────── -->
+<section class="closer">
+  <div class="wrap">
+    <h2>See what actually <span class="serif-accent">earned</span> the sale.</h2>
+    <p>
+      Connect Shopify and the guessing stops: every order traced to what drove it, the Direct
+      bucket cleared out, and your history already on the dashboard. $99/mo flat — no GMV scaling,
+      no contract.
+    </p>
+    <div class="closer-cta">
+      <a href="https://bratrax.com/signup" class="btn btn-primary btn-large btn-arrow">Start for $1</a>
+      <a href="https://apps.shopify.com/bratrax" class="btn btn-outline btn-large">Install from the Shopify App Store</a>
+    </div>
+    <p style="font-size:15px;margin-top:28px">
+      Want the whole stack?
+      <a href="https://bratrax.com/integrations" class="inline-a">See every Bratrax integration</a>.
+    </p>
+  </div>
+</section>
+
+<!-- ─────────── DYNAMIC FOOTER (Bratrax shared partial, with inline fallback) ─────────── -->
+<div id="brx-footer" style="position:relative;z-index:1">
+  <footer style="background:#0A0A0A;color:#E8E4DC;border-top:1px solid #3A3A3A;padding:40px 32px;font-family:'Space Mono','SF Mono',Menlo,ui-monospace,monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase">
+    <div style="max-width:1080px;margin:0 auto;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:24px">
+      <div style="color:#858585;letter-spacing:0.5px">&copy; 2026 Bratrax</div>
+      <nav style="display:flex;flex-wrap:wrap;gap:20px;align-items:center">
+        <a href="https://bratrax.com/" style="color:#E8E4DC;text-decoration:none">Home</a>
+        <a href="https://bratrax.com/integrations" style="color:#E8E4DC;text-decoration:none">Integrations</a>
+        <a href="https://bratrax.com/faq" style="color:#E8E4DC;text-decoration:none">FAQ</a>
+        <a href="https://bratrax.com/login" style="color:#D4FF00;text-decoration:none;border:1px solid rgba(212,255,0,0.45);padding:7px 14px">Login</a>
+        <a href="https://blog.bratrax.com/" style="color:#E8E4DC;text-decoration:none">Newsletter</a>
+        <a href="https://bratrax.com/privacy-policy" style="color:#858585;text-decoration:none">Privacy Policy</a>
+        <a href="https://bratrax.com/terms-of-service" style="color:#858585;text-decoration:none">Terms of Service</a>
+      </nav>
+    </div>
+  </footer>
+</div>
+
+<script>
+  fetch('https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/partials/footer.html')
+    .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.text(); })
+    .then(function(html){ document.getElementById('brx-footer').innerHTML = html; })
+    .catch(function(){});
+</script>
+
+</body>
+</html>
