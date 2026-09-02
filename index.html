@@ -1829,6 +1829,40 @@
     color: var(--color-text-muted);
   }
 
+  /* Whole ribbon links through to the integrations hub */
+  .integrations-ribbon-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+  }
+  .integrations-cta {
+    flex: 0 0 auto;
+    align-items: center;
+  }
+  .integrations-cta-text {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 24px;
+    font-family: 'Space Mono', monospace;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-acid);
+    white-space: nowrap;
+    transition: background 0.2s, color 0.2s;
+  }
+  .integrations-cta-text .arrow { transition: transform 0.2s; }
+  .integrations-ribbon-link:hover .integrations-cta-text,
+  .integrations-ribbon-link:focus-visible .integrations-cta-text {
+    background: var(--color-acid);
+    color: var(--color-bg);
+  }
+  .integrations-ribbon-link:hover .integrations-cta-text .arrow {
+    transform: translateX(3px);
+  }
+
   @media (max-width: 1100px) {
     .integrations-row { flex-direction: column; }
     .integrations-section + .integrations-section {
@@ -3246,25 +3280,30 @@ Email/SMS:            $750,000   (15%)
     </div>
 
     <aside class="integrations-ribbon" aria-label="Connected platforms">
-      <div class="integrations-row">
-        <div class="integrations-section is-available">
-          <div class="integrations-label">Connects to</div>
-          <ul class="integrations-list">
-            <li class="brand">Shopify</li>
-            <li class="brand">WooCommerce</li>
-            <li class="brand">Facebook Ads</li>
-            <li class="brand">Google Ads</li>
-            <li class="brand">TikTok Ads</li>
-            <li class="brand">Bing Ads</li>
-            <li class="brand">Pinterest Ads</li>
-            <li class="brand">Taboola</li>
-            <li class="brand">Outbrain</li>
-            <li class="brand">Klaviyo</li>
-            <li class="brand">Bloomreach</li>
-            <li class="brand">Anthropic</li>
-          </ul>
+      <a class="integrations-ribbon-link" href="https://bratrax.com/integrations" aria-label="See all integrations">
+        <div class="integrations-row">
+          <div class="integrations-section is-available">
+            <div class="integrations-label">Connects to</div>
+            <ul class="integrations-list">
+              <li class="brand">Shopify</li>
+              <li class="brand">WooCommerce</li>
+              <li class="brand">Facebook Ads</li>
+              <li class="brand">Google Ads</li>
+              <li class="brand">TikTok Ads</li>
+              <li class="brand">Bing Ads</li>
+              <li class="brand">Pinterest Ads</li>
+              <li class="brand">Taboola</li>
+              <li class="brand">Outbrain</li>
+              <li class="brand">Klaviyo</li>
+              <li class="brand">Bloomreach</li>
+              <li class="brand">Anthropic</li>
+            </ul>
+          </div>
+          <div class="integrations-section integrations-cta">
+            <span class="integrations-cta-text">See all <span class="arrow" aria-hidden="true">&rarr;</span></span>
+          </div>
         </div>
-      </div>
+      </a>
     </aside>
 
     <p class="step-aside">Most brands go from signup to live dashboard in <strong>under 10 minutes.</strong></p>
@@ -3468,6 +3507,7 @@ Email/SMS:            $750,000   (15%)
     <div style="max-width:1080px;margin:0 auto">
       <nav style="display:flex;flex-wrap:wrap;gap:20px;align-items:center;justify-content:center">
         <a href="https://bratrax.com/" style="color:#E8E4DC;text-decoration:none">Home</a>
+        <a href="https://bratrax.com/integrations" style="color:#E8E4DC;text-decoration:none">Integrations</a>
         <a href="https://bratrax.com/faq" style="color:#E8E4DC;text-decoration:none">FAQ</a>
         <a href="https://bratrax.com/login" style="color:#D4FF00;text-decoration:none;border:1px solid rgba(212,255,0,0.45);padding:7px 14px">Login</a>
         <a href="https://blog.bratrax.com/" style="color:#E8E4DC;text-decoration:none">Newsletter</a>
