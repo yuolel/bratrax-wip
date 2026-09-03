@@ -1756,6 +1756,18 @@
   }
   .step-aside strong { color: var(--color-acid); font-weight: 700; }
 
+  /* Caption that frames the ribbon below it */
+  .ribbon-caption {
+    margin: 36px 0 14px;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    color: var(--color-text-muted);
+  }
+  .ribbon-caption strong { color: var(--color-acid); font-weight: 700; }
+  .ribbon-caption + .integrations-ribbon { margin-top: 0; }
+
   /* Integrations ribbon — tucked under steps, breaks out of container to full viewport */
   .integrations-ribbon {
     position: relative;
@@ -3260,6 +3272,8 @@ Email/SMS:            $750,000   (15%)
         <p>Install the MCP endpoint with your own Anthropic API key. OpenAI on roadmap.</p>
       </div>
     </div>
+
+    <p class="ribbon-caption">Everything Bratrax <strong>connects to</strong> today &mdash; every platform below reconciles to your real orders.</p>
 
     <aside class="integrations-ribbon" aria-label="Connected platforms">
       <a class="integrations-ribbon-link" href="https://bratrax.com/integrations" aria-label="See all integrations">
