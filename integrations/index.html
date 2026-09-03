@@ -212,10 +212,17 @@
   }
   .chips { display: flex; flex-wrap: wrap; gap: 10px; }
   .chip {
+    display: inline-flex; align-items: center; gap: 9px;
     font-family: 'Space Mono', monospace; font-size: 13px; letter-spacing: 0.5px;
     border: 1px dashed var(--color-border); background: transparent; color: var(--color-text-secondary);
-    padding: 9px 16px;
+    padding: 8px 16px 8px 8px;
   }
+  .chip-logo {
+    width: 20px; height: 20px; border-radius: 5px; background: #FFFFFF;
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 3px; flex-shrink: 0;
+  }
+  .chip-logo img { max-width: 100%; max-height: 100%; display: block; }
   .soon p { font-size: 14px; color: var(--color-text-muted); margin: 16px 0 0; }
 
   /* ─────────── CLOSER ─────────── */
@@ -254,7 +261,6 @@
     </a>
     <div class="header-actions">
       <a href="https://bratrax.com/" class="nav-link nav-link-hide">&larr; Back to site</a>
-      <a href="https://bratrax.com/pricing" class="nav-link nav-link-hide">Pricing</a>
       <a href="https://bratrax.com/login" class="nav-link">Log in</a>
       <a href="https://bratrax.com/signup" class="btn btn-primary btn-arrow">Start for $1</a>
     </div>
@@ -451,9 +457,9 @@
   <div class="wrap">
     <span class="soon-label">Coming soon</span>
     <div class="chips">
-      <span class="chip">Recharge</span>
-      <span class="chip">Bold</span>
-      <span class="chip">Skio</span>
+      <span class="chip"><span class="chip-logo"><img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/media/recharge.png" alt="" aria-hidden="true" loading="lazy"></span>Recharge</span>
+      <span class="chip"><span class="chip-logo"><img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/media/bold.png" alt="" aria-hidden="true" loading="lazy"></span>Bold</span>
+      <span class="chip"><span class="chip-logo"><img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/integrations/media/skio.png" alt="" aria-hidden="true" loading="lazy"></span>Skio</span>
     </div>
     <p>Dedicated subscription connectors are next. Need something else? Tell us at <a href="mailto:support@bratrax.com" class="inline-a">support@bratrax.com</a> — it genuinely shapes what we build.</p>
   </div>
@@ -466,7 +472,6 @@
     <p>Connect your stack and every channel reconciles to the same orders — no double-counting, no mystery "Direct." $99/mo flat, every connector included.</p>
     <div class="closer-cta">
       <a href="https://bratrax.com/signup" class="btn btn-primary btn-large btn-arrow">Start for $1</a>
-      <a href="https://bratrax.com/integrations/shopify" class="btn btn-outline btn-large">See the Shopify integration</a>
     </div>
   </div>
 </section>
