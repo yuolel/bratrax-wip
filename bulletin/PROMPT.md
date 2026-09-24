@@ -214,6 +214,11 @@ Decide per entry whether a human-supplied screenshot would materially help —
 new UI surfaces yes, bug fixes and backend changes no — and list the requests
 in the Slack message. Never hold the draft for one.
 
+This does not conflict with the header card in Step 5. That card is our own
+brand template rendered from committed HTML, and it depicts nothing. A product
+screenshot is a claim about what the app looks like, which is why only a human
+may supply one.
+
 ---
 
 ## Step 5 — create the draft in beehiiv
@@ -243,6 +248,35 @@ Notes that will save you a failed call:
 
 Set the subject line and preview text to lead on whatever ended up **first** in
 the final running order, not on whatever you drafted first.
+
+### The header card
+
+Every issue gets a branded header card, used as the post's **thumbnail** — the
+image on the web version and on a shared link. It does **not** go in the email
+body.
+
+```bash
+python3 bulletin/render-header.py <issue-number> "<subtitle>" /tmp/bulletin-<n>.png
+```
+
+Then `save_image` it to the publication and set the returned `url` as the
+post's `thumbnail_image_url` via `edit_post`.
+
+- **Generate it last**, once the subtitle is settled, since the subtitle is its
+  only real input. Do not ask first — just make it.
+- **Keep subtitles to three lines or fewer** on the card. Roughly 110
+  characters wraps to three; much beyond that crowds the bottom edge.
+- **Never substitute a generated image.** The script renders
+  `bulletin/header-template.html`, so the wordmark, the green and the
+  typography come out identical every issue. An image model would approximate
+  all three and garble the text.
+- The script **fails loudly** if it cannot fetch the two webfonts, rather than
+  letting Chromium fall back to a system sans and emit a card that looks nearly
+  right. If it errors, say so in Slack and leave the post without a thumbnail —
+  do not hand-make a substitute.
+
+The design lives in `bulletin/header-template.html` and is edited as an
+ordinary web page; only `{{ISSUE}}` and `{{SUBTITLE}}` are filled in.
 
 ---
 
@@ -277,6 +311,9 @@ One message to the release-comms channel:
 - The beehiiv draft link (`editor_url` from the response — do not construct
   one from the post id).
 - The subject line and the list of entries, so it can be approved at a glance.
+- That the header card was attached as the thumbnail — and a line saying that
+  changing the subtitle means the card needs regenerating, since it is built
+  from the subtitle and will otherwise quietly disagree with the post.
 - Any screenshot requests.
 - Any ledger gaps found in Step 1.
 - The words **"nothing has been sent"**, explicitly.
@@ -289,6 +326,8 @@ One message to the release-comms channel:
 - Do not run if the previous issue is still a draft (Step 0a), or if the
   changelog is stale (Step 0b).
 - Do not resurface a `sent`, `recapped` or `withheld` row.
+- Do not hand-assemble or generate a header card if the renderer fails. Ship
+  the post without a thumbnail and say so.
 - Do not create the draft without the publication's default template.
 - Do not write any file in this repo except `bulletin/LEDGER.md`.
 - Do not edit `VidTao/bratrax` or `VidTao/rill`. Read-only — and note both the

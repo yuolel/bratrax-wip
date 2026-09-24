@@ -66,7 +66,7 @@ as never-covered forever.
 | # | Date | beehiiv post | Status |
 |---|---|---|---|
 | 1 | 2026-08-11 | `post_25703e83-bcba-4593-8853-fb10982ec6ca` | published |
-| 2 | — | `post_1ee7cf45-c6fd-4633-a43c-4e89fe25e150` | draft |
+| 2 | 2026-09-23 | `post_1ee7cf45-c6fd-4633-a43c-4e89fe25e150` | published |
 
 ## Withheld, and why
 
