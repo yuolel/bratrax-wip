@@ -61,12 +61,28 @@ as never-covered forever.
 
 **Pending: none.** Every entry on the live changelog is accounted for.
 
+## How to pitch it
+
+The weekly routine writes one benefit-first sentence per entry into its Slack
+digest, at the moment it reads the commit — with the full context of what
+actually changed. That sentence used to evaporate into Slack. It is recorded
+here instead, so the Bulletin arrives with **two independent framings** of each
+item: the changelog entry, written for people already using the product, and
+this line, written closer to the source.
+
+Neither is copy to paste. They are raw material, and where they disagree that
+disagreement is itself informative.
+
+| Slug | How to talk about it |
+|---|---|
+| — | _(the weekly routine appends here; empty until its next run)_ |
+
 ## Issues
 
 | # | Date | beehiiv post | Status |
 |---|---|---|---|
 | 1 | 2026-08-11 | `post_25703e83-bcba-4593-8853-fb10982ec6ca` | published |
-| 2 | — | `post_1ee7cf45-c6fd-4633-a43c-4e89fe25e150` | draft |
+| 2 | 2026-09-23 | `post_1ee7cf45-c6fd-4633-a43c-4e89fe25e150` | published |
 
 ## Withheld, and why
 
