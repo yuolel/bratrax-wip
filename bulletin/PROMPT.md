@@ -73,6 +73,13 @@ missing from it.
 4. For candidates only, read the entry's body text and links out of
    `changelog/index.html`. Do not read bodies for entries you are not
    considering; it wastes context and tempts you into recycling old news.
+5. For the same candidates, read their rows in the ledger's **How to pitch it**
+   table. That is a benefit-first sentence the weekly routine wrote while
+   looking at the actual commit, so it often names the payoff more concretely
+   than the changelog entry does. Treat both as raw material, not as copy to
+   paste — and where the two disagree, that is worth noticing rather than
+   averaging. A missing row is normal for older entries; the changelog body
+   alone is enough.
 
 **Entries with a status of `sent`, `recapped` or `withheld` are closed.** Never
 resurface them. `withheld` in particular means a human decided it is not going
@@ -94,9 +101,20 @@ unsubscribes than a skipped month costs anything.
 
 - **4–6 headline entries** maximum. Everything else goes in **Also shipped** as
   a one-line bullet, or waits.
-- Rank by what a reader would care about, not by what was hard to build. A
-  small setting that changes a number they report to their board beats a large
-  internal capability.
+Rank by what a reader would care about, not by what was hard to build. Apply
+these four tests to each candidate rather than going on feel — they are the
+difference between a ranking you can defend and one you cannot:
+
+1. **Does it change a number the merchant reports to someone else?** Revenue,
+   ROAS, margin, CAC. Those go to the top. A small setting that moves a board
+   number beats a large internal capability.
+2. **Could they not do this at all before?** A new capability outranks an
+   improved one.
+3. **Would someone who has never used Bratrax understand why it matters in one
+   sentence?** If not, it is an *Also shipped* bullet — roughly half this list
+   are prospects.
+4. **Does explaining the benefit need two "so that you can then…" hops?** If
+   so, it is too far from the reader to headline.
 - **Merge entries that are one story to the reader.** Several changelog slugs
   can legitimately become one bullet — e.g. connection-expiry alerts, one-click
   reconnect and Shopify permission banners are three entries and one sentence:
@@ -116,37 +134,55 @@ a draft and corrected by a human.
 
 1. **Subject test.** No sentence may have Bratrax, "we", or the issue itself as
    its grammatical subject. The reader, their numbers, or their business goes
-   in that slot. *"This issue is about precision"* and *"Four new ways to tell
-   Bratrax how your business works"* both fail — the first describes the email,
-   the second makes the reader do work for us.
-2. **No meta-sentences.** Never describe what the issue contains, how long
+   in that slot. *"This issue is about precision"* fails: it describes the
+   email.
+2. **Obligation test — the one the subject test misses.** Ask who is doing whom
+   a favour. A line can pass every mechanical check and still position the
+   reader as owing us something. *"Four new ways to tell Bratrax how your
+   business works"* has the reader as its subject and is still wrong: it makes
+   knowing their business sound like a duty they owe us, when being allowed to
+   see their data is a privilege they extend to us. Never frame setup,
+   configuration or information as something the reader owes Bratrax.
+   This governs the **lead** of an entry, not the whole of it. Once the benefit
+   lands, telling someone exactly what to click is useful and expected —
+   "add the tag your wholesale orders carry" is fine in the second sentence and
+   wrong as the first.
+3. **No meta-sentences.** Never describe what the issue contains, how long
    something took, or how much effort went in. The effort stays invisible;
    only the result shows.
-3. **No history.** Do not reference what a thing replaced, or what used to be
+4. **No history.** Do not reference what a thing replaced, or what used to be
    broken, unless the reader personally felt it. Most readers never saw the old
    version and do not care that it existed.
-4. **Benefit, then mechanism, then link.** In that order, in every entry. Open
-   with the reader's situation, not the feature name.
-5. **No sales register in the body.** "Here's what each one buys you", "takes
+5. **Benefit, then mechanism, then link.** That is the order the *content*
+   arrives in, not a sentence template — what the reader gets comes before how
+   it works, which comes before where to click. Never open on the feature name.
+6. **No sales register in the body.** "Here's what each one buys you", "takes
    two minutes", "game-changing" — that voice belongs in the closing CTA if
    anywhere. The body is informational.
-6. **Never claim credit.** No "we're excited to announce", no "we've been
+7. **Never claim credit.** No "we're excited to announce", no "we've been
    working hard on". Second person, present tense, plain.
+8. **Vary the shape.** Benefit-first is the principle; "customer's situation,
+   then the payoff" is only one way to honour it. Entries that all open the
+   same way read as filled-in blanks and stop being read. Across the issue,
+   vary how each one starts — a condition, a consequence, a plain statement of
+   what is now true, a short question. No two consecutive entries should share
+   an opening shape. Formulaic and benefit-first are not the same thing, and
+   the formula is the part to break.
 
 ### Accuracy
 
-7. **The changelog's wording wins.** If an entry exists on the changelog, its
+9. **The changelog's wording wins.** If an entry exists on the changelog, its
    phrasing has already been reviewed by a human. Match it. Where you have
    drafted your own version first, discard yours.
-8. **Never infer a capability from adjacent evidence.** A stack-template name,
+10. **Never infer a capability from adjacent evidence.** A stack-template name,
    a help-doc table row, or a config flag is not proof that a customer can do
    something. If the claim is about what a customer can do, find the UI that
    does it — the route, the component, the button. This rule exists because a
    draft once told a cold list that Funnelish and custom storefronts were
    supported sign-up paths, inferred from a template filename.
-9. **Verify every link resolves**, including external ones. A playlist ID or a
+11. **Verify every link resolves**, including external ones. A playlist ID or a
    deep link that 404s in an email to the whole list cannot be recalled.
-10. **Never state a count you have not counted.** "Nineteen walkthroughs" needs
+12. **Never state a count you have not counted.** "Nineteen walkthroughs" needs
     nineteen walkthroughs.
 
 ### Structure
@@ -168,7 +204,7 @@ the thing, not read about it again.
 Two separate failures, both of which strand the reader on a page that does not
 contain the thing you told them about.
 
-**11. Name the label the menu uses, not the page's heading and not the URL.**
+**13. Name the label the menu uses, not the page's heading and not the URL.**
 The `<h1>` on `/connectors` reads "Manage your connections", but the menu item
 a customer clicks says **Connectors**. Telling someone to go to "Settings →
 Connections" sends them looking for a menu item that does not exist. Verify
@@ -177,7 +213,7 @@ which is the actual menu, rather than against a page heading, a route path, or
 how an earlier changelog entry worded it — earlier entries may carry the same
 mistake forward.
 
-**12. Give the complete click path, down to the control.** "Go to Connectors"
+**14. Give the complete click path, down to the control.** "Go to Connectors"
 is not enough when the thing lives three levels in. The reader should be able
 to follow your sentence without guessing once.
 
@@ -218,6 +254,29 @@ This does not conflict with the header card in Step 5. That card is our own
 brand template rendered from committed HTML, and it depicts nothing. A product
 screenshot is a claim about what the app looks like, which is why only a human
 may supply one.
+
+---
+
+## Step 4b — read it back before you draft it
+
+Do not go straight from writing to creating the post. Re-read what you wrote
+and check it mechanically, because the mechanical failures are most of them:
+
+- **Every sentence** against the subject and obligation tests (rules 1 and 2).
+- **Every entry's first sentence** — does it open on the reader, or on the
+  feature name?
+- **Consecutive entries** — do any two open the same way? Rewrite one.
+- **The intro** — does it describe the issue, or does it say what the reader
+  gets? Any sentence about what this email contains comes out.
+- **Every product noun and click path** against rules 13 and 14.
+
+Rewrite whatever fails, then draft.
+
+This pass cannot catch taste. *"Four new ways to tell Bratrax how your business
+works"* satisfies the subject test and still had to be rewritten, because it
+made the reader owe us something — rule 2 exists for exactly that line. Expect
+the human reviewing the draft to catch one or two of those a year; the point of
+this pass is that they never have to catch a mechanical one.
 
 ---
 
