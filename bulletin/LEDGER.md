@@ -58,8 +58,10 @@ as never-covered forever.
 | `regional-shipping-costs` | Set shipping costs by region | New | 2026-09 | sent | #2 | changelog |
 | `order-exclusions` | Exclude wholesale or bulk orders from your numbers | New | 2026-09 | sent | #2 | changelog |
 | `video-walkthroughs` | Browse short, feature-by-feature video walkthroughs | New | 2026-09 | recapped | #2 | changelog |
+| `meta-organic-attribution` | More accurate Meta ad attribution | Improved | 2026-09 | pending | — | changelog |
+| `performance-max-spend-accuracy` | See your full Performance Max ad spend, including history | Improved | 2026-09 | pending | — | changelog |
 
-**Pending: none.** Every entry on the live changelog is accounted for.
+**Pending:** `meta-organic-attribution`, `performance-max-spend-accuracy`.
 
 ## How to pitch it
 
@@ -75,7 +77,8 @@ disagreement is itself informative.
 
 | Slug | How to talk about it |
 |---|---|
-| — | _(the weekly routine appends here; empty until its next run)_ |
+| `meta-organic-attribution` | Attribution now tells paid Meta ad clicks apart from organic Facebook and Instagram traffic, so your Meta numbers reflect what you actually paid for. |
+| `performance-max-spend-accuracy` | Performance Max campaign spend — including historical data — now shows up accurately and with readable names in your Attribution dashboard. |
 
 ## Issues
 
