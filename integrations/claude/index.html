@@ -536,8 +536,6 @@
   .chat-table td { padding: 9px 10px; color: var(--color-text); border-bottom: 1px solid #262626; white-space: nowrap; font-variant-numeric: tabular-nums; }
   .chat-table tr:last-child td { border-bottom: none; }
   .chat-table td:first-child { color: var(--color-text-bright); }
-  .ct-num { display: block; }
-  .ct-bar { display: block; height: 3px; margin-top: 5px; width: calc(var(--w) * 0.6); background: var(--color-acid); transform-origin: left; }
   @media (max-width: 420px) { .ct-hide { display: none; } .chat-table { font-size: 11.5px; } .chat-table th, .chat-table td { padding: 7px 7px; } }
   .chat-caption {
     font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.5px;
@@ -552,11 +550,8 @@
   .chat-demo.play.s2:not(.s3) .chat-spin { display: inline-block; }
   .chat-demo.play.s2:not(.s3) .chat-check { display: none; }
   .chat-demo.play .chat-table tbody tr { opacity: 0; transition: opacity 0.4s ease; }
-  .chat-demo.play .ct-bar { transform: scaleX(0); transition: transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1); }
   .chat-demo.play.s5 .chat-table tbody tr { opacity: 1; }
   .chat-demo.play.s5 .chat-table tbody tr:nth-child(2) { transition-delay: 0.25s; }
-  .chat-demo.play.s5 .ct-bar { transform: none; transition-delay: 0.3s; }
-  .chat-demo.play.s5 tr:nth-child(2) .ct-bar { transition-delay: 0.55s; }
 
   /* Light motion: content fades up as it scrolls into view. */
   .js-motion .reveal { opacity: 0; transform: translateY(14px);
@@ -630,8 +625,8 @@
           <table class="chat-table">
             <thead><tr><th></th><th>NC-ROAS</th><th>New customers</th><th class="ct-hide">Spend</th><th>NC CPA</th></tr></thead>
             <tbody>
-              <tr><td>Google Ads</td><td><span class="ct-num">3.1&times;</span><span class="ct-bar" style="--w:100%"></span></td><td>312</td><td class="ct-hide">$8,400</td><td>$26.92</td></tr>
-              <tr><td>Meta</td><td><span class="ct-num">2.2&times;</span><span class="ct-bar" style="--w:71%"></span></td><td>330</td><td class="ct-hide">$12,600</td><td>$38.18</td></tr>
+              <tr><td>Google Ads</td><td>3.1&times;</td><td>312</td><td class="ct-hide">$8,400</td><td>$26.92</td></tr>
+              <tr><td>Meta</td><td>2.2&times;</td><td>330</td><td class="ct-hide">$12,600</td><td>$38.18</td></tr>
             </tbody>
           </table>
         </div>
@@ -670,11 +665,13 @@
     <h2>What merchants <span class="serif-accent">ask</span>.</h2>
     <p class="lead">Claude picks the right Bratrax metrics for the question, runs the query and explains what it found. When a trend or a comparison reads better as a picture, it draws an interactive chart you can expand or open in Bratrax.</p>
     <ul class="prompt-list">
+      <li>What&rsquo;s my NC-ROAS on Meta this month?</li>
+      <li>Which campaigns bring in new customers, and which mostly reach people who already buy from me?</li>
+      <li>What touchpoints did last month&rsquo;s Direct orders have in common?</li>
+      <li>Why did ROAS drop last week? Compare it with the week before.</li>
+      <li>Show revenue by channel under first-touch and position-based.</li>
+      <li>Chart new vs returning customer revenue by month.</li>
       <li>Which campaigns had the best ROAS last week, and which lost money?</li>
-      <li>Chart attributed revenue by week for the last three months.</li>
-      <li>Why did revenue drop on Tuesday? Compare it with the Tuesday before.</li>
-      <li>What does a new customer cost me on Meta versus Google?</li>
-      <li>Show my top ten products by revenue this month as a bar chart.</li>
     </ul>
     <p style="font-size:16px;margin-top:28px"><strong>Pick your attribution model.</strong> Ask for the model you trust, for example &ldquo;use first-touch&rdquo;, and Claude re-runs the numbers with it.</p>
   </div>
