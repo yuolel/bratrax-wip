@@ -530,9 +530,26 @@
   .chat-spin { display: none; width: 10px; height: 10px; border: 1.5px solid var(--color-acid-mid);
     border-top-color: var(--color-acid); border-radius: 50%; animation: chat-spin 0.8s linear infinite; }
   .chat-check { color: var(--color-acid); }
-  .chat-bars { display: flex; align-items: flex-end; gap: 6px; height: 56px; margin-top: 12px; }
-  .chat-bars i { flex: 1; height: var(--h); background: var(--color-acid-mid); transform-origin: bottom; }
-  .chat-bars i:last-child { background: var(--color-acid); }
+  .chat-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px; margin-top: 12px; }
+  .chat-stats > div { background: #1c1c1c; padding: 8px 10px; display: grid; gap: 2px; }
+  .cs-label { font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--color-text-muted); }
+  .cs-value { font-size: 15px; font-weight: 700; color: var(--color-text-bright); }
+  .cs-up::before { content: '\25B2 '; font-size: 9px; color: var(--color-text-secondary); }
+  .chat-chart { margin-top: 10px; background: #1c1c1c; padding: 10px 10px 8px; }
+  .cc-title { font-size: 12px; font-weight: 600; color: var(--color-text-bright); margin-bottom: 4px; }
+  .chat-line { display: block; width: 100%; height: auto; overflow: visible; }
+  .cl-grid line { stroke: #2e2e2e; stroke-width: 1; }
+  .cl-grid text, .cl-x text { fill: var(--color-text-muted); font-family: 'Space Mono', monospace; font-size: 8px; }
+  .cl-path { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  path.cl-last { stroke: #4C8DF0; }
+  path.cl-first { stroke: #E26A36; }
+  circle.cl-last { fill: #4C8DF0; stroke: #1c1c1c; stroke-width: 1.5; }
+  circle.cl-first { fill: #E26A36; stroke: #1c1c1c; stroke-width: 1.5; }
+  .cc-legend { display: flex; gap: 16px; margin-top: 4px; font-size: 11px; color: var(--color-text-secondary); }
+  .cc-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .cl-swatch { display: inline-block; width: 12px; height: 2px; }
+  .cl-swatch.cl-last { background: #4C8DF0; }
+  .cl-swatch.cl-first { background: #E26A36; }
   .chat-caption {
     font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.5px;
     color: var(--color-text-muted); margin: 10px 0 0;
@@ -542,17 +559,14 @@
   .chat-demo.play .chat-user, .chat-demo.play .chat-tool, .chat-demo.play .chat-bot {
     opacity: 0; transform: translateY(6px); transition: opacity 0.4s ease, transform 0.4s ease;
   }
-  .chat-demo.play .chat-bars i { transform: scaleY(0); transition: transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); }
   .chat-demo.play.s1 .chat-user, .chat-demo.play.s2 .chat-tool, .chat-demo.play.s4 .chat-bot { opacity: 1; transform: none; }
   .chat-demo.play.s2:not(.s3) .chat-spin { display: inline-block; }
   .chat-demo.play.s2:not(.s3) .chat-check { display: none; }
-  .chat-demo.play.s5 .chat-bars i { transform: scaleY(1); }
-  .chat-demo.play.s5 .chat-bars i:nth-child(2) { transition-delay: 0.05s; }
-  .chat-demo.play.s5 .chat-bars i:nth-child(3) { transition-delay: 0.1s; }
-  .chat-demo.play.s5 .chat-bars i:nth-child(4) { transition-delay: 0.15s; }
-  .chat-demo.play.s5 .chat-bars i:nth-child(5) { transition-delay: 0.2s; }
-  .chat-demo.play.s5 .chat-bars i:nth-child(6) { transition-delay: 0.25s; }
-  .chat-demo.play.s5 .chat-bars i:nth-child(7) { transition-delay: 0.3s; }
+  .chat-demo.play .cl-path { stroke-dasharray: 1; stroke-dashoffset: 1; transition: stroke-dashoffset 1.2s ease-out; }
+  .chat-demo.play .cl-last { transition-delay: 0.15s; }
+  .chat-demo.play .cl-dots { opacity: 0; transition: opacity 0.4s ease 1.1s; }
+  .chat-demo.play.s5 .cl-path { stroke-dashoffset: 0; }
+  .chat-demo.play.s5 .cl-dots { opacity: 1; }
 
   /* Light motion: content fades up as it scrolls into view. */
   .js-motion .reveal { opacity: 0; transform: translateY(14px);
@@ -619,11 +633,26 @@
       <p class="lead">Bratrax is an MCP connector for Claude. MCP is the open standard Claude uses to connect to other apps. Once Bratrax is connected, Claude can look up your Bratrax numbers while it answers you.</p>
       <div class="chat-demo" aria-hidden="true">
         <div class="chat-top"><span class="chat-dot"></span>Claude</div>
-        <div class="chat-msg chat-user">What was my ROAS on Meta last week?</div>
-        <div class="chat-tool"><span class="chat-spin"></span><span class="chat-check">&#10003;</span>Bratrax &middot; Query store and ad metrics</div>
+        <div class="chat-msg chat-user">Chart my Meta ROAS for the last 12 months.</div>
+        <div class="chat-tool"><span class="chat-spin"></span><span class="chat-check">&#10003;</span>Bratrax &middot; Show chart</div>
         <div class="chat-msg chat-bot">
-          <p>Meta returned <strong>3.4&times; ROAS</strong> on $8,240 of spend last week, up from 2.9&times; the week before.</p>
-          <div class="chat-bars"><i style="--h:42%"></i><i style="--h:55%"></i><i style="--h:48%"></i><i style="--h:63%"></i><i style="--h:58%"></i><i style="--h:74%"></i><i style="--h:86%"></i></div>
+          <p>Meta ROAS rose from 3.2&times; last October to 3.8&times; in September, with a peak of 4.0&times; in August.</p>
+          <div class="chat-stats">
+            <div><span class="cs-label">Sep ROAS</span><span class="cs-value">3.8&times;</span></div>
+            <div><span class="cs-label">vs last Oct</span><span class="cs-value cs-up">+0.6&times;</span></div>
+            <div><span class="cs-label">Peak</span><span class="cs-value">4.0&times; Aug</span></div>
+          </div>
+          <div class="chat-chart">
+            <div class="cc-title">Meta ROAS by month</div>
+            <svg class="chat-line" viewBox="0 0 300 118" role="img" aria-label="Meta ROAS by month, last touch and first touch">
+            <g class="cl-grid"><line x1="30" x2="292" y1="74.0" y2="74.0"/><text x="24" y="77.0" text-anchor="end">3.0</text><line x1="30" x2="292" y1="46.5" y2="46.5"/><text x="24" y="49.5" text-anchor="end">3.5</text><line x1="30" x2="292" y1="19.0" y2="19.0"/><text x="24" y="22.0" text-anchor="end">4.0</text></g>
+            <g class="cl-x"><text x="30.0" y="112" text-anchor="middle">Oct</text><text x="101.5" y="112" text-anchor="middle">Jan</text><text x="172.9" y="112" text-anchor="middle">Apr</text><text x="244.4" y="112" text-anchor="middle">Jul</text><text x="292.0" y="112" text-anchor="middle">Sep</text></g>
+            <path class="cl-path cl-first" pathLength="1" d="M30.0,74.0 L53.8,85.0 L77.6,57.5 L101.5,35.5 L125.3,52.0 L149.1,46.5 L172.9,52.0 L196.7,30.0 L220.5,46.5 L244.4,30.0 L268.2,13.5 L292.0,32.8"/>
+            <path class="cl-path cl-last" pathLength="1" d="M30.0,63.0 L53.8,74.0 L77.6,52.0 L101.5,30.0 L125.3,46.5 L149.1,41.0 L172.9,46.5 L196.7,24.5 L220.5,41.0 L244.4,24.5 L268.2,19.0 L292.0,30.0"/>
+            <g class="cl-dots"><circle class="cl-first" cx="30.0" cy="74.0" r="2.6"/><circle class="cl-first" cx="53.8" cy="85.0" r="2.6"/><circle class="cl-first" cx="77.6" cy="57.5" r="2.6"/><circle class="cl-first" cx="101.5" cy="35.5" r="2.6"/><circle class="cl-first" cx="125.3" cy="52.0" r="2.6"/><circle class="cl-first" cx="149.1" cy="46.5" r="2.6"/><circle class="cl-first" cx="172.9" cy="52.0" r="2.6"/><circle class="cl-first" cx="196.7" cy="30.0" r="2.6"/><circle class="cl-first" cx="220.5" cy="46.5" r="2.6"/><circle class="cl-first" cx="244.4" cy="30.0" r="2.6"/><circle class="cl-first" cx="268.2" cy="13.5" r="2.6"/><circle class="cl-first" cx="292.0" cy="32.8" r="2.6"/><circle class="cl-last" cx="30.0" cy="63.0" r="2.6"/><circle class="cl-last" cx="53.8" cy="74.0" r="2.6"/><circle class="cl-last" cx="77.6" cy="52.0" r="2.6"/><circle class="cl-last" cx="101.5" cy="30.0" r="2.6"/><circle class="cl-last" cx="125.3" cy="46.5" r="2.6"/><circle class="cl-last" cx="149.1" cy="41.0" r="2.6"/><circle class="cl-last" cx="172.9" cy="46.5" r="2.6"/><circle class="cl-last" cx="196.7" cy="24.5" r="2.6"/><circle class="cl-last" cx="220.5" cy="41.0" r="2.6"/><circle class="cl-last" cx="244.4" cy="24.5" r="2.6"/><circle class="cl-last" cx="268.2" cy="19.0" r="2.6"/><circle class="cl-last" cx="292.0" cy="30.0" r="2.6"/></g>
+          </svg>
+            <div class="cc-legend"><span><i class="cl-swatch cl-last"></i>Last touch</span><span><i class="cl-swatch cl-first"></i>First touch</span></div>
+          </div>
         </div>
       </div>
       <p class="chat-caption">Example conversation</p>
