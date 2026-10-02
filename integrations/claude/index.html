@@ -14,19 +14,19 @@
   gtag('config', 'G-Q78FNCB1BH');
 </script>
 
-<title>Bratrax for Claude — ask your store and ad data anything</title>
-<meta name="description" content="Connect Bratrax to Claude and ask about your Shopify or WooCommerce orders and ad spend in plain English. Answers come from your own attributed data, with charts right in the conversation.">
+<title>Bratrax for Claude — MCP connector for your store and ad data</title>
+<meta name="description" content="Connect Bratrax to Claude with the Bratrax MCP connector and ask about your Shopify or WooCommerce orders and ad spend in plain English. Answers come from your own attributed data, with charts right in the conversation.">
 <link rel="canonical" href="https://bratrax.com/integrations/claude">
 <meta name="robots" content="index, follow">
 
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://bratrax.com/integrations/claude">
 <meta property="og:title" content="Ask Claude what actually earned the sale.">
-<meta property="og:description" content="Connect Bratrax to Claude and ask about your Shopify or WooCommerce orders and ad spend in plain English. Answers come from your own attributed data, with charts right in the conversation.">
+<meta property="og:description" content="Connect Bratrax to Claude with the Bratrax MCP connector and ask about your Shopify or WooCommerce orders and ad spend in plain English. Answers come from your own attributed data, with charts right in the conversation.">
 <meta property="og:site_name" content="Bratrax">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ask Claude what actually earned the sale.">
-<meta name="twitter:description" content="Connect Bratrax to Claude and ask about your Shopify or WooCommerce orders and ad spend in plain English. Answers come from your own attributed data, with charts right in the conversation.">
+<meta name="twitter:description" content="Connect Bratrax to Claude with the Bratrax MCP connector and ask about your Shopify or WooCommerce orders and ad spend in plain English. Answers come from your own attributed data, with charts right in the conversation.">
 
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
@@ -476,6 +476,83 @@
   .prompt-list li::after { content: "”"; color: #D4FF00; margin-left: 2px; }
   code.url { font-family: 'Space Mono', monospace; font-size: 14px; color: #D4FF00; word-break: break-all; }
 
+  /* Expandable questions */
+  details.faq-item { padding: 0; }
+  details.faq-item summary {
+    list-style: none; cursor: pointer; padding: 18px 24px;
+    display: flex; align-items: center; justify-content: space-between; gap: 18px;
+  }
+  details.faq-item summary::-webkit-details-marker { display: none; }
+  details.faq-item summary h3 { margin: 0; font-size: 16px; }
+  details.faq-item summary::after {
+    content: '+'; flex: 0 0 auto; color: var(--color-acid);
+    font-family: 'Outfit', sans-serif; font-weight: 700; font-size: 22px; line-height: 1;
+    transition: transform 0.25s ease;
+  }
+  details.faq-item[open] summary::after { transform: rotate(45deg); }
+  details.faq-item summary:hover h3 { color: var(--color-acid); }
+  details.faq-item summary:focus-visible { outline: 1px solid var(--color-acid-mid); outline-offset: -1px; }
+  details.faq-item > p { padding: 0 24px 20px; margin: 0; }
+
+  /* Copy button for the connector URL */
+  .copy-url { display: inline-flex; align-items: center; gap: 8px; flex-wrap: wrap; vertical-align: middle; }
+  .copy-btn {
+    font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;
+    text-transform: uppercase; background: transparent; color: var(--color-text);
+    border: 1px solid var(--color-border); padding: 4px 10px; cursor: pointer;
+    transition: border-color 0.2s, color 0.2s;
+  }
+  .copy-btn:hover { border-color: var(--color-acid-mid); color: var(--color-acid); }
+  .copy-btn.copied { border-color: var(--color-acid); color: var(--color-acid); }
+
+  /* Chat illustration (How it works) */
+  .chat-demo {
+    margin-top: 28px; max-width: 460px; background: var(--color-surface);
+    border: 1px solid var(--color-border); padding: 16px; display: grid; gap: 12px;
+    font-size: 14px;
+  }
+  .chat-top {
+    display: flex; align-items: center; gap: 8px;
+    font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700;
+    letter-spacing: 1.5px; text-transform: uppercase; color: var(--color-text-muted);
+  }
+  .chat-dot { width: 8px; height: 8px; border-radius: 50%; background: #D97757; }
+  .chat-msg { padding: 10px 14px; line-height: 1.5; }
+  .chat-msg p { margin: 0; color: var(--color-text); font-size: 14px; }
+  .chat-user { justify-self: end; max-width: 85%; background: #222; color: var(--color-text-bright); }
+  .chat-bot { border-left: 2px solid var(--color-acid); }
+  .chat-bot strong { color: var(--color-acid); }
+  .chat-tool {
+    justify-self: start; display: inline-flex; align-items: center; gap: 8px;
+    font-family: 'Space Mono', monospace; font-size: 11px; color: var(--color-text-secondary);
+    border: 1px solid var(--color-border); padding: 5px 10px;
+  }
+  .chat-spin { display: none; width: 10px; height: 10px; border: 1.5px solid var(--color-acid-mid);
+    border-top-color: var(--color-acid); border-radius: 50%; animation: chat-spin 0.8s linear infinite; }
+  .chat-check { color: var(--color-acid); }
+  .chat-bot p strong { color: var(--color-text-bright); }
+  .chat-table { width: 100%; border-collapse: collapse; margin-top: 12px; font-size: 12.5px; background: #1c1c1c; }
+  .chat-table th { font-weight: 600; color: var(--color-text-secondary); text-align: left; padding: 8px 10px; border-bottom: 1px solid #2e2e2e; white-space: nowrap; }
+  .chat-table td { padding: 9px 10px; color: var(--color-text); border-bottom: 1px solid #262626; white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .chat-table tr:last-child td { border-bottom: none; }
+  .chat-table td:first-child { color: var(--color-text-bright); }
+  @media (max-width: 420px) { .ct-hide { display: none; } .chat-table { font-size: 11.5px; } .chat-table th, .chat-table td { padding: 7px 7px; } }
+  .chat-caption {
+    font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 0.5px;
+    color: var(--color-text-muted); margin: 10px 0 0;
+  }
+  @keyframes chat-spin { to { transform: rotate(360deg); } }
+  /* Playback: without JS (or with reduced motion) the finished chat shows as is. */
+  .chat-demo.play .chat-user, .chat-demo.play .chat-tool, .chat-demo.play .chat-bot {
+    opacity: 0; transform: translateY(6px); transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+  .chat-demo.play.s1 .chat-user, .chat-demo.play.s2 .chat-tool, .chat-demo.play.s4 .chat-bot { opacity: 1; transform: none; }
+  .chat-demo.play.s2:not(.s3) .chat-spin { display: inline-block; }
+  .chat-demo.play.s2:not(.s3) .chat-check { display: none; }
+  .chat-demo.play .chat-table tbody tr { opacity: 0; transition: opacity 0.4s ease; }
+  .chat-demo.play.s5 .chat-table tbody tr { opacity: 1; }
+  .chat-demo.play.s5 .chat-table tbody tr:nth-child(2) { transition-delay: 0.25s; }
+
   /* Light motion: content fades up as it scrolls into view. */
   .js-motion .reveal { opacity: 0; transform: translateY(14px);
     transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1); transition-delay: var(--d, 0s); }
@@ -522,10 +599,10 @@
 <section class="hero">
   <div class="wrap">
     <div class="hero-head">
-      <span class="eyebrow">Bratrax for Claude</span>
+      <span class="eyebrow">Bratrax for Claude &middot; MCP connector</span>
       <h1>Ask Claude what actually <span class="serif-accent">earned</span> the sale.</h1>
     </div>
-    <p class="hero-sub">Connect Bratrax to Claude and ask about your Shopify or WooCommerce orders and ad spend in plain English. Claude answers from your own attributed data &mdash; revenue, ROAS and cost per order by channel, campaign and ad &mdash; and draws the charts right in the conversation.</p>
+    <p class="hero-sub">Connect Bratrax to Claude with our MCP connector and ask about your Shopify or WooCommerce orders and ad spend in plain English. Claude answers from your own attributed data &mdash; revenue, ROAS and cost per order by channel, campaign and ad &mdash; and draws the charts right in the conversation.</p>
     <div class="hero-cta">
       <a href="#connect" class="btn btn-primary btn-large btn-arrow">Connect in two steps</a>
       <a href="https://bratrax.com/signup" class="btn btn-outline btn-large">New to Bratrax? Start here</a>
@@ -538,7 +615,23 @@
   <div class="wrap split">
     <div>
       <h2>How it <span class="serif-accent">works</span>.</h2>
-      <p class="lead">Bratrax is a connector for Claude. Once it's connected, Claude can look up your Bratrax numbers while it answers you.</p>
+      <p class="lead">Bratrax is an MCP connector for Claude. MCP is the open standard Claude uses to connect to other apps. Once Bratrax is connected, Claude can look up your Bratrax numbers while it answers you.</p>
+      <div class="chat-demo" aria-hidden="true">
+        <div class="chat-top"><span class="chat-dot"></span>Claude</div>
+        <div class="chat-msg chat-user">What's my NC-ROAS on Meta vs Google this month?</div>
+        <div class="chat-tool"><span class="chat-spin"></span><span class="chat-check">&#10003;</span>Bratrax &middot; Query store and ad metrics</div>
+        <div class="chat-msg chat-bot">
+          <p><strong>Bottom line:</strong> Google is ahead on NC-ROAS, 3.1&times; against Meta's 2.2&times;. September looked the same (3.4&times; vs 2.4&times;), so it isn't a one-off.</p>
+          <table class="chat-table">
+            <thead><tr><th></th><th>NC-ROAS</th><th>New customers</th><th class="ct-hide">Spend</th><th>NC CPA</th></tr></thead>
+            <tbody>
+              <tr><td>Google Ads</td><td>3.1&times;</td><td>312</td><td class="ct-hide">$8,400</td><td>$26.92</td></tr>
+              <tr><td>Meta</td><td>2.2&times;</td><td>330</td><td class="ct-hide">$12,600</td><td>$38.18</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <p class="chat-caption">Example conversation</p>
     </div>
     <div>
       <ul class="facts">
@@ -556,7 +649,7 @@
   <div class="wrap">
     <h2>Set up in <span class="serif-accent">two</span> steps.</h2>
     <ol class="steps">
-      <li><strong>In Claude, open the connectors directory and choose Bratrax, then Connect.</strong> If Bratrax isn't listed for your account yet, choose <em>Add custom connector</em> and paste <code class="url">https://bratrax.com/bratrax/mcp</code>.</li>
+      <li><strong>In Claude, open the connectors directory and choose Bratrax, then Connect.</strong> If Bratrax isn't listed for your account yet, choose <em>Add custom connector</em> and paste <span class="copy-url"><code class="url">https://bratrax.com/bratrax/mcp</code><button type="button" class="copy-btn" data-copy="https://bratrax.com/bratrax/mcp" aria-label="Copy the connector URL">Copy</button></span>.</li>
       <li><strong>Sign in to Bratrax and approve.</strong> If you run several stores, pick the one Claude should see. You're sent straight back to Claude.</li>
     </ol>
     <p style="font-size:15px;margin-top:22px">Then turn Bratrax on in a chat from the tools menu, and ask away.</p>
@@ -572,11 +665,13 @@
     <h2>What merchants <span class="serif-accent">ask</span>.</h2>
     <p class="lead">Claude picks the right Bratrax metrics for the question, runs the query and explains what it found. When a trend or a comparison reads better as a picture, it draws an interactive chart you can expand or open in Bratrax.</p>
     <ul class="prompt-list">
+      <li>What&rsquo;s my NC-ROAS on Meta this month?</li>
+      <li>Which campaigns bring in new customers, and which mostly reach people who already buy from me?</li>
+      <li>What touchpoints did last month&rsquo;s Direct orders have in common?</li>
+      <li>Why did ROAS drop last week? Compare it with the week before.</li>
+      <li>Show revenue by channel under first-touch and position-based.</li>
+      <li>Chart new vs returning customer revenue by month.</li>
       <li>Which campaigns had the best ROAS last week, and which lost money?</li>
-      <li>Chart attributed revenue by week for the last three months.</li>
-      <li>Why did revenue drop on Tuesday? Compare it with the Tuesday before.</li>
-      <li>What does a new customer cost me on Meta versus Google?</li>
-      <li>Show my top ten products by revenue this month as a bar chart.</li>
     </ul>
     <p style="font-size:16px;margin-top:28px"><strong>Pick your attribution model.</strong> Ask for the model you trust, for example &ldquo;use first-touch&rdquo;, and Claude re-runs the numbers with it.</p>
   </div>
@@ -613,70 +708,70 @@
   <div class="wrap">
     <h2>If something <span class="serif-accent">goes wrong</span>.</h2>
     <div class="faqs">
-      <div class="faq-item">
-        <h3>Bratrax doesn't show up in my chat.</h3>
+      <details class="faq-item">
+        <summary><h3>Bratrax doesn't show up in my chat.</h3></summary>
         <p>Turn it on from the tools menu in that chat. Connectors are switched on per chat.</p>
-      </div>
-      <div class="faq-item">
-        <h3>The sign-in page says the request expired or was already used.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>The sign-in page says the request expired or was already used.</h3></summary>
         <p>Each connection request is good for a limited time and works only once. Go back to Claude and click Connect again.</p>
-      </div>
-      <div class="faq-item">
-        <h3>The sign-in page says the request was started by a different Bratrax account.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>The sign-in page says the request was started by a different Bratrax account.</h3></summary>
         <p>You're signed in to Bratrax with a different login than the one you started with. Sign out, sign in with the account you want to connect, then click Connect again in Claude.</p>
-      </div>
-      <div class="faq-item">
-        <h3>The sign-in page says my workspace hasn't finished setup.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>The sign-in page says my workspace hasn't finished setup.</h3></summary>
         <p>Your workspace admin needs to finish setting up Bratrax first. Once they have, click Connect again in Claude.</p>
-      </div>
-      <div class="faq-item">
-        <h3>The sign-in page says my account doesn't have a workspace yet.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>The sign-in page says my account doesn't have a workspace yet.</h3></summary>
         <p>Email <a href="mailto:support@bratrax.com" class="inline-a">support@bratrax.com</a> and we&rsquo;ll set you up.</p>
-      </div>
-      <div class="faq-item">
-        <h3>One of my stores is greyed out.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>One of my stores is greyed out.</h3></summary>
         <p>That store hasn't finished setup. Finish setting it up in Bratrax, or connect a store that's ready.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Claude says Bratrax is still setting up or importing.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Claude says Bratrax is still setting up or importing.</h3></summary>
         <p>Your first data import is running. Recent data is usually ready 10 to 20 minutes after you finish setup. Ask again then.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Claude says Bratrax hit a problem setting up my workspace.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Claude says Bratrax hit a problem setting up my workspace.</h3></summary>
         <p>Our team is alerted automatically. If it isn&rsquo;t fixed within a few hours, email <a href="mailto:support@bratrax.com" class="inline-a">support@bratrax.com</a>.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Claude says Bratrax is temporarily unavailable or warming up.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Claude says Bratrax is temporarily unavailable or warming up.</h3></summary>
         <p>This can happen for a few seconds while your workspace starts up. Wait a moment and ask again.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Claude asks me to sign in again.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Claude asks me to sign in again.</h3></summary>
         <p>This happens if you disconnected, if your Bratrax login was removed, or if you haven't used Bratrax in Claude for about 30 days. Click Connect and sign in again.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Claude says the connected workspace no longer exists.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Claude says the connected workspace no longer exists.</h3></summary>
         <p>The store you approved was removed from Bratrax. Remove the connector in Claude and connect again, picking a current store.</p>
-      </div>
-      <div class="faq-item">
-        <h3>The answer seems cut off.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>The answer seems cut off.</h3></summary>
         <p>Very long results are shortened so they fit in the chat. Ask for fewer rows, such as &ldquo;top 20&rdquo;, or a shorter date range.</p>
-      </div>
-      <div class="faq-item">
-        <h3>A question takes too long and fails.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>A question takes too long and fails.</h3></summary>
         <p>A single query has a two-minute limit. Ask about a shorter period, or one channel at a time.</p>
-      </div>
-      <div class="faq-item">
-        <h3>A chart came back empty.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>A chart came back empty.</h3></summary>
         <p>There's no data for the period you asked about, for example because a store or ad account stopped syncing. Claude is told how recent your data is, so ask about a period that ends then. Reconnect the source in Bratrax under Connectors.</p>
-      </div>
-      <div class="faq-item">
-        <h3>I can't see some data or dashboards.</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>I can't see some data or dashboards.</h3></summary>
         <p>Claude sees what your Bratrax role allows, the same as in the app. Ask your workspace admin.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Still stuck?</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Still stuck?</h3></summary>
         <p>Remove the connector in Claude and connect again. That fixes most sign-in problems. If it doesn&rsquo;t, email <a href="mailto:support@bratrax.com" class="inline-a">support@bratrax.com</a> and tell us what Claude said.</p>
-      </div>
+      </details>
     </div>
   </div>
 </section>
@@ -686,22 +781,22 @@
   <div class="wrap">
     <h2>The questions merchants <span class="serif-accent">ask</span>.</h2>
     <div class="faqs">
-      <div class="faq-item">
-        <h3>Can Bratrax read my Claude conversations?</h3>
+      <details class="faq-item">
+        <summary><h3>Can Bratrax read my Claude conversations?</h3></summary>
         <p><strong>No.</strong> Bratrax only receives the specific requests Claude makes to it, such as &ldquo;attributed revenue by channel for last week&rdquo;, and answers them from your workspace. Your chats stay with Claude. How we handle your data is in the <a href="https://bratrax.com/privacy-policy" class="inline-a">privacy policy</a>.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Does it cost extra?</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Does it cost extra?</h3></summary>
         <p><strong>Not from Bratrax.</strong> The connector is included in your Bratrax plan. The questions you ask count toward your Claude plan&rsquo;s usage, like any other chat.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Can my team use it too?</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Can my team use it too?</h3></summary>
         <p><strong>Yes.</strong> Each teammate connects with their own Bratrax login, and sees what their role allows in the app.</p>
-      </div>
-      <div class="faq-item">
-        <h3>Is this the same as the AI chat inside Bratrax?</h3>
+      </details>
+      <details class="faq-item">
+        <summary><h3>Is this the same as the AI chat inside Bratrax?</h3></summary>
         <p><strong>No.</strong> The chat inside Bratrax runs on your workspace&rsquo;s own Anthropic key. This connector runs in Claude, on your Claude plan. Both read the same numbers.</p>
-      </div>
+      </details>
     </div>
   </div>
 </section>
@@ -750,6 +845,54 @@
       });
     }, { rootMargin: '0px 0px -8% 0px' });
     els.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+<script>
+  // Copy buttons. Falls back to selecting the text when the Clipboard API is unavailable.
+  document.querySelectorAll('.copy-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var text = btn.getAttribute('data-copy');
+      function done() {
+        btn.textContent = 'Copied';
+        btn.classList.add('copied');
+        setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
+      }
+      function fallback() {
+        var code = btn.parentElement.querySelector('code');
+        var range = document.createRange();
+        range.selectNodeContents(code);
+        var sel = window.getSelection();
+        sel.removeAllRanges(); sel.addRange(range);
+        try { if (document.execCommand('copy')) { done(); } } catch (e) {}
+      }
+      if (navigator.clipboard && window.isSecureContext) {
+        navigator.clipboard.writeText(text).then(done, fallback);
+      } else {
+        fallback();
+      }
+    });
+  });
+
+  // Chat illustration: plays while on screen, loops, stays static for reduced motion.
+  (function () {
+    var demo = document.querySelector('.chat-demo');
+    if (!demo || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    var steps = [['s1', 400], ['s2', 1300], ['s3', 2600], ['s4', 3000], ['s5', 3500]];
+    var timers = [], visible = false;
+    function clear() { timers.forEach(clearTimeout); timers = []; }
+    function run() {
+      clear();
+      demo.classList.remove('s1', 's2', 's3', 's4', 's5');
+      steps.forEach(function (st) { timers.push(setTimeout(function () { demo.classList.add(st[0]); }, st[1])); });
+      timers.push(setTimeout(function () { if (visible) run(); }, 9500));
+    }
+    demo.classList.add('play');
+    new IntersectionObserver(function (entries) {
+      visible = entries[0].isIntersecting;
+      if (visible) { run(); } else { clear(); demo.classList.add('s1', 's2', 's3', 's4', 's5'); }
+    }, { threshold: 0.4 }).observe(demo);
   })();
 </script>
 
