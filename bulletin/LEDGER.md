@@ -60,6 +60,8 @@ as never-covered forever.
 | `video-walkthroughs` | Browse short, feature-by-feature video walkthroughs | New | 2026-09 | recapped | #2 | changelog |
 | `meta-organic-attribution` | More accurate Meta ad attribution | Improved | 2026-09 | pending | — | changelog |
 | `performance-max-spend-accuracy` | See your full Performance Max ad spend, including history | Improved | 2026-09 | pending | — | changelog |
+| `search-settings-and-help` | Jump to any setting or help article from the top bar | New | 2026-10 | pending | — | changelog |
+| `dashboard-update-countdown` | See when your dashboard data updates next | Improved | 2026-10 | pending | — | changelog |
 
 **Pending:** `meta-organic-attribution`, `performance-max-spend-accuracy`.
 
@@ -79,6 +81,8 @@ disagreement is itself informative.
 |---|---|
 | `meta-organic-attribution` | Attribution now tells paid Meta ad clicks apart from organic Facebook and Instagram traffic, so your Meta numbers reflect what you actually paid for. |
 | `performance-max-spend-accuracy` | Performance Max campaign spend — including historical data — now shows up accurately and with readable names in your Attribution dashboard. |
+| `search-settings-and-help` | Use the new Search field in the top bar to jump straight to any setting or help article. |
+| `dashboard-update-countdown` | Dashboards now tell you when the next data update lands, and flag clearly when data is behind. |
 
 ## Issues
 
