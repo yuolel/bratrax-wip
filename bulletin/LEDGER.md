@@ -61,8 +61,6 @@ as never-covered forever.
 | `meta-organic-attribution` | More accurate Meta ad attribution | Improved | 2026-09 | pending | — | changelog |
 | `performance-max-spend-accuracy` | See your full Performance Max ad spend, including history | Improved | 2026-09 | pending | — | changelog |
 | `search-settings-and-help` | Jump to any setting or help article from the top bar | New | 2026-10 | pending | — | changelog |
-| `chat-model-choice` | Choose which Claude model powers in-app chat | New | 2026-10 | pending | — | changelog |
-| `cheaper-ai-chat` | In-app AI chat now costs far less per question | Improved | 2026-10 | pending | — | changelog |
 | `dashboard-update-countdown` | See when your dashboard data updates next | Improved | 2026-10 | pending | — | changelog |
 
 **Pending:** `meta-organic-attribution`, `performance-max-spend-accuracy`.
@@ -84,8 +82,6 @@ disagreement is itself informative.
 | `meta-organic-attribution` | Attribution now tells paid Meta ad clicks apart from organic Facebook and Instagram traffic, so your Meta numbers reflect what you actually paid for. |
 | `performance-max-spend-accuracy` | Performance Max campaign spend — including historical data — now shows up accurately and with readable names in your Attribution dashboard. |
 | `search-settings-and-help` | Use the new Search field in the top bar to jump straight to any setting or help article. |
-| `chat-model-choice` | Choose which Claude model powers in-app chat from Settings → AI settings, so you control cost versus depth. |
-| `cheaper-ai-chat` | In-app chat now runs on a faster default model with caching, so each question costs far less on your Anthropic key. |
 | `dashboard-update-countdown` | Dashboards now tell you when the next data update lands, and flag clearly when data is behind. |
 
 ## Issues
