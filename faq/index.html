@@ -728,7 +728,7 @@
       "name": "How often does Bratrax refresh my data?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Store data (Shopify/WooCommerce orders): hourly — new orders appear in your dashboard within about an hour of being placed. Ad platform data (Meta, Google, TikTok, Bing, Pinterest, Taboola, Outbrain, Klaviyo): every 4 hours — spend and performance can therefore trail the ad platform's own UI by a few hours; that's the sync interval, not missing data. Why not real-time: tools that show 'instant' sales are reporting off their pixel alone. Bratrax uses pixel data to enrich your actual order record — the number you see reconciles with your store, at the cost of up to an hour of lag."
+        "text": "Store data (Shopify/WooCommerce orders): hourly — new orders appear in your dashboard within about an hour of being placed. Ad platform data (Meta, Google, TikTok, Bing, Pinterest, Taboola, Outbrain, Amazon Ads, Klaviyo): every 4 hours — spend and performance can therefore trail the ad platform's own UI by a few hours; that's the sync interval, not missing data. Why not real-time: tools that show 'instant' sales are reporting off their pixel alone. Bratrax uses pixel data to enrich your actual order record — the number you see reconciles with your store, at the cost of up to an hour of lag."
       }
     },
     {
@@ -744,7 +744,7 @@
       "name": "What's an MCP endpoint?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "MCP (Model Context Protocol) is an open standard that lets AI assistants connect to external data sources. Your Bratrax MCP endpoint lets Claude query your attribution data directly — cohort cuts, custom calculations, anything you'd otherwise export to a spreadsheet. Setup takes about 2 minutes from Settings → MCP in the app. You bring your own Claude account. We provide the data connection — no additional cost from us, no token markup."
+        "text": "MCP (Model Context Protocol) is an open standard that lets AI assistants connect to external data sources. Your Bratrax MCP endpoint lets Claude query your attribution data directly — cohort cuts, custom calculations, anything you'd otherwise export to a spreadsheet. Setup takes about a minute: in Claude, open Settings → Connectors, add Bratrax (or paste the connector address if it isn't listed yet), and sign in to Bratrax. Step-by-step details: bratrax.com/integrations/claude. You use your own Claude account. We provide the data connection — no additional cost from us, no token markup."
       }
     },
     {
@@ -760,7 +760,7 @@
       "name": "Does Bratrax work with Claude or ChatGPT?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Claude, yes — two ways. Connect your own Claude account through the MCP endpoint, and the AI side runs under your Anthropic account. Or use the Bratrax assistant for Slack, which we run for you — no AI account needed on your end. ChatGPT isn't supported yet — OpenAI support is on our roadmap. Why Claude first: most of the DTC operators we work with are on Claude."
+        "text": "Claude, yes — two ways. Connect Bratrax from Claude's connector settings, and the AI side runs under your Anthropic account. Or use the Bratrax assistant for Slack, which we run for you — no AI account needed on your end. ChatGPT isn't supported yet — OpenAI support is on our roadmap."
       }
     },
     {
@@ -904,7 +904,7 @@
       "name": "Can I track multiple stores in one Bratrax account?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes. Bratrax supports multi-store accounts: one parent account — a single subscription — owns multiple stores, each with its own connectors, pipeline, and dashboards, and you switch between them with the store dropdown in the header. There's no extra charge for additional stores. To get multi-store enabled on your account, email support@bratrax.com — once it's active, you'll see an Add store button in the app."
+        "text": "Yes. Bratrax supports multi-store accounts: one parent account — a single subscription — owns multiple stores, each with its own connectors, pipeline, and dashboards, and you switch between them with the store dropdown in the header. There's no extra charge for additional stores. You can add a store yourself at any time with the Add store button in the app; adding your second store turns your account into a multi-store account automatically."
       }
     },
     {
@@ -1203,7 +1203,7 @@
 
       <div class="qa-block">
         <h3 class="q">How often does Bratrax refresh my data?</h3>
-        <p class="a"><strong>Store data (Shopify/WooCommerce orders): hourly.</strong> New orders appear in your dashboard within about an hour of being placed. <strong>Ad platform data (Meta, Google, TikTok, Bing, Pinterest, Taboola, Outbrain, Klaviyo): every 4 hours.</strong> Spend and performance can therefore trail the ad platform's own UI by a few hours — that's the sync interval, not missing data.</p>
+        <p class="a"><strong>Store data (Shopify/WooCommerce orders): hourly.</strong> New orders appear in your dashboard within about an hour of being placed. <strong>Ad platform data (Meta, Google, TikTok, Bing, Pinterest, Taboola, Outbrain, Amazon Ads, Klaviyo): every 4 hours.</strong> Spend and performance can therefore trail the ad platform's own UI by a few hours — that's the sync interval, not missing data.</p>
         <p class="a">Why not real-time: tools that show "instant" sales are reporting off their pixel alone. Bratrax uses pixel data to <em>enrich your actual order record</em> — the number you see reconciles with your store, at the cost of up to an hour of lag.</p>
       </div>
 
@@ -1221,7 +1221,7 @@
       <div class="qa-block">
         <h3 class="q">What's an MCP endpoint?</h3>
         <p class="a">MCP (Model Context Protocol) is an open standard that lets AI assistants connect to external data sources. Your Bratrax MCP endpoint lets Claude query your attribution data directly — cohort cuts, custom calculations, anything you'd otherwise export to a spreadsheet.</p>
-        <p class="a">Setup takes about 2 minutes from <strong>Settings &rarr; MCP</strong> in the app. <strong>You bring your own Claude account. We provide the data connection</strong> — no additional cost from us, no token markup.</p>
+        <p class="a">Setup takes about a minute: in Claude, open <strong>Settings &rarr; Connectors</strong>, add Bratrax (or paste the connector address if it isn't listed yet), and sign in to Bratrax. <a href="https://bratrax.com/integrations/claude">Step-by-step details</a>. <strong>You use your own Claude account. We provide the data connection</strong> — no additional cost from us, no token markup.</p>
       </div>
 
       <div class="qa-block">
@@ -1231,8 +1231,8 @@
 
       <div class="qa-block">
         <h3 class="q">Does Bratrax work with Claude or ChatGPT?</h3>
-        <p class="a">Claude, yes — two ways. Connect <strong>your own Claude account</strong> through the MCP endpoint, and the AI side runs under your Anthropic account. Or use the <strong>Bratrax assistant for Slack</strong>, which we run for you — no AI account needed on your end.</p>
-        <p class="a">ChatGPT isn't supported yet — OpenAI support is on our roadmap. Why Claude first: most of the DTC operators we work with are on Claude.</p>
+        <p class="a">Claude, yes — two ways. Connect Bratrax from <strong>your own Claude account</strong>'s connector settings, and the AI side runs under your Anthropic account. Or use the <strong>Bratrax assistant for Slack</strong>, which we run for you — no AI account needed on your end.</p>
+        <p class="a">ChatGPT isn't supported yet — OpenAI support is on our roadmap.</p>
       </div>
 
       <div class="qa-block">
@@ -1351,7 +1351,7 @@
 
       <div class="qa-block">
         <h3 class="q">Can I track multiple stores in one Bratrax account?</h3>
-        <p class="a">Yes. Bratrax supports multi-store accounts: one parent account — a single subscription — owns multiple stores, each with its own connectors, pipeline, and dashboards, and you switch between them with the store dropdown in the header. There's no extra charge for additional stores. To get multi-store enabled on your account, email <a href="mailto:support@bratrax.com">support@bratrax.com</a> — once it's active, you'll see an <strong>Add store</strong> button in the app.</p>
+        <p class="a">Yes. Bratrax supports multi-store accounts: one parent account — a single subscription — owns multiple stores, each with its own connectors, pipeline, and dashboards, and you switch between them with the store dropdown in the header. There's no extra charge for additional stores. You can add a store yourself at any time with the <strong>Add store</strong> button in the app; adding your second store turns your account into a multi-store account automatically.</p>
       </div>
     </section>
 
