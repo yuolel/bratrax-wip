@@ -62,6 +62,9 @@ as never-covered forever.
 | `performance-max-spend-accuracy` | See your full Performance Max ad spend, including history | Improved | 2026-09 | pending | — | changelog |
 | `search-settings-and-help` | Jump to any setting or help article from the top bar | New | 2026-10 | pending | — | changelog |
 | `dashboard-update-countdown` | See when your dashboard data updates next | Improved | 2026-10 | pending | — | changelog |
+| `restart-subscription-billing` | Restart a lapsed subscription yourself | New | 2026-10 | pending | — | changelog |
+| `store-currency-everywhere` | See your own currency across Bratrax, not dollar signs | Improved | 2026-10 | pending | — | changelog |
+| `funnelish-order-accuracy` | Funnelish orders and ad credit now match what you see in Funnelish | Improved | 2026-10 | pending | — | changelog |
 
 **Pending:** `meta-organic-attribution`, `performance-max-spend-accuracy`.
 
@@ -83,6 +86,9 @@ disagreement is itself informative.
 | `performance-max-spend-accuracy` | Performance Max campaign spend — including historical data — now shows up accurately and with readable names in your Attribution dashboard. |
 | `search-settings-and-help` | Use the new Search field in the top bar to jump straight to any setting or help article. |
 | `dashboard-update-countdown` | Dashboards now tell you when the next data update lands, and flag clearly when data is behind. |
+| `restart-subscription-billing` | If your subscription lapses, you can now restart it yourself from Settings → Billing — no need to contact us. |
+| `store-currency-everywhere` | Revenue, order values and ad costs now appear in your store's own currency across Bratrax, and ROAS is correct for CZK and HUF stores. |
+| `funnelish-order-accuracy` | If you use Funnelish, your orders and revenue now match what Funnelish reports, including repeat buyers, and sales are credited to the Meta ads that drove them. |
 
 ## Issues
 
