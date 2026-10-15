@@ -120,28 +120,14 @@
   .s-acid { background: var(--acid); color: #0A0A0A; }
 
   /* ---------- Type ---------- */
-  .label {
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin-bottom: 22px;
-  }
-  .label .n { opacity: 0.55; }
-  .s-dark .label { color: rgba(212,255,0,0.8); }
-  .s-paper .label { color: var(--olive); }
   h1, h2, h3 { font-family: 'Outfit', sans-serif; text-wrap: balance; }
   .s-dark h1, .s-dark h2, .s-dark h3 { color: var(--bright); }
   .s-paper h2, .s-paper h3 { color: var(--ink); }
   h1 {
-    font-size: clamp(46px, 6.4vw, 92px);
+    font-size: clamp(42px, 5vw, 72px);
     font-weight: 900;
-    line-height: 0.98;
-    letter-spacing: -2px;
+    line-height: 1.02;
+    letter-spacing: -1.5px;
   }
   h2 {
     font-size: clamp(34px, 4.6vw, 62px);
@@ -183,7 +169,7 @@
     text-transform: uppercase;
     padding: 6px 10px 5px;
     border: 2px solid currentColor;
-    transform: rotate(var(--r, -4deg));
+    transform: rotate(var(--r, 0deg));
     line-height: 1.2;
     white-space: nowrap;
   }
@@ -363,8 +349,7 @@
     gap: 48px;
     align-items: center;
   }
-  .eyebrow { display: flex; align-items: center; gap: 14px; margin-bottom: 30px; flex-wrap: wrap; }
-  .eyebrow .sticker { --r: -2deg; color: var(--acid); }
+  .eyebrow { display: inline-flex; align-items: center; margin-bottom: 26px; font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--acid); }
   .dot {
     display: inline-block;
     width: 7px; height: 7px; border-radius: 50%;
@@ -408,151 +393,126 @@
   .pedigree a { color: var(--night-ink); text-decoration: none; border-bottom: 1px dashed var(--night-line); }
   .pedigree a:hover { color: var(--acid); }
 
-  /* The noise filter: metric stickers get struck out, the read card lands */
-  .noise { position: relative; min-height: 600px; display: flex; align-items: center; justify-content: center; }
-  .noise-chips { position: absolute; inset: 0; pointer-events: none; }
-  .chip-n {
-    pointer-events: auto;
-    position: absolute;
-    top: var(--y); left: var(--x);
-    transform: rotate(var(--r));
-    font-family: 'Space Mono', monospace;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    padding: 8px 12px;
-    background: var(--night-2);
-    color: var(--night-ink);
-    border: 1.5px solid var(--night-line);
-    cursor: help;
-    transition: opacity 0.5s, color 0.5s, border-color 0.3s;
-    white-space: nowrap;
+  /* Hand-drawn marker that draws itself once */
+  .ring { position: relative; white-space: nowrap; }
+  .ring .mk { position: absolute; left: -16%; top: -6%; width: 132%; height: 116%; fill: none; stroke: var(--acid); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; overflow: visible; pointer-events: none; }
+  .ring .mk path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.1s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
+
+  /* Paper kit: tape, stamp, sheet. Warm paper = checked. Cold screen = claimed. */
+  .sheet { box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 18px 34px -16px rgba(0,0,0,0.7), 0 3px 8px rgba(0,0,0,0.3); }
+  .tape {
+    position: absolute; z-index: 4; width: 84px; height: 24px; pointer-events: none;
+    transform: rotate(var(--r, -4deg));
+    background: repeating-linear-gradient(90deg, rgba(255,255,255,0.14) 0 2px, transparent 2px 6px), rgba(222, 208, 168, 0.85);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
+    clip-path: polygon(0 0, 3% 12%, 0 26%, 3% 40%, 0 54%, 3% 68%, 0 82%, 3% 100%, 97% 100%, 100% 84%, 97% 68%, 100% 52%, 97% 36%, 100% 20%, 97% 0);
   }
-  .chip-n::after {
-    content: '';
-    position: absolute;
-    left: -6px; top: 50%;
-    height: 3px;
-    width: 0;
-    background: var(--red);
-    transform: rotate(-4deg);
-    transition: width 0.32s cubic-bezier(0.6, 0, 0.3, 1);
-  }
-  .chip-n.struck { color: var(--night-ink-3); }
-  .chip-n.struck::after { width: calc(100% + 12px); }
-  .chip-n.faded { opacity: 0.42; }
-  .chip-n:hover, .chip-n:focus-visible { opacity: 1; border-color: var(--red); z-index: 5; }
-  .chip-n .tip {
-    position: absolute;
-    left: 50%; bottom: calc(100% + 10px);
-    transform: translateX(-50%) rotate(calc(var(--r) * -1));
-    width: max-content;
-    max-width: 220px;
-    padding: 8px 11px;
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Outfit', sans-serif;
-    font-size: 13.5px;
-    font-weight: 500;
-    letter-spacing: 0;
-    text-transform: none;
-    line-height: 1.35;
-    white-space: normal;
-    text-align: left;
-    box-shadow: 4px 4px 0 var(--red);
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.15s;
+  .stamp {
+    position: absolute; right: -8px; top: -18px; z-index: 6;
+    padding: 7px 11px; border: 3px solid #0A0A0A; color: #0A0A0A;
+    font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap;
+    filter: url(#ink); mix-blend-mode: multiply;
+    transform: rotate(5deg) scale(1.7); opacity: 0;
+    transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s;
     pointer-events: none;
   }
-  .chip-n:hover .tip, .chip-n:focus-visible .tip { opacity: 1; visibility: visible; }
+  .stamp.land { transform: rotate(5deg); opacity: 0.9; }
+  .stamp.red { border-color: var(--red-ink); color: var(--red-ink); }
 
-  .read-card {
-    position: relative;
-    z-index: 3;
-    width: min(420px, 100%);
-    background: var(--paper);
-    color: var(--ink);
-    padding: 22px 24px 18px;
-    border: 2px solid #0A0A0A;
-    box-shadow: 10px 10px 0 var(--acid);
-    transform: rotate(-1.2deg);
+  /* ---------- Design language: hand-checked print ----------
+     Dots are orders. Paper sheets are numbers Bratrax checked. Screens are claims.
+     Security-paper lines only on checked sheets. Torn edges only at three chapter breaks. */
+  .hero.s-dark::before { display: none; }
+  .dotwall { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; z-index: 0;
+    -webkit-mask-image: linear-gradient(100deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 38%, #000 70%);
+            mask-image: linear-gradient(100deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 38%, #000 70%); }
+  .dotwall-note { position: absolute; right: var(--pad); bottom: 22px; z-index: 1; font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--night-ink-3); }
+  .dotwall-note i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--acid); margin: 0 6px 1px 0; vertical-align: middle; }
+  .sheet.sheet, .memo {
+    background-image:
+      repeating-radial-gradient(circle at 0 110%, transparent 0 7px, rgba(74,104,0,0.055) 7px 8px),
+      repeating-radial-gradient(circle at 110% -10%, transparent 0 9px, rgba(74,104,0,0.04) 9px 10px);
   }
-  .read-card.landed { animation: land 0.6s cubic-bezier(0.3, 1.4, 0.5, 1) both; }
-  @keyframes land {
-    0% { transform: rotate(-1.2deg) scale(0.9); box-shadow: 0 0 0 var(--acid); }
-    100% { transform: rotate(-1.2deg) scale(1); box-shadow: 10px 10px 0 var(--acid); }
+  .torn { position: absolute; left: 0; right: 0; height: 36px; z-index: 3; pointer-events: none; --tb: var(--paper); --tf: #FFFCF4; }
+  .torn.top { top: -26px; filter: drop-shadow(0 -2px 3px rgba(0,0,0,0.35)); }
+  .torn.bot { bottom: -26px; filter: drop-shadow(0 3px 4px rgba(0,0,0,0.25)); }
+  .torn i { position: absolute; inset: 0; display: block; }
+  .torn .tf { background: var(--tf); }
+  .torn .tb { background: var(--tb); }
+  .strip { position: relative; z-index: 2; }
+  #faq { z-index: 2; }
+  /* Platform claims print off-register; the checked number snaps into register */
+  .seat .val { transition: text-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+  .seat:not(.is-after) .val { text-shadow: 3px 2px 0 rgba(255,59,48,0.55), -3px -2px 0 rgba(212,255,0,0.3); }
+  /* Ledger: totals sit under a double rule */
+  .wf .wr:last-child { border-top: 4px double var(--ink); position: relative; }
+  .wf .wr .stamp { right: 176px; top: 6px; }
+  #r-stamp { top: 104px; right: 14px; }
+  .stack tfoot td { border-top: 4px double var(--night-ink-2); }
+  /* Screenshots are prints, taped down */
+  .shot { position: relative; }
+  .shot .tape { width: 74px; height: 22px; }
+  /* Halftone portrait */
+  .ht { position: relative; display: block; width: 72px; height: 72px; overflow: hidden; border: 2px solid #0A0A0A; background: var(--paper); }
+  .ht img { display: block; width: 100%; height: 100%; object-fit: cover; border: none; filter: grayscale(1) contrast(1.05); }
+  .ht canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ht.done img { visibility: hidden; }
+  .illus { display: inline-block; padding: 3px 9px; background: #0A0A0A; color: var(--paper); font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+
+  /* Hero console: forty metrics on a cold screen, one survives the scan */
+  .console { position: relative; }
+  .console-q { display: grid; gap: 10px; margin-bottom: 14px; }
+  .q-label { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--night-ink-3); }
+  .seg3 { display: grid; grid-template-columns: repeat(3, 1fr); border: 1.5px solid var(--night-line); }
+  .seg3 button {
+    font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; line-height: 1.3;
+    padding: 11px 6px; background: transparent; border: none; border-right: 1.5px solid var(--night-line); color: var(--night-ink-2); cursor: pointer;
+    transition: background 0.2s, color 0.2s;
   }
-  .read-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: var(--ink-3);
-    padding-bottom: 12px;
-    border-bottom: 1px dashed var(--paper-line-strong);
+  .seg3 button:last-child { border-right: none; }
+  .seg3 button[aria-checked="true"] { background: var(--acid); color: #0A0A0A; }
+  .seg3 button:hover:not([aria-checked="true"]) { background: var(--night-3); color: var(--bright); }
+  .screen { position: relative; background: #101010; border: 1.5px solid var(--night-line); padding: 12px 12px 14px; }
+  .screen-top { display: flex; justify-content: space-between; font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--night-ink-3); margin-bottom: 10px; }
+  .screen-top b { color: var(--acid); }
+  .metrics { position: relative; display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; }
+  .m {
+    border: 1px solid #262626; background: #161616; padding: 7px 8px 6px;
+    font-family: 'Space Mono', monospace; font-size: 9.5px; letter-spacing: 0.5px; text-transform: uppercase; line-height: 1.25; color: #8A8A8A;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    transform: scale(calc(1 + var(--near, 0) * 0.08));
+    transition: opacity 0.35s, color 0.3s, border-color 0.3s, background 0.3s, transform 0.2s;
+    animation: flick var(--fd, 2.4s) ease-in-out var(--fdel, 0s) infinite;
   }
-  .read-top .live { color: var(--olive); }
-  .read-top .live .dot { background: var(--olive); animation: none; }
-  .vital { display: flex; justify-content: space-between; align-items: baseline; padding: 12px 0; border-bottom: 1px solid var(--paper-line); }
-  .vital .k { font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-2); }
-  .vital .k em { font-style: normal; color: var(--ink-3); }
-  .vital .v { font-family: 'Space Mono', monospace; font-size: 15px; font-weight: 700; }
-  .seg { display: grid; grid-template-columns: repeat(3, 1fr); margin: 14px 0 16px; border: 1.5px solid #0A0A0A; }
-  .seg button {
-    font-family: 'Space Mono', monospace;
-    font-size: 10px;
-    font-weight: 700;
-    letter-spacing: 0.8px;
-    text-transform: uppercase;
-    padding: 9px 4px;
-    background: transparent;
-    border: none;
-    border-right: 1.5px solid #0A0A0A;
-    color: var(--ink-2);
-    cursor: pointer;
+  .m b { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: 0; color: var(--night-ink); margin-top: 3px; }
+  @keyframes flick { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  .m.mute { animation: none; opacity: 0.09; }
+  .m.keep { animation: none; opacity: 1; border-color: var(--acid); color: var(--acid); background: rgba(212,255,0,0.1); }
+  .m.keep b { color: var(--acid); }
+  .scan { position: absolute; top: 34px; bottom: 12px; left: 12px; width: 2px; background: var(--acid); box-shadow: 0 0 22px 5px rgba(212,255,0,0.35); opacity: 0; pointer-events: none; z-index: 2; }
+  .result {
+    position: absolute; left: 50%; top: 54%; z-index: 3; width: min(330px, 88%);
+    background: var(--paper); color: var(--ink); padding: 18px 20px 12px;
+    transform: translate(-50%, -50%) rotate(-1.5deg);
+    opacity: 0; visibility: hidden;
   }
-  .seg button:last-child { border-right: none; }
-  .seg button[aria-selected="true"] { background: #0A0A0A; color: var(--acid); }
-  .seg button:hover:not([aria-selected="true"]) { background: var(--paper-2); color: var(--ink); }
-  .read-body { min-height: 188px; transition: opacity 0.22s, transform 0.22s; }
-  .read-body.swap { opacity: 0; transform: translateY(6px); }
-  .read-label { font-size: 13px; color: var(--ink-3); }
-  .read-num-row { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
-  .read-num { font-size: 58px; font-weight: 900; letter-spacing: -2px; line-height: 1.05; color: var(--ink); }
-  .delta { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; color: #0A0A0A; background: var(--acid); padding: 4px 8px; }
-  .spark-wrap { display: inline-block; max-width: 100%; margin-top: 14px; }
-  .spark { font-family: 'Space Mono', monospace; font-size: 26px; line-height: 1; letter-spacing: 3px; color: var(--olive); white-space: nowrap; }
-  .spark-axis { display: flex; justify-content: space-between; font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
-  .read-line { margin-top: 12px; font-size: 15px; font-weight: 500; }
-  .read-line::before { content: '→ '; color: var(--olive); font-weight: 800; }
-  .read-foot {
-    display: flex; justify-content: space-between; gap: 10px;
-    margin-top: 14px; padding-top: 10px;
-    border-top: 1px dashed var(--paper-line-strong);
-    font-family: 'Space Mono', monospace; font-size: 9.5px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink-3);
-  }
-  .replay {
-    position: absolute;
-    bottom: -46px; left: 50%;
-    transform: translateX(-50%);
-    z-index: 4;
-    background: none;
-    border: none;
-    color: var(--night-ink-3);
-    font-family: 'Space Mono', monospace;
-    font-size: 11px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    cursor: pointer;
-    padding: 6px 8px;
-  }
-  .replay:hover { color: var(--acid); }
+  .result.show { opacity: 1; visibility: visible; animation: slap 0.55s cubic-bezier(0.16, 1, 0.3, 1); }
+  @keyframes slap { 0% { transform: translate(-50%, -57%) rotate(-4deg) scale(1.06); opacity: 0; } 100% { transform: translate(-50%, -50%) rotate(-1.5deg) scale(1); opacity: 1; } }
+  .r-top { display: flex; justify-content: space-between; gap: 8px; font-family: 'Space Mono', monospace; font-size: 9.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink-3); padding-bottom: 8px; border-bottom: 1px dashed var(--paper-line-strong); }
+  .r-label { font-size: 18px; font-weight: 800; margin-top: 10px; }
+  .r-sub { font-size: 12.5px; color: var(--ink-3); }
+  .r-row { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; margin-top: 2px; }
+  .r-num { font-size: 50px; font-weight: 900; letter-spacing: -2px; line-height: 1.05; }
+  .r-delta { font-family: 'Space Mono', monospace; font-size: 10.5px; font-weight: 700; background: var(--acid); color: #0A0A0A; padding: 3px 7px; }
+  .r-spark { display: block; width: 100%; height: 40px; margin-top: 8px; overflow: visible; }
+  .r-spark path { fill: none; stroke: var(--olive); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1; stroke-dashoffset: 1; }
+  .result.show .r-spark path { animation: draw 1s cubic-bezier(0.25, 1, 0.5, 1) 0.4s forwards; }
+  .r-line { font-size: 14px; font-weight: 500; margin-top: 6px; }
+  .r-line::before { content: '→ '; color: var(--olive); font-weight: 800; }
+  .r-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; margin-top: 10px; padding-top: 8px; border-top: 1px dashed var(--paper-line-strong); font-family: 'Space Mono', monospace; font-size: 9px; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink-3); }
+  .r-again { background: none; border: none; font: inherit; color: var(--ink-2); cursor: pointer; text-decoration: underline; text-underline-offset: 3px; padding: 0; }
+  .r-again:hover { color: var(--ink); }
 
   /* ---------- Reads-from strip ---------- */
   .strip { border-bottom: 1px solid var(--paper-line); }
@@ -601,10 +561,6 @@
     transition: transform 0.25s, background 0.3s, color 0.3s;
     transform: rotate(var(--r, 0deg));
   }
-  .seat:nth-child(1) { --r: -1deg; }
-  .seat:nth-child(2) { --r: 0.8deg; }
-  .seat:nth-child(3) { --r: -0.6deg; }
-  .seat:nth-child(4) { --r: 1.2deg; }
   .seat.flip { transform: rotate(var(--r)) rotateX(90deg); }
   .seat.is-after { background: var(--acid); color: #0A0A0A; --r: 0deg; }
   .seat .who { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; opacity: 0.7; }
@@ -621,63 +577,42 @@
   }
   .seats-caption mark { background: var(--acid); padding: 0 6px; color: #0A0A0A; }
 
-  /* ---------- 02 Cascade calculator ---------- */
-  .calc { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: 28px; margin-top: 56px; align-items: start; }
-  .term { background: var(--night-2); border: 1.5px solid var(--night-line); font-family: 'Space Mono', monospace; color: var(--night-ink); }
-  .term-bar { display: flex; align-items: center; gap: 8px; padding: 12px 16px; border-bottom: 1.5px solid var(--night-line); font-size: 11px; color: var(--night-ink-3); }
-  .term-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--night-line); display: inline-block; }
-  .term-bar i:first-child { background: var(--red); }
-  .term-bar i:nth-child(2) { background: #FFB800; }
-  .term-bar i:nth-child(3) { background: var(--acid); }
-  .term-bar span { margin-left: 8px; }
-  .ctrls { padding: 18px 20px 6px; display: grid; gap: 22px; }
-  .ctrl label { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; font-size: 13px; }
-  .ctrl output { color: var(--acid); font-weight: 700; font-size: 15px; }
-  .ctrl small { display: block; font-size: 10.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--night-ink-3); margin-top: 8px; }
-  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 22px; background: transparent; margin-top: 10px; cursor: pointer; }
-  input[type=range]::-webkit-slider-runnable-track { height: 8px; background: repeating-linear-gradient(90deg, var(--night-line) 0 6px, transparent 6px 8px); }
-  input[type=range]::-moz-range-track { height: 8px; background: repeating-linear-gradient(90deg, var(--night-line) 0 6px, transparent 6px 8px); }
-  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; margin-top: -6px; background: var(--acid); border: 2px solid #0A0A0A; box-shadow: 3px 3px 0 #000; }
-  input[type=range]::-moz-range-thumb { width: 18px; height: 18px; background: var(--acid); border: 2px solid #0A0A0A; border-radius: 0; box-shadow: 3px 3px 0 #000; }
-  .assume { padding: 14px 20px 18px; font-family: 'Outfit', sans-serif; font-size: 13.5px; line-height: 1.5; color: var(--night-ink-3); border-top: 1px dashed var(--night-line); margin-top: 12px; }
-  .ladder { list-style: none; display: grid; gap: 0; }
-  .rung {
-    display: grid;
-    grid-template-columns: 140px minmax(0, 1fr) auto;
-    gap: 16px;
-    align-items: center;
-    padding: 16px 20px;
-    background: var(--night-2);
-    border: 1.5px solid var(--night-line);
-    position: relative;
-    transition: background 0.4s, border-color 0.4s;
-  }
-  .rung + .rung { margin-top: 26px; }
-  .rung + .rung::before {
-    content: '↓';
-    position: absolute;
-    top: -24px; left: 50%;
-    transform: translateX(-50%);
-    font-family: 'Space Mono', monospace;
-    font-size: 14px;
-    color: var(--acid);
-    opacity: 0.7;
-  }
-  .rung .who { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--night-ink-3); }
-  .rung .what { font-size: 16px; font-weight: 600; color: var(--bright); }
-  .rung .what small { display: block; font-size: 12.5px; font-weight: 400; color: var(--night-ink-3); margin-top: 2px; }
-  .rung .val { font-family: 'Space Mono', monospace; font-size: 20px; font-weight: 700; color: var(--acid); text-align: right; white-space: nowrap; }
-  .rung.key { border-color: var(--acid); }
-  .rung.key .val { font-size: 24px; }
-  .rung .bar { grid-column: 2 / -1; font-family: 'Space Mono', monospace; font-size: 12px; color: var(--night-ink-2); letter-spacing: 1px; white-space: nowrap; overflow: hidden; }
-  .rung .bar b { color: var(--acid); font-weight: 400; }
-  .rung .bar i { color: var(--night-line); font-style: normal; }
-  .rung.ping { background: #222A00; }
-  .rung.bad .val { color: var(--red); }
-  .calc-status { margin-top: 22px; font-family: 'Space Mono', monospace; font-size: 13px; color: var(--acid); min-height: 1.6em; }
-  .calc-status.bad { color: var(--red); }
-  .calc-status::after { content: '▍'; animation: blink 1s steps(1) infinite; margin-left: 3px; }
-  @keyframes blink { 50% { opacity: 0; } }
+  /* ---------- Profit-first plan (paper sheet on a dark section) ---------- */
+  .plan { position: relative; margin-top: 56px; background: var(--paper); color: var(--ink); padding: 34px 36px 26px; }
+  .plan-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--ink-3); margin-bottom: 22px; }
+  .plan .stamp { top: -16px; right: 26px; }
+  .knobs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding-bottom: 26px; border-bottom: 1.5px solid var(--ink); }
+  .knob label { display: block; font-size: 15px; font-weight: 600; color: var(--ink); }
+  .knob output { display: block; font-family: 'Space Mono', monospace; font-size: 24px; font-weight: 700; color: var(--ink); margin-top: 2px; }
+  .knob small { display: block; font-family: 'Space Mono', monospace; font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--ink-3); margin-top: 4px; }
+  input[type=range] { -webkit-appearance: none; appearance: none; width: 100%; height: 24px; background: transparent; margin-top: 8px; cursor: pointer; }
+  input[type=range]::-webkit-slider-runnable-track { height: 6px; background: var(--paper-3); }
+  input[type=range]::-moz-range-track { height: 6px; background: var(--paper-3); }
+  input[type=range]::-webkit-slider-thumb { -webkit-appearance: none; width: 20px; height: 20px; margin-top: -7px; background: var(--acid); border: 2px solid #0A0A0A; box-shadow: 2px 2px 0 #0A0A0A; }
+  input[type=range]::-moz-range-thumb { width: 18px; height: 18px; background: var(--acid); border: 2px solid #0A0A0A; border-radius: 0; box-shadow: 2px 2px 0 #0A0A0A; }
+  .wf { list-style: none; margin-top: 8px; }
+  .wr { display: grid; grid-template-columns: minmax(150px, 270px) minmax(0, 1fr) 150px; gap: 18px; align-items: center; padding: 14px 0; border-bottom: 1px solid var(--paper-line); }
+  .wr:last-child { border-bottom: none; }
+  .wl { font-family: 'Space Mono', monospace; font-size: 11.5px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; }
+  .wl em { font-style: normal; color: var(--red-ink); padding-right: 6px; }
+  .wt { position: relative; height: 22px; background: var(--paper-2); }
+  .wt i { position: absolute; top: 0; bottom: 0; transition: left 0.45s cubic-bezier(0.16, 1, 0.3, 1), width 0.45s cubic-bezier(0.16, 1, 0.3, 1); }
+  .wt .keep { left: 0; background: #1A1A18; }
+  .wt .cut { background: repeating-linear-gradient(135deg, var(--red-ink) 0 2px, transparent 2px 5px); outline: 1px solid var(--red-ink); outline-offset: -1px; }
+  .wt .kept { background: repeating-linear-gradient(90deg, var(--olive) 0 2px, transparent 2px 5px); outline: 1px solid var(--olive); outline-offset: -1px; }
+  .wt.over .kept { background: repeating-linear-gradient(135deg, var(--red-ink) 0 2px, transparent 2px 5px); outline-color: var(--red-ink); }
+  .wt .acid { left: 0; background: var(--acid); box-shadow: inset 0 0 0 2px #0A0A0A; }
+  .wv { font-family: 'Space Mono', monospace; font-size: 14px; font-weight: 700; text-align: right; white-space: nowrap; }
+  .wv.strong { font-size: 18px; }
+  .plan.bad .wv.strong { color: var(--red-ink); }
+  .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-top: 22px; }
+  .tile { background: #0A0A0A; color: var(--night-ink); padding: 16px 16px 14px; transition: background 0.3s; }
+  .tile .who { font-family: 'Space Mono', monospace; font-size: 9.5px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--night-ink-3); }
+  .tile .tv { display: block; font-family: 'Space Mono', monospace; font-size: 24px; font-weight: 700; color: var(--acid); margin-top: 8px; }
+  .tile .tl { display: block; font-size: 13px; line-height: 1.35; color: var(--night-ink-2); margin-top: 4px; }
+  .tile.ping { background: #222A00; }
+  .plan.bad .tile .tv { color: var(--red); }
+  .plan-foot { margin-top: 18px; font-size: 13.5px; color: var(--ink-3); }
 
   /* ---------- 03 Your number ---------- */
   .lanes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 60px; }
@@ -693,7 +628,6 @@
   }
   .lane:hover { transform: translate(-3px, -3px); box-shadow: 6px 6px 0 var(--olive); }
   .lane .sticker { position: absolute; top: -14px; right: 18px; --r: 5deg; }
-  .lane .num { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; color: var(--acid); }
   .lane h3 { font-size: 27px; font-weight: 900; letter-spacing: -0.5px; margin: 12px 0 14px; color: var(--bright); }
   .lane .q { font-family: 'DM Serif Display', Georgia, serif; font-style: italic; font-size: 21px; line-height: 1.3; color: var(--night-ink); }
   .lane dl { margin-top: auto; padding-top: 22px; display: grid; gap: 12px; }
@@ -709,7 +643,7 @@
     padding: 22px 26px;
     border: 2px dashed var(--ink);
   }
-  .mer-note .sticker { --r: -3deg; }
+  .mer-k { font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; padding: 6px 10px; border: 2px solid var(--red-ink); color: var(--red-ink); white-space: nowrap; }
   .mer-note p { font-size: 16.5px; color: var(--ink-2); }
   .mer-note strong { color: var(--ink); }
   .quiz-tease { margin-top: 22px; font-size: 15px; color: var(--ink-3); }
@@ -747,7 +681,7 @@
   .ticks { list-style: none; margin-top: 18px; display: grid; gap: 8px; }
   .ticks li { font-size: 15px; padding-left: 24px; position: relative; color: var(--night-ink); }
   .ticks li::before { content: '+'; position: absolute; left: 4px; color: var(--acid); font-weight: 800; }
-  .shot { border: 1.5px solid var(--night-line); background: #000; padding: 8px; transform: rotate(0.6deg); box-shadow: -8px 8px 0 var(--acid); }
+  .shot { border: 1.5px solid var(--night-line); background: #000; padding: 8px; box-shadow: -8px 8px 0 var(--acid); }
   .shot img { width: 100%; height: auto; }
   .ask-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 56px; }
   .ask { border: 1.5px solid var(--night-line); padding: 24px 24px 22px; background: var(--night); }
@@ -768,10 +702,10 @@
   .rules { list-style: none; counter-reset: rule; display: grid; gap: 0; }
   .rules li { counter-increment: rule; display: grid; grid-template-columns: 44px 1fr; gap: 12px; padding: 18px 0; border-top: 1.5px solid var(--ink); }
   .rules li:last-child { border-bottom: 1.5px solid var(--ink); }
-  .rules li::before { content: counter(rule, decimal-leading-zero); font-family: 'Space Mono', monospace; font-size: 12px; font-weight: 700; color: var(--olive); padding-top: 5px; }
+  .rules li::before { content: '✓'; width: 24px; height: 24px; margin-top: 2px; display: grid; place-items: center; border: 1.5px solid var(--ink); font-size: 16px; font-weight: 800; color: var(--olive); line-height: 1; }
   .rules strong { display: block; font-size: 21px; font-weight: 800; letter-spacing: -0.3px; color: var(--ink); line-height: 1.25; }
   .rules span { display: block; font-size: 15.5px; color: var(--ink-2); margin-top: 4px; }
-  .locked { background: var(--night); color: var(--night-ink); border: 2px solid #0A0A0A; box-shadow: 10px 10px 0 var(--acid); transform: rotate(1deg); }
+  .locked { background: var(--night); color: var(--night-ink); border: 2px solid #0A0A0A; box-shadow: 10px 10px 0 var(--acid); }
   .locked .term-bar { border-color: var(--night-line); }
   .locked-title { padding: 16px 18px 4px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--night-ink-3); }
   .term-rows { padding: 4px 18px 6px; }
@@ -815,7 +749,7 @@
   .tier { padding: 38px 34px 32px; display: flex; flex-direction: column; position: relative; border: 2px solid #0A0A0A; }
   .tier.lite { background: var(--night); color: var(--night-ink); box-shadow: 10px 10px 0 var(--acid); }
   .tier.cv { background: var(--paper-2); color: var(--ink); }
-  .tier .sticker { position: absolute; top: -16px; left: 28px; --r: -4deg; }
+  .tier .sticker { position: absolute; top: -15px; left: 28px; }
   .tier.cv .sticker { background: var(--paper); }
   .tier h3 { font-size: 28px; font-weight: 900; letter-spacing: -0.5px; }
   .tier.lite h3 { color: var(--bright); }
@@ -858,18 +792,8 @@
     color: var(--ink);
     border: 2px solid #0A0A0A;
     box-shadow: 12px 12px 0 var(--acid);
-    transform: rotate(-0.8deg);
+    transform: rotate(-0.5deg);
     position: relative;
-  }
-  .memo::before {
-    content: '';
-    position: absolute;
-    top: -18px; left: 56px;
-    width: 26px; height: 56px;
-    border: 3px solid #8A8578;
-    border-radius: 13px;
-    border-bottom-color: transparent;
-    transform: rotate(8deg);
   }
   .memo-head {
     display: grid;
@@ -902,18 +826,30 @@
   .faq .a { padding: 0 48px 24px 0; font-size: 16px; line-height: 1.7; color: var(--ink-2); max-width: 72ch; }
   .faq-more { margin-top: 28px; }
 
-  /* ---------- Final CTA ---------- */
-  .final { padding: 120px 0 128px; overflow: hidden; text-align: center; }
-  .final .marquee { margin-bottom: 56px; mask-image: none; -webkit-mask-image: none; }
-  .final .marquee-track { animation-duration: 30s; gap: 28px; }
-  .final .marquee-track span { font-family: 'Space Mono', monospace; font-size: 15px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: rgba(10,10,10,0.45); text-decoration: line-through; text-decoration-color: var(--red-ink); text-decoration-thickness: 2px; }
+  /* ---------- Final CTA: noise drifts in, gets in the way, fades out ---------- */
+  .final { position: relative; padding: 150px 0 156px; overflow: hidden; text-align: center; }
+  .final .wrap { z-index: 2; }
   .final h2 { margin: 0 auto; max-width: none; font-size: clamp(54px, 9vw, 132px); line-height: 0.92; letter-spacing: -3px; color: #0A0A0A; }
   .final h2 .accent { color: #0A0A0A; }
   .final .lead { margin: 26px auto 0; color: #2A2A10; }
   .final .hero-ctas { justify-content: center; }
   .final .btn-ghost { color: #0A0A0A; }
   .final .btn-ghost:hover { box-shadow: 4px 4px 0 #0A0A0A; }
-  .final .sticker { margin-top: 30px; --r: 3deg; color: #0A0A0A; }
+  .final-note { margin-top: 24px; font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: #2A2A10; }
+  .noise-float { position: absolute; inset: 0; z-index: 1; pointer-events: none; overflow: hidden; }
+  .nw {
+    position: absolute; font-family: 'Space Mono', monospace; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;
+    color: rgba(10, 10, 10, 0.5); white-space: nowrap;
+    animation: nw var(--t, 4.5s) ease-in-out forwards;
+  }
+  @keyframes nw {
+    0% { opacity: 0; transform: translate(0, 0) scale(0.8); }
+    15% { opacity: 1; transform: translate(calc(var(--dx) * 0.15), calc(var(--dy) * 0.15)) scale(1); }
+    35% { transform: translate(calc(var(--dx) * 0.35 + 4px), calc(var(--dy) * 0.35)) scale(1.06); }
+    55% { transform: translate(calc(var(--dx) * 0.55 - 4px), calc(var(--dy) * 0.55)) scale(0.97); }
+    80% { opacity: 0.9; }
+    100% { opacity: 0; transform: translate(var(--dx), var(--dy)) scale(1.02); }
+  }
 
   /* ---------- Footer ---------- */
   .site-footer { border-top: 1px solid var(--night-line); padding: 64px 0 28px; }
@@ -947,9 +883,11 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
-    .dot, .marquee-track, .term-status::after, .calc-status::after { animation: none; }
-    .read-card.landed { animation: none; }
-    .read-body, .seat, .chip-n, .chip-n::after, .rung { transition: none; }
+    .dot, .marquee-track, .term-status::after, .m { animation: none; }
+    .ring .mk path { animation: none; stroke-dashoffset: 0; }
+    .result.show { animation: none; }
+    .result.show .r-spark path { animation: none; stroke-dashoffset: 0; }
+    .seat, .wt i, .stamp { transition: none; }
   }
 
   /* ---------- Responsive ---------- */
@@ -984,14 +922,14 @@
     .sec { padding: 92px 0; }
     .hero { padding: 48px 0 72px; }
     .hero-grid { grid-template-columns: 1fr; gap: 40px; }
-    .noise { min-height: 0; flex-direction: column; gap: 24px; padding-bottom: 8px; }
-    .replay { position: static; transform: none; }
-    .noise-chips { position: static; display: flex; flex-wrap: wrap; gap: 10px 12px; }
-    .chip-n { position: relative; top: auto; left: auto; }
-    .chip-n .tip { display: none; }
-    .read-card { transform: none; }
-    @keyframes land { 0% { transform: scale(0.94); } 100% { transform: scale(1); } }
-    .calc { grid-template-columns: 1fr; }
+    .metrics { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+    .knobs { grid-template-columns: 1fr; gap: 20px; }
+    .tiles { grid-template-columns: 1fr 1fr; }
+    .plan { padding: 28px 20px 20px; }
+    .wr { grid-template-columns: 1fr auto; gap: 8px 12px; }
+    .wl { grid-row: 1; }
+    .wv { grid-row: 1; grid-column: 2; }
+    .wt { grid-row: 2; grid-column: 1 / -1; }
     .lanes, .ask-row, .tiers, .fit, .opinions { grid-template-columns: 1fr; }
     .opinions { gap: 48px; }
     .panel { grid-template-columns: 1fr; gap: 28px; padding: 22px; }
@@ -1004,12 +942,10 @@
     h1 { letter-spacing: -1.2px; }
     .seats { grid-template-columns: 1fr; }
     .seat { min-height: 0; }
-    .rung { grid-template-columns: 1fr auto; }
-    .rung .who { grid-column: 1 / -1; }
-    .rung .bar { grid-column: 1 / -1; }
+    .tiles { grid-template-columns: 1fr; }
+    .r-num { font-size: 42px; }
+    .seg3 button { font-size: 10px; padding: 10px 4px; }
     .mer-note { grid-template-columns: 1fr; gap: 14px; }
-    .read-num { font-size: 48px; }
-    .spark { font-size: 21px; letter-spacing: 2px; }
     .hero-ctas .btn { flex: 1 1 auto; }
     .problem-head { align-items: flex-start; }
     .foot-grid { grid-template-columns: 1fr 1fr; }
@@ -1020,7 +956,10 @@
     .strip-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
     .marquee { width: 100%; }
     .memo-head { grid-template-columns: 56px 1fr; }
-    .memo-head img { width: 56px; height: 56px; }
+    .memo-head img, .ht { width: 56px; height: 56px; }
+    .dotwall-note { display: none; }
+    .wf .wr .stamp { right: 4px; top: 40px; }
+    #r-stamp { top: 128px; right: 10px; }
     .memo { box-shadow: 6px 6px 0 var(--acid); }
     .final h2 { letter-spacing: -2px; }
   }
@@ -1143,6 +1082,14 @@
 </script>
 </head>
 <body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <filter id="ink" x="-6%" y="-12%" width="112%" height="124%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.7" numOctaves="2" seed="7" result="t"/>
+    <feColorMatrix in="t" type="matrix" values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 -2.6 2.25" result="m"/>
+    <feComposite in="SourceGraphic" in2="m" operator="in" result="s"/>
+    <feDisplacementMap in="s" in2="t" scale="2.2" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+</svg>
 
 <!-- ============ HEADER ============ -->
 <header class="site-header" id="top">
@@ -1204,10 +1151,12 @@
 
 <!-- ============ HERO (dark) ============ -->
 <section class="hero s-dark">
+  <canvas class="dotwall" id="dotwall" aria-hidden="true"></canvas>
+  <p class="dotwall-note" aria-hidden="true"><i></i>Every dot is an order. Green ones just landed.</p>
   <div class="wrap hero-grid">
     <div>
-      <div class="eyebrow reveal"><span class="sticker"><span class="dot" aria-hidden="true"></span>The digital CFO for D2C brands</span></div>
-      <h1 class="reveal d1">Forty metrics on your dashboard. <span class="accent">One</span> of them pays the bills.</h1>
+      <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span>The digital CFO for D2C brands</p>
+      <h1 class="reveal d1">Forty metrics. Only <span class="accent ring">one<svg class="mk" viewBox="0 0 150 64" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M20 46 C 4 34, 8 12, 52 6 S 138 8, 144 30 S 100 62, 56 58 S -2 44, 14 20"/></svg></span> pays the bills.</h1>
       <p class="hero-sub reveal d2">Bratrax reads your orders, ad spend and costs, tells you which number your brand should run on, and shows you every morning whether it's moving. <strong>The other thirty-nine can wait.</strong></p>
       <div class="hero-ctas reveal d3">
         <a href="https://bratrax.com/signup" class="btn btn-primary"><span class="arrow">Start for $1</span></a>
@@ -1217,52 +1166,39 @@
       <p class="pedigree reveal d4">Built by <strong>Brat Vukovich</strong> and the team behind <a href="https://inceptly.com" target="_blank" rel="noopener">Inceptly</a> ($950M+ in D2C revenue driven) and <a href="https://vidtao.com" target="_blank" rel="noopener">VidTao</a> (used by 100K+ marketers).</p>
     </div>
 
-    <div class="noise reveal d2" aria-label="Most metrics struck out; the one that matters stays">
-      <div class="noise-chips">
-        <button type="button" class="chip-n" style="--x:0%;--y:2%;--r:-6deg">Platform ROAS<span class="tip">Graded by the platform that sold you the ads.</span></button>
-        <button type="button" class="chip-n" style="--x:37%;--y:5%;--r:7deg">CTR<span class="tip">Nice for creative. Doesn&#x27;t pay rent.</span></button>
-        <button type="button" class="chip-n" style="--x:55%;--y:0%;--r:-4deg">Hook rate<span class="tip">Great ads can still lose money.</span></button>
-        <button type="button" class="chip-n" style="--x:82%;--y:4%;--r:9deg">CPM<span class="tip">Meta&#x27;s problem, mostly.</span></button>
-        <button type="button" class="chip-n" style="--x:1%;--y:90%;--r:5deg">Sessions<span class="tip">Traffic isn&#x27;t revenue.</span></button>
-        <button type="button" class="chip-n" style="--x:27%;--y:94%;--r:-6deg">Engagement<span class="tip">Likes don&#x27;t ship.</span></button>
-        <button type="button" class="chip-n" style="--x:57%;--y:90%;--r:4deg">Reach<span class="tip">Lots of people. No orders.</span></button>
-        <button type="button" class="chip-n" style="--x:75%;--y:95%;--r:-7deg">Bounce rate<span class="tip">Ask your web designer.</span></button>
+    <div class="console reveal d2" id="console">
+      <div class="console-q">
+        <span class="q-label" id="q-label">How does your brand make money?</span>
+        <div class="seg3" role="radiogroup" aria-labelledby="q-label">
+          <button type="button" role="radio" aria-checked="true" data-lane="profit">One-time buys</button>
+          <button type="button" role="radio" aria-checked="false" data-lane="cac" tabindex="-1">Spending to grow</button>
+          <button type="button" role="radio" aria-checked="false" data-lane="payback" tabindex="-1">Repeat orders</button>
+        </div>
       </div>
-      <div class="read-card" id="read-card">
-        <div class="read-top">
-          <span>Sample store · Mon 9:02</span>
-          <span class="live"><span class="dot" aria-hidden="true"></span>Your number</span>
+      <div class="screen" id="screen">
+        <div class="screen-top"><span>Your dashboards today</span><span><b id="m-count">40</b> <span id="m-word">metrics</span></span></div>
+        <div class="metrics" id="metrics" aria-hidden="true"></div>
+        <span class="scan" id="scan" aria-hidden="true"></span>
+        <div class="result sheet" id="result" aria-live="polite">
+          <span class="tape" style="--r:-6deg;left:16px;top:-12px"></span>
+          <span class="tape" style="--r:5deg;right:20px;top:-11px"></span>
+          <span class="stamp" id="r-stamp">Your number</span>
+          <div class="r-top"><span>Sample store · Mon 9:02</span><span>MER 3.2× on top</span></div>
+          <div class="r-label" data-r="label">Profit per order</div>
+          <div class="r-sub" data-r="sub">after product cost, shipping, fees and ads</div>
+          <div class="r-row"><span class="r-num" data-r="num">$11.40</span><span class="r-delta" data-r="delta">▲ $1.80 vs last 30 days</span></div>
+          <svg class="r-spark" viewBox="0 0 220 44" preserveAspectRatio="none" aria-hidden="true"><path id="r-path" pathLength="1" d=""/></svg>
+          <p class="r-line" data-r="line">Up since the 20%-off flow was switched off.</p>
+          <div class="r-foot"><span>Sample data</span><button type="button" class="r-again" id="r-again">Show me the noise again</button></div>
         </div>
-        <div class="vital">
-          <span class="k">MER <em>· the thermometer</em></span>
-          <span class="v">3.2×</span>
-        </div>
-        <div class="seg" role="tablist" aria-label="Your number">
-          <button role="tab" id="lane-tab-profit" aria-selected="true" aria-controls="read-body" data-lane="profit">Profit / order</button>
-          <button role="tab" id="lane-tab-cac" aria-selected="false" aria-controls="read-body" data-lane="cac" tabindex="-1">New-cust. cost</button>
-          <button role="tab" id="lane-tab-payback" aria-selected="false" aria-controls="read-body" data-lane="payback" tabindex="-1">Payback</button>
-        </div>
-        <div class="read-body" id="read-body" role="tabpanel" aria-labelledby="lane-tab-profit" aria-live="polite">
-          <div class="read-label" data-f="label">Profit per order, after product cost, shipping, fees and ads</div>
-          <div class="read-num-row">
-            <span class="read-num" data-f="num">$11.40</span>
-            <span class="delta" data-f="delta">▲ $1.80 vs last 30 days</span>
-          </div>
-          <div class="spark-wrap" aria-hidden="true">
-            <div class="spark" data-f="spark">▃▃▂▃▄▄▅▄▅▆▆▇</div>
-            <div class="spark-axis"><span>12 mo ago</span><span>Today</span></div>
-          </div>
-          <p class="read-line" data-f="line">Up since the 20%-off flow was switched off.</p>
-        </div>
-        <div class="read-foot"><span>Sample data</span><span>Yours shows your store</span></div>
       </div>
-      <button class="replay" type="button" id="replay">↺ Run the noise filter again</button>
     </div>
   </div>
 </section>
 
 <!-- ============ STRIP + 01 PROBLEM (paper) ============ -->
 <div class="strip s-paper" aria-label="Connected platforms">
+  <div class="torn top" data-torn aria-hidden="true"></div>
   <div class="strip-inner">
     <span class="strip-label">Reads from</span>
     <div class="marquee">
@@ -1278,7 +1214,6 @@
   <div class="wrap">
     <div class="problem-head">
       <div>
-        <span class="label reveal"><span class="n">01</span> The problem</span>
         <h2 class="reveal d1">Four people. Four numbers. <span class="accent">Zero</span> answers.</h2>
         <p class="lead reveal d2">Everyone is right about their own number. Nobody can tell you whether last month's spend made money. Flip it and see what one number does.</p>
       </div>
@@ -1318,47 +1253,52 @@
   </div>
 </section>
 
-<!-- ============ 02 CASCADE (dark) ============ -->
+<!-- ============ PROFIT FIRST (dark, paper sheet) ============ -->
 <section class="sec s-dark" id="cascade">
   <div class="wrap">
-    <span class="label reveal"><span class="n">02</span> Work it backwards</span>
-    <h2 class="reveal d1">Profit first. Ad spend second. <span class="accent">Vibes</span> never.</h2>
-    <p class="lead reveal d2">That's how a CFO plans. Set the revenue plan, set the profit you refuse to go below, and every marketing number underneath falls into line. <strong>Drag the sliders. We'll wait.</strong></p>
+    <h2 class="reveal">Profit first. Ad spend second. <span class="accent">Vibes</span> never.</h2>
+    <p class="lead reveal d1">That's how a CFO plans. Set the revenue you're aiming for and the profit you refuse to go below, and every marketing number underneath falls into line. <strong>Drag the sliders. We'll wait.</strong></p>
 
-    <div class="calc reveal">
-      <div class="term">
-        <div class="term-bar"><i></i><i></i><i></i><span>~/bratrax/cascade</span></div>
-        <div class="ctrls">
-          <div class="ctrl">
-            <label for="c-rev"><span>revenue_plan</span><output id="o-rev" for="c-rev">$300,000/mo</output></label>
-            <input type="range" id="c-rev" min="50000" max="1000000" step="10000" value="300000">
-            <small>Marketing forecasts it</small>
-          </div>
-          <div class="ctrl">
-            <label for="c-cm"><span>margin_before_ads</span><output id="o-cm" for="c-cm">48%</output></label>
-            <input type="range" id="c-cm" min="25" max="70" step="1" value="48">
-            <small>After product cost, shipping, fees, returns</small>
-          </div>
-          <div class="ctrl">
-            <label for="c-floor"><span>profit_floor</span><output id="o-floor" for="c-floor">$40,000/mo</output></label>
-            <input type="range" id="c-floor" min="0" max="200000" step="1000" value="40000">
-            <small>Finance sets it. Non-negotiable.</small>
-          </div>
+    <div class="plan sheet reveal" id="plan">
+      <span class="tape" style="--r:-4deg;left:7%;top:-13px"></span>
+      <span class="tape" style="--r:3deg;right:22%;top:-11px"></span>
+      <div class="plan-top"><span>One month, worked backwards</span><span class="illus">Illustrative</span></div>
+
+      <div class="knobs">
+        <div class="knob">
+          <label for="c-rev">Revenue you're planning for</label>
+          <output id="o-rev" for="c-rev">$300,000</output>
+          <input type="range" id="c-rev" min="50000" max="1000000" step="10000" value="300000">
+          <small>Marketing forecasts it</small>
         </div>
-        <p class="assume">Assumes a $70 average order and 35% of revenue from returning customers. In Bratrax, both come from your own orders.</p>
+        <div class="knob">
+          <label for="c-cm">Margin before ads</label>
+          <output id="o-cm" for="c-cm">48%</output>
+          <input type="range" id="c-cm" min="25" max="70" step="1" value="48">
+          <small>After product, shipping, fees, returns</small>
+        </div>
+        <div class="knob">
+          <label for="c-floor">Profit you won't go below</label>
+          <output id="o-floor" for="c-floor">$40,000</output>
+          <input type="range" id="c-floor" min="0" max="200000" step="1000" value="40000">
+          <small>Finance sets it</small>
+        </div>
       </div>
 
-      <div>
-        <ol class="ladder" aria-live="polite">
-          <li class="rung" data-k="contrib"><span class="who">Before ads</span><span class="what">What's left to spend from<small>Revenue × margin</small></span><span class="val">$144,000</span></li>
-          <li class="rung key" data-k="budget"><span class="who">The plan allows</span><span class="what">Marketing budget<small>Everything above the floor</small></span><span class="val">$104,000</span><span class="bar" data-k="bar"></span></li>
-          <li class="rung" data-k="mer"><span class="who">Media buying</span><span class="what">MER you need</span><span class="val">2.88×</span></li>
-          <li class="rung" data-k="ncac"><span class="who">Media buying</span><span class="what">Max new-customer cost<small>Pay more and you eat the floor</small></span><span class="val">$37</span></li>
-          <li class="rung" data-k="ads"><span class="who">Creative</span><span class="what">New ads to brief<small>If one ad carries ~$5K a month</small></span><span class="val">21 / mo</span></li>
-          <li class="rung" data-k="daily"><span class="who">Every morning</span><span class="what">Spend pace</span><span class="val">$3,467 / day</span></li>
-        </ol>
-        <p class="calc-status" id="calc-status">&gt; plan adds up.</p>
+      <ol class="wf" aria-live="polite">
+        <li class="wr"><span class="wl">Revenue plan</span><span class="wt"><i class="keep" style="width:100%"></i></span><span class="wv" data-v="rev">$300,000</span></li>
+        <li class="wr"><span class="wl"><em>−</em>Product, shipping, fees, returns</span><span class="wt"><i class="keep" data-b="contrib"></i><i class="cut" data-b="costs"></i></span><span class="wv" data-v="contrib">$144,000 left</span></li>
+        <li class="wr"><span class="wl"><em>−</em>Profit you keep</span><span class="wt" id="wt-floor"><i class="keep" data-b="budget1"></i><i class="kept" data-b="floor"></i></span><span class="wv" data-v="floor">$40,000 kept</span></li>
+        <li class="wr"><span class="stamp" id="plan-stamp">Adds up</span><span class="wl">= Marketing budget</span><span class="wt"><i class="acid" data-b="budget"></i></span><span class="wv strong" data-v="budget">$104,000</span></li>
+      </ol>
+
+      <div class="tiles">
+        <div class="tile" data-t="mer"><span class="who">Media buying</span><span class="tv">2.88×</span><span class="tl">MER you need</span></div>
+        <div class="tile" data-t="ncac"><span class="who">Media buying</span><span class="tv">$37</span><span class="tl">Most you can pay per new customer</span></div>
+        <div class="tile" data-t="ads"><span class="who">Creative</span><span class="tv">21 / mo</span><span class="tl">New ads to brief, if one ad carries ~$5K</span></div>
+        <div class="tile" data-t="daily"><span class="who">Every morning</span><span class="tv">$3,467</span><span class="tl">Daily spend pace</span></div>
       </div>
+      <p class="plan-foot">Assumes a $70 average order and 35% of revenue from returning customers. In Bratrax, both come from your own orders.</p>
     </div>
   </div>
 </section>
@@ -1366,14 +1306,11 @@
 <!-- ============ 03 YOUR NUMBER (paper) ============ -->
 <section class="sec s-paper" id="your-number">
   <div class="wrap">
-    <span class="label reveal"><span class="n">03</span> Your number</span>
     <h2 class="reveal d1">Your brand runs on <span class="accent">one</span> of these three.</h2>
     <p class="lead reveal d2">Brands make money differently, so Bratrax doesn't hand everyone the same dashboard. It looks at how your customers buy and puts the right number on top.</p>
 
     <div class="lanes">
       <article class="lane reveal">
-        <span class="sticker acid">Most brands</span>
-        <span class="num">01 /</span>
         <h3>Profit per order</h3>
         <p class="q">"Am I making money on what I sell?"</p>
         <dl>
@@ -1382,7 +1319,6 @@
         </dl>
       </article>
       <article class="lane reveal d1">
-        <span class="num">02 /</span>
         <h3>New-customer cost</h3>
         <p class="q">"Are my ads finding new people, or paying for people who'd buy anyway?"</p>
         <dl>
@@ -1391,7 +1327,6 @@
         </dl>
       </article>
       <article class="lane reveal d2">
-        <span class="num">03 /</span>
         <h3>Payback</h3>
         <p class="q">"Do repeat buyers pay back what I spent to win them?"</p>
         <dl>
@@ -1402,7 +1337,7 @@
     </div>
 
     <div class="mer-note reveal">
-      <span class="sticker red">Still watching MER?</span>
+      <span class="mer-k">Still watching MER?</span>
       <p>Fine. Keep watching it. It sits on top of every Bratrax dashboard. <strong>MER tells you something moved. Your number tells you what moved it,</strong> and which lever to pull.</p>
     </div>
     <p class="quiz-tease reveal"><strong>Not sure which one is yours?</strong> A three-question quiz that tells you is coming soon.</p>
@@ -1412,9 +1347,8 @@
 <!-- ============ 04 INSIDE (dark) ============ -->
 <section class="sec s-dark" id="inside">
   <div class="wrap">
-    <span class="label reveal"><span class="n">04</span> Inside</span>
-    <h2 class="reveal d1">Seven dashboards. <span class="accent">Zero</span> setup.</h2>
-    <p class="lead reveal d2">Each one answers a question you'd otherwise ask a CFO. Connect your store and ad accounts, and they fill themselves in. Nobody builds a 200-tile dashboard on a Sunday.</p>
+    <h2 class="reveal d1">Seven dashboards. <span class="accent">Already</span> built.</h2>
+    <p class="lead reveal d2">Each one answers a question you'd otherwise ask a CFO. Connect your store and ad accounts (most brands are done in under ten minutes) and they fill in with your own numbers. Nobody builds a 200-tile dashboard on a Sunday.</p>
 
     <div class="tabs reveal" role="tablist" aria-label="Dashboards">
       <button class="tab" role="tab" id="t-store" aria-selected="true" aria-controls="p-store">Is the business making money?</button>
@@ -1497,7 +1431,6 @@
 <!-- ============ 05 OPINIONS (paper) ============ -->
 <section class="sec s-paper" id="opinions">
   <div class="wrap">
-    <span class="label reveal"><span class="n">05</span> Opinions</span>
     <h2 class="reveal d1">Bratrax has <span class="accent">opinions.</span> You're welcome.</h2>
     <p class="lead reveal d2">Most analytics tools hand you a blank canvas and two hundred settings. Bratrax ships with the decisions already made, the way a good CFO would make them. Change a default when you have a reason.</p>
 
@@ -1530,7 +1463,6 @@
 <!-- ============ 06 STACK (dark) ============ -->
 <section class="sec s-dark" id="stack">
   <div class="wrap">
-    <span class="label reveal"><span class="n">06</span> The stack</span>
     <h2 class="reveal d1">One subscription. <span class="accent">Fewer</span> tabs.</h2>
     <p class="lead reveal d2">What brands piece together today to answer "did that make money?", and what it adds up to.</p>
 
@@ -1563,7 +1495,6 @@
 <!-- ============ 07 PRICING + FIT (paper) ============ -->
 <section class="sec s-paper" id="pricing">
   <div class="wrap">
-    <span class="label reveal"><span class="n">07</span> Pricing</span>
     <h2 class="reveal d1">The software, or the software with a <span class="accent">person.</span></h2>
 
     <div class="tiers">
@@ -1635,12 +1566,13 @@
 <!-- DRAFT for Brat to approve: written from his "Operating Model: P&L to Ad Spend" doc. Do not publish without his sign-off. -->
 <section class="sec s-dark" id="about">
   <div class="wrap">
-    <span class="label reveal"><span class="n">08</span> A note from the founder</span>
     <h2 class="reveal d1">Why we stopped being an <span class="accent">attribution tool.</span></h2>
 
     <article class="memo reveal">
+      <span class="tape" style="--r:-5deg;left:48px;top:-13px"></span>
+      <span class="tape" style="--r:4deg;right:56px;top:-12px"></span>
       <div class="memo-head">
-        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/assets/brat-portrait-big.png" alt="Brat Vukovich" loading="lazy">
+        <span class="ht"><img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/assets/brat-portrait-big.png" alt="Brat Vukovich" loading="lazy"></span>
         <div class="memo-meta">
           <div><b>From:</b>Brat Vukovich, founder</div>
           <div><b>To:</b>Every D2C team with a Monday meeting</div>
@@ -1661,9 +1593,10 @@
 
 <!-- ============ 09 FAQ (paper) ============ -->
 <section class="sec s-paper" id="faq">
+  <div class="torn top" data-torn aria-hidden="true"></div>
+  <div class="torn bot" data-torn aria-hidden="true"></div>
   <div class="wrap">
-    <span class="label reveal"><span class="n">09</span> Questions</span>
-    <h2 class="reveal d1">Fair <span class="accent">questions.</span></h2>
+    <h2 class="reveal d1">Questions founders ask before they <span class="accent">connect</span> anything.</h2>
     <div class="faq reveal d2">
       <details><summary>What does &quot;digital CFO&quot; actually mean?</summary><p class="a">It means Bratrax does the part of a CFO&#x27;s job that&#x27;s about marketing: deciding which numbers matter for your brand, and telling you every day whether they&#x27;re moving the right way. It doesn&#x27;t do your books, taxes or payroll. Keep your accountant.</p></details>
       <details><summary>Isn&#x27;t this just another attribution tool?</summary><p class="a">No. Attribution is inside, down to the single ad, and it&#x27;s good at telling you where the next dollar should go. It can&#x27;t tell you whether to spend that dollar at all. That question starts with profit, and that&#x27;s where Bratrax starts.</p></details>
@@ -1681,12 +1614,7 @@
 
 <!-- ============ FINAL (acid) ============ -->
 <section class="final s-acid" id="start">
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Platform ROAS</span><span>CTR</span><span>CPM</span><span>Hook rate</span><span>Reach</span><span>Sessions</span><span>Bounce rate</span><span>Engagement</span><span>Frequency</span><span>Impressions</span><span>Likes</span><span>Thumb-stop ratio</span>
-      <span>Platform ROAS</span><span>CTR</span><span>CPM</span><span>Hook rate</span><span>Reach</span><span>Sessions</span><span>Bounce rate</span><span>Engagement</span><span>Frequency</span><span>Impressions</span><span>Likes</span><span>Thumb-stop ratio</span>
-    </div>
-  </div>
+  <div class="noise-float" id="noise-float" aria-hidden="true"></div>
   <div class="wrap">
     <h2 class="reveal">Ignore the <span class="accent">noise.</span></h2>
     <p class="lead reveal d1">Find out which number your brand runs on. $1 for the first month, $99/mo flat after, cancel in one click.</p>
@@ -1694,7 +1622,7 @@
       <a href="https://bratrax.com/signup" class="btn btn-black"><span class="arrow">Start for $1</span></a>
       <a href="/try-demo" data-bratrax-action="try-demo" class="btn btn-ghost">Try the live demo</a>
     </div>
-    <span class="sticker reveal d3">No sales call. Promise.</span>
+    <p class="final-note reveal d3">No sales call. Promise.</p>
   </div>
 </section>
 
@@ -1823,51 +1751,90 @@
     });
   }
 
-  // ---- Hero: noise filter, then the read card lands
-  var chips = $$('.chip-n');
-  var card = $('#read-card');
-  var filterTimers = [];
-  function runFilter() {
-    filterTimers.forEach(clearTimeout); filterTimers = [];
-    chips.forEach(function (c) { c.classList.remove('struck', 'faded'); });
-    card.classList.remove('landed');
-    if (reduce) { chips.forEach(function (c) { c.classList.add('struck', 'faded'); }); return; }
-    chips.forEach(function (c, i) {
-      filterTimers.push(setTimeout(function () { c.classList.add('struck'); }, 700 + i * 230));
-      filterTimers.push(setTimeout(function () { c.classList.add('faded'); }, 1100 + i * 230));
-    });
-    filterTimers.push(setTimeout(function () { void card.offsetWidth; card.classList.add('landed'); }, 900 + chips.length * 230));
-  }
-  runFilter();
-  $('#replay').addEventListener('click', runFilter);
-
-  // ---- Hero: read card lanes (sample data)
-  var lanes = {
-    profit: { label: 'Profit per order, after product cost, shipping, fees and ads', num: '$11.40', delta: '▲ $1.80 vs last 30 days', spark: '▃▃▂▃▄▄▅▄▅▆▆▇', line: 'Up since the 20%-off flow was switched off.' },
-    cac: { label: 'New-customer cost, all channels', num: '$43', delta: '▼ $4 vs last 30 days', spark: '▇▇▆▆▆▅▅▄▅▄▃▃', line: 'Meta is carrying it. The new Google campaigns aren’t.' },
-    payback: { label: '6-month customer value ÷ cost to acquire', num: '2.0×', delta: '▲ 0.3× vs last quarter', spark: '▂▂▃▃▃▄▄▅▅▅▆▆', line: 'Repeat buyers more than cover the first order.' }
+  // ---- Hero console: forty metrics, a scan, one number lands
+  var METRICS = [
+    ['Revenue', '$182K'], ['ROAS', '3.4×'], ['CTR', '1.8%'], ['CPM', '$14.20'], ['Sessions', '48.2K'],
+    ['Hook rate', '31%'], ['AOV', '$70'], ['Bounce rate', '52%'], ['Reach', '1.2M'], ['New CAC', '$43'],
+    ['Frequency', '2.7'], ['CPC', '$0.92'], ['Conv. rate', '2.1%'], ['Impressions', '3.4M'], ['Engagement', '4.6%'],
+    ['Blended ROAS', '2.9×'], ['Add-to-cart', '7.4%'], ['Hold rate', '18%'], ['Email opens', '41%'], ['Thumb-stop', '27%'],
+    ['MER', '3.2×'], ['Checkout rate', '46%'], ['Profit/order', '$11.40'], ['CPA', '$61'], ['Returning %', '38%'],
+    ['Units sold', '2,604'], ['Click rate', '2.3%'], ['List growth', '+3.1%'], ['Refund rate', '4.2%'], ['Video views', '212K'],
+    ['LTV', '$118'], ['Payback', '2.0×'], ['SMS revenue', '$9.8K'], ['Gross margin', '61%'], ['Unsubscribes', '0.4%'],
+    ['Discount rate', '11%'], ['Top SKU', '#A-12'], ['Organic traffic', '9.1K'], ['Shipping cost', '$6.80'], ['Repeat rate', '24%']
+  ];
+  var LANES = {
+    profit: { keep: 22, label: 'Profit per order', sub: 'after product cost, shipping, fees and ads', num: '$11.40', delta: '▲ $1.80 vs last 30 days', line: 'Up since the 20%-off flow was switched off.', pts: [3, 3, 2, 3, 4, 4, 5, 4, 5, 6, 6, 7] },
+    cac: { keep: 9, label: 'New-customer cost', sub: 'all channels, every new customer', num: '$43', delta: '▼ $4 vs last 30 days', line: 'Meta is carrying it. The new Google campaigns aren’t.', pts: [7, 7, 6, 6, 6, 5, 5, 4, 5, 4, 3, 3] },
+    payback: { keep: 31, label: 'Payback', sub: '6-month customer value ÷ cost to acquire', num: '2.0×', delta: '▲ 0.3× vs last quarter', line: 'Repeat buyers more than cover the first order.', pts: [2, 2, 3, 3, 3, 4, 4, 5, 5, 5, 6, 6] }
   };
-  var segTabs = $$('.seg [role="tab"]');
-  var body = $('#read-body');
-  var current = 0, timer = null, touched = false;
-  function showLane(i, byUser) {
-    if (byUser) { touched = true; stopAuto(); }
-    current = i;
-    segTabs.forEach(function (t, j) { t.setAttribute('aria-selected', j === i ? 'true' : 'false'); t.tabIndex = j === i ? 0 : -1; });
-    body.setAttribute('aria-labelledby', segTabs[i].id);
-    var d = lanes[segTabs[i].dataset.lane];
-    var render = function () { $$('[data-f]', body).forEach(function (el) { el.textContent = d[el.dataset.f]; }); body.classList.remove('swap'); };
-    if (reduce) { render(); return; }
-    body.classList.add('swap');
-    setTimeout(render, 200);
+  var grid = $('#metrics'), screen = $('#screen'), scan = $('#scan'), result = $('#result');
+  var mCount = $('#m-count'), mWord = $('#m-word'), rStamp = $('#r-stamp');
+  var cells = METRICS.map(function (m, i) {
+    var c = document.createElement('div');
+    c.className = 'm';
+    c.style.setProperty('--fd', (1.8 + ((i * 37) % 23) / 10).toFixed(2) + 's');
+    c.style.setProperty('--fdel', '-' + ((i * 0.37) % 3).toFixed(2) + 's');
+    c.innerHTML = m[0] + '<b>' + m[1] + '</b>';
+    grid.appendChild(c);
+    return c;
+  });
+  var laneBtns = $$('.seg3 button');
+  var heroTimers = [], heroLane = 'profit', scanAnim = null;
+  function setCount(n) { mCount.textContent = n; mWord.textContent = n === 1 ? 'metric' : 'metrics'; }
+  function fillResult(d) {
+    $$('[data-r]', result).forEach(function (el) { el.textContent = d[el.dataset.r]; });
+    var max = 8, path = d.pts.map(function (v, i) { return (i ? 'L' : 'M') + (i * 20) + ' ' + (42 - (v / max) * 40).toFixed(1); }).join(' ');
+    $('#r-path').setAttribute('d', path);
   }
-  wireTabs(segTabs, showLane);
-  function startAuto() { if (reduce || touched) return; stopAuto(); timer = setInterval(function () { showLane((current + 1) % segTabs.length); }, 5200); }
-  function stopAuto() { if (timer) { clearInterval(timer); timer = null; } }
-  card.addEventListener('mouseenter', stopAuto);
-  card.addEventListener('mouseleave', startAuto);
-  card.addEventListener('focusin', stopAuto);
-  setTimeout(startAuto, 4200);
+  function runScan(lane) {
+    heroLane = lane;
+    var d = LANES[lane];
+    heroTimers.forEach(clearTimeout); heroTimers = [];
+    if (scanAnim) scanAnim.cancel();
+    result.classList.remove('show'); rStamp.classList.remove('land');
+    cells.forEach(function (c) { c.classList.remove('mute', 'keep'); });
+    setCount(40);
+    fillResult(d);
+    if (reduce) {
+      cells.forEach(function (c, i) { c.classList.add(i === d.keep ? 'keep' : 'mute'); });
+      setCount(1); result.classList.add('show'); rStamp.classList.add('land');
+      return;
+    }
+    var W = grid.clientWidth, dur = 1500, delay = 250, left = 40;
+    scan.style.left = grid.offsetLeft + 'px';
+    scan.style.opacity = 1;
+    scanAnim = scan.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(' + W + 'px)' }], { duration: dur, delay: delay, easing: 'linear', fill: 'forwards' });
+    scanAnim.onfinish = function () { scan.style.opacity = 0; };
+    cells.forEach(function (c, i) {
+      var t = delay + (c.offsetLeft + c.offsetWidth / 2) / W * dur;
+      heroTimers.push(setTimeout(function () {
+        if (i === d.keep) c.classList.add('keep');
+        else { c.classList.add('mute'); left--; setCount(Math.max(1, left)); }
+      }, t));
+    });
+    heroTimers.push(setTimeout(function () { setCount(1); void result.offsetWidth; result.classList.add('show'); }, delay + dur + 200));
+    heroTimers.push(setTimeout(function () { rStamp.classList.add('land'); }, delay + dur + 750));
+  }
+  function pickLane(i, byUser) {
+    laneBtns.forEach(function (b, j) { b.setAttribute('aria-checked', j === i ? 'true' : 'false'); b.tabIndex = j === i ? 0 : -1; });
+    runScan(laneBtns[i].dataset.lane);
+  }
+  wireTabs(laneBtns, pickLane);
+  $('#r-again').addEventListener('click', function () { runScan(heroLane); });
+  setTimeout(function () { runScan('profit'); }, reduce ? 0 : 900);
+  if (!reduce && !window.matchMedia('(pointer: coarse)').matches) {
+    var raf = 0, px = 0, py = 0, on = false;
+    var near = function () {
+      raf = 0;
+      cells.forEach(function (c) {
+        if (!on) { c.style.setProperty('--near', 0); return; }
+        var r = c.getBoundingClientRect();
+        c.style.setProperty('--near', Math.max(0, 1 - Math.hypot(r.left + r.width / 2 - px, r.top + r.height / 2 - py) / 120).toFixed(2));
+      });
+    };
+    screen.addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; on = true; if (!raf) raf = requestAnimationFrame(near); });
+    screen.addEventListener('pointerleave', function () { on = false; if (!raf) raf = requestAnimationFrame(near); });
+  }
 
   // ---- 01: four seats converge on one number
   var seats = $('#seats');
@@ -1917,52 +1884,63 @@
     seatIO.observe(seats);
   }
 
-  // ---- 02: profit cascade calculator
+  // ---- Profit-first plan
   var AOV = 70, RETURNING = 0.35, PER_AD = 5000;
   var inRev = $('#c-rev'), inCm = $('#c-cm'), inFloor = $('#c-floor');
+  var plan = $('#plan'), pStamp = $('#plan-stamp'), wtFloor = $('#wt-floor');
   var money = function (n) { return '$' + Math.round(n).toLocaleString('en-US'); };
-  var rungs = {}; $$('.rung').forEach(function (r) { rungs[r.dataset.k] = r; });
-  var status = $('#calc-status');
-  var lastVals = {};
-  function setRung(k, text, bad) {
-    var r = rungs[k];
-    $('.val', r).textContent = text;
-    r.classList.toggle('bad', !!bad);
-    if (lastVals[k] !== text && !reduce) {
-      var idx = Object.keys(rungs).indexOf(k);
-      setTimeout(function () { r.classList.add('ping'); setTimeout(function () { r.classList.remove('ping'); }, 260); }, idx * 70);
-    }
-    lastVals[k] = text;
+  var bar = function (k, left, width) { var el = $('[data-b="' + k + '"]', plan); el.style.left = left + '%'; el.style.width = Math.max(0, width) + '%'; };
+  var val = function (k, t) { $('[data-v="' + k + '"]', plan).textContent = t; };
+  var lastTiles = {}, planOk = null, planSeen = false;
+  function tile(k, t) {
+    var el = $('[data-t="' + k + '"]', plan);
+    $('.tv', el).textContent = t;
+    if (lastTiles[k] !== undefined && lastTiles[k] !== t && !reduce) { el.classList.add('ping'); setTimeout(function () { el.classList.remove('ping'); }, 260); }
+    lastTiles[k] = t;
+  }
+  function setStamp(ok) {
+    if (ok === planOk) return;
+    planOk = ok;
+    pStamp.textContent = ok ? 'Adds up' : "Doesn't add up";
+    pStamp.classList.toggle('red', !ok);
+    plan.classList.toggle('bad', !ok);
+    if (!planSeen) return;
+    pStamp.classList.remove('land'); void pStamp.offsetWidth; pStamp.classList.add('land');
   }
   function calc() {
     var rev = +inRev.value, cm = +inCm.value, floor = +inFloor.value;
-    $('#o-rev').textContent = money(rev) + '/mo';
+    $('#o-rev').textContent = money(rev);
     $('#o-cm').textContent = cm + '%';
-    $('#o-floor').textContent = money(floor) + '/mo';
-    var contrib = rev * cm / 100;
-    var budget = contrib - floor;
-    setRung('contrib', money(contrib));
-    var bar = $('[data-k="bar"]');
+    $('#o-floor').textContent = money(floor);
+    var contrib = rev * cm / 100, budget = contrib - floor;
+    var floorPct = floor / rev * 100, budgetPct = Math.max(0, budget / rev * 100);
+    val('rev', money(rev));
+    bar('contrib', 0, cm); bar('costs', cm, 100 - cm); val('contrib', money(contrib) + ' left');
+    bar('budget1', 0, budgetPct); bar('floor', budgetPct, Math.min(floorPct, 100 - budgetPct));
+    wtFloor.classList.toggle('over', budget <= 0);
+    val('floor', money(floor) + ' kept');
+    bar('budget', 0, budgetPct);
     if (budget <= 0) {
-      ['budget', 'mer', 'ncac', 'ads', 'daily'].forEach(function (k) { setRung(k, k === 'budget' ? money(budget) : '—', true); });
-      bar.innerHTML = '';
-      status.textContent = '> plan doesn\'t add up. raise the revenue plan, or lower the floor.';
-      status.classList.add('bad');
+      val('budget', money(budget));
+      ['mer', 'ncac', 'ads', 'daily'].forEach(function (k) { tile(k, '—'); });
+      setStamp(false);
       return;
     }
-    var newCustomers = rev * (1 - RETURNING) / AOV;
-    setRung('budget', money(budget));
-    setRung('mer', (rev / budget).toFixed(2) + '×');
-    setRung('ncac', money(budget / newCustomers));
-    setRung('ads', Math.max(1, Math.ceil(budget / PER_AD)) + ' / mo');
-    setRung('daily', money(budget / 30) + ' / day');
-    var share = budget / rev, blocks = Math.round(share * 20);
-    bar.innerHTML = '<b>' + '█'.repeat(blocks) + '</b><i>' + '█'.repeat(Math.max(0, 20 - blocks)) + '</i> ' + Math.round(share * 100) + '% of revenue';
-    status.classList.remove('bad');
-    status.textContent = '> plan adds up. every number below the line has to earn ' + money(floor) + '.';
+    val('budget', money(budget));
+    tile('mer', (rev / budget).toFixed(2) + '×');
+    tile('ncac', money(budget / (rev * (1 - RETURNING) / AOV)));
+    tile('ads', Math.max(1, Math.ceil(budget / PER_AD)) + ' / mo');
+    tile('daily', money(budget / 30));
+    setStamp(true);
   }
   [inRev, inCm, inFloor].forEach(function (el) { el.addEventListener('input', calc); });
   calc();
+  if ('IntersectionObserver' in window) {
+    var pio = new IntersectionObserver(function (es) {
+      es.forEach(function (e) { if (e.isIntersecting) { pio.disconnect(); setTimeout(function () { planSeen = true; pStamp.classList.add('land'); }, reduce ? 0 : 700); } });
+    }, { threshold: 0.4 });
+    pio.observe(plan);
+  } else { planSeen = true; pStamp.classList.add('land'); }
 
   // ---- 04: dashboard tabs
   var dTabs = $$('#inside [role="tab"]');
@@ -1985,6 +1963,146 @@
       li++;
     });
   });
+
+  // ---- Final band: noise drifts in, gets in the way, fades out
+  var nf = $('#noise-float');
+  if (nf && !reduce && 'IntersectionObserver' in window) {
+    var WORDS = ['Platform ROAS', 'CTR', 'CPM', 'Hook rate', 'Reach', 'Sessions', 'Bounce rate', 'Engagement', 'Frequency', 'Impressions', 'Likes', 'Thumb-stop', 'Video views', 'CPC', 'Hold rate', 'Followers'];
+    var wi = 0, alive = 0, nTimer = null;
+    var spawn = function () {
+      if (alive >= 14 || document.hidden) return;
+      var w = document.createElement('span');
+      w.className = 'nw';
+      w.textContent = WORDS[wi++ % WORDS.length];
+      var zone = Math.random();
+      var x = zone < 0.5 ? (Math.random() < 0.5 ? Math.random() * 20 : 72 + Math.random() * 20) : 5 + Math.random() * 85;
+      var y = zone < 0.5 ? 8 + Math.random() * 80 : (Math.random() < 0.5 ? 4 + Math.random() * 16 : 78 + Math.random() * 14);
+      w.style.left = x + '%'; w.style.top = y + '%';
+      w.style.fontSize = (12 + Math.random() * 12).toFixed(0) + 'px';
+      w.style.setProperty('--dx', ((Math.random() - 0.5) * 120).toFixed(0) + 'px');
+      w.style.setProperty('--dy', ((Math.random() - 0.5) * 70).toFixed(0) + 'px');
+      w.style.setProperty('--t', (3.6 + Math.random() * 2.2).toFixed(2) + 's');
+      alive++;
+      w.addEventListener('animationend', function () { w.remove(); alive--; });
+      nf.appendChild(w);
+    };
+    new IntersectionObserver(function (es) {
+      es.forEach(function (e) {
+        if (e.isIntersecting && !nTimer) { spawn(); nTimer = setInterval(spawn, 420); }
+        if (!e.isIntersecting && nTimer) { clearInterval(nTimer); nTimer = null; }
+      });
+    }, { threshold: 0.1 }).observe(nf);
+  }
+
+  // ---- Torn paper edges (seeded, so they tear the same way every load)
+  function rng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
+  function tornPoly(seed, dir, base, amp) {
+    var r = rng(seed), pts = [], n = 90, y = base;
+    for (var i = 0; i <= n; i++) {
+      y += (r() - 0.5) * amp * 0.9; y += (base - y) * 0.18;
+      if (r() < 0.05) y += (r() - 0.5) * amp * 2.4;
+      y = Math.max(base - amp * 1.6, Math.min(base + amp * 1.6, y));
+      pts.push((i / n * 100).toFixed(2) + '% ' + y.toFixed(1) + 'px');
+    }
+    return dir === 'top' ? 'polygon(0% 100%, ' + pts.join(', ') + ', 100% 100%)' : 'polygon(0% 0%, ' + pts.join(', ') + ', 100% 0%)';
+  }
+  $$('[data-torn]').forEach(function (el, idx) {
+    var dir = el.classList.contains('top') ? 'top' : 'bot';
+    var base = dir === 'top' ? 13 : 23, rim = dir === 'top' ? -5 : 5;
+    el.innerHTML = '<i class="tf"></i><i class="tb"></i>';
+    $('.tf', el).style.clipPath = tornPoly(idx * 7 + 3, dir, base + rim, 4.5);
+    $('.tb', el).style.clipPath = tornPoly(idx * 7 + 11, dir, base, 3.5);
+  });
+
+  // ---- Screenshots get taped down like prints
+  $$('.shot').forEach(function (sh) {
+    sh.insertAdjacentHTML('afterbegin', '<span class="tape" style="--r:-7deg;left:-14px;top:-8px"></span><span class="tape" style="--r:6deg;right:-12px;bottom:-6px"></span>');
+  });
+
+  // ---- Halftone portrait: ink dots sized by darkness, the same dots the hero counts orders with
+  $$('.ht').forEach(function (box) {
+    var src = $('img', box).getAttribute('src'), im = new Image();
+    im.crossOrigin = 'anonymous';
+    im.onload = function () {
+      try {
+        var S = 144, step = 4, off = document.createElement('canvas'); off.width = off.height = S;
+        var o = off.getContext('2d'), side = Math.min(im.width, im.height);
+        o.drawImage(im, (im.width - side) / 2, (im.height - side) / 2, side, side, 0, 0, S, S);
+        var px = o.getImageData(0, 0, S, S).data, cv = document.createElement('canvas'); cv.width = cv.height = S;
+        var c = cv.getContext('2d'); c.fillStyle = '#F5F2EB'; c.fillRect(0, 0, S, S); c.fillStyle = '#0A0A0A';
+        for (var y = step / 2; y < S; y += step) for (var x = (y / step) % 2 ? step : step / 2; x < S; x += step) {
+          var i = ((y | 0) * S + (x | 0)) * 4, l = (0.3 * px[i] + 0.59 * px[i + 1] + 0.11 * px[i + 2]) / 255;
+          var r = (1 - Math.pow(l, 0.8)) * step * 0.62;
+          if (r > 0.25) { c.beginPath(); c.arc(x, y, r, 0, 6.2832); c.fill(); }
+        }
+        box.appendChild(cv); box.classList.add('done');
+      } catch (e) { /* tainted canvas: keep the plain photo */ }
+    };
+    im.src = src;
+  });
+
+  // ---- Hero dot wall: every dot is an order. Halftone swell drifts, pointer lifts, new orders ping acid.
+  (function () {
+    var cv = $('#dotwall'); if (!cv || !cv.getContext) return;
+    var hero = cv.parentNode, ctx = cv.getContext('2d');
+    var W, H, cols, rows, gap, dpr, pings = [], mx = -999, my = -999, t0 = performance.now(), running = false, inView = true, raf;
+    function size() {
+      dpr = Math.min(window.devicePixelRatio || 1, 2);
+      W = hero.clientWidth; H = hero.clientHeight;
+      gap = W < 700 ? 13 : 15;
+      cols = Math.ceil(W / gap) + 1; rows = Math.ceil(H / gap) + 1;
+      cv.width = W * dpr; cv.height = H * dpr;
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function draw(now) {
+      var t = (now - t0) / 1000;
+      ctx.clearRect(0, 0, W, H);
+      ctx.fillStyle = 'rgba(232,228,220,0.16)';
+      ctx.beginPath();
+      for (var j = 0; j < rows; j++) {
+        for (var i = 0; i < cols; i++) {
+          var x = i * gap + (j % 2 ? gap / 2 : 0), y = j * gap;
+          // halftone field: slow diagonal swell
+          var h = 0.5 + 0.5 * Math.sin(x * 0.006 + y * 0.009 - t * 0.35) * Math.cos(y * 0.004 - t * 0.2);
+          var r = 0.5 + h * 1.25;
+          var dx = x - mx, dy = y - my, d2 = dx * dx + dy * dy;
+          if (d2 < 22500) r += (1 - Math.sqrt(d2) / 150) * 1.6;
+          ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832);
+        }
+      }
+      ctx.fill();
+      // new orders landing
+      for (var k = pings.length - 1; k >= 0; k--) {
+        var p = pings[k], a = (now - p.t) / 1700;
+        if (a >= 1) { pings.splice(k, 1); continue; }
+        ctx.fillStyle = 'rgba(212,255,0,' + (1 - a) + ')';
+        ctx.beginPath(); ctx.arc(p.x, p.y, 2.3, 0, 6.2832); ctx.fill();
+        ctx.strokeStyle = 'rgba(212,255,0,' + (0.5 * (1 - a)) + ')';
+        ctx.beginPath(); ctx.arc(p.x, p.y, 2.3 + a * 12, 0, 6.2832); ctx.stroke();
+      }
+    }
+    function ping(now) {
+      var j = Math.floor(Math.random() * rows), i = Math.floor(cols * (0.35 + Math.random() * 0.65));
+      pings.push({ x: i * gap + (j % 2 ? gap / 2 : 0), y: j * gap, t: now });
+    }
+    var last = 0, lastPing = 0;
+    function loop(now) {
+      raf = requestAnimationFrame(loop);
+      if (now - last < 33) return; last = now;
+      if (now - lastPing > 260) { ping(now); lastPing = now; }
+      draw(now);
+    }
+    function start() { if (!running && inView && !document.hidden) { running = true; raf = requestAnimationFrame(loop); } }
+    function stop() { running = false; cancelAnimationFrame(raf); }
+    size();
+    if (reduce) { draw(t0); window.addEventListener('resize', function () { size(); draw(t0); }); return; }
+    window.addEventListener('resize', size);
+    hero.addEventListener('pointermove', function (e) { var b = hero.getBoundingClientRect(); mx = e.clientX - b.left; my = e.clientY - b.top; });
+    hero.addEventListener('pointerleave', function () { mx = my = -999; });
+    document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
+    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { inView = en[0].isIntersecting; inView ? start() : stop(); }).observe(hero);
+    start();
+  })();
 
   // ---- Scroll reveal
   var els = $$('.reveal');
