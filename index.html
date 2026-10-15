@@ -121,6 +121,9 @@
 
   /* ---------- Type ---------- */
   h1, h2, h3 { font-family: 'Outfit', sans-serif; text-wrap: balance; }
+  /* House rule: no orphans. A word (or two short ones) never sits alone on a last line. */
+  p, li, dd, dt, td, th, summary, figcaption, blockquote, .lead { text-wrap: pretty; }
+  td, th, dd, summary, .tl, .q, .ticks li, .fit li, .tier li, .leftout .was, .seat p, .rules span, .trust, .price-note, .foot { text-wrap: balance; }
   .s-dark h1, .s-dark h2, .s-dark h3 { color: var(--bright); }
   .s-paper h2, .s-paper h3 { color: var(--ink); }
   h1 {
@@ -634,12 +637,13 @@
   }
   .panel[hidden] { display: none; }
   .panel .k { font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1.8px; text-transform: uppercase; color: var(--acid); }
-  .panel h3 { font-size: 28px; font-weight: 900; letter-spacing: -0.5px; margin: 12px 0 14px; }
+  .panel h3 { font-size: 28px; font-weight: 900; letter-spacing: -0.5px; line-height: 1.15; margin: 12px 0 14px; }
   .panel p { font-size: 16px; color: var(--night-ink-2); }
   .ticks { list-style: none; margin-top: 18px; display: grid; gap: 8px; }
   .ticks li { font-size: 15px; padding-left: 24px; position: relative; color: var(--night-ink); }
   .ticks li::before { content: '+'; position: absolute; left: 4px; color: var(--acid); font-weight: 800; }
-  .shot { border: 1.5px solid var(--night-line); background: #000; padding: 8px; }
+  .shot { border: 1.5px solid var(--night-line); background: var(--paper); }
+  .shot img { display: block; }
   .shot img { width: 100%; height: auto; }
   .ask-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 56px; }
   .ask { border: 1.5px solid var(--night-line); padding: 24px 24px 22px; background: var(--night); }
@@ -663,27 +667,17 @@
   .rules li::before { content: '✓'; width: 24px; height: 24px; margin-top: 2px; display: grid; place-items: center; border: 1.5px solid var(--ink); font-size: 16px; font-weight: 800; color: var(--olive); line-height: 1; }
   .rules strong { display: block; font-size: 21px; font-weight: 800; letter-spacing: -0.3px; color: var(--ink); line-height: 1.25; }
   .rules span { display: block; font-size: 15.5px; color: var(--ink-2); margin-top: 4px; }
-  .locked { background: var(--night); color: var(--night-ink); border: 2px solid #0A0A0A; }
-  .locked .term-bar { border-color: var(--night-line); }
-  .locked-title { padding: 16px 18px 4px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--night-ink-3); }
-  .term-rows { padding: 4px 18px 6px; }
-  .setting {
-    display: flex; align-items: center; width: 100%; gap: 12px;
-    padding: 11px 0;
-    background: none; border: none; border-bottom: 1px dashed var(--night-line);
-    color: var(--night-ink); font-family: 'Space Mono', monospace; font-size: 13px; text-align: left; cursor: pointer;
-  }
-  .setting:last-child { border-bottom: none; }
-  .setting:hover .name { color: var(--bright); }
-  .setting .name { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-  .switch { flex-shrink: 0; width: 40px; height: 22px; border-radius: 11px; background: #2A2A2A; border: 1px solid var(--night-line); position: relative; }
-  .switch::after { content: ''; position: absolute; top: 3px; left: 3px; width: 14px; height: 14px; border-radius: 50%; background: #6A6A6A; }
-  .state { flex-shrink: 0; width: 34px; font-size: 11px; font-weight: 700; color: var(--red); letter-spacing: 1px; }
-  .lock { flex-shrink: 0; width: 14px; height: 14px; color: var(--night-ink-3); }
-  .setting.wiggle .switch { animation: wiggle 0.42s ease; }
-  @keyframes wiggle { 0%,100%{transform:translateX(0)} 20%{transform:translateX(-5px)} 40%{transform:translateX(4px)} 60%{transform:translateX(-3px)} 80%{transform:translateX(2px)} }
-  .term-status { padding: 12px 18px 14px; border-top: 1px solid var(--night-line); font-family: 'Space Mono', monospace; font-size: 12.5px; color: var(--acid); min-height: 46px; }
-  .term-status::after { content: '▍'; animation: blink 1s steps(1) infinite; margin-left: 2px; }
+  /* Left out on purpose: a ledger, not a fake settings screen */
+  .leftout { border: 2px solid var(--ink); background: var(--paper); }
+  .leftout-head { display: flex; justify-content: space-between; gap: 12px; padding: 14px 20px; border-bottom: 2px solid var(--ink); font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--ink-3); }
+  .leftout-head b { color: var(--ink); }
+  .leftout ul { list-style: none; padding: 0 20px; }
+  .leftout li { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 13px 0; border-bottom: 1px solid var(--paper-line); }
+  .leftout li:last-child { border-bottom: none; }
+  .leftout .was { font-size: 15.5px; color: var(--ink-3); text-decoration: line-through; text-decoration-color: var(--red-ink); text-decoration-thickness: 2px; }
+  .leftout .is { flex-shrink: 0; font-family: 'Space Mono', monospace; font-size: 13px; font-weight: 700; color: var(--ink); text-align: right; }
+  .leftout-total { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; margin: 0 20px; padding: 14px 0 16px; border-top: 4px double var(--ink); font-weight: 800; font-size: 17px; color: var(--ink); }
+  .leftout-total .is { font-family: 'Space Mono', monospace; font-size: 20px; background: var(--acid); padding: 0 6px; }
 
   /* ---------- 06 Stack ---------- */
   .table-wrap { margin-top: 48px; border: 1.5px solid var(--night-line); overflow-x: auto; background: var(--night-2); }
@@ -840,7 +834,7 @@
   @media (prefers-reduced-motion: reduce) {
     html { scroll-behavior: auto; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
-    .dot, .marquee-track, .term-status::after, .m { animation: none; }
+    .dot, .marquee-track, .m { animation: none; }
     .result.show { animation: none; }
     .result.show .r-spark path { animation: none; stroke-dashoffset: 0; }
     .seat, .wt i, .stamp { transition: none; }
@@ -1205,7 +1199,7 @@
 <section class="sec s-dark" id="cascade">
   <div class="wrap">
     <h2 class="reveal">Profit first. Ad spend second. <span class="accent">Vibes</span> never.</h2>
-    <p class="lead reveal d1">That's how a CFO plans. Set the revenue you're aiming for and the profit you refuse to go below, and every marketing number underneath falls into line. <strong>Drag the sliders. We'll wait.</strong></p>
+    <p class="lead reveal d1">That's how a CFO plans. Set the revenue you're aiming for and the profit you refuse to go below, and every marketing number underneath falls into line.<br><strong>Drag the sliders. We'll wait.</strong></p>
 
     <div class="plan sheet reveal" id="plan">
       <div class="plan-top"><span>One month, worked backwards</span><span class="illus">Illustrative</span></div>
@@ -1311,7 +1305,7 @@
         <p>Revenue, ad spend, returns and MER in one view, with new vs. returning revenue and subscription health underneath.</p>
         <ul class="ticks"><li>MER and blended ROAS over time</li><li>New vs. returning revenue</li><li>Active subscribers, MRR, churn</li></ul>
       </div>
-      <div class="shot"><img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/01-store-performance-top.png" alt="Store Performance dashboard with revenue, total spend, MER and blended ROAS tiles." loading="lazy"></div>
+      <div class="shot"><img src="/assets/dashboards-light/store-performance.webp" width="1200" height="907" alt="Store Performance dashboard with revenue, total spend, MER and blended ROAS tiles." loading="lazy"></div>
     </div>
     <div class="panel" role="tabpanel" id="p-attr" aria-labelledby="t-attr" hidden>
       <div>
@@ -1320,7 +1314,7 @@
         <p>Channel to campaign to ad, with what each one cost per new customer. It tells you where the next dollar goes, not whether you made money. That's your number's job.</p>
         <ul class="ticks"><li>New-customer cost and return, by channel</li><li>Drill down to the single ad</li><li>CPM and CTR over time</li></ul>
       </div>
-      <div class="shot"><img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/02-attribution-top.png" alt="Channels dashboard with MER, new-customer return, blended CPA and attributed revenue." loading="lazy"></div>
+      <div class="shot"><img src="/assets/dashboards-light/attribution.webp" width="1200" height="907" alt="Channels dashboard with MER, new-customer return, blended CPA and attributed revenue." loading="lazy"></div>
     </div>
     <div class="panel" role="tabpanel" id="p-cust" aria-labelledby="t-cust" hidden>
       <div>
@@ -1329,7 +1323,7 @@
         <p>Cohort retention, customer value by segment, and which channels bring subscribers who stick around.</p>
         <ul class="ticks"><li>Retention curves by start month</li><li>Customer and subscriber lifetime value</li><li>Subscribers by acquisition channel</li></ul>
       </div>
-      <div class="shot"><img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/03-customers-top.png" alt="Customers dashboard with total customers, active subscribers, MRR, lifetime value and churn." loading="lazy"></div>
+      <div class="shot"><img src="/assets/dashboards-light/customers.webp" width="1200" height="907" alt="Customers dashboard with total customers, active subscribers, MRR, lifetime value and churn." loading="lazy"></div>
     </div>
     <div class="panel" role="tabpanel" id="p-email" aria-labelledby="t-email" hidden>
       <div>
@@ -1338,7 +1332,7 @@
         <p>Campaigns, flows, list health and lifetime email revenue. Deliverability decay shows up here before it shows up in revenue.</p>
         <ul class="ticks"><li>Open, click and unsubscribe rates per flow</li><li>Daily list health</li><li>Email and SMS revenue over time</li></ul>
       </div>
-      <div class="shot"><img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/04-email-sms.png" alt="Email and SMS dashboard with Klaviyo campaigns and flows, list health charts and lifetime KPIs." loading="lazy"></div>
+      <div class="shot"><img src="/assets/dashboards-light/email-sms.webp" width="1200" height="907" alt="Email and SMS dashboard with Klaviyo campaigns and flows, list health charts and lifetime KPIs." loading="lazy"></div>
     </div>
     <div class="panel" role="tabpanel" id="p-prod" aria-labelledby="t-prod" hidden>
       <div>
@@ -1347,7 +1341,7 @@
         <p>Net revenue, units and discounts per SKU, down to the variant, so you know what's actually carrying the store.</p>
         <ul class="ticks"><li>Top products and SKUs by revenue</li><li>Per-SKU discounts and units</li><li>Product revenue over time</li></ul>
       </div>
-      <div class="shot"><img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/dashboards/05-products-top.png" alt="Products dashboard with net revenue, units sold and a product revenue trend chart." loading="lazy"></div>
+      <div class="shot"><img src="/assets/dashboards-light/products.webp" width="1200" height="907" alt="Products dashboard with net revenue, units sold and a product revenue trend chart." loading="lazy"></div>
     </div>
 
     <div class="ask-row">
@@ -1383,24 +1377,22 @@
     <div class="opinions">
       <ol class="rules">
         <li class="reveal"><div><strong>Profit dollars are the score.</strong><span>ROAS and margin % explain it. They don't replace it.</span></div></li>
-        <li class="reveal d1"><div><strong>New customers are bought. Returning ones are earned.</strong><span>So every number is split in two, and judged differently.</span></div></li>
+        <li class="reveal d1"><div><strong>New customers are bought.<br> Returning ones are earned.</strong><span>So every number is split in two, and judged differently.</span></div></li>
         <li class="reveal d2"><div><strong>Attribution steers. It doesn't keep score.</strong><span>It tells you where the next dollar goes. Not whether you made money.</span></div></li>
         <li class="reveal d3"><div><strong>Every miss is volume or efficiency.</strong><span>Too few customers, or too expensive ones. Nothing else.</span></div></li>
         <li class="reveal d4"><div><strong>Defaults, not settings.</strong><span>Connect your store and start. Tweak later, if ever.</span></div></li>
       </ol>
 
-      <div class="locked reveal d2" role="group" aria-label="Settings that are permanently off">
-        <div class="term-bar"><i></i><i></i><i></i><span>~/bratrax/settings</span></div>
-        <p class="locked-title">Some settings are welded shut</p>
-        <div class="term-rows">
-          <button class="setting" type="button" data-name="annual_contract" aria-label="Annual contract: off, locked"><span class="name">annual_contract</span><span class="state">OFF</span><span class="switch" aria-hidden="true"></span><svg class="lock" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="10" height="7"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg></button>
-          <button class="setting" type="button" data-name="gmv_based_pricing" aria-label="Price that grows with your GMV: off, locked"><span class="name">gmv_based_pricing</span><span class="state">OFF</span><span class="switch" aria-hidden="true"></span><svg class="lock" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="10" height="7"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg></button>
-          <button class="setting" type="button" data-name="sales_call_required" aria-label="Sales call before you see the product: off, locked"><span class="name">sales_call_required</span><span class="state">OFF</span><span class="switch" aria-hidden="true"></span><svg class="lock" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="10" height="7"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg></button>
-          <button class="setting" type="button" data-name="ai_token_markup" aria-label="Markup on your AI tokens: off, locked"><span class="name">ai_token_markup</span><span class="state">OFF</span><span class="switch" aria-hidden="true"></span><svg class="lock" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="10" height="7"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg></button>
-          <button class="setting" type="button" data-name="upgrade_walls" aria-label="Upgrade walls: off, locked"><span class="name">upgrade_walls</span><span class="state">OFF</span><span class="switch" aria-hidden="true"></span><svg class="lock" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="10" height="7"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg></button>
-          <button class="setting" type="button" data-name="winback_emails_on_cancel" aria-label="Win-back emails when you cancel: off, locked"><span class="name">winback_emails_on_cancel</span><span class="state">OFF</span><span class="switch" aria-hidden="true"></span><svg class="lock" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="7" width="10" height="7"/><path d="M5.5 7V5a2.5 2.5 0 0 1 5 0v2"/></svg></button>
-        </div>
-        <div class="term-status" id="term-status" aria-live="polite">&gt; click one. go on.</div>
+      <div class="leftout reveal d2">
+        <div class="leftout-head"><b>Left out on purpose</b><span>Bratrax Lite</span></div>
+        <ul>
+          <li><span class="was">Annual contract</span><span class="is">Month to month</span></li>
+          <li><span class="was">A price that grows with your revenue</span><span class="is">$99 flat</span></li>
+          <li><span class="was">A sales call before you can look</span><span class="is">Open demo</span></li>
+          <li><span class="was">Markup on your AI tokens</span><span class="is">Your own key</span></li>
+          <li><span class="was">Dashboards held back for a pricier plan</span><span class="is">All seven</span></li>
+        </ul>
+        <div class="leftout-total"><span>Surprises on your bill</span><span class="is">$0</span></div>
       </div>
     </div>
   </div>
@@ -1423,7 +1415,7 @@
           <tr><td>AI on your numbers</td><td class="old">CSV exports pasted into ChatGPT</td><td class="cost">An afternoon a week</td><td class="us inc">Your Claude, no markup</td></tr>
           <tr><td>Answers in the team chat</td><td class="old">Screenshots of dashboards</td><td class="cost">Somebody's time</td><td class="us inc">@bratrax in Slack</td></tr>
           <tr><td>Email &amp; SMS reporting</td><td class="old">Another tab in Klaviyo</td><td class="cost">Comes with Klaviyo</td><td class="us inc">Included</td></tr>
-          <tr><td>Your raw data</td><td class="old">Ask the vendor nicely</td><td class="cost">—</td><td class="us inc">Warehouse + export</td></tr>
+          <tr><td>Your raw data</td><td class="old">Ask the vendor nicely</td><td class="cost">—</td><td class="us inc">Warehouse&nbsp;+&nbsp;export</td></tr>
         </tbody>
         <tfoot>
           <tr><td>Total</td><td></td><td class="cost">$214–$1,200+/mo</td><td class="us cost">$99/mo flat</td></tr>
@@ -1878,17 +1870,6 @@
     });
   });
 
-  // ---- 05: welded-shut settings
-  var lines = ['> nope.', '> still no.', '> we checked. still off.', '> that one is welded shut.', '> try the demo instead.', '> fine. it stays off.'];
-  var li = 0, tStatus = $('#term-status');
-  $$('.setting').forEach(function (btn) {
-    btn.addEventListener('click', function () {
-      btn.classList.remove('wiggle'); void btn.offsetWidth; btn.classList.add('wiggle');
-      tStatus.textContent = lines[li % lines.length] + ' (' + btn.dataset.name + ': off)';
-      li++;
-    });
-  });
-
   // ---- Final band: noise drifts in, gets in the way, fades out
   var nf = $('#noise-float');
   if (nf && !reduce && 'IntersectionObserver' in window) {
@@ -1918,6 +1899,28 @@
       });
     }, { threshold: 0.1 }).observe(nf);
   }
+
+  // ---- House rule: no orphans. Bind the last two words of every text block with a no-break
+  // space (three when the last two are tiny), so no word sits alone on a last line.
+  $$('h1, h2, h3, p, li, dd, dt, td, th, summary, figcaption, .tl, .r-sub, .leftout .was').forEach(function (el) {
+    if (el.closest('.metrics, .marquee, #noise-float, .nav, .menu-panel, .btn')) return;
+    var nodes = [], tw = document.createTreeWalker(el, NodeFilter.SHOW_TEXT), n;
+    while ((n = tw.nextNode())) nodes.push(n);
+    var text = nodes.map(function (t) { return t.data; }).join('').replace(/\s+$/, '');
+    var words = text.split(/\s+/);
+    if (words.length < 4) return;
+    var k = (words[words.length - 1].length + words[words.length - 2].length < 10) ? 2 : 1;
+    // find the last k whitespace characters in the joined text and swap them for no-break spaces
+    var targets = [], i = text.length - 1;
+    while (i >= 0 && targets.length < k) { if (/\s/.test(text[i])) { while (i > 0 && /\s/.test(text[i - 1])) i--; targets.push(i); } i--; }
+    var off = 0;
+    nodes.forEach(function (t) {
+      var len = t.data.length, d = t.data, changed = false;
+      targets.forEach(function (pos) { if (pos >= off && pos < off + len) { d = d.slice(0, pos - off) + ' ' + d.slice(pos - off + 1); changed = true; } });
+      if (changed) t.data = d;
+      off += len;
+    });
+  });
 
   // ---- Scroll reveal
   var els = $$('.reveal');

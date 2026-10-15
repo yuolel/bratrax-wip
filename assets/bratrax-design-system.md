@@ -1,7 +1,7 @@
 # Bratrax Design System
 
-**Version:** 1.3
-**Last Updated:** 2026-04-30
+**Version:** 1.4
+**Last Updated:** 2026-10-15
 **Brand:** Bratrax — Service-as-Software Analytics
 **Aesthetic:** Contrarian, editorial, anti-BI-tool. Halftone print meets graph paper meets screen-print energy. Dark, technical, strategic color pops. Light theme is a warm cream paper canvas with the same brand personality.
 
@@ -219,8 +219,12 @@ Hover is the active state minus the border — a clean visual ladder where each 
 4. The **serif accent word** should carry the insight — "skips", "why", "deciding", "another one" — not filler words.
 5. **Body text** is Outfit weight 300 at 17px. Color is `color-text-secondary` (#B0B0B0).
 6. All **technical/UI text** (nav, buttons, labels, section numbers) is Space Mono.
-7. The **serif accent word** in headlines always gets acid green color (`#D4FF00`).
-8. **No orphan words.** Headlines, pull quotes, and short text blocks must not leave a single word alone on the last line. Use `text-wrap: balance` in CSS for headlines/pull quotes. For specific cases, use `&nbsp;` between the last two words to prevent the break. Check at both desktop and mobile widths.
+7. The **serif accent word** in headlines always gets acid green (`#D4FF00`). On the marketing site it is set as a **highlighter**: acid band behind the word, near-black text, swiped on when the headline appears. Never circle, ring or hand-underline a word; the highlighter is the one emphasis device.
+8. **No orphan words (house rule).** No line may hold one word, or two short words, alone when it doesn't need to. This applies to every text block, not just headlines: body copy, list items, table cells, card labels and subheads. A last line like "earned." or "sliders. We'll wait." under a full line is a bug.
+   - **Prefer a deliberate break.** If a block holds two thoughts, break between them: "New customers are bought.<br>Returning ones are earned." A short call to action under a lead goes on its own line ("Drag the sliders. We'll wait.") rather than wrapping halfway.
+   - **CSS:** `text-wrap: balance` on headlines and short blocks (labels, table cells, list items, card copy); `text-wrap: pretty` on paragraphs.
+   - **Safety net:** browsers apply `pretty` inconsistently (Firefox ignores it), so the site binds the last two words of each text block with a no-break space at load (three when the last two are very short). Static pages without the script use `&nbsp;` by hand.
+   - **Check** at 1440, 1280, 1024, 768, 390 and 360px before shipping.
 
 ### CSS Type Tokens
 
