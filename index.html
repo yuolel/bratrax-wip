@@ -142,11 +142,16 @@
     font-weight: 400;
     letter-spacing: -0.5px;
   }
-  .s-dark .accent { color: var(--acid); }
-  .s-paper .accent {
-    background: linear-gradient(transparent 58%, var(--acid) 58%, var(--acid) 92%, transparent 92%);
-    padding: 0 0.06em;
+  .accent {
+    color: #0A0A0A;
+    padding: 0 0.1em;
+    margin: 0 -0.02em;
+    background: linear-gradient(var(--acid), var(--acid)) no-repeat 0 62% / 100% 74%;
+    -webkit-box-decoration-break: clone; box-decoration-break: clone;
   }
+  .js .reveal .accent { background-size: 0% 74%; transition: background-size 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.35s; }
+  .js .reveal.visible .accent { background-size: 100% 74%; }
+  .s-dark .accent { color: #0A0A0A; }
   .lead {
     font-size: clamp(18px, 1.6vw, 21px);
     line-height: 1.55;
@@ -196,6 +201,7 @@
     transition: transform 0.18s, box-shadow 0.18s, background 0.18s, color 0.18s;
   }
   .btn-primary { background: var(--acid); color: #0A0A0A; border-color: var(--acid); }
+  .btn:active { transform: scale(0.97); }
   .btn-primary:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--bright); }
   .s-paper .btn-primary { border-color: #0A0A0A; }
   .s-paper .btn-primary:hover, .s-acid .btn-primary:hover { box-shadow: 4px 4px 0 #0A0A0A; }
@@ -356,7 +362,6 @@
     background: var(--acid);
     margin-right: 8px;
     vertical-align: 1px;
-    animation: pulse 2s ease-out infinite;
   }
   @keyframes pulse {
     0% { box-shadow: 0 0 0 0 rgba(212,255,0,0.55); }
@@ -393,21 +398,8 @@
   .pedigree a { color: var(--night-ink); text-decoration: none; border-bottom: 1px dashed var(--night-line); }
   .pedigree a:hover { color: var(--acid); }
 
-  /* Hand-drawn marker that draws itself once */
-  .ring { position: relative; white-space: nowrap; }
-  .ring .mk { position: absolute; left: -16%; top: -6%; width: 132%; height: 116%; fill: none; stroke: var(--acid); stroke-width: 3.5; stroke-linecap: round; stroke-linejoin: round; overflow: visible; pointer-events: none; }
-  .ring .mk path { stroke-dasharray: 1; stroke-dashoffset: 1; animation: draw 1.1s cubic-bezier(0.25, 1, 0.5, 1) 1.2s forwards; }
-  @keyframes draw { to { stroke-dashoffset: 0; } }
-
-  /* Paper kit: tape, stamp, sheet. Warm paper = checked. Cold screen = claimed. */
-  .sheet { box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset, 0 18px 34px -16px rgba(0,0,0,0.7), 0 3px 8px rgba(0,0,0,0.3); }
-  .tape {
-    position: absolute; z-index: 4; width: 84px; height: 24px; pointer-events: none;
-    transform: rotate(var(--r, -4deg));
-    background: repeating-linear-gradient(90deg, rgba(255,255,255,0.14) 0 2px, transparent 2px 6px), rgba(222, 208, 168, 0.85);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.3);
-    clip-path: polygon(0 0, 3% 12%, 0 26%, 3% 40%, 0 54%, 3% 68%, 0 82%, 3% 100%, 97% 100%, 100% 84%, 97% 68%, 100% 52%, 97% 36%, 100% 20%, 97% 0);
-  }
+  /* Paper sheet (checked) on a dark screen (claimed). The stamp appears once: when the plan adds up. */
+  .sheet { box-shadow: 0 18px 34px -16px rgba(0,0,0,0.7), 0 3px 8px rgba(0,0,0,0.3); }
   .stamp {
     position: absolute; right: -8px; top: -18px; z-index: 6;
     padding: 7px 11px; border: 3px solid #0A0A0A; color: #0A0A0A;
@@ -420,44 +412,14 @@
   .stamp.land { transform: rotate(5deg); opacity: 0.9; }
   .stamp.red { border-color: var(--red-ink); color: var(--red-ink); }
 
-  /* ---------- Design language: hand-checked print ----------
-     Dots are orders. Paper sheets are numbers Bratrax checked. Screens are claims.
-     Security-paper lines only on checked sheets. Torn edges only at three chapter breaks. */
-  .hero.s-dark::before { display: none; }
-  .dotwall { position: absolute; inset: 0; width: 100%; height: 100%; display: block; pointer-events: none; z-index: 0;
-    -webkit-mask-image: linear-gradient(100deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 38%, #000 70%);
-            mask-image: linear-gradient(100deg, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.55) 38%, #000 70%); }
-  .dotwall-note { position: absolute; right: var(--pad); bottom: 22px; z-index: 1; font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: var(--night-ink-3); }
-  .dotwall-note i { display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--acid); margin: 0 6px 1px 0; vertical-align: middle; }
-  .sheet.sheet, .memo {
-    background-image:
-      repeating-radial-gradient(circle at 0 110%, transparent 0 7px, rgba(74,104,0,0.055) 7px 8px),
-      repeating-radial-gradient(circle at 110% -10%, transparent 0 9px, rgba(74,104,0,0.04) 9px 10px);
-  }
-  .torn { position: absolute; left: 0; right: 0; height: 36px; z-index: 3; pointer-events: none; --tb: var(--paper); --tf: #FFFCF4; }
-  .torn.top { top: -26px; filter: drop-shadow(0 -2px 3px rgba(0,0,0,0.35)); }
-  .torn.bot { bottom: -26px; filter: drop-shadow(0 3px 4px rgba(0,0,0,0.25)); }
-  .torn i { position: absolute; inset: 0; display: block; }
-  .torn .tf { background: var(--tf); }
-  .torn .tb { background: var(--tb); }
-  .strip { position: relative; z-index: 2; }
-  #faq { z-index: 2; }
-  /* Platform claims print off-register; the checked number snaps into register */
-  .seat .val { transition: text-shadow 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
-  .seat:not(.is-after) .val { text-shadow: 3px 2px 0 rgba(255,59,48,0.55), -3px -2px 0 rgba(212,255,0,0.3); }
-  /* Ledger: totals sit under a double rule */
+  /* ---------- One metaphor: the books balance ----------
+     Highlighter = the one number that matters. Ledger marks = it reconciles:
+     ruled rows, a double rule under totals, a tick, one stamp when the plan adds up.
+     Graph paper is the only texture. */
   .wf .wr:last-child { border-top: 4px double var(--ink); position: relative; }
   .wf .wr .stamp { right: 176px; top: 6px; }
-  #r-stamp { top: 104px; right: 14px; }
+  @keyframes draw { to { stroke-dashoffset: 0; } }
   .stack tfoot td { border-top: 4px double var(--night-ink-2); }
-  /* Screenshots are prints, taped down */
-  .shot { position: relative; }
-  .shot .tape { width: 74px; height: 22px; }
-  /* Halftone portrait */
-  .ht { position: relative; display: block; width: 72px; height: 72px; overflow: hidden; border: 2px solid #0A0A0A; background: var(--paper); }
-  .ht img { display: block; width: 100%; height: 100%; object-fit: cover; border: none; filter: grayscale(1) contrast(1.05); }
-  .ht canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
-  .ht.done img { visibility: hidden; }
   .illus { display: inline-block; padding: 3px 9px; background: #0A0A0A; color: var(--paper); font-family: 'Space Mono', monospace; font-size: 10px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
 
   /* Hero console: forty metrics on a cold screen, one survives the scan */
@@ -481,12 +443,9 @@
     border: 1px solid #262626; background: #161616; padding: 7px 8px 6px;
     font-family: 'Space Mono', monospace; font-size: 9.5px; letter-spacing: 0.5px; text-transform: uppercase; line-height: 1.25; color: #8A8A8A;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    transform: scale(calc(1 + var(--near, 0) * 0.08));
-    transition: opacity 0.35s, color 0.3s, border-color 0.3s, background 0.3s, transform 0.2s;
-    animation: flick var(--fd, 2.4s) ease-in-out var(--fdel, 0s) infinite;
+    transition: opacity 0.3s ease, color 0.3s ease, border-color 0.3s ease, background-color 0.3s ease;
   }
   .m b { display: block; font-size: 12.5px; font-weight: 700; letter-spacing: 0; color: var(--night-ink); margin-top: 3px; }
-  @keyframes flick { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
   .m.mute { animation: none; opacity: 0.09; }
   .m.keep { animation: none; opacity: 1; border-color: var(--acid); color: var(--acid); background: rgba(212,255,0,0.1); }
   .m.keep b { color: var(--acid); }
@@ -494,11 +453,11 @@
   .result {
     position: absolute; left: 50%; top: 54%; z-index: 3; width: min(330px, 88%);
     background: var(--paper); color: var(--ink); padding: 18px 20px 12px;
-    transform: translate(-50%, -50%) rotate(-1.5deg);
+    transform: translate(-50%, -50%);
     opacity: 0; visibility: hidden;
   }
-  .result.show { opacity: 1; visibility: visible; animation: slap 0.55s cubic-bezier(0.16, 1, 0.3, 1); }
-  @keyframes slap { 0% { transform: translate(-50%, -57%) rotate(-4deg) scale(1.06); opacity: 0; } 100% { transform: translate(-50%, -50%) rotate(-1.5deg) scale(1); opacity: 1; } }
+  .result.show { opacity: 1; visibility: visible; animation: rise 0.35s cubic-bezier(0.23, 1, 0.32, 1); }
+  @keyframes rise { from { transform: translate(-50%, calc(-50% + 10px)) scale(0.97); opacity: 0; } to { transform: translate(-50%, -50%) scale(1); opacity: 1; } }
   .r-top { display: flex; justify-content: space-between; gap: 8px; font-family: 'Space Mono', monospace; font-size: 9.5px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--ink-3); padding-bottom: 8px; border-bottom: 1px dashed var(--paper-line-strong); }
   .r-label { font-size: 18px; font-weight: 800; margin-top: 10px; }
   .r-sub { font-size: 12.5px; color: var(--ink-3); }
@@ -580,7 +539,6 @@
   /* ---------- Profit-first plan (paper sheet on a dark section) ---------- */
   .plan { position: relative; margin-top: 56px; background: var(--paper); color: var(--ink); padding: 34px 36px 26px; }
   .plan-top { display: flex; justify-content: space-between; align-items: center; gap: 12px; font-family: 'Space Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.6px; text-transform: uppercase; color: var(--ink-3); margin-bottom: 22px; }
-  .plan .stamp { top: -16px; right: 26px; }
   .knobs { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; padding-bottom: 26px; border-bottom: 1.5px solid var(--ink); }
   .knob label { display: block; font-size: 15px; font-weight: 600; color: var(--ink); }
   .knob output { display: block; font-family: 'Space Mono', monospace; font-size: 24px; font-weight: 700; color: var(--ink); margin-top: 2px; }
@@ -681,7 +639,7 @@
   .ticks { list-style: none; margin-top: 18px; display: grid; gap: 8px; }
   .ticks li { font-size: 15px; padding-left: 24px; position: relative; color: var(--night-ink); }
   .ticks li::before { content: '+'; position: absolute; left: 4px; color: var(--acid); font-weight: 800; }
-  .shot { border: 1.5px solid var(--night-line); background: #000; padding: 8px; box-shadow: -8px 8px 0 var(--acid); }
+  .shot { border: 1.5px solid var(--night-line); background: #000; padding: 8px; }
   .shot img { width: 100%; height: auto; }
   .ask-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; margin-top: 56px; }
   .ask { border: 1.5px solid var(--night-line); padding: 24px 24px 22px; background: var(--night); }
@@ -689,7 +647,7 @@
   .ask h3 { font-size: 21px; font-weight: 800; margin: 8px 0 14px; }
   .bubble { font-size: 14.5px; line-height: 1.5; padding: 12px 14px; }
   .bubble + .bubble { margin-top: 8px; }
-  .bubble.q { background: var(--paper); color: var(--ink); font-weight: 500; transform: rotate(-0.6deg); }
+  .bubble.q { background: var(--paper); color: var(--ink); font-weight: 500; }
   .bubble.a { background: var(--night-2); border: 1.5px solid var(--night-line); color: var(--night-ink); }
   .bubble.a strong { color: var(--acid); }
   .bubble .who { display: block; font-family: 'Space Mono', monospace; font-size: 9.5px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.6; margin-bottom: 5px; }
@@ -705,7 +663,7 @@
   .rules li::before { content: '✓'; width: 24px; height: 24px; margin-top: 2px; display: grid; place-items: center; border: 1.5px solid var(--ink); font-size: 16px; font-weight: 800; color: var(--olive); line-height: 1; }
   .rules strong { display: block; font-size: 21px; font-weight: 800; letter-spacing: -0.3px; color: var(--ink); line-height: 1.25; }
   .rules span { display: block; font-size: 15.5px; color: var(--ink-2); margin-top: 4px; }
-  .locked { background: var(--night); color: var(--night-ink); border: 2px solid #0A0A0A; box-shadow: 10px 10px 0 var(--acid); }
+  .locked { background: var(--night); color: var(--night-ink); border: 2px solid #0A0A0A; }
   .locked .term-bar { border-color: var(--night-line); }
   .locked-title { padding: 16px 18px 4px; font-family: 'Space Mono', monospace; font-size: 11px; letter-spacing: 1.4px; text-transform: uppercase; color: var(--night-ink-3); }
   .term-rows { padding: 4px 18px 6px; }
@@ -791,8 +749,7 @@
     background: var(--paper);
     color: var(--ink);
     border: 2px solid #0A0A0A;
-    box-shadow: 12px 12px 0 var(--acid);
-    transform: rotate(-0.5deg);
+    box-shadow: 0 18px 40px -20px rgba(0,0,0,0.8);
     position: relative;
   }
   .memo-head {
@@ -830,7 +787,7 @@
   .final { position: relative; padding: 150px 0 156px; overflow: hidden; text-align: center; }
   .final .wrap { z-index: 2; }
   .final h2 { margin: 0 auto; max-width: none; font-size: clamp(54px, 9vw, 132px); line-height: 0.92; letter-spacing: -3px; color: #0A0A0A; }
-  .final h2 .accent { color: #0A0A0A; }
+  .final h2 .accent { color: #0A0A0A; background: none; padding: 0; }
   .final .lead { margin: 26px auto 0; color: #2A2A10; }
   .final .hero-ctas { justify-content: center; }
   .final .btn-ghost { color: #0A0A0A; }
@@ -884,10 +841,10 @@
     html { scroll-behavior: auto; }
     .js .reveal { opacity: 1; transform: none; transition: none; }
     .dot, .marquee-track, .term-status::after, .m { animation: none; }
-    .ring .mk path { animation: none; stroke-dashoffset: 0; }
     .result.show { animation: none; }
     .result.show .r-spark path { animation: none; stroke-dashoffset: 0; }
     .seat, .wt i, .stamp { transition: none; }
+    .js .reveal .accent { transition: none; background-size: 100% 74%; }
   }
 
   /* ---------- Responsive ---------- */
@@ -956,11 +913,8 @@
     .strip-inner { flex-direction: column; align-items: flex-start; gap: 12px; }
     .marquee { width: 100%; }
     .memo-head { grid-template-columns: 56px 1fr; }
-    .memo-head img, .ht { width: 56px; height: 56px; }
-    .dotwall-note { display: none; }
+    .memo-head img { width: 56px; height: 56px; }
     .wf .wr .stamp { right: 4px; top: 40px; }
-    #r-stamp { top: 128px; right: 10px; }
-    .memo { box-shadow: 6px 6px 0 var(--acid); }
     .final h2 { letter-spacing: -2px; }
   }
 </style>
@@ -1151,12 +1105,10 @@
 
 <!-- ============ HERO (dark) ============ -->
 <section class="hero s-dark">
-  <canvas class="dotwall" id="dotwall" aria-hidden="true"></canvas>
-  <p class="dotwall-note" aria-hidden="true"><i></i>Every dot is an order. Green ones just landed.</p>
   <div class="wrap hero-grid">
     <div>
       <p class="eyebrow reveal"><span class="dot" aria-hidden="true"></span>The digital CFO for D2C brands</p>
-      <h1 class="reveal d1">Forty metrics. Only <span class="accent ring">one<svg class="mk" viewBox="0 0 150 64" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M20 46 C 4 34, 8 12, 52 6 S 138 8, 144 30 S 100 62, 56 58 S -2 44, 14 20"/></svg></span> pays the bills.</h1>
+      <h1 class="reveal d1">Forty metrics. Only <span class="accent">one</span> pays the bills.</h1>
       <p class="hero-sub reveal d2">Bratrax reads your orders, ad spend and costs, tells you which number your brand should run on, and shows you every morning whether it's moving. <strong>The other thirty-nine can wait.</strong></p>
       <div class="hero-ctas reveal d3">
         <a href="https://bratrax.com/signup" class="btn btn-primary"><span class="arrow">Start for $1</span></a>
@@ -1180,9 +1132,6 @@
         <div class="metrics" id="metrics" aria-hidden="true"></div>
         <span class="scan" id="scan" aria-hidden="true"></span>
         <div class="result sheet" id="result" aria-live="polite">
-          <span class="tape" style="--r:-6deg;left:16px;top:-12px"></span>
-          <span class="tape" style="--r:5deg;right:20px;top:-11px"></span>
-          <span class="stamp" id="r-stamp">Your number</span>
           <div class="r-top"><span>Sample store · Mon 9:02</span><span>MER 3.2× on top</span></div>
           <div class="r-label" data-r="label">Profit per order</div>
           <div class="r-sub" data-r="sub">after product cost, shipping, fees and ads</div>
@@ -1198,7 +1147,6 @@
 
 <!-- ============ STRIP + 01 PROBLEM (paper) ============ -->
 <div class="strip s-paper" aria-label="Connected platforms">
-  <div class="torn top" data-torn aria-hidden="true"></div>
   <div class="strip-inner">
     <span class="strip-label">Reads from</span>
     <div class="marquee">
@@ -1260,8 +1208,6 @@
     <p class="lead reveal d1">That's how a CFO plans. Set the revenue you're aiming for and the profit you refuse to go below, and every marketing number underneath falls into line. <strong>Drag the sliders. We'll wait.</strong></p>
 
     <div class="plan sheet reveal" id="plan">
-      <span class="tape" style="--r:-4deg;left:7%;top:-13px"></span>
-      <span class="tape" style="--r:3deg;right:22%;top:-11px"></span>
       <div class="plan-top"><span>One month, worked backwards</span><span class="illus">Illustrative</span></div>
 
       <div class="knobs">
@@ -1569,10 +1515,8 @@
     <h2 class="reveal d1">Why we stopped being an <span class="accent">attribution tool.</span></h2>
 
     <article class="memo reveal">
-      <span class="tape" style="--r:-5deg;left:48px;top:-13px"></span>
-      <span class="tape" style="--r:4deg;right:56px;top:-12px"></span>
       <div class="memo-head">
-        <span class="ht"><img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/assets/brat-portrait-big.png" alt="Brat Vukovich" loading="lazy"></span>
+        <img src="https://raw.githubusercontent.com/yuolel/bratrax-wip/bratrax-com-static/assets/brat-portrait-big.png" alt="Brat Vukovich" loading="lazy">
         <div class="memo-meta">
           <div><b>From:</b>Brat Vukovich, founder</div>
           <div><b>To:</b>Every D2C team with a Monday meeting</div>
@@ -1593,8 +1537,6 @@
 
 <!-- ============ 09 FAQ (paper) ============ -->
 <section class="sec s-paper" id="faq">
-  <div class="torn top" data-torn aria-hidden="true"></div>
-  <div class="torn bot" data-torn aria-hidden="true"></div>
   <div class="wrap">
     <h2 class="reveal d1">Questions founders ask before they <span class="accent">connect</span> anything.</h2>
     <div class="faq reveal d2">
@@ -1768,12 +1710,10 @@
     payback: { keep: 31, label: 'Payback', sub: '6-month customer value ÷ cost to acquire', num: '2.0×', delta: '▲ 0.3× vs last quarter', line: 'Repeat buyers more than cover the first order.', pts: [2, 2, 3, 3, 3, 4, 4, 5, 5, 5, 6, 6] }
   };
   var grid = $('#metrics'), screen = $('#screen'), scan = $('#scan'), result = $('#result');
-  var mCount = $('#m-count'), mWord = $('#m-word'), rStamp = $('#r-stamp');
+  var mCount = $('#m-count'), mWord = $('#m-word');
   var cells = METRICS.map(function (m, i) {
     var c = document.createElement('div');
     c.className = 'm';
-    c.style.setProperty('--fd', (1.8 + ((i * 37) % 23) / 10).toFixed(2) + 's');
-    c.style.setProperty('--fdel', '-' + ((i * 0.37) % 3).toFixed(2) + 's');
     c.innerHTML = m[0] + '<b>' + m[1] + '</b>';
     grid.appendChild(c);
     return c;
@@ -1791,13 +1731,13 @@
     var d = LANES[lane];
     heroTimers.forEach(clearTimeout); heroTimers = [];
     if (scanAnim) scanAnim.cancel();
-    result.classList.remove('show'); rStamp.classList.remove('land');
+    result.classList.remove('show');
     cells.forEach(function (c) { c.classList.remove('mute', 'keep'); });
     setCount(40);
     fillResult(d);
     if (reduce) {
       cells.forEach(function (c, i) { c.classList.add(i === d.keep ? 'keep' : 'mute'); });
-      setCount(1); result.classList.add('show'); rStamp.classList.add('land');
+      setCount(1); result.classList.add('show');
       return;
     }
     var W = grid.clientWidth, dur = 1500, delay = 250, left = 40;
@@ -1813,7 +1753,6 @@
       }, t));
     });
     heroTimers.push(setTimeout(function () { setCount(1); void result.offsetWidth; result.classList.add('show'); }, delay + dur + 200));
-    heroTimers.push(setTimeout(function () { rStamp.classList.add('land'); }, delay + dur + 750));
   }
   function pickLane(i, byUser) {
     laneBtns.forEach(function (b, j) { b.setAttribute('aria-checked', j === i ? 'true' : 'false'); b.tabIndex = j === i ? 0 : -1; });
@@ -1822,20 +1761,6 @@
   wireTabs(laneBtns, pickLane);
   $('#r-again').addEventListener('click', function () { runScan(heroLane); });
   setTimeout(function () { runScan('profit'); }, reduce ? 0 : 900);
-  if (!reduce && !window.matchMedia('(pointer: coarse)').matches) {
-    var raf = 0, px = 0, py = 0, on = false;
-    var near = function () {
-      raf = 0;
-      cells.forEach(function (c) {
-        if (!on) { c.style.setProperty('--near', 0); return; }
-        var r = c.getBoundingClientRect();
-        c.style.setProperty('--near', Math.max(0, 1 - Math.hypot(r.left + r.width / 2 - px, r.top + r.height / 2 - py) / 120).toFixed(2));
-      });
-    };
-    screen.addEventListener('pointermove', function (e) { px = e.clientX; py = e.clientY; on = true; if (!raf) raf = requestAnimationFrame(near); });
-    screen.addEventListener('pointerleave', function () { on = false; if (!raf) raf = requestAnimationFrame(near); });
-  }
-
   // ---- 01: four seats converge on one number
   var seats = $('#seats');
   var seatCards = $$('.seat', seats);
@@ -1993,116 +1918,6 @@
       });
     }, { threshold: 0.1 }).observe(nf);
   }
-
-  // ---- Torn paper edges (seeded, so they tear the same way every load)
-  function rng(a) { return function () { a |= 0; a = a + 0x6D2B79F5 | 0; var t = Math.imul(a ^ a >>> 15, 1 | a); t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t; return ((t ^ t >>> 14) >>> 0) / 4294967296; }; }
-  function tornPoly(seed, dir, base, amp) {
-    var r = rng(seed), pts = [], n = 90, y = base;
-    for (var i = 0; i <= n; i++) {
-      y += (r() - 0.5) * amp * 0.9; y += (base - y) * 0.18;
-      if (r() < 0.05) y += (r() - 0.5) * amp * 2.4;
-      y = Math.max(base - amp * 1.6, Math.min(base + amp * 1.6, y));
-      pts.push((i / n * 100).toFixed(2) + '% ' + y.toFixed(1) + 'px');
-    }
-    return dir === 'top' ? 'polygon(0% 100%, ' + pts.join(', ') + ', 100% 100%)' : 'polygon(0% 0%, ' + pts.join(', ') + ', 100% 0%)';
-  }
-  $$('[data-torn]').forEach(function (el, idx) {
-    var dir = el.classList.contains('top') ? 'top' : 'bot';
-    var base = dir === 'top' ? 13 : 23, rim = dir === 'top' ? -5 : 5;
-    el.innerHTML = '<i class="tf"></i><i class="tb"></i>';
-    $('.tf', el).style.clipPath = tornPoly(idx * 7 + 3, dir, base + rim, 4.5);
-    $('.tb', el).style.clipPath = tornPoly(idx * 7 + 11, dir, base, 3.5);
-  });
-
-  // ---- Screenshots get taped down like prints
-  $$('.shot').forEach(function (sh) {
-    sh.insertAdjacentHTML('afterbegin', '<span class="tape" style="--r:-7deg;left:-14px;top:-8px"></span><span class="tape" style="--r:6deg;right:-12px;bottom:-6px"></span>');
-  });
-
-  // ---- Halftone portrait: ink dots sized by darkness, the same dots the hero counts orders with
-  $$('.ht').forEach(function (box) {
-    var src = $('img', box).getAttribute('src'), im = new Image();
-    im.crossOrigin = 'anonymous';
-    im.onload = function () {
-      try {
-        var S = 144, step = 4, off = document.createElement('canvas'); off.width = off.height = S;
-        var o = off.getContext('2d'), side = Math.min(im.width, im.height);
-        o.drawImage(im, (im.width - side) / 2, (im.height - side) / 2, side, side, 0, 0, S, S);
-        var px = o.getImageData(0, 0, S, S).data, cv = document.createElement('canvas'); cv.width = cv.height = S;
-        var c = cv.getContext('2d'); c.fillStyle = '#F5F2EB'; c.fillRect(0, 0, S, S); c.fillStyle = '#0A0A0A';
-        for (var y = step / 2; y < S; y += step) for (var x = (y / step) % 2 ? step : step / 2; x < S; x += step) {
-          var i = ((y | 0) * S + (x | 0)) * 4, l = (0.3 * px[i] + 0.59 * px[i + 1] + 0.11 * px[i + 2]) / 255;
-          var r = (1 - Math.pow(l, 0.8)) * step * 0.62;
-          if (r > 0.25) { c.beginPath(); c.arc(x, y, r, 0, 6.2832); c.fill(); }
-        }
-        box.appendChild(cv); box.classList.add('done');
-      } catch (e) { /* tainted canvas: keep the plain photo */ }
-    };
-    im.src = src;
-  });
-
-  // ---- Hero dot wall: every dot is an order. Halftone swell drifts, pointer lifts, new orders ping acid.
-  (function () {
-    var cv = $('#dotwall'); if (!cv || !cv.getContext) return;
-    var hero = cv.parentNode, ctx = cv.getContext('2d');
-    var W, H, cols, rows, gap, dpr, pings = [], mx = -999, my = -999, t0 = performance.now(), running = false, inView = true, raf;
-    function size() {
-      dpr = Math.min(window.devicePixelRatio || 1, 2);
-      W = hero.clientWidth; H = hero.clientHeight;
-      gap = W < 700 ? 13 : 15;
-      cols = Math.ceil(W / gap) + 1; rows = Math.ceil(H / gap) + 1;
-      cv.width = W * dpr; cv.height = H * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    }
-    function draw(now) {
-      var t = (now - t0) / 1000;
-      ctx.clearRect(0, 0, W, H);
-      ctx.fillStyle = 'rgba(232,228,220,0.16)';
-      ctx.beginPath();
-      for (var j = 0; j < rows; j++) {
-        for (var i = 0; i < cols; i++) {
-          var x = i * gap + (j % 2 ? gap / 2 : 0), y = j * gap;
-          // halftone field: slow diagonal swell
-          var h = 0.5 + 0.5 * Math.sin(x * 0.006 + y * 0.009 - t * 0.35) * Math.cos(y * 0.004 - t * 0.2);
-          var r = 0.5 + h * 1.25;
-          var dx = x - mx, dy = y - my, d2 = dx * dx + dy * dy;
-          if (d2 < 22500) r += (1 - Math.sqrt(d2) / 150) * 1.6;
-          ctx.moveTo(x + r, y); ctx.arc(x, y, r, 0, 6.2832);
-        }
-      }
-      ctx.fill();
-      // new orders landing
-      for (var k = pings.length - 1; k >= 0; k--) {
-        var p = pings[k], a = (now - p.t) / 1700;
-        if (a >= 1) { pings.splice(k, 1); continue; }
-        ctx.fillStyle = 'rgba(212,255,0,' + (1 - a) + ')';
-        ctx.beginPath(); ctx.arc(p.x, p.y, 2.3, 0, 6.2832); ctx.fill();
-        ctx.strokeStyle = 'rgba(212,255,0,' + (0.5 * (1 - a)) + ')';
-        ctx.beginPath(); ctx.arc(p.x, p.y, 2.3 + a * 12, 0, 6.2832); ctx.stroke();
-      }
-    }
-    function ping(now) {
-      var j = Math.floor(Math.random() * rows), i = Math.floor(cols * (0.35 + Math.random() * 0.65));
-      pings.push({ x: i * gap + (j % 2 ? gap / 2 : 0), y: j * gap, t: now });
-    }
-    var last = 0, lastPing = 0;
-    function loop(now) {
-      raf = requestAnimationFrame(loop);
-      if (now - last < 33) return; last = now;
-      if (now - lastPing > 260) { ping(now); lastPing = now; }
-      draw(now);
-    }
-    function start() { if (!running && inView && !document.hidden) { running = true; raf = requestAnimationFrame(loop); } }
-    function stop() { running = false; cancelAnimationFrame(raf); }
-    size();
-    if (reduce) { draw(t0); window.addEventListener('resize', function () { size(); draw(t0); }); return; }
-    window.addEventListener('resize', size);
-    hero.addEventListener('pointermove', function (e) { var b = hero.getBoundingClientRect(); mx = e.clientX - b.left; my = e.clientY - b.top; });
-    hero.addEventListener('pointerleave', function () { mx = my = -999; });
-    document.addEventListener('visibilitychange', function () { document.hidden ? stop() : start(); });
-    if ('IntersectionObserver' in window) new IntersectionObserver(function (en) { inView = en[0].isIntersecting; inView ? start() : stop(); }).observe(hero);
-    start();
-  })();
 
   // ---- Scroll reveal
   var els = $$('.reveal');
