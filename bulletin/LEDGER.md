@@ -62,6 +62,7 @@ as never-covered forever.
 | `performance-max-spend-accuracy` | See your full Performance Max ad spend, including history | Improved | 2026-09 | pending | — | changelog |
 | `search-settings-and-help` | Jump to any setting or help article from the top bar | New | 2026-10 | pending | — | changelog |
 | `dashboard-update-countdown` | See when your dashboard data updates next | Improved | 2026-10 | pending | — | changelog |
+| `team-invite-all-stores` | Give a teammate access to every store with one invite | Improved | 2026-10 | pending | — | changelog |
 
 **Pending:** `meta-organic-attribution`, `performance-max-spend-accuracy`.
 
@@ -83,6 +84,7 @@ disagreement is itself informative.
 | `performance-max-spend-accuracy` | Performance Max campaign spend — including historical data — now shows up accurately and with readable names in your Attribution dashboard. |
 | `search-settings-and-help` | Use the new Search field in the top bar to jump straight to any setting or help article. |
 | `dashboard-update-countdown` | Dashboards now tell you when the next data update lands, and flag clearly when data is behind. |
+| `team-invite-all-stores` | Inviting a teammate to a multi-store account is now one invite for every store — or just one, your choice. |
 
 ## Issues
 
