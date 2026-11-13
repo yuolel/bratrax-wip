@@ -5,5 +5,12 @@
 
 User-agent: *
 Allow: /
+# Bratrax Stores: keep crawlers out of search results, filter combinations, the API and forms.
+Disallow: /stores/search
+Disallow: /stores/export
+Disallow: /stores/check
+Disallow: /stores/explore?
+Disallow: /stores/api/
 
 Sitemap: https://bratrax.com/sitemap.xml
+Sitemap: https://bratrax.com/stores/sitemap.xml
