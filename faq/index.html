@@ -657,14 +657,30 @@
   "@type": "FAQPage",
   "url": "https://bratrax.com/faq",
   "inLanguage": "en",
-  "dateModified": "2026-07-27",
+  "dateModified": "2026-11-14",
   "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What is Bratrax?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bratrax is attribution and profit analytics for direct-to-consumer brands selling on Shopify or WooCommerce. It connects your store and your ad accounts (Meta, Google, TikTok, Microsoft, Pinterest and more), traces each order back to the visits and ads that came before it, and shows revenue, ad spend, MER, blended ROAS, cohorts and customer lifetime value in ready-made dashboards. Bratrax Lite is self-serve: $1 for the first month, then $99/month flat, month to month, live in under 10 minutes. You can also ask questions about your data in Claude, or in Slack with the Bratrax assistant."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Who is Bratrax for, and who isn't it for?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bratrax Lite is built for direct-to-consumer brands on Shopify or WooCommerce that spend on paid ads and want to see which channels, campaigns and ads actually bring in orders, without paying $300–$1,500 a month or sitting through a sales demo. Running several stores? Each extra store is included at no extra cost. Bratrax isn't the right fit if your business runs on high-ticket call funnels or affiliate VSLs (Lite is built for D2C), if your store runs on a platform other than Shopify or WooCommerce, if you need ChatGPT rather than Claude for AI questions (ChatGPT support is on the roadmap), or if you want a dedicated analyst and a custom data model, which is Clear Vision, a service starting at $5K/month."
+      }
+    },
     {
       "@type": "Question",
       "name": "How is Bratrax different from Triple Whale, Northbeam, or Hyros?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Flat $99/mo regardless of GMV. No contract, no demo. Same caliber of attribution methodology — none of the sales-team overhead. We give you an MCP endpoint so your data connects to the AI you already pay for. The incumbents don't. Full breakdowns: Bratrax vs. Triple Whale (https://bratrax.com/vs/triple-whale), Bratrax vs. Hyros (https://bratrax.com/vs/hyros)."
+        "text": "Bratrax Lite costs a flat $99/month whatever your GMV, with no contract and no sales demo, and uses the same standard attribution methods. It also gives you an MCP endpoint, so your data connects to the AI you already pay for. The incumbents don't. Full breakdowns: Bratrax vs. Triple Whale (https://bratrax.com/vs/triple-whale), Bratrax vs. Hyros (https://bratrax.com/vs/hyros)."
       }
     },
     {
@@ -998,42 +1014,98 @@
     {
       "@type": "Question",
       "name": "Which Shopify plans and store setups does Bratrax support?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Any paid Shopify plan — Basic, Shopify, Advanced and Plus — including international and multi-currency stores. A store still on a free trial, with no paid plan behind it, can't be connected. If you run several stores, you connect one per Bratrax account." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Any paid Shopify plan — Basic, Shopify, Advanced and Plus — including international and multi-currency stores. A store still on a free trial, with no paid plan behind it, can't be connected. If you run several stores, you connect one per Bratrax account."
+      }
     },
     {
       "@type": "Question",
       "name": "Does it track subscriptions, POS and my other sales channels?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Yes. Subscription revenue and status ride along with your Shopify orders, so subscription sales are already in your numbers, and orders from Shopify POS and your other Shopify sales channels are counted the same way. Dedicated connectors for the subscription apps (Recharge, Bold and Skio), for plan-level detail, are on the roadmap." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Subscription revenue and status ride along with your Shopify orders, so subscription sales are already in your numbers, and orders from Shopify POS and your other Shopify sales channels are counted the same way. Dedicated connectors for the subscription apps (Recharge, Bold and Skio), for plan-level detail, are on the roadmap."
+      }
     },
     {
       "@type": "Question",
       "name": "How does Bratrax figure out what drove an order Shopify files under “Direct”?",
-      "acceptedAnswer": { "@type": "Answer", "text": "It doesn't take an ad platform's word for it. Bratrax reads the first-party journey Shopify already records against each order — sessions, referrers and UTM parameters — alongside its own first-party click tracking, and stitches them into the real path to the sale. Every order gets a winning touch under the model you choose plus a confidence level you can see. Because it's first-party and tied to the order, it holds up through the cookie and iOS signal loss that breaks pixel-only tools, so the sale that used to sit in 'Direct' gets its real source back." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It doesn't take an ad platform's word for it. Bratrax reads the first-party journey Shopify already records against each order — sessions, referrers and UTM parameters — alongside its own first-party click tracking, and stitches them into the real path to the sale. Every order gets a winning touch under the model you choose plus a confidence level you can see. Because it's first-party and tied to the order, it holds up through the cookie and iOS signal loss that breaks pixel-only tools, so the sale that used to sit in 'Direct' gets its real source back."
+      }
     },
     {
       "@type": "Question",
       "name": "What Shopify data does Bratrax read — and can it see my customers' personal information?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Bratrax reads what it needs to attribute and cost your orders: order and transaction history, line items, order value, currency and discounts, refund and subscription status, abandoned checkouts, your product catalogue, and customer records — the last so it can tell first-time from returning buyers and stitch a customer's journey. It reads customer identifiers only for that, uses them for nothing else, and never sells or shares them. Full list in the privacy policy and DPA." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Bratrax reads what it needs to attribute and cost your orders: order and transaction history, line items, order value, currency and discounts, refund and subscription status, abandoned checkouts, your product catalogue, and customer records — the last so it can tell first-time from returning buyers and stitch a customer's journey. It reads customer identifiers only for that, uses them for nothing else, and never sells or shares them. Full list in the privacy policy and DPA."
+      }
     },
     {
       "@type": "Question",
       "name": "Is Bratrax read-only, and where does my data live?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Read-only: Bratrax can read your orders, customers and products but can't write, edit, refund or delete anything in Shopify. The data lands in your own logically isolated warehouse — never commingled with another store's — encrypted in transit, with EU data residency and encrypted, monitored backups, and it's yours to query directly, including with your own AI through the MCP endpoint. Full posture in the DPA." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Read-only: Bratrax can read your orders, customers and products but can't write, edit, refund or delete anything in Shopify. The data lands in your own logically isolated warehouse — never commingled with another store's — encrypted in transit, with EU data residency and encrypted, monitored backups, and it's yours to query directly, including with your own AI through the MCP endpoint. Full posture in the DPA."
+      }
     },
     {
       "@type": "Question",
       "name": "What happens to my data if I disconnect or uninstall?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Disconnecting in Bratrax or uninstalling from Shopify revokes access immediately; Bratrax stops pulling new data at once. For what's already gathered: after you cancel you keep a 30-day export window, then it moves to cold retention and is permanently deleted at 180 days (you can request deletion sooner). Encrypted backups age out within 90 days after that. Details in the privacy policy." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Disconnecting in Bratrax or uninstalling from Shopify revokes access immediately; Bratrax stops pulling new data at once. For what's already gathered: after you cancel you keep a 30-day export window, then it moves to cold retention and is permanently deleted at 180 days (you can request deletion sooner). Encrypted backups age out within 90 days after that. Details in the privacy policy."
+      }
     },
     {
       "@type": "Question",
       "name": "How is Bratrax different from Shopify's built-in analytics — and from tools like Triple Whale or Northbeam?",
-      "acceptedAnswer": { "@type": "Answer", "text": "Shopify's own analytics tells you a sale happened, but it leans last-click and drops most of what it can't see into 'Direct.' It can't reconcile what Meta, Google and TikTok each separately claim, and it won't show true CAC or margin. Bratrax sits on the same orders and adds cross-channel attribution across five models, new-customer economics, and real profit after costs. Against tools like Triple Whale and Northbeam, the difference is the model: $99/mo flat that never scales with GMV, your data in a warehouse you can query with your own AI, and no demo-gated onboarding." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Shopify's own analytics tells you a sale happened, but it leans last-click and drops most of what it can't see into 'Direct.' It can't reconcile what Meta, Google and TikTok each separately claim, and it won't show true CAC or margin. Bratrax sits on the same orders and adds cross-channel attribution across five models, new-customer economics, and real profit after costs. Against tools like Triple Whale and Northbeam, the difference is the model: $99/mo flat that never scales with GMV, your data in a warehouse you can query with your own AI, and no demo-gated onboarding."
+      }
     },
     {
       "@type": "Question",
       "name": "I already run another attribution tool — how do I switch, and do I lose my history?",
-      "acceptedAnswer": { "@type": "Answer", "text": "You don't have to switch anything to try us, and you won't lose your history. Bratrax reads the orders and UTMs you already have, so there's no re-tagging, no new tracking scheme, no migration project — and the 365-day backfill puts your past on the dashboard from day one. Run Bratrax next to your current tool through the free trial, compare side by side, and keep whichever earns it. Most brands find more data and sharper insight for less, and stay." }
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "You don't have to switch anything to try us, and you won't lose your history. Bratrax reads the orders and UTMs you already have, so there's no re-tagging, no new tracking scheme, no migration project — and the 365-day backfill puts your past on the dashboard from day one. Run Bratrax next to your current tool through the free trial, compare side by side, and keep whichever earns it. Most brands find more data and sharper insight for less, and stay."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What's the best attribution tool for a small or mid-sized Shopify store?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "It depends on what you need, but for most Shopify brands the deciding factors are price, setup effort and whether you can check the numbers yourself. Bratrax Lite was built for that case: $99/month flat however much you sell, live in under 10 minutes with no pixel to install on Shopify, five standard attribution models, and an order-by-order view of the journey behind each sale. Larger platforms usually price by revenue or start with a sales demo. You can run Bratrax beside your current tool for $1 for the first month and compare."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there a cheaper alternative to Triple Whale?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Bratrax Lite is $99/month flat at any revenue, while Triple Whale's paid plans scale with GMV (about $1,129/month at $5M GMV, per our comparison). Bratrax covers the core of what most brands use Triple Whale for: attribution by channel, campaign and ad, MER and blended ROAS, cohorts and LTV, and email revenue, plus an MCP endpoint for Claude. If you want creative analytics, media-mix modeling or forecasting from the same vendor, Triple Whale covers more."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How can I see my real profit after ad spend on Shopify?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Shopify's own reports show sales, not what your ads cost, so you need orders and ad spend in one place. In Bratrax, the Store Performance dashboard puts revenue, total ad spend and MER (revenue divided by ad spend) side by side, and the Attribution dashboard breaks it down by channel and ad with blended ROAS, CPA and contribution margin. Because spend comes straight from your ad accounts, you see what each sale cost, not just what it brought in."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Is there an attribution tool for WooCommerce?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. Bratrax supports WooCommerce as well as Shopify. You connect your store with a standard WooCommerce API authorization, install the Bratrax tracking plugin on WordPress, and orders sync hourly, with a full year of history loaded after you connect. It's the same $99/month flat price and the same dashboards as on Shopify."
+      }
     }
   ]
 }
@@ -1060,7 +1132,7 @@
   "applicationSubCategory": "Marketing Attribution",
   "operatingSystem": "Web",
   "url": "https://bratrax.com/",
-  "description": "DTC attribution analytics for Shopify. Per-client isolated database, MCP endpoint for AI queries (Claude at launch), five attribution models, set up in under 10 minutes. $99/mo flat; try for $1 the first month.",
+  "description": "DTC attribution and profit analytics for Shopify and WooCommerce. Per-client isolated database, MCP endpoint for AI queries (Claude at launch), five attribution models, set up in under 10 minutes. $99/mo flat; try for $1 the first month.",
   "offers": {
     "@type": "Offer",
     "price": "99",
@@ -1113,7 +1185,7 @@
     <p class="faq-hero-sub">
       Pricing, product, AI, setup, platforms, data — everything you need to know.
     </p>
-    <div class="faq-hero-updated">Last updated July 27, 2026</div>
+    <div class="faq-hero-updated">Last updated November 14, 2026</div>
   </div>
 </section>
 
@@ -1136,6 +1208,7 @@
       <li><a href="#risk">Risk, data, cancellation</a></li>
       <li><a href="#slack">Slack</a></li>
       <li><a href="#shopify">Shopify</a></li>
+      <li><a href="#choosing">Choosing a tool</a></li>
     </ol>
   </aside>
 
@@ -1148,8 +1221,20 @@
       <h2>The <span class="serif-accent">product.</span></h2>
 
       <div class="qa-block">
+        <h3 class="q">What is Bratrax?</h3>
+        <p class="a">Bratrax is attribution and profit analytics for direct-to-consumer brands selling on Shopify or WooCommerce. It connects your store and your ad accounts (Meta, Google, TikTok, Microsoft, Pinterest and more), traces each order back to the visits and ads that came before it, and shows revenue, ad spend, MER, blended ROAS, cohorts and customer lifetime value in ready-made dashboards.</p>
+        <p class="a">Bratrax Lite is self-serve: <strong>$1 for the first month, then $99/month flat</strong>, month to month, live in under 10 minutes. You can also ask questions about your data in Claude, or in Slack with the Bratrax assistant.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Who is Bratrax for, and who isn't it for?</h3>
+        <p class="a">Bratrax Lite is built for direct-to-consumer brands on Shopify or WooCommerce that spend on paid ads and want to see which channels, campaigns and ads actually bring in orders, without paying $300–$1,500 a month or sitting through a sales demo. Running several stores? Each extra store is included at no extra cost.</p>
+        <p class="a">Bratrax isn't the right fit if your business runs on high-ticket call funnels or affiliate VSLs (Lite is built for D2C), if your store runs on a platform other than Shopify or WooCommerce, if you need ChatGPT rather than Claude for AI questions (ChatGPT support is on the roadmap), or if you want a dedicated analyst and a custom data model, which is Clear Vision, a service starting at $5K/month.</p>
+      </div>
+
+      <div class="qa-block">
         <h3 class="q">How is Bratrax different from Triple Whale, Northbeam, or Hyros?</h3>
-        <p class="a">Flat $99/mo regardless of GMV. No contract, no demo. Same caliber of attribution methodology — none of the sales-team overhead. We give you an MCP endpoint so your data connects to the AI you already pay for. The incumbents don't. Full breakdowns: <a href="https://bratrax.com/vs/triple-whale">Bratrax vs. Triple Whale</a>, <a href="https://bratrax.com/vs/hyros">Bratrax vs. Hyros</a>.</p>
+        <p class="a">Bratrax Lite costs a flat $99/month whatever your GMV, with no contract and no sales demo, and uses the same standard attribution methods. It also gives you an MCP endpoint, so your data connects to the AI you already pay for. The incumbents don't. Full breakdowns: <a href="https://bratrax.com/vs/triple-whale">Bratrax vs. Triple Whale</a>, <a href="https://bratrax.com/vs/hyros">Bratrax vs. Hyros</a>.</p>
       </div>
 
       <div class="qa-block">
@@ -1474,6 +1559,33 @@
       <div class="qa-block">
         <h3 class="q">I already run another attribution tool — how do I switch, and do I lose my history?</h3>
         <p class="a">You don't have to switch anything to try us, and you won't lose your history. Bratrax reads the orders and UTMs you already have, so there's <strong>no re-tagging, no new tracking scheme, no migration project</strong> &mdash; and the 365-day backfill means your past is on the dashboard from day one, not something you rebuild. Run Bratrax next to your current tool through the free trial, compare the numbers side by side, and keep whichever earns it. Most brands find they're getting more data and sharper insight for less &mdash; and stay.</p>
+      </div>
+
+    </section>
+
+    <!-- ─── 09 Choosing a tool ─── -->
+    <section class="faq-section" id="choosing">
+      <span class="faq-section-label">09 — Choosing a tool</span>
+      <h2>Choosing an attribution <span class="serif-accent">tool</span>.</h2>
+
+      <div class="qa-block">
+        <h3 class="q">What's the best attribution tool for a small or mid-sized Shopify store?</h3>
+        <p class="a">It depends on what you need, but for most Shopify brands the deciding factors are price, setup effort and whether you can check the numbers yourself. Bratrax Lite was built for that case: $99/month flat however much you sell, live in under 10 minutes with no pixel to install on Shopify, five standard attribution models, and an order-by-order view of the journey behind each sale. Larger platforms usually price by revenue or start with a sales demo. You can run Bratrax beside your current tool for $1 for the first month and compare.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Is there a cheaper alternative to Triple Whale?</h3>
+        <p class="a">Yes. Bratrax Lite is $99/month flat at any revenue, while Triple Whale's paid plans scale with GMV (about $1,129/month at $5M GMV, per our <a href="https://bratrax.com/vs/triple-whale">comparison</a>). Bratrax covers the core of what most brands use Triple Whale for: attribution by channel, campaign and ad, MER and blended ROAS, cohorts and LTV, and email revenue, plus an MCP endpoint for Claude. If you want creative analytics, media-mix modeling or forecasting from the same vendor, Triple Whale covers more.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">How can I see my real profit after ad spend on Shopify?</h3>
+        <p class="a">Shopify's own reports show sales, not what your ads cost, so you need orders and ad spend in one place. In Bratrax, the Store Performance dashboard puts revenue, total ad spend and MER (revenue divided by ad spend) side by side, and the Attribution dashboard breaks it down by channel and ad with blended ROAS, CPA and contribution margin. Because spend comes straight from your ad accounts, you see what each sale cost, not just what it brought in.</p>
+      </div>
+
+      <div class="qa-block">
+        <h3 class="q">Is there an attribution tool for WooCommerce?</h3>
+        <p class="a">Yes. Bratrax supports WooCommerce as well as Shopify. You connect your store with a standard WooCommerce API authorization, install the Bratrax tracking plugin on WordPress, and orders sync hourly, with a full year of history loaded after you connect. It's the same $99/month flat price and the same dashboards as on Shopify.</p>
       </div>
 
     </section>
