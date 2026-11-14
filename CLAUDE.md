@@ -10,7 +10,7 @@ Yuliya has had to correct these repeatedly. Treat them as hard rules for every p
 1. Never cap a heading, a section intro or any standalone paragraph (footer notes, captions, source lines) narrower than its column. No `max-width` in `ch` or px on `h1`/`h2`/intro paragraphs inside a section header: let them run the full width so they stay on one line wherever they fit.
 2. Write a section intro as one short sentence that fits on one line at desktop (about 100 characters at most). If it needs two lines, it is too long: cut words, don't narrow the box.
 3. `text-wrap: balance` only on `h1` and `h2` (it only acts when a heading has to wrap). Use `text-wrap: pretty` on everything else: card titles, paragraphs, list items. `pretty` stops a single word sitting alone on the last line without splitting the text into two half-empty lines.
-4. No manual `<br>`. To keep a phrase that belongs together on one line ("Any Shopify store,"), wrap it in a `white-space: nowrap` span; a `&nbsp;` between the last two words is fine if `balance` still leaves one word alone.
+4. No manual `<br>`. To keep a phrase that belongs together on one line ("Any Shopify store,"), wrap it in a `white-space: nowrap` span; a `&nbsp;` between the last two words is fine if `balance` still leaves one word alone. Store and brand names in headings always get that span ("Poppy & Peonies" never splits).
 5. Before showing any page, look at it at 1440px and 390px and check every heading and intro for: a single word alone on the last line; a second line much shorter than the first because the box was narrowed; a break that splits a phrase that belongs together. Fix by rewriting or widening, never by narrowing.
 
 **Labels**
