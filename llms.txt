@@ -1,19 +1,21 @@
 # Bratrax
 
-> Bratrax is attribution and profit analytics for direct-to-consumer brands selling on Shopify or WooCommerce. It connects the store and its ad accounts, traces each order back to the visits and ads that came before it, and shows revenue, ad spend, MER, blended ROAS, cohorts and customer lifetime value in ready-made dashboards. Bratrax Lite is self-serve: $1 for the first month, then $99/month flat, month to month, live in under 10 minutes.
+> Bratrax shows direct-to-consumer brands on Shopify or WooCommerce which ads make money and what the store actually earns. It connects the store and its ad accounts, traces each order back to the visits and ads that came before it, subtracts the store's real costs, and shows revenue, ad spend, MER, ROAS, contribution margin, net profit, cohorts and customer lifetime value in ready-made dashboards. Bratrax Lite is self-serve: $1 for the first month, then $99/month flat, month to month, live in under 10 minutes.
 
 Key facts:
 
 - Platforms: Shopify (any paid plan) and WooCommerce. External landing pages and Funnelish funnels through the Bratrax tracking pixel.
 - Ad and marketing integrations: Meta (Facebook/Instagram), Google Ads, TikTok Ads, Microsoft/Bing Ads, Pinterest Ads, Taboola, Outbrain, Klaviyo, Bloomreach.
 - Attribution: five standard models (first-touch, last-touch, linear, time-decay, position-based), with an order-by-order view of each customer journey.
+- Profit: product costs (COGS, filled in automatically from Shopify), Amazon product costs, shipping, payment gateway fees and custom expenses, combined by the store's own profit rules. Profitability by channel, campaign, ad and product. Net profit is shown only when every major cost is filled in; a missing cost is never counted as zero.
+- Multiple stores: one account and one subscription can hold several stores at no extra cost.
 - AI: connect Claude to your data through Bratrax's MCP endpoint, or ask the Bratrax assistant in Slack. ChatGPT support is on the roadmap.
 - Pricing: flat $99/month at any revenue, no contract, no GMV-based fees; one click to cancel. Clear Vision, a done-for-you analytics service, starts at $5K/month.
 - Good fit: D2C brands on Shopify or WooCommerce that spend on paid ads. Not a fit: high-ticket call funnels or affiliate VSL businesses, stores on other platforms.
 
 ## Start here
 
-- [FAQ](https://bratrax.com/faq): what Bratrax is, who it's for, pricing, setup, platforms, data and cancellation, with answers that stand on their own
+- [FAQ](https://bratrax.com/faq): what Bratrax is, who it's for, pricing, costs and profit, setup, platforms, data and cancellation, with answers that stand on their own
 - [Pricing](https://bratrax.com/pricing): Bratrax Lite and Clear Vision
 - [Integrations](https://bratrax.com/integrations): every supported store, ad and email platform
 
