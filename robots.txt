@@ -11,6 +11,8 @@ Disallow: /stores/export
 Disallow: /stores/check
 Disallow: /stores/explore?
 Disallow: /stores/api/
+Disallow: /stores/removal
 
 Sitemap: https://bratrax.com/sitemap.xml
 Sitemap: https://bratrax.com/stores/sitemap.xml
+
