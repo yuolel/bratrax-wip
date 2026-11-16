@@ -8,7 +8,6 @@ Allow: /
 # Bratrax Stores: keep crawlers out of search results, filter combinations, the API and forms.
 Disallow: /stores/search
 Disallow: /stores/export
-Disallow: /stores/check
 Disallow: /stores/explore?
 Disallow: /stores/api/
 Disallow: /stores/removal
