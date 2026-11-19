@@ -11,7 +11,11 @@ Disallow: /stores/export
 Disallow: /stores/explore?
 Disallow: /stores/api/
 Disallow: /stores/removal
+# Email archive: filter/sort combinations are noindex and endless; plain page numbers stay crawlable.
+Disallow: /stores/emails/*?
+Allow: /stores/emails/*?page=
 
 Sitemap: https://bratrax.com/sitemap.xml
 Sitemap: https://bratrax.com/stores/sitemap.xml
+
 
